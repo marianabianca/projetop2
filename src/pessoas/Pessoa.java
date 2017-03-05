@@ -54,7 +54,7 @@ public abstract class Pessoa {
 
 	@Override
 	public String toString() {
-		return ("Nome: " + nome + ", e-mail: " + email + ", CPF: " + cpf + ".");
+		return ("Nome:" + nome + ", e-mail:" + email + ", CPF:" + cpf);
 	}
 	
 }

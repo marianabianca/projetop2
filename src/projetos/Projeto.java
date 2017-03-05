@@ -3,7 +3,6 @@ package projetos;
 import java.util.HashSet;
 import java.util.Set;
 
-import exceptions.StringInvalida;
 import gastos.Gasto;
 
 public class Projeto {
@@ -12,7 +11,7 @@ public class Projeto {
 	private Set<Gasto> custos;
 	
 	public Projeto(String nomeDoProjeto, String objetivoDoProjeto, String dataDeInicio, 
-			int duracaoTotal, String codigoDoProjeto, Gasto despesaInicial) throws StringInvalida{
+			int duracaoTotal, String codigoDoProjeto, Gasto despesaInicial) throws Exception{
 		
 		/// TRATAMENTO A DECIDIR ~~~~~~~~~~
 		

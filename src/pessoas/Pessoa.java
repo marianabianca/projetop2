@@ -1,29 +1,29 @@
 package pessoas;
 
+import exceptions.StringInvalidaException;
+
 public abstract class Pessoa {
 	private String nome, email, cpf;
+	
+	public Pessoa(String nome, String email, String cpf) throws StringInvalidaException {
+	}
 
 	public String getCpf() {
 		return cpf;
 	}
 
 	public void setCpf(String cpf) {
+		// TODO TRATAMENTO
 		this.cpf = cpf;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public void setEmail(String email) {
+		// TODO TRATAMENTO
 		this.email = email;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
 	public void setNome(String nome) {
+		// TODO TRATAMENTO
 		this.nome = nome;
 	}
 
@@ -54,7 +54,9 @@ public abstract class Pessoa {
 
 	@Override
 	public String toString() {
-		return ("Nome:" + nome + ", e-mail:" + email + ", CPF:" + cpf);
+		return ("Nome:" + this.nome + ", e-mail:" + this.email + ", CPF:" + this.cpf);
 	}
+	
+	
 	
 }

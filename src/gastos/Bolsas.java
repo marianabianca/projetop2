@@ -1,6 +1,6 @@
 package gastos;
 
-public class Bolsas extends Gasto{
+public class Bolsas extends Despesas{
 	private int quantidadeDeBolsas;
 	
 	public Bolsas(int valorGasto, int quantidadeDeBolsas) {

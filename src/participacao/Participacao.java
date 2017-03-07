@@ -3,9 +3,9 @@ package participacao;
 import java.util.HashSet;
 import java.util.Set;
 
-import exceptions.ParticipanteNaoEncontrado;
-import exceptions.ParticipanteNulo;
-import exceptions.StringInvalida;
+import exceptions.ParticipanteNaoEncontradoException;
+import exceptions.ParticipanteNuloException;
+import exceptions.StringInvalidaException;
 import pessoas.Pessoa;
 import projetos.Projeto;
 import validacao.ModuloDeValidacao;
@@ -33,12 +33,12 @@ public class Participacao {
 		this.participantes = participantes;
 	}
 	
-	public void adicionarParticipante(Pessoa participanteAAdicionar) throws ParticipanteNulo{
+	public void adicionarParticipante(Pessoa participanteAAdicionar) throws ParticipanteNuloException{
 		ModuloDeValidacao.ParticipanteNulo(participanteAAdicionar);
 		participantes.add(participanteAAdicionar);	
 	}
 	
-	public Pessoa recuperarParticipante(String cpf) throws ParticipanteNaoEncontrado{
+	public Pessoa recuperarParticipante(String cpf) throws ParticipanteNaoEncontradoException{
 		for (Pessoa participante : participantes){
 			if (participante.getCpf().equals(cpf)){
 				return participante;
@@ -48,7 +48,7 @@ public class Participacao {
 		return null;
 	}
 	
-	public void editaParticipante(Pessoa participante, String cpf, String email, String nome) throws StringInvalida{
+	public void editaParticipante(Pessoa participante, String cpf, String email, String nome) throws StringInvalidaException{
 		ModuloDeValidacao.StringInvalida(nome);
 		ModuloDeValidacao.StringInvalida(email);
 		ModuloDeValidacao.StringInvalida(cpf);
@@ -57,7 +57,7 @@ public class Participacao {
 		participante.setNome(nome);
 	}
 	
-	public void apagaParticipante(Pessoa participante) throws ParticipanteNulo{
+	public void apagaParticipante(Pessoa participante) throws ParticipanteNuloException{
 		ModuloDeValidacao.ParticipanteNulo(participante);
 		participantes.remove(participante);
 	}

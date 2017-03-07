@@ -1,6 +1,6 @@
 package gastos;
 
-public abstract class Gasto {
+public abstract class Despesas {
 	private int valorGasto;
 
 	public int getValorGasto() {
@@ -11,7 +11,7 @@ public abstract class Gasto {
 		this.valorGasto = valorGasto;
 	}
 
-	public Gasto(int valorGasto) {
+	public Despesas(int valorGasto) {
 		/// TRATAMENTO
 		this.valorGasto = valorGasto;
 	}

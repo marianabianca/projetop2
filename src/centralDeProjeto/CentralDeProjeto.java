@@ -1,4 +1,4 @@
-package participacao;
+package centralDeProjeto;
 
 import java.util.HashSet;
 
@@ -10,11 +10,11 @@ import pessoas.Pessoa;
 import projetos.Projeto;
 import validacao.ModuloDeValidacao;
 
-public class Participacao {
+public class CentralDeProjeto {
 	private Set<Pessoa> participantes;
 	private Projeto projetoDeParticipacao;
 	
-	public Participacao(){
+	public CentralDeProjeto(){
 		participantes = new HashSet<Pessoa>();
 	}
 	
@@ -34,8 +34,9 @@ public class Participacao {
 	}
 	
 	// colocar teste de unidade ou não?
-	public void adicionarParticipante(Pessoa participanteAAdicionar){
-		participantes.add(participanteAAdicionar);	
+	public String adicionarParticipante(Pessoa participante){
+		participantes.add(participante);	
+		return participante.getCpf();
 	}
 	
 	public Pessoa recuperarParticipante(String cpf) throws ParticipanteNaoEncontradoException{

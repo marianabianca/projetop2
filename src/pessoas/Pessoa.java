@@ -8,7 +8,7 @@ public class Pessoa {
 	private String nome, email, cpf;
 	private Ocupacao ocupacao;
 	
-	public Pessoa(String nome, String email, String cpf, Ocupacao ocupacao) throws StringInvalidaException {
+	public Pessoa(String nome, String email, String cpf) throws StringInvalidaException {
 		ModuloDeValidacao.stringInvalida(nome);
 		ModuloDeValidacao.stringInvalida(email);
 		ModuloDeValidacao.stringInvalida(cpf);
@@ -16,7 +16,6 @@ public class Pessoa {
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
-		this.ocupacao = ocupacao;
 	}
 
 	public String getCpf() {

@@ -1,15 +1,20 @@
 package validacao;
 
-import custos.Custo;
 import exceptions.*;
 
 public class ModuloDeValidacao {
+
+	public static void objetoNulo(Object obj) throws ObjetoNuloException {
+		if (obj == null) {
+			throw new ObjetoNuloException("Objeto nulo.");
+		}
+	}
 
 	public static void ParticipanteNaoEncontrado() throws ParticipanteNaoEncontradoException {
 		throw new ParticipanteNaoEncontradoException("Participante nao encontrado.");
 	}
 	
-	public static void stringInvalida(String str) throws StringInvalidaException {
+	public static void StringInvalida(String str) throws StringInvalidaException {
 		if (str == null) {
 			throw new StringInvalidaException("String nula.");
 		}
@@ -18,21 +23,9 @@ public class ModuloDeValidacao {
 		} 
 	}
 	
-	public static void duracaoInvalida(int duracao) throws DuracaoInvalidaException {
+	public static void DuracaoInvalida(int duracao) throws DuracaoInvalidaException {
 		if (duracao <= 0) {
 			throw new DuracaoInvalidaException("Duracao nao pode ser menor ou igual a zero.");
-		}
-	}
-	
-	public static void inteiroNegativo(int inteiro) throws InteiroNegativoException {
-		if (inteiro < 0) {
-			throw new InteiroNegativoException("O número não pode ser negativo.");
-		}
-	}
-	
-	public static void objetoNulo(Custo gasto) throws GastoNuloException {
-		if (gasto == null) {
-			throw new GastoNuloException("Gasto nulo.");
 		}
 	}
 	

@@ -1,30 +1,32 @@
-package projetos;
+package projeto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import custos.Custo;
+import gastos.Despesas;
 
 public class Projeto {
-	private String nome, objetivo, dataDeInicio, codigoDoProjeto;
+	private String nomeDoProjeto, objetivoDoProjeto, dataDeInicio, codigoDoProjeto;
 	private int duracaoEmMeses;
-	private List<Custo> custos;
+	private List<Despesas> custos;
 	
 	public Projeto(String nomeDoProjeto, String objetivoDoProjeto, String dataDeInicio, 
-			int duracaoTotal, String codigoDoProjeto, Custo despesaInicial) throws Exception{
+			int duracaoTotal, String codigoDoProjeto, Despesas despesaInicial) throws Exception{
 		
-		this.nome = nome;
-		this.objetivo = objetivo;
+		this.nomeDoProjeto = nomeDoProjeto;
+		this.objetivoDoProjeto = objetivoDoProjeto;
 		this.dataDeInicio = dataDeInicio;
 		this.codigoDoProjeto = codigoDoProjeto;
 		this.duracaoEmMeses = duracaoTotal;
 		
-		custos = new ArrayList<Custo>();
+		custos = new ArrayList<Despesas>();
 		custos.add(despesaInicial);
 	}
 	
 	public double calculaCustoTotal(){
-		// TODO		
+		
+		
+		
 		return 0;
 	}
 	

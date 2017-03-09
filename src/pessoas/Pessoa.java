@@ -1,11 +1,22 @@
 package pessoas;
 
+import ocupacao.Ocupacao;
+import validacao.ModuloDeValidacao;
 import exceptions.StringInvalidaException;
 
-public abstract class Pessoa {
+public class Pessoa {
 	private String nome, email, cpf;
+	private Ocupacao ocupacao;
 	
-	public Pessoa(String nome, String email, String cpf) throws StringInvalidaException {
+	public Pessoa(String nome, String email, String cpf, Ocupacao ocupacao) throws StringInvalidaException {
+		ModuloDeValidacao.StringInvalida(nome);
+		ModuloDeValidacao.StringInvalida(email);
+		ModuloDeValidacao.StringInvalida(cpf);
+
+		this.nome = nome;
+		this.email = email;
+		this.cpf = cpf;
+		this.ocupacao = ocupacao;
 	}
 
 	public String getCpf() {

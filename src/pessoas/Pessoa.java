@@ -9,9 +9,9 @@ public class Pessoa {
 	private Ocupacao ocupacao;
 	
 	public Pessoa(String nome, String email, String cpf, Ocupacao ocupacao) throws StringInvalidaException {
-		ModuloDeValidacao.StringInvalida(nome);
-		ModuloDeValidacao.StringInvalida(email);
-		ModuloDeValidacao.StringInvalida(cpf);
+		ModuloDeValidacao.stringInvalida(nome);
+		ModuloDeValidacao.stringInvalida(email);
+		ModuloDeValidacao.stringInvalida(cpf);
 
 		this.nome = nome;
 		this.email = email;

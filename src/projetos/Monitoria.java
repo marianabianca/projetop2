@@ -1,14 +1,14 @@
 package projetos;
 
-import gastos.Bolsas;
-import gastos.Despesas;
+import custos.Bolsa;
+import custos.Custo;
 
 public class Monitoria extends Projeto{
 	
 	private String disciplina, periodo;
 	
 	public Monitoria(String nomeDoProjeto, String objetivoDoProjeto, String dataDeInicio, int duracaoTotal,
-			String codigoDoProjeto, Bolsas bolsa, String periodo, String disciplina) throws Exception {
+			String codigoDoProjeto, Bolsa bolsa, String periodo, String disciplina) throws Exception {
 		
 		// TODO TRATAMENTO
 		

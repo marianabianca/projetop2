@@ -1,10 +1,10 @@
 package participacao;
 
 import java.util.HashSet;
+
 import java.util.Set;
 
 import exceptions.ParticipanteNaoEncontradoException;
-import exceptions.ParticipanteNuloException;
 import exceptions.StringInvalidaException;
 import pessoas.Pessoa;
 import projetos.Projeto;
@@ -33,8 +33,8 @@ public class Participacao {
 		this.participantes = participantes;
 	}
 	
-	public void adicionarParticipante(Pessoa participanteAAdicionar) throws ParticipanteNuloException{
-		ModuloDeValidacao.ParticipanteNulo(participanteAAdicionar);
+	// colocar teste de unidade ou não?
+	public void adicionarParticipante(Pessoa participanteAAdicionar){
 		participantes.add(participanteAAdicionar);	
 	}
 	
@@ -49,16 +49,15 @@ public class Participacao {
 	}
 	
 	public void editaParticipante(Pessoa participante, String cpf, String email, String nome) throws StringInvalidaException{
-		ModuloDeValidacao.StringInvalida(nome);
-		ModuloDeValidacao.StringInvalida(email);
-		ModuloDeValidacao.StringInvalida(cpf);
+		ModuloDeValidacao.stringInvalida(nome);
+		ModuloDeValidacao.stringInvalida(email);
+		ModuloDeValidacao.stringInvalida(cpf);
 		participante.setCpf(cpf);
 		participante.setEmail(email);
 		participante.setNome(nome);
 	}
 	
-	public void apagaParticipante(Pessoa participante) throws ParticipanteNuloException{
-		ModuloDeValidacao.ParticipanteNulo(participante);
+	public void apagaParticipante(Pessoa participante){
 		participantes.remove(participante);
 	}
 }

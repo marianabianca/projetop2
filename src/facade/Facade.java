@@ -1,14 +1,17 @@
 package facade;
 
 import centralDeProjeto.CentralDeProjeto;
+import exceptions.DuracaoInvalidaException;
 import exceptions.StringInvalidaException;
 import pessoa.PessoaController;
+import projeto.ProjetoController;
 import validacao.ModuloDeValidacao;
 
 public class Facade {
 	
 	CentralDeProjeto central;
 	PessoaController pessoaController;
+	ProjetoController projetoController;
 	
 	public Facade() {
 		central = new CentralDeProjeto();
@@ -48,8 +51,15 @@ public class Facade {
 	}
 	
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo,
-			String periodo, String dataInicio, int duracao){
-		return "";
+			String periodo, String dataInicio, int duracao) throws StringInvalidaException, DuracaoInvalidaException{
+		ModuloDeValidacao.stringInvalida(nome);
+		ModuloDeValidacao.stringInvalida(disciplina);
+		ModuloDeValidacao.stringInvalida(objetivo);
+		ModuloDeValidacao.stringInvalida(periodo);
+		ModuloDeValidacao.stringInvalida(dataInicio);
+		ModuloDeValidacao.duracaoInvalida(duracao);
+		
+		return projetoController.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
 	}
 	
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,

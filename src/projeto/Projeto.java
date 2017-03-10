@@ -11,16 +11,17 @@ public class Projeto {
 	private List<Despesas> custos;
 	
 	public Projeto(String nomeDoProjeto, String objetivoDoProjeto, String dataDeInicio, 
-			int duracaoTotal, String codigoDoProjeto, Despesas despesaInicial) throws Exception{
+			int duracaoTotal, Despesas despesaInicial) throws Exception{
 		
 		this.nomeDoProjeto = nomeDoProjeto;
 		this.objetivoDoProjeto = objetivoDoProjeto;
 		this.dataDeInicio = dataDeInicio;
-		this.codigoDoProjeto = codigoDoProjeto;
 		this.duracaoEmMeses = duracaoTotal;
 		
 		custos = new ArrayList<Despesas>();
 		custos.add(despesaInicial);
+		
+		this.codigoDoProjeto = this.hashCode();
 	}
 	
 	public double calculaCustoTotal(){
@@ -29,6 +30,9 @@ public class Projeto {
 		
 		return 0;
 	}
+	
+	
+	
 	
 	
 }

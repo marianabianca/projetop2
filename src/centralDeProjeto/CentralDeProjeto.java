@@ -50,7 +50,7 @@ public class CentralDeProjeto {
 	}
 	
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo,
-			String periodo, String dataInicio, int duracao) throws StringInvalidaException, DuracaoInvalidaException{
+			String periodo, String dataInicio, int duracao) throws Exception{
 		try {
 			ModuloDeValidacao.stringInvalida(nome);
 			ModuloDeValidacao.stringInvalida(disciplina);

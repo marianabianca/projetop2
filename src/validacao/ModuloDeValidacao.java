@@ -35,18 +35,19 @@ public class ModuloDeValidacao {
 		ModuloDeValidacao.cpfFormatoInvalido(cpf);		
 	}
 	
-	private static void cpfFormatoInvalido(String cpf) throws StringInvalidaException {
-		String ponto1 = Character.toString(cpf.charAt(3));
-		String ponto2 = Character.toString(cpf.charAt(7));
-		String hifen = Character.toString(cpf.charAt(11));
-		
-		if (cpf.length() != 11){
-			throw new StringInvalidaException("invalido");
+	// TODO AJEITAR EXCEPTION
+		private static void cpfFormatoInvalido(String cpf) throws StringInvalidaException {
+			String ponto1 = Character.toString(cpf.charAt(3));
+			String ponto2 = Character.toString(cpf.charAt(7));
+			String hifen = Character.toString(cpf.charAt(11));
+			
+			if (cpf.length() != 11){
+				throw new StringInvalidaException("Cpf invalido");
+			}
+			else if (!(ponto1.equals(".") && ponto2.equals(".") & hifen.equals("-"))){
+				throw new StringInvalidaException("Cpf invalido");
+			}
 		}
-		else if (!(ponto1.equals(".") && ponto2.equals(".") & hifen.equals("-"))){
-			throw new StringInvalidaException("invalido");
-		}
-	}
 	
 	public static void impactoInvalido(int impacto) throws Exception{
 		if (impacto < 1 || impacto > 6){

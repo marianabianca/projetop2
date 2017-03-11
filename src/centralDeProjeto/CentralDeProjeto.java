@@ -142,4 +142,58 @@ public class CentralDeProjeto {
 		return pessoaService.getInfoPessoa(codigo, atributo);
 	}
 	
+	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
+			int qntHoras) {
+		try {
+			ModuloDeValidacao.cpfInvalido(cpf);
+			ModuloDeValidacao.codigoInvalido(codigo);
+			if (valorHora <= 0) {
+				throw new NumeroInvalidoException("Valor da hora Inválido");
+			}
+			if (qntHoras <= 0) {
+				throw new NumeroInvalidoException("Quantidade de horas invalida");
+			}
+		} catch (Exception e) {
+			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+		}
+		
+		participacaoService.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);		
+	}
+
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) {
+		try {
+			ModuloDeValidacao.cpfInvalido(cpf);
+			ModuloDeValidacao.codigoInvalido(codigo);
+			if (valorHora <= 0) {
+				throw new NumeroInvalidoException("Valor da hora Inválido");
+			}
+			if (qntHoras <= 0) {
+				throw new NumeroInvalidoException("Quantidade de horas invalida");
+			}
+		} catch (Exception e) {
+			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+		}
+		
+		participacaoService.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);		
+	}
+
+	// TODO TESTAR O CARGO
+	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
+			int qntHoras) {
+		try {
+			ModuloDeValidacao.cpfInvalido(cpf);
+			ModuloDeValidacao.codigoInvalido(codigo);
+			if (valorHora <= 0) {
+				throw new NumeroInvalidoException("Valor da hora Inválido");
+			}
+			if (qntHoras <= 0) {
+				throw new NumeroInvalidoException("Quantidade de horas invalida");
+			}
+		} catch (Exception e) {
+			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+		}
+		
+		participacaoService.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+	}
+	
 }

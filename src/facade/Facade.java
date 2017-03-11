@@ -38,20 +38,20 @@ public class Facade {
 	}
 	
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
-			int prodAcademica, int patentes, String dataInicio, int duracao){
+			int prodAcademica, int patentes, String dataInicio, int duracao) throws Exception{
 		return central.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
 	}
 	
-	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao){
+	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws Exception{
 		return central.adicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 	}
 	
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
-			String objetivo, String dataInicio, int duracao){
+			String objetivo, String dataInicio, int duracao) throws Exception{
 		return central.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 	}
 	
-	public void editaProjeto(String codigo, String atributo, String valor){
+	public void editaProjeto(String codigo, String atributo, String valor) throws Exception{
 		central.editaProjeto(codigo, atributo, valor);
 	}
 	
@@ -59,7 +59,7 @@ public class Facade {
 		central.removeProjeto(codigo);
 	}
 	
-	public String getInfoProjeto(String codigo, String atributo){
+	public String getInfoProjeto(String codigo, String atributo) throws Exception{
 		return central.getInfoProjeto(codigo, atributo);
 	}
 

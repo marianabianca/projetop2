@@ -76,7 +76,7 @@ public class Facade {
 		return "";
 	}
 	
-	public void editaProjeto(String codigo, String atributo, int valor){
+	public void editaProjeto(String codigo, String atributo, String valor){
 		
 	}
 	

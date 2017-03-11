@@ -46,15 +46,3 @@ public class PessoaService {
 			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
 		}
 	}
-
-	public void removePessoa(String cpf) {
-		this.pessoas.remove(cpf);
-	}
-	
-	
-	
-	
-	
-	
-
-}

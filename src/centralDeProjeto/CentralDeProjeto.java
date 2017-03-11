@@ -1,13 +1,10 @@
 package centralDeProjeto;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import Services.ParticipacaoService;
 import Services.PessoaService;
 import Services.ProjetoService;
-import exceptions.DuracaoInvalidaException;
 import exceptions.StringInvalidaException;
-import pessoa.Pessoa;
 import validacao.ModuloDeValidacao;
 
 public class CentralDeProjeto {
@@ -67,7 +64,7 @@ public class CentralDeProjeto {
 	}
 	
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
-			int prodAcademica, int patentes, String dataInicio, int duracao){
+			int prodAcademica, int patentes, String dataInicio, int duracao) throws Exception{
 		try{
 			ModuloDeValidacao.stringInvalida(nome);
 			ModuloDeValidacao.stringInvalida(objetivo);
@@ -85,7 +82,7 @@ public class CentralDeProjeto {
 		return projetoService.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
 	}
 	
-	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao){
+	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws Exception{
 		try {
 			ModuloDeValidacao.stringInvalida(nome);
 			ModuloDeValidacao.stringInvalida(objetivo);
@@ -100,7 +97,7 @@ public class CentralDeProjeto {
 	}
 	
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
-			String objetivo, String dataInicio, int duracao){
+			String objetivo, String dataInicio, int duracao) throws Exception{
 		try {
 			ModuloDeValidacao.stringInvalida(nome);
 			ModuloDeValidacao.stringInvalida(categoria);
@@ -117,7 +114,7 @@ public class CentralDeProjeto {
 		return projetoService.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 	}
 	
-	public void editaProjeto(String codigo, String atributo, String valor){
+	public void editaProjeto(String codigo, String atributo, String valor) throws Exception{
 		try {
 			if (atributo.equals("Objetivo")){
 				ModuloDeValidacao.objetivoInvalido(valor);
@@ -133,8 +130,15 @@ public class CentralDeProjeto {
 		projetoService.removeProjeto(codigo);
 	}
 	
-	public String getInfoProjeto(String codigo, String atributo){
-		projetoService.getInfoProjeto(codigo, atributo);
+	// TODO AJEITAR OS TESTES
+	public String getInfoProjeto(String codigo, String atributo) throws Exception{
+		ModuloDeValidacao.codigoInvalido(codigo);
+		atributo.toLowerCase();
+		if (!(atributo.equals("data de inicio") || atributo.equals("objetivo"))){
+			throw new Exception("Atributo inválido.");
+		}
+		
+		return pessoaService.getInfoPessoa(codigo, atributo);
 	}
 	
 }

@@ -99,7 +99,11 @@ public class ModuloDeValidacao {
 		}
 	}
 	
-	
+	public static void codigoInvalido(String codigo) throws StringInvalidaException {
+		if (codigo == null || codigo.equals("")){
+			throw new StringInvalidaException("Código inválido");
+		}
+	}
 	
 	
 }

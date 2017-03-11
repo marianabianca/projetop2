@@ -1,11 +1,12 @@
 package pessoa;
 
-import exceptions.StringInvalidaException;
-
 public class Pessoa {
 	private String nome, email, cpf;
-	
-	public Pessoa(String nome, String email, String cpf) throws StringInvalidaException {
+
+	public Pessoa(String nome, String email, String cpf) {
+		this.nome = nome;
+		this.email = email;
+		this.cpf = cpf;
 	}
 
 	public String getCpf() {
@@ -13,18 +14,23 @@ public class Pessoa {
 	}
 
 	public void setCpf(String cpf) {
-		// TODO TRATAMENTO
 		this.cpf = cpf;
 	}
 
 	public void setEmail(String email) {
-		// TODO TRATAMENTO
 		this.email = email;
 	}
 
 	public void setNome(String nome) {
-		// TODO TRATAMENTO
 		this.nome = nome;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public String getEmail() {
+		return this.email;
 	}
 
 	@Override
@@ -56,15 +62,4 @@ public class Pessoa {
 	public String toString() {
 		return ("Nome:" + this.nome + ", e-mail:" + this.email + ", CPF:" + this.cpf);
 	}
-
-	public String getNome() {
-		return this.nome;
-	}
-
-	public String getEmail() {
-		return this.email;
-	}
-	
-	
-	
 }

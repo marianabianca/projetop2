@@ -1,38 +1,42 @@
 package projeto;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import gastos.Despesas;
-
-public class Projeto {
-	private String nomeDoProjeto, objetivoDoProjeto, dataDeInicio, codigoDoProjeto;
-	private int duracaoEmMeses;
+public abstract class Projeto {
+	private String nome, objetivo, dataInicio, codigo;
+	private int duracao;
 	private List<Despesas> custos;
-	
-	public Projeto(String nomeDoProjeto, String objetivoDoProjeto, String dataDeInicio, 
-			int duracaoTotal, Despesas despesaInicial) throws Exception{
-		
-		this.nomeDoProjeto = nomeDoProjeto;
-		this.objetivoDoProjeto = objetivoDoProjeto;
-		this.dataDeInicio = dataDeInicio;
-		this.duracaoEmMeses = duracaoTotal;
-		
+
+	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
+		this.nome = nome;
+		this.objetivo = objetivo;
+		this.dataInicio = dataInicio;
+		this.duracao = duracao;
 		custos = new ArrayList<Despesas>();
-		custos.add(despesaInicial);
-		
-		this.codigoDoProjeto = this.hashCode();
+		this.codigo = codigo;
 	}
-	
-	public double calculaCustoTotal(){
-		
-		
-		
-		return 0;
+
+	public double calculaCustoTotal() {
+		double despesaTotal = 0;
+		for (Despesas despesa : custos) {
+			despesaTotal = despesaTotal + despesa.getValor();
+		}
+		return despesaTotal;
 	}
-	
-	
-	
-	
-	
+
+	public String getDataInicio() {
+		return dataInicio;
+	}
+
+	public String getObjetivo() {
+		return objetivo;
+	}
+
+	public void setObjetivo(String objetivo) {
+		this.objetivo = objetivo;
+	}
+
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
+	}
 }

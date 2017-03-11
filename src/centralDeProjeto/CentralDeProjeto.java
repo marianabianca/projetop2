@@ -116,7 +116,7 @@ public class CentralDeProjeto {
 	
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception{
 		try {
-			if (atributo.equals("Objetivo")){
+			if (atributo.equalsIgnoreCase("Objetivo")){
 				ModuloDeValidacao.objetivoInvalido(valor);
 			} else {
 				ModuloDeValidacao.dataInvalida(valor);
@@ -124,6 +124,7 @@ public class CentralDeProjeto {
 		} catch (Exception e) {
 			throw new Exception("Erro na atualizacao de projeto: " + e.getMessage());
 		}
+		projetoService.editaProjeto(codigo, atributo, valor);
 	}
 	
 	public void removeProjeto(String codigo){

@@ -2,6 +2,9 @@ package centralDeProjeto;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 
+import Services.ParticipacaoService;
+import Services.PessoaService;
+import Services.ProjetoService;
 import exceptions.DuracaoInvalidaException;
 import exceptions.StringInvalidaException;
 import pessoa.Pessoa;
@@ -14,20 +17,30 @@ public class CentralDeProjeto {
 	ParticipacaoService participacaoService;
 
 	public String cadastraPessoa(String cpf, String nome, String email) throws StringInvalidaException{
-		ModuloDeValidacao.cpfInvalido(cpf);
-		ModuloDeValidacao.stringInvalida(nome);
-		ModuloDeValidacao.stringInvalida(email);
+		try {
+			ModuloDeValidacao.cpfInvalido(cpf);
+		} catch (Exception e) {
+			throw new StringInvalidaException("Cpf " + e.getMessage());
+		}
+		try {
+			ModuloDeValidacao.stringInvalida(nome);
+		} catch (Exception e) {
+			throw new StringInvalidaException("Nome " + e.getMessage());
+		}try {
+			ModuloDeValidacao.stringInvalida(email);
+		} catch (Exception e) {
+			throw new StringInvalidaException("Email " + e.getMessage());
+		}
 		
 		return pessoaService.cadastraPessoa(cpf, nome, email);
 	}
 	
 	public void removePessoa(String cpf){
-		// TODO
+		pessoaService.removePessoa(cpf);
 	}
 	
 	public String getInfoPessoa(String cpf, String atributo) throws Exception{
 		ModuloDeValidacao.cpfInvalido(cpf);
-		ModuloDeValidacao.stringInvalida(atributo);
 		atributo.toLowerCase();
 		if (!(atributo.equals("nome") || atributo.equals("email"))){
 			throw new Exception("Atributo inválido.");

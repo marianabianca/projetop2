@@ -62,5 +62,17 @@ public class Facade {
 	public String getInfoProjeto(String codigo, String atributo) throws Exception{
 		return central.getInfoProjeto(codigo, atributo);
 	}
+	
+	public void associaProfessor (String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora, int qntHoras){
+		central.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+	}
+	
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras){
+		central.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
+	}
+	
+	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora, int qntHoras){
+		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+	}
 
 }

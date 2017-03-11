@@ -1,12 +1,18 @@
 package pessoa;
 
+import java.util.HashMap;
+
+import pariticipacao.Participacao;
+
 public class Pessoa {
 	private String nome, email, cpf;
+	private HashMap<String, Participacao> listaDeParticipacoesDePessoa;
 
 	public Pessoa(String nome, String email, String cpf) {
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
+		listaDeParticipacoesDePessoa = new HashMap<>();
 	}
 
 	public String getCpf() {

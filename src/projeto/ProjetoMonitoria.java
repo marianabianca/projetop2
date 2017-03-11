@@ -1,4 +1,4 @@
-package projeto;
+	package projeto;
 
 public class ProjetoMonitoria extends Projeto {
 	private String disciplina;

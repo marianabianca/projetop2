@@ -1,11 +1,15 @@
 package projeto;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import pariticipacao.Participacao;
 
 public abstract class Projeto {
 	private String nome, objetivo, dataInicio, codigo;
 	private int duracao;
 	private List<Despesas> custos;
+	private HashMap<String,Participacao> listaDeParticipacoesDeProjeto;
 
 	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
 		this.nome = nome;
@@ -14,6 +18,7 @@ public abstract class Projeto {
 		this.duracao = duracao;
 		custos = new ArrayList<Despesas>();
 		this.codigo = codigo;
+		listaDeParticipacoesDeProjeto = new HashMap<>();
 	}
 
 	public double calculaCustoTotal() {

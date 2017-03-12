@@ -15,7 +15,7 @@ public abstract class Projeto {
 	private Map<String, Participacao> participacoes;
 
 	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
-		this.nome = nome;
+		this.setNome(nome);
 		this.objetivo = objetivo;
 		this.dataInicio = dataInicio;
 		this.duracao = duracao;
@@ -71,6 +71,19 @@ public abstract class Projeto {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void adicionaDespesa(Despesa despesa) {
+		custos.add(despesa);
+		
 	}
 
 }

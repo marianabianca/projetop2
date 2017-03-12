@@ -1,7 +1,10 @@
 package projeto;
 
 public class ProjetoPET extends Projeto {
-	private int impacto, rendimento, prodTecnica, prodAcademica, parentes;
+	
+	// TODO Classe produtividade tambem
+	
+	private int impacto, rendimento, prodTecnica, prodAcademica, patentes;
 
 	public ProjetoPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica,
 			int patentes, String dataInicio, int duracao, String codigo) {
@@ -10,7 +13,7 @@ public class ProjetoPET extends Projeto {
 		this.rendimento = rendimento;
 		this.prodTecnica = prodTecnica;
 		this.prodAcademica = prodAcademica;
-		this.parentes = patentes;
+		this.patentes = patentes;
 
 	}
 

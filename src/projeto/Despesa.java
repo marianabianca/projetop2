@@ -1,14 +1,15 @@
 package projeto;
 
-public class Despesas {
-	private int valor;
+public class Despesa {
 
-	public Despesas(int valor) {
+	private double valor;
+
+	public Despesa(double valor) {
 		this.valor = valor;
 	}
-	
-	public int getValor() {
-		return valor;
+
+	public double getValor() {
+		return this.valor;
 	}
 
 }

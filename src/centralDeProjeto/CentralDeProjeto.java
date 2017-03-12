@@ -39,7 +39,7 @@ public class CentralDeProjeto {
 		ModuloDeValidacao.cpfInvalido(cpf);
 		atributo.toLowerCase();
 		if (!(atributo.equals("nome") || atributo.equals("email"))){
-			throw new Exception("Atributo inválido.");
+			throw new Exception("Atributo invalido.");
 		}
 		
 		return pessoaService.getInfoPessoa(cpf, atributo);
@@ -135,23 +135,21 @@ public class CentralDeProjeto {
 		ModuloDeValidacao.codigoInvalido(codigo);
 		atributo.toLowerCase();
 		if (!(atributo.equals("data de inicio") || atributo.equals("objetivo"))){
-			throw new Exception("Atributo inválido.");
+			throw new Exception("Atributo invalido.");
 		}
 		
 		return pessoaService.getInfoPessoa(codigo, atributo);
 	}
 	
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
-			int qntHoras) {
+			int qntHoras) throws Exception {
 		try {
-			ModuloDeValidacao.cpfInvalido(cpf);
-			ModuloDeValidacao.codigoInvalido(codigo);
-			if (valorHora <= 0) {
-				throw new NumeroInvalidoException("Valor da hora Invalido");
+			ModuloDeValidacao.cpfInvalido(cpfPessoa);
+			ModuloDeValidacao.codigoInvalido(codigoProjeto);
+			if (valorHora < 0) {
+				throw new Exception("Valor da hora Invalido");
 			}
-			if (qntHoras <= 0) {
-				throw new NumeroInvalidoException("Quantidade de horas invalida");
-			}
+			ModuloDeValidacao.duracaoInvalida(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -159,16 +157,14 @@ public class CentralDeProjeto {
 		participacaoService.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);		
 	}
 
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) {
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) throws Exception {
 		try {
-			ModuloDeValidacao.cpfInvalido(cpf);
-			ModuloDeValidacao.codigoInvalido(codigo);
+			ModuloDeValidacao.cpfInvalido(cpfPessoa);
+			ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora <= 0) {
-				throw new NumeroInvalidoException("Valor da hora Inválido");
+				throw new Exception("Valor da hora Invalido");
 			}
-			if (qntHoras <= 0) {
-				throw new NumeroInvalidoException("Quantidade de horas invalida");
-			}
+			ModuloDeValidacao.duracaoInvalida(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -178,16 +174,14 @@ public class CentralDeProjeto {
 
 	// TODO TESTAR O CARGO
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
-			int qntHoras) {
+			int qntHoras) throws Exception {
 		try {
-			ModuloDeValidacao.cpfInvalido(cpf);
-			ModuloDeValidacao.codigoInvalido(codigo);
+			ModuloDeValidacao.cpfInvalido(cpfPessoa);
+			ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora <= 0) {
-				throw new NumeroInvalidoException("Valor da hora Inválido");
+				throw new Exception("Valor da hora Invalido");
 			}
-			if (qntHoras <= 0) {
-				throw new NumeroInvalidoException("Quantidade de horas invalida");
-			}
+			ModuloDeValidacao.duracaoInvalida(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}

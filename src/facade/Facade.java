@@ -1,9 +1,17 @@
 package facade;
 
 import centralDeProjeto.CentralDeProjeto;
+import easyaccept.EasyAccept;
 import exception.StringInvalidaException;
 
 public class Facade {
+	
+	public static void main(String[] args){
+		args = new String[] {"facade.Facade", "AcceptanceTests/us1_test.txt", "AcceptanceTests/us1_test_exception.txt",
+				"AcceptanceTests/us2_test.txt", "AcceptanceTests/us2_test_exception.txt", "AcceptanceTests/us1_test.txt", 
+				"AcceptanceTests/us3_test_exception.txt"};
+		EasyAccept.main(args);
+	}
 
 	private CentralDeProjeto central;
 

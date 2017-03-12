@@ -32,7 +32,7 @@ public class Facade {
 	}
 
 	public void removePessoa(String cpf) {
-		// TODO
+		central.removePessoa(cpf);
 	}
 
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
@@ -86,5 +86,8 @@ public class Facade {
 			int qntHoras) throws Exception {
 		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
-
+	
+	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception{
+		central.editaPessoa(cpfPessoa, atributo, valor);
+	}
 }

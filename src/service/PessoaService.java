@@ -28,7 +28,7 @@ public class PessoaService {
 	}
 
 	public void removePessoa(String cpf) {
-		this.pessoas.remove(cpf);
+		this.pessoas.remove(cpf, pessoas.get(cpf));
 	}
 
 	private String getEmailDePessoa(String cpf) throws Exception {
@@ -42,12 +42,25 @@ public class PessoaService {
 	}
 
 	private Pessoa getPessoa(String cpf) throws Exception {
+		Pessoa pessoa;
 		try {
-			Pessoa pessoa = pessoas.get(cpf);
-			return pessoa;
+			pessoa = pessoas.get(cpf);
 		} catch (Exception e) {
 			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
 		}
+		return pessoa;
+	}
+
+	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
+		Pessoa aEditar = getPessoa(cpfPessoa);
+		if (atributo.equals("nome")){
+			aEditar.setNome(valor);
+		} else if (atributo.equals("cpf")){
+			aEditar.setCpf(valor);
+		} else {
+			aEditar.setEmail(valor);
+		}
+		
 	}
 
 }

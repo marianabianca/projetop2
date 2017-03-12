@@ -1,4 +1,4 @@
-package Services;
+package service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,12 +11,12 @@ import projeto.ProjetoPET;
 
 public class ProjetoService {
 
-	Map<String, Projeto> projetos;
-	int contadorCodigo;
+	private Map<String, Projeto> projetos;
+	private int contadorCodigo;
 
 	public ProjetoService() {
-		projetos = new HashMap<>();
-		contadorCodigo = 0;
+		this.projetos = new HashMap<>();
+		this.contadorCodigo = 0;
 	}
 
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -25,12 +25,6 @@ public class ProjetoService {
 		Projeto monitoria = new ProjetoMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao,
 				codigo);
 		projetos.put(codigo, monitoria);
-		return codigo;
-	}
-
-	private String geraCodigo() {
-		String codigo = Integer.toString(contadorCodigo);
-		contadorCodigo += 1;
 		return codigo;
 	}
 
@@ -71,6 +65,25 @@ public class ProjetoService {
 		}
 	}
 
+	public void editaProjeto(String codigo, String atributo, String valor) {
+		Projeto projeto = this.getProjeto(codigo);
+		if (atributo.equals("objetivo")) {
+			projeto.setObjetivo(valor);
+		} else {
+			projeto.setDataInicio(valor);
+		}
+	}
+
+	private String geraCodigo() {
+		String codigo = Integer.toString(contadorCodigo++);
+		return codigo;
+	}
+
+	private Projeto getProjeto(String codigo) {
+		Projeto projeto = projetos.get(codigo);
+		return projeto;
+	}
+
 	private String getDataInicio(String codigo) {
 		Projeto projeto = projetos.get(codigo);
 		return projeto.getDataInicio();
@@ -80,18 +93,5 @@ public class ProjetoService {
 		Projeto projeto = projetos.get(codigo);
 		return projeto.getObjetivo();
 	}
-	
-	public void editaProjeto(String codigo, String atributo, String valor){
-		Projeto projeto = this.getProjeto(codigo);
-		if (atributo.equals("objetivo")){
-			projeto.setObjetivo(valor);
-		} else {
-			projeto.setDataInicio(valor);
-		}
-	}
 
-	private Projeto getProjeto(String codigo) {
-		Projeto projeto = projetos.get(codigo);
-		return projeto;	
-	}
 }

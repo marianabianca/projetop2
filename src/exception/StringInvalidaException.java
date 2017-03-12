@@ -1,4 +1,4 @@
-package exceptions;
+package exception;
 
 @SuppressWarnings("serial")
 public class StringInvalidaException extends Exception{

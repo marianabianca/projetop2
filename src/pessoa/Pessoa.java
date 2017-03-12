@@ -1,42 +1,44 @@
 package pessoa;
 
 import java.util.HashMap;
+import java.util.Map;
 
-import pariticipacao.Participacao;
+import participacao.Participacao;
 
 public class Pessoa {
+	
 	private String nome, email, cpf;
-	private HashMap<String, Participacao> listaDeParticipacoesDePessoa;
+	private Map<String, Participacao> participacoes;
 
 	public Pessoa(String nome, String email, String cpf) {
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
-		listaDeParticipacoesDePessoa = new HashMap<>();
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+		this.participacoes = new HashMap<>();
 	}
 
 	public String getNome() {
 		return this.nome;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public String getEmail() {
 		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCpf() {
+		return this.cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	@Override
@@ -66,6 +68,7 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return ("Nome:" + this.nome + ", e-mail:" + this.email + ", CPF:" + this.cpf);
+		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
+	
 }

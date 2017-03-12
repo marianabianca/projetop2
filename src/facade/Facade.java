@@ -1,15 +1,15 @@
 package facade;
 
-import centralDeProjeto.CentralDeProjeto;
+import centraldeprojeto.CentralDeProjeto;
 import easyaccept.EasyAccept;
 import exception.StringInvalidaException;
 
 public class Facade {
 	
 	public static void main(String[] args){
-		args = new String[] {"facade.Facade", "AcceptanceTests/us1_test.txt", "AcceptanceTests/us1_test_exception.txt",
-				"AcceptanceTests/us2_test.txt", "AcceptanceTests/us2_test_exception.txt", "AcceptanceTests/us1_test.txt", 
-				"AcceptanceTests/us3_test_exception.txt"};
+		args = new String[] {"facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
+				"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt", "acceptance_test/us1_test.txt", 
+				"acceptance_test/us3_test_exception.txt"};
 		EasyAccept.main(args);
 	}
 
@@ -74,16 +74,16 @@ public class Facade {
 	}
 
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
-			int qntHoras) {
+			int qntHoras) throws Exception {
 		central.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
 	}
 
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) {
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) throws Exception {
 		central.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
 	}
 
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
-			int qntHoras) {
+			int qntHoras) throws Exception {
 		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
 

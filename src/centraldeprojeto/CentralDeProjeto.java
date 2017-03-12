@@ -1,4 +1,4 @@
-package centralDeProjeto;
+package centraldeprojeto;
 
 import exception.StringInvalidaException;
 import service.ParticipacaoService;

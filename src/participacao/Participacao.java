@@ -1,6 +1,7 @@
-package pariticipacao;
+package participacao;
 
 public class Participacao {
+	
 	private String dataDeInicio;
 	private int duracao, horasSemanais, valorDaHora;
 	

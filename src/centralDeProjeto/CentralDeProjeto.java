@@ -1,17 +1,16 @@
 package centralDeProjeto;
 
-
-import Services.ParticipacaoService;
-import Services.PessoaService;
-import Services.ProjetoService;
-import exceptions.StringInvalidaException;
+import exception.StringInvalidaException;
+import service.ParticipacaoService;
+import service.PessoaService;
+import service.ProjetoService;
 import validacao.ModuloDeValidacao;
 
 public class CentralDeProjeto {
 	
-	PessoaService pessoaService;
-	ProjetoService projetoService;
-	ParticipacaoService participacaoService;
+	private PessoaService pessoaService;
+	private ProjetoService projetoService;
+	private ParticipacaoService participacaoService;
 
 	public String cadastraPessoa(String cpf, String nome, String email) throws StringInvalidaException{
 		try {
@@ -148,7 +147,7 @@ public class CentralDeProjeto {
 			ModuloDeValidacao.cpfInvalido(cpf);
 			ModuloDeValidacao.codigoInvalido(codigo);
 			if (valorHora <= 0) {
-				throw new NumeroInvalidoException("Valor da hora Inválido");
+				throw new NumeroInvalidoException("Valor da hora Invalido");
 			}
 			if (qntHoras <= 0) {
 				throw new NumeroInvalidoException("Quantidade de horas invalida");

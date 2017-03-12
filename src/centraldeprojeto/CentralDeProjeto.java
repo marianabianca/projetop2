@@ -12,6 +12,13 @@ public class CentralDeProjeto {
 	private PessoaService pessoaService;
 	private ProjetoService projetoService;
 	private ParticipacaoService participacaoService;
+	
+	public CentralDeProjeto(){
+		pessoaService = new PessoaService();
+		projetoService = new ProjetoService();
+		participacaoService = new ParticipacaoService();
+	}
+
 
 	public String cadastraPessoa(String cpf, String nome, String email) throws StringInvalidaException {
 		try {

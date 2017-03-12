@@ -30,8 +30,8 @@ public class ModuloDeValidacao {
 	}
 
 	public static void cpfInvalido(String cpf) throws StringInvalidaException {
-		ModuloDeValidacao.stringInvalida(cpf);
-		ModuloDeValidacao.cpfFormatoInvalido(cpf);
+		stringInvalida(cpf);
+		cpfFormatoInvalido(cpf);
 	}
 
 	// TODO AJEITAR EXCEPTION
@@ -40,15 +40,14 @@ public class ModuloDeValidacao {
 		String ponto2 = Character.toString(cpf.charAt(7));
 		String hifen = Character.toString(cpf.charAt(11));
 
-		if (cpf.length() != 11) {
-			throw new StringInvalidaException("Cpf invalido");
-		} else if (!(ponto1.equals(".") && ponto2.equals(".") & hifen.equals("-"))) {
+		if (cpf.length() != 14) {
 			throw new StringInvalidaException("Cpf invalido");
 		}
+		cpfCaracteresInvalidos(cpf);
 	}
 	
 	private static void cpfCaracteresInvalidos(String cpf) throws StringInvalidaException{
-		String[] cpfSplit = cpf.split("(.)|(-)");
+		String[] cpfSplit = cpf.split("\\W");
 		for (String tresdigitos : cpfSplit) {
 			for (int i = 0; i < tresdigitos.length(); i++) {
 				String digito = "";
@@ -79,9 +78,9 @@ public class ModuloDeValidacao {
 	}
 
 	public static void dataInvalida(String data) throws StringInvalidaException {
-		ModuloDeValidacao.stringInvalida(data);
-		ModuloDeValidacao.formatoDataInvalido(data);
-		ModuloDeValidacao.diaInvalido(data);
+		stringInvalida(data);
+		formatoDataInvalido(data);
+		diaInvalido(data);
 	}
 
 	private static void diaInvalido(String data) throws StringInvalidaException {

@@ -46,22 +46,35 @@ public class ModuloDeValidacao {
 			throw new StringInvalidaException("Cpf invalido");
 		}
 	}
+	
+	private static void cpfCaracteresInvalidos(String cpf) throws StringInvalidaException{
+		String[] cpfSplit = cpf.split("(.)|(-)");
+		for (String tresdigitos : cpfSplit) {
+			for (int i = 0; i < tresdigitos.length(); i++) {
+				String digito = "";
+				digito += tresdigitos.charAt(i);
+				if (!digito.matches("[0-9]")){
+					throw new StringInvalidaException("Cpf invalido");
+				}
+			}
+		}
+	}
 
 	public static void impactoInvalido(int impacto) throws Exception {
 		if (impacto < 1 || impacto > 6) {
-			throw new Exception("Impacto inválido.");
+			throw new Exception("Impacto invalido.");
 		}
 	}
 
 	public static void rendimentoInvalido(int rendimento) throws Exception {
 		if (rendimento < 0 || rendimento > 100) {
-			throw new Exception("Rendimento inválido.");
+			throw new Exception("Rendimento invalido.");
 		}
 	}
 
 	public static void inteiroInvalido(int inteiro) throws Exception {
 		if (inteiro < 0) {
-			throw new Exception("Número inválido.");
+			throw new Exception("Numero invalido.");
 		}
 	}
 
@@ -99,7 +112,7 @@ public class ModuloDeValidacao {
 
 	public static void codigoInvalido(String codigo) throws StringInvalidaException {
 		if (codigo == null || codigo.equals("")) {
-			throw new StringInvalidaException("Código inválido");
+			throw new StringInvalidaException("Codigo invalido");
 		}
 	}
 

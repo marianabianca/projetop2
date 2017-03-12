@@ -18,7 +18,7 @@ public abstract class Projeto {
 		this.setNome(nome);
 		this.objetivo = objetivo;
 		this.dataInicio = dataInicio;
-		this.duracao = duracao;
+		this.setDuracao(duracao);
 		this.custos = new ArrayList<>();
 		this.codigo = codigo;
 		this.participacoes = new HashMap<>();
@@ -48,6 +48,19 @@ public abstract class Projeto {
 		this.dataInicio = dataInicio;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void adicionaDespesa(Despesa despesa) {
+		custos.add(despesa);
+		
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,17 +86,13 @@ public abstract class Projeto {
 		return true;
 	}
 
-	public String getNome() {
-		return nome;
+	public int getDuracao() {
+		return duracao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDuracao(int duracao) {
+		this.duracao = duracao;
 	}
 
-	public void adicionaDespesa(Despesa despesa) {
-		custos.add(despesa);
-		
-	}
 
 }

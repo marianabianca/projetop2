@@ -6,14 +6,14 @@ import exception.StringInvalidaException;
 
 public class Facade {
 
+	private CentralDeProjeto central;
+
 	public static void main(String[] args) {
-		args = new String[] {"facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
+		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
 				"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt",
-				"acceptance_test/us1_test.txt", "acceptance_test/us3_test_exception.txt"};
+				"acceptance_test/us3_test.txt", "acceptance_test/us3_test_exception.txt" };
 		EasyAccept.main(args);
 	}
-
-	private CentralDeProjeto central;
 
 	public Facade() {
 		central = new CentralDeProjeto();
@@ -78,7 +78,8 @@ public class Facade {
 		central.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
 	}
 
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) throws Exception {
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
+			throws Exception {
 		central.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
 	}
 
@@ -86,8 +87,8 @@ public class Facade {
 			int qntHoras) throws Exception {
 		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
-	
-	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception{
+
+	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
 		central.editaPessoa(cpfPessoa, atributo, valor);
 	}
 }

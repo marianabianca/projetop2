@@ -43,12 +43,13 @@ public class PessoaService {
 
 	private Pessoa getPessoa(String cpf) throws Exception {
 		Pessoa pessoa;
-		try {
-			pessoa = pessoas.get(cpf);
-		} catch (Exception e) {
-			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
+		boolean flag = false;
+		for (String cpfDaPessoa : pessoas.keySet()) {
+			if (cpf.equals(cpfDaPessoa)){
+				return pessoas.get(cpfDaPessoa);
+			}
 		}
-		return pessoa;
+		throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {

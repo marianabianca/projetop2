@@ -46,7 +46,7 @@ public class CentralDeProjeto {
 		ModuloDeValidacao.cpfInvalido(cpf);
 		atributo = atributo.toLowerCase();
 		if (!(atributo.equals("nome") || atributo.equals("email"))){
-			throw new Exception("Atributo invalido.");
+			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
 		}
 		
 		return pessoaService.getInfoPessoa(cpf, atributo);
@@ -161,7 +161,7 @@ public class CentralDeProjeto {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 		
-		participacaoService.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);		
+		participacaoService.associaProfessor(coordenador, valorHora, qntHoras);		
 	}
 
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras) throws Exception {
@@ -176,7 +176,7 @@ public class CentralDeProjeto {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 		
-		participacaoService.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);		
+		participacaoService.associaGraduando(valorHora, qntHoras);		
 	}
 
 	// TODO TESTAR O CARGO
@@ -193,7 +193,7 @@ public class CentralDeProjeto {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 		
-		participacaoService.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+		participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
 	}
 
 

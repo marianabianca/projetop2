@@ -41,7 +41,7 @@ public class ModuloDeValidacao {
 		String hifen = Character.toString(cpf.charAt(11));
 
 		if (cpf.length() != 14) {
-			throw new StringInvalidaException("Cpf invalido");
+			throw new StringInvalidaException("invalido");
 		}
 		cpfCaracteresInvalidos(cpf);
 	}

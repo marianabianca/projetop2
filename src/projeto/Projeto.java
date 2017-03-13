@@ -23,6 +23,10 @@ public abstract class Projeto {
 		this.codigo = codigo;
 		this.participacoes = new HashMap<>();
 	}
+	
+	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) {
+		this.participacoes.put(cpfPessoa, participacao);
+	}
 
 	public double calculaCustoTotal() {
 		double despesaTotal = 0;
@@ -58,7 +62,6 @@ public abstract class Projeto {
 
 	public void adicionaDespesa(Despesa despesa) {
 		custos.add(despesa);
-		
 	}
 
 	@Override

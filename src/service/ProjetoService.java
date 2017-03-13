@@ -3,6 +3,8 @@ package service;
 import java.util.HashMap;
 import java.util.Map;
 
+import participacao.Participacao;
+import pessoa.Pessoa;
 import projeto.Projeto;
 import projeto.ProjetoExtensao;
 import projeto.ProjetoMonitoria;
@@ -51,6 +53,12 @@ public class ProjetoService {
 				duracao, codigo);
 		projetos.put(codigo, PED);
 		return codigo;
+	}
+
+	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao)
+			throws Exception {
+		Projeto projeto = this.getProjeto(codigoProjeto);
+		projeto.adicionaParticipacao(cpfPessoa, participacao);
 	}
 
 	public void removeProjeto(String codigo) {

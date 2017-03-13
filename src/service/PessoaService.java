@@ -3,6 +3,7 @@ package service;
 import java.util.HashMap;
 import java.util.Map;
 
+import participacao.Participacao;
 import pessoa.Pessoa;
 
 public class PessoaService {
@@ -30,6 +31,11 @@ public class PessoaService {
 	public void removePessoa(String cpf) {
 		this.pessoas.remove(cpf, pessoas.get(cpf));
 	}
+	
+	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
+		pessoa.adicionaParticipacao(codigoProjeto, participacao);		
+	}
 
 	private String getEmailDePessoa(String cpf) throws Exception {
 		Pessoa pessoa = this.getPessoa(cpf);
@@ -42,8 +48,6 @@ public class PessoaService {
 	}
 
 	private Pessoa getPessoa(String cpf) throws Exception {
-		Pessoa pessoa;
-		boolean flag = false;
 		for (String cpfDaPessoa : pessoas.keySet()) {
 			if (cpf.equals(cpfDaPessoa)){
 				return pessoas.get(cpfDaPessoa);

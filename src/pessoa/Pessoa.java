@@ -16,6 +16,10 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.participacoes = new HashMap<>();
 	}
+	
+	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) {
+		this.participacoes.put(codigoProjeto, participacao);
+	}
 
 	public String getNome() {
 		return this.nome;

@@ -45,14 +45,14 @@ public class ModuloDeValidacao {
 		}
 		cpfCaracteresInvalidos(cpf);
 	}
-	
-	private static void cpfCaracteresInvalidos(String cpf) throws StringInvalidaException{
+
+	private static void cpfCaracteresInvalidos(String cpf) throws StringInvalidaException {
 		String[] cpfSplit = cpf.split("\\W");
 		for (String tresdigitos : cpfSplit) {
 			for (int i = 0; i < tresdigitos.length(); i++) {
 				String digito = "";
 				digito += tresdigitos.charAt(i);
-				if (!digito.matches("[0-9]")){
+				if (!digito.matches("[0-9]")) {
 					throw new StringInvalidaException("Cpf invalido");
 				}
 			}

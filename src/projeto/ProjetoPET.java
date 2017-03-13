@@ -1,9 +1,9 @@
 package projeto;
 
 public class ProjetoPET extends Projeto {
-	
+
 	// TODO Classe produtividade tambem
-	
+
 	private int impacto, rendimento, prodTecnica, prodAcademica, patentes;
 
 	public ProjetoPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica,

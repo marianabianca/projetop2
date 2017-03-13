@@ -7,7 +7,7 @@ public abstract class Participacao {
 
 	public Participacao(double valorHora, int qntHoras) {
 		this.valorHora = valorHora;
-		this.qntHoras = qntHoras;		
+		this.qntHoras = qntHoras;
 	}
 
 }

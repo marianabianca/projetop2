@@ -1,7 +1,6 @@
 package centraldeprojeto;
 
 import exception.StringInvalidaException;
-import participacao.Participacao;
 import service.ParticipacaoService;
 import service.PessoaService;
 import service.ProjetoService;
@@ -19,24 +18,29 @@ public class CentralDeProjeto {
 		participacaoService = new ParticipacaoService();
 	}
 
-	public String cadastraPessoa(String cpf, String nome, String email) throws StringInvalidaException {
+	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
+		String padrao = "Erro no cadastro de pessoa: ";
 		try {
 			ModuloDeValidacao.cpfInvalido(cpf);
 		} catch (Exception e) {
-			throw new StringInvalidaException("Cpf " + e.getMessage());
+			throw new StringInvalidaException(padrao + "Cpf " + e.getMessage());
 		}
 		try {
 			ModuloDeValidacao.stringInvalida(nome);
 		} catch (Exception e) {
-			throw new StringInvalidaException("Nome " + e.getMessage());
+			throw new StringInvalidaException(padrao + "Nome " + e.getMessage());
 		}
 		try {
 			ModuloDeValidacao.stringInvalida(email);
 		} catch (Exception e) {
-			throw new StringInvalidaException("Email " + e.getMessage());
+			throw new StringInvalidaException(padrao + "Email " + e.getMessage());
 		}
-
-		return pessoaService.cadastraPessoa(cpf, nome, email);
+		try {
+			pessoaService.cadastraPessoa(cpf, nome, email);
+		} catch (Exception e) {
+			throw new Exception(padrao + e.getMessage());
+		}
+		return cpf;
 	}
 
 	public void removePessoa(String cpf) {
@@ -44,13 +48,17 @@ public class CentralDeProjeto {
 	}
 
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
+
 		ModuloDeValidacao.cpfInvalido(cpf);
 		atributo = atributo.toLowerCase();
 		if (!(atributo.equals("nome") || atributo.equals("email"))) {
 			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
 		}
-
-		return pessoaService.getInfoPessoa(cpf, atributo);
+		try {
+			return pessoaService.getInfoPessoa(cpf, atributo);
+		} catch (Exception e) {
+			throw new Exception("Erro na consulta de pessoa: " + e.getMessage());
+		}
 	}
 
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -165,8 +173,7 @@ public class CentralDeProjeto {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 
-		Participacao participacao = participacaoService.associaProfessor(coordenador, valorHora, qntHoras);
-
+		participacaoService.associaProfessor(coordenador, valorHora, qntHoras);
 	}
 
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
@@ -200,14 +207,6 @@ public class CentralDeProjeto {
 		}
 
 		participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
-	}
-
-	public void adicionaParticipacaoAPessoa(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {
-		pessoaService.adicionaParticipacao(cpfPessoa, codigoProjeto, participacao);
-	}
-
-	public void adicionaParticipacaoAoProjeto(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {
-		projetoService.adicionaParticipacao(cpfPessoa, codigoProjeto, participacao);
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {

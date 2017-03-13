@@ -1,7 +1,7 @@
 package projeto;
 
 public class ProjetoPED extends Projeto {
-	
+
 	// TODO Classe produtividade faz mais sentido aqui
 
 	private String categoria;

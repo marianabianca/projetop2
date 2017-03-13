@@ -23,7 +23,7 @@ public abstract class Projeto {
 		this.codigo = codigo;
 		this.participacoes = new HashMap<>();
 	}
-	
+
 	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) {
 		this.participacoes.put(cpfPessoa, participacao);
 	}
@@ -96,6 +96,5 @@ public abstract class Projeto {
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
-
 
 }

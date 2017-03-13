@@ -6,7 +6,7 @@ import java.util.Map;
 import participacao.Participacao;
 
 public class Pessoa {
-	
+
 	private String nome, email, cpf;
 	private Map<String, Participacao> participacoes;
 
@@ -16,7 +16,7 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.participacoes = new HashMap<>();
 	}
-	
+
 	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) {
 		this.participacoes.put(codigoProjeto, participacao);
 	}
@@ -74,5 +74,5 @@ public class Pessoa {
 	public String toString() {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
-	
+
 }

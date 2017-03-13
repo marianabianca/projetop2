@@ -27,7 +27,7 @@ public class Facade {
 		// TODO
 	}
 
-	public String cadastraPessoa(String cpf, String nome, String email) throws StringInvalidaException {
+	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
 		return central.cadastraPessoa(cpf, nome, email);
 	}
 

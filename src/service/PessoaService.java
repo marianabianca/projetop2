@@ -3,6 +3,7 @@ package service;
 import java.util.HashMap;
 import java.util.Map;
 
+import participacao.Participacao;
 import pessoa.Pessoa;
 
 public class PessoaService {
@@ -62,6 +63,11 @@ public class PessoaService {
 			aEditar.setEmail(valor);
 		}
 
+	}
+
+	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
+		pessoa.adicionaParticipacao(codigoProjeto, participacao);		
 	}
 
 }

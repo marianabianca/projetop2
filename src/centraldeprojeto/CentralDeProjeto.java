@@ -1,5 +1,6 @@
 package centraldeprojeto;
 
+import participacao.Participacao;
 import exception.StringInvalidaException;
 import service.ParticipacaoService;
 import service.PessoaService;
@@ -174,6 +175,10 @@ public class CentralDeProjeto {
 		}
 
 		participacaoService.associaProfessor(coordenador, valorHora, qntHoras);
+		
+		Participacao part = participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
+		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
+		adicionaParticipacaoAPessoa(cpfPessoa, codigoProjeto, part);
 	}
 
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
@@ -190,6 +195,10 @@ public class CentralDeProjeto {
 		}
 
 		participacaoService.associaGraduando(valorHora, qntHoras);
+		
+		Participacao part = participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
+		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
+		adicionaParticipacaoAPessoa(cpfPessoa, codigoProjeto, part);
 	}
 
 	// TODO TESTAR O CARGO
@@ -206,7 +215,9 @@ public class CentralDeProjeto {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 
-		participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
+		Participacao part = participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
+		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
+		adicionaParticipacaoAPessoa(cpfPessoa, codigoProjeto, part);
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
@@ -218,4 +229,12 @@ public class CentralDeProjeto {
 		pessoaService.editaPessoa(cpfPessoa, atributo, valor);
 	}
 
+	private void adicionaParticipacaoAPessoa(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {
+		pessoaService.adicionaParticipacao(cpfPessoa, codigoProjeto, participacao);
+	}
+
+	private void adicionaParticipacaoAoProjeto(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {
+		projetoService.adicionaParticipacao(cpfPessoa, codigoProjeto, participacao);
+	}
+	
 }

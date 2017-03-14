@@ -1,10 +1,9 @@
-package service;
+package pessoa;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import participacao.Participacao;
-import pessoa.Pessoa;
 
 public class PessoaService {
 

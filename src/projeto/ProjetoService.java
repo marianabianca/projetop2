@@ -1,15 +1,10 @@
-package service;
+package projeto;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import participacao.Participacao;
 import pessoa.Pessoa;
-import projeto.Projeto;
-import projeto.ProjetoExtensao;
-import projeto.ProjetoMonitoria;
-import projeto.ProjetoPED;
-import projeto.ProjetoPET;
 
 public class ProjetoService {
 

@@ -1,8 +1,5 @@
-package service;
+package participacao;
 
-import participacao.AlunoGraduando;
-import participacao.Professor;
-import participacao.Profissional;
 
 public class ParticipacaoService {
 

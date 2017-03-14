@@ -1,10 +1,10 @@
 package centraldeprojeto;
 
 import participacao.Participacao;
+import participacao.ParticipacaoService;
+import pessoa.PessoaService;
+import projeto.ProjetoService;
 import exception.StringInvalidaException;
-import service.ParticipacaoService;
-import service.PessoaService;
-import service.ProjetoService;
 import validacao.ModuloDeValidacao;
 
 public class CentralDeProjeto {

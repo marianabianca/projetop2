@@ -2,10 +2,11 @@ package facade;
 
 import centraldeprojeto.CentralDeProjeto;
 import easyaccept.EasyAccept;
+import pessoa.PessoaController;
 
 public class Facade {
 
-	private CentralDeProjeto central;
+	private PessoaController pessoaController;
 
 	public static void main(String[] args) {
 		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
@@ -15,7 +16,7 @@ public class Facade {
 	}
 
 	public Facade() {
-		central = new CentralDeProjeto();
+		pessoaController = new PessoaController();
 	}
 
 	public void iniciaSistema() {
@@ -27,15 +28,19 @@ public class Facade {
 	}
 
 	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
-		return central.cadastraPessoa(cpf, nome, email);
+		return pessoaController.cadastraPessoa(cpf, nome, email);
 	}
 
 	public void removePessoa(String cpf) {
-		central.removePessoa(cpf);
+		pessoaController.removePessoa(cpf);
 	}
 
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
-		return central.getInfoPessoa(cpf, atributo);
+		return pessoaController.getInfoPessoa(cpf, atributo);
+	}
+	
+	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
+		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
 	}
 
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -86,8 +91,5 @@ public class Facade {
 			int qntHoras) throws Exception {
 		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
-
-	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
-		central.editaPessoa(cpfPessoa, atributo, valor);
-	}
+	
 }

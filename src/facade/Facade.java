@@ -2,7 +2,6 @@ package facade;
 
 import centraldeprojeto.CentralDeProjeto;
 import easyaccept.EasyAccept;
-import exception.StringInvalidaException;
 
 public class Facade {
 

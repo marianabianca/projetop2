@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import participacao.Participacao;
+import validacao.ValidaPessoa;
 
 public class PessoaService {
 
@@ -37,21 +38,22 @@ public class PessoaService {
 			return this.getNomeDePessoa(cpf);
 		}
 	}
-
-	public void removePessoa(String cpf) {
-		this.pessoas.remove(cpf, pessoas.get(cpf));
-	}
-
+	
 	private String getEmailDePessoa(String cpf) throws Exception {
 		Pessoa pessoa = this.getPessoa(cpf);
 		return pessoa.getEmail();
 	}
-
+	
 	private String getNomeDePessoa(String cpf) throws Exception {
 		Pessoa pessoa = this.getPessoa(cpf);
 		return pessoa.getNome();
 	}
-
+	
+	
+	public void removePessoa(String cpf) {
+		this.pessoas.remove(cpf, pessoas.get(cpf));
+	}
+	
 	private Pessoa getPessoa(String cpf) throws Exception {
 		for (String cpfDaPessoa : pessoas.keySet()) {
 			if (cpf.equals(cpfDaPessoa)) {
@@ -62,6 +64,8 @@ public class PessoaService {
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
+		this.valorAtributoValidos(atributo, valor);
+		
 		Pessoa aEditar = getPessoa(cpfPessoa);
 		if (atributo.equalsIgnoreCase("nome")) {
 			aEditar.setNome(valor);
@@ -69,6 +73,16 @@ public class PessoaService {
 			aEditar.setEmail(valor);
 		}
 
+	}
+
+	private void valorAtributoValidos(String atributo, String valor) throws Exception {
+		if (atributo.equalsIgnoreCase("cpf")){
+			throw new Exception("CPF nao pode ser alterado");
+		} else if (atributo.equalsIgnoreCase("nome")) {
+			ValidaPessoa.validaNome(valor);
+		} else {
+			ValidaPessoa.validaEmail(valor);
+		}
 	}
 
 	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao) throws Exception {

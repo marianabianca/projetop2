@@ -61,11 +61,8 @@ public class ProjetoService {
 	}
 
 	public String getInfoProjeto(String codigo, String atributo) {
-		if (atributo.equals("objetivo")) {
-			return this.getObjetivo(codigo);
-		} else {
-			return this.getDataInicio(codigo);
-		}
+		Projeto projeto = this.getProjeto(codigo);
+		return projeto.getInfoProjeto(atributo);
 	}
 
 	public void editaProjeto(String codigo, String atributo, String valor) {

@@ -13,10 +13,21 @@ public class PessoaService {
 		pessoas = new HashMap<>();
 	}
 
-	public String cadastraPessoa(String cpf, String nome, String email) {
+	public void cadastraPessoa(String cpf, String nome, String email) throws Exception {
+		if (this.contemPessoa(cpf)){
+			throw new Exception("Pessoa com mesmo CPF ja cadastrada");
+		}
+		
 		Pessoa pessoa = new Pessoa(nome, email, cpf);
 		pessoas.put(cpf, pessoa);
-		return cpf;
+	}
+
+	private boolean contemPessoa(String cpf) {
+		if (pessoas.containsKey(cpf)){
+			return true;
+		}
+		
+		return false;
 	}
 
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
@@ -42,22 +53,18 @@ public class PessoaService {
 	}
 
 	private Pessoa getPessoa(String cpf) throws Exception {
-		Pessoa pessoa;
-		boolean flag = false;
 		for (String cpfDaPessoa : pessoas.keySet()) {
 			if (cpf.equals(cpfDaPessoa)) {
 				return pessoas.get(cpfDaPessoa);
 			}
 		}
-		throw new Exception("Pessoa nao encontrada");
+		throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
 		Pessoa aEditar = getPessoa(cpfPessoa);
-		if (atributo.equals("nome")) {
+		if (atributo.equalsIgnoreCase("nome")) {
 			aEditar.setNome(valor);
-		} else if (atributo.equals("cpf")) {
-			aEditar.setCpf(valor);
 		} else {
 			aEditar.setEmail(valor);
 		}

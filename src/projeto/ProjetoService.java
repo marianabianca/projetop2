@@ -62,13 +62,25 @@ public class ProjetoService {
 
 	public String getInfoProjeto(String codigo, String atributo) {
 		Projeto projeto = this.getProjeto(codigo);
-		return projeto.getInfoProjeto(atributo);
+		if (atributo.equals("nome")){
+			return projeto.getNome();
+		} else if (atributo.equals("data de inicio")){
+			return projeto.getDataInicio();
+		} else if (atributo.equals("duracao")) {
+			return Integer.toString(projeto.getDuracao());
+		} else if (atributo.equals("objetivo")) {
+			return projeto.getObjetivo();
+		}
+		
+		return null;
 	}
 
 	public void editaProjeto(String codigo, String atributo, String valor) {
 		Projeto projeto = this.getProjeto(codigo);
 		if (atributo.equals("objetivo")) {
 			projeto.setObjetivo(valor);
+		} else if (atributo.equals("data de inicio")) {
+			projeto.setDataInicio(valor);
 		} else {
 			projeto.setDataInicio(valor);
 		}

@@ -1,9 +1,9 @@
 package facade;
 
 import centraldeprojeto.CentralDeProjeto;
-import easyaccept.EasyAccept;
 import pessoa.PessoaController;
 import projeto.ProjetoController;
+import easyaccept.*;
 
 public class Facade {
 
@@ -79,20 +79,24 @@ public class Facade {
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
-
-	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
-			int qntHoras) throws Exception {
-		central.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+	
+	public String getCodigoProjeto(String nome){
+		return projetoController.getCodigoProjeto(nome);
 	}
 
-	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
-			throws Exception {
-		central.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
-	}
-
-	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
-			int qntHoras) throws Exception {
-		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
-	}
+//	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
+//			int qntHoras) throws Exception {
+//		central.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+//	}
+//
+//	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
+//			throws Exception {
+//		central.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
+//	}
+//
+//	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
+//			int qntHoras) throws Exception {
+//		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+//	}
 	
 }

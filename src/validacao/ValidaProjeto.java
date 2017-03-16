@@ -14,9 +14,23 @@ public class ValidaProjeto {
 	// TODO HASHSET
 	private static boolean atributoValido(String atributo) {
 		HashSet<String> atributosValidos = new HashSet<>();
-		atributosValidos = ("nome", "disciplina", "rendimento", "objetivo", "periodo",
-                "data de inicio", "duracao", "impacto", "producao tecnica",
-                "producao academica", "patentes", "categoria");
+		atributosValidos.add("nome");
+		atributosValidos.add("disciplina");
+		atributosValidos.add("rendimento");
+		atributosValidos.add("objetivo");
+		atributosValidos.add("periodo");
+		atributosValidos.add("data de inicio");
+		atributosValidos.add("duracao");
+		atributosValidos.add("impacto");
+		atributosValidos.add("producao tecnica");
+		atributosValidos.add("producao academica");
+		atributosValidos.add("patentes");
+		atributosValidos.add("categoria");
+
+		if (atributosValidos.contains(atributo)){
+			return true;
+		}
+		return false;
 	}
 	
 	

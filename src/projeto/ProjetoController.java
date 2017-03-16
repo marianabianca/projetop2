@@ -59,6 +59,7 @@ public class ProjetoController {
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
 		try {
 			ValidaProjeto.validaAtributo(atributo);
+			atributo = atributo.toLowerCase();
 			projetoService.editaProjeto(codigo, atributo, valor);
 		} catch (Exception e) {
 			throw new Exception("Erro na atualizacao de projeto: " + e.getMessage());
@@ -71,7 +72,15 @@ public class ProjetoController {
 
 	// TODO AJEITAR OS TESTES
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
+		atributo = atributo.toLowerCase();
 		return projetoService.getInfoProjeto(codigo, atributo);
+	}
+
+
+	public String getCodigoProjeto(String nome) {
+		// ValidaProjeto.;
+		// TODO Auto-generated method stub
+		return "";
 	}
 	
 }

@@ -60,7 +60,7 @@ public class ProjetoService {
 		this.projetos.remove(codigo);
 	}
 
-	public String getInfoProjeto(String codigo, String atributo) {
+	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		Projeto projeto = this.getProjeto(codigo);
 		if (atributo.equals("nome")){
 			return projeto.getNome();
@@ -70,9 +70,48 @@ public class ProjetoService {
 			return Integer.toString(projeto.getDuracao());
 		} else if (atributo.equals("objetivo")) {
 			return projeto.getObjetivo();
+			
+		} else if(projeto.getClass() == ProjetoPET.class){
+			
+			ProjetoPET pet = (ProjetoPET) projeto;
+			if (atributo.equals("producao tecnica")){
+				return Integer.toString(pet.getProdTecnica());
+			} else if (atributo.equals("producao academica")){
+				return Integer.toString(pet.getProdAcademica());
+			} else if (atributo.equals("patentes")){
+				return Integer.toString(pet.getPatentes());
+			} else if (atributo.equals("rendimento")){
+				return Integer.toString(pet.getRendimento());
+			} else if (atributo.equals("impacto")){
+				return Integer.toString(pet.getImpacto());
+			}
+			
+		} else if(projeto.getClass() == ProjetoPED.class){
+			
+			ProjetoPED ped = (ProjetoPED) projeto;
+			if (atributo.equals("producao tecnica")){
+				return Integer.toString(ped.getProdTecnica());
+			} else if (atributo.equals("producao academica")){
+				return Integer.toString(ped.getProdAcademica());
+			} else if (atributo.equals("patentes")){
+				return Integer.toString(ped.getPatentes());
+				
+			}
+			
+		} else if(projeto.getClass() == ProjetoExtensao.class) {
+			ProjetoExtensao extensao = (ProjetoExtensao) projeto;
+			if (atributo.equals("impacto")){
+				return Integer.toString(extensao.getImpacto());
+			}
+			
+		} else if (projeto.getClass() == ProjetoMonitoria.class) {
+			ProjetoMonitoria monitoria = (ProjetoMonitoria) projeto;
+			if (atributo.equals("rendimento")){
+				return Integer.toString(monitoria.getRendimento());
+			}
 		}
 		
-		return null;
+		throw new Exception("Atributo nao existe");
 	}
 
 	public void editaProjeto(String codigo, String atributo, String valor) {
@@ -104,6 +143,16 @@ public class ProjetoService {
 	private String getObjetivo(String codigo) {
 		Projeto projeto = projetos.get(codigo);
 		return projeto.getObjetivo();
+	}
+
+	public String getCodigoProjeto(String nome) throws Exception {
+		for (String chave : projetos.keySet()) {
+			if (projetos.get(chave).getNome().equals(nome)){
+				return projetos.get(chave).getCodigo();
+			}
+		}
+		//TODO
+		throw new Exception("Projeto nao encontrado");
 	}
 
 }

@@ -77,10 +77,10 @@ public class ProjetoController {
 	}
 
 
-	public String getCodigoProjeto(String nome) {
+	public String getCodigoProjeto(String nome) throws Exception {
 		// ValidaProjeto.;
 		// TODO Auto-generated method stub
-		return "";
+		return projetoService.getCodigoProjeto(nome);
 	}
 	
 }

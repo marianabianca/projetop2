@@ -53,7 +53,7 @@ public abstract class Projeto {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -90,11 +90,15 @@ public abstract class Projeto {
 	}
 
 	public int getDuracao() {
-		return duracao;
+		return this.duracao;
 	}
 
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
+	}
+
+	public String getCodigo() {
+		return this.codigo;
 	}
 
 }

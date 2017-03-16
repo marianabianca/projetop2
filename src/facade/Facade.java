@@ -80,7 +80,7 @@ public class Facade {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
 	
-	public String getCodigoProjeto(String nome){
+	public String getCodigoProjeto(String nome) throws Exception{
 		return projetoController.getCodigoProjeto(nome);
 	}
 

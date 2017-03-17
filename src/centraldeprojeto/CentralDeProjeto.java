@@ -8,8 +8,6 @@ import exception.StringInvalidaException;
 import validacao.ModuloDeValidacao;
 
 public class CentralDeProjeto {
-	
-	
 
 	private PessoaService pessoaService;
 	private ProjetoService projetoService;

@@ -22,7 +22,7 @@ public class ParticipacaoController {
 			int qntHoras) throws Exception {
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
-			ModuloDeValidacao.codigoInvalido(codigoProjeto);
+			//ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora < 0) {
 				throw new Exception("Valor da hora Invalido");
 			}
@@ -34,15 +34,15 @@ public class ParticipacaoController {
 		participacaoService.associaProfessor(coordenador, valorHora, qntHoras);
 		
 		Participacao part = participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
-		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
 		adicionaParticipacaoAPessoa(cpfPessoa, codigoProjeto, part);
+		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
 	}
 
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
 			throws Exception {
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
-			ModuloDeValidacao.codigoInvalido(codigoProjeto);
+			//ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora <= 0) {
 				throw new Exception("Valor da hora Invalido");
 			}
@@ -52,10 +52,9 @@ public class ParticipacaoController {
 		}
 
 		participacaoService.associaGraduando(valorHora, qntHoras);
-		
 		Participacao part = participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
-		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
 		adicionaParticipacaoAPessoa(cpfPessoa, codigoProjeto, part);
+		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
 	}
 
 	// TODO TESTAR O CARGO
@@ -63,7 +62,7 @@ public class ParticipacaoController {
 			int qntHoras) throws Exception {
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
-			ModuloDeValidacao.codigoInvalido(codigoProjeto);
+		//	ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora <= 0) {
 				throw new Exception("Valor da hora Invalido");
 			}
@@ -73,8 +72,8 @@ public class ParticipacaoController {
 		}
 
 		Participacao part = participacaoService.associaProfissional(cpfPessoa, valorHora, qntHoras);
-		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
 		adicionaParticipacaoAPessoa(cpfPessoa, codigoProjeto, part);
+		adicionaParticipacaoAoProjeto(cpfPessoa, codigoProjeto, part);
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {

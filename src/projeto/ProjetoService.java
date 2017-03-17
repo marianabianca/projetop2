@@ -6,7 +6,6 @@ import java.util.Map;
 
 import exception.ObjetoNuloException;
 import participacao.Participacao;
-import pessoa.Pessoa;
 
 public class ProjetoService {
 
@@ -30,31 +29,31 @@ public class ProjetoService {
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
 			int prodAcademica, int patentes, String dataInicio, int duracao) {
 		String codigo = this.geraCodigo();
-		Projeto PET = new ProjetoPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
+		Projeto pet = new ProjetoPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
 				dataInicio, duracao, codigo);
-		projetos.put(codigo, PET);
+		projetos.put(codigo, pet);
 		return codigo;
 	}
 
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) {
 		String codigo = this.geraCodigo();
-		Projeto Extensao = new ProjetoExtensao(nome, objetivo, impacto, dataInicio, duracao, codigo);
-		projetos.put(codigo, Extensao);
+		Projeto extensao = new ProjetoExtensao(nome, objetivo, impacto, dataInicio, duracao, codigo);
+		projetos.put(codigo, extensao);
 		return codigo;
 	}
 
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
 			String objetivo, String dataInicio, int duracao) {
 		String codigo = this.geraCodigo();
-		Projeto PED = new ProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
+		Projeto ped = new ProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
 				duracao, codigo);
-		projetos.put(codigo, PED);
+		projetos.put(codigo, ped);
 		return codigo;
 	}
 
 	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao)
 			throws Exception {
-		Projeto projeto = this.getProjeto(codigoProjeto);
+		Projeto projeto = getProjeto(codigoProjeto);
 		projeto.adicionaParticipacao(cpfPessoa, participacao);
 	}
 
@@ -104,8 +103,7 @@ public class ProjetoService {
 				return projeto.getCodigo();
 			}
 		}
-		
-		throw new ObjetoNuloException("Projeto não encontrado");
+		throw new ObjetoNuloException("Projeto nao encontrado");
 	}
 
 }

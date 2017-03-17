@@ -1,14 +1,15 @@
 package facade;
 
-import centraldeprojeto.CentralDeProjeto;
 import pessoa.PessoaController;
 import projeto.ProjetoController;
 import easyaccept.*;
+import participacao.ParticipacaoController;
 
 public class Facade {
 
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
+	private ParticipacaoController participacaoController;
 
 	public static void main(String[] args) {
 		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
@@ -20,6 +21,7 @@ public class Facade {
 	public Facade() {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
+		participacaoController = new ParticipacaoController();
 	}
 
 	public void iniciaSistema() {
@@ -41,14 +43,15 @@ public class Facade {
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
 		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
-	
+
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
 		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
 	}
 
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao) throws Exception {
-		return projetoController.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+		return projetoController.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio,
+				duracao);
 	}
 
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
@@ -64,8 +67,8 @@ public class Facade {
 
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
 			String objetivo, String dataInicio, int duracao) throws Exception {
-		return projetoController.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
-				duracao);
+		return projetoController.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo,
+				dataInicio, duracao);
 	}
 
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
@@ -79,24 +82,24 @@ public class Facade {
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
-	
-	public String getCodigoProjeto(String nome) throws Exception{
+
+	public String getCodigoProjeto(String nome) throws Exception {
 		return projetoController.getCodigoProjeto(nome);
 	}
 
-//	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
-//			int qntHoras) throws Exception {
-//		central.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
-//	}
-//
-//	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
-//			throws Exception {
-//		central.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
-//	}
-//
-//	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
-//			int qntHoras) throws Exception {
-//		central.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
-//	}
-	
+	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
+			int qntHoras) throws Exception {
+		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+	}
+
+	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
+			throws Exception {
+		participacaoController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
+	}
+
+	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
+			int qntHoras) throws Exception {
+		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+	}
+
 }

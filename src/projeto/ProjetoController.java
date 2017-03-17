@@ -10,8 +10,7 @@ public class ProjetoController {
 	
 	public ProjetoController(){
 		projetoService = new ProjetoService();
-	}
-	
+	}	
 	
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao) throws Exception {

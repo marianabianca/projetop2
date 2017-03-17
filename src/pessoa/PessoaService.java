@@ -34,9 +34,12 @@ public class PessoaService {
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
 		if (atributo.equalsIgnoreCase("email")) {
 			return this.getEmailDePessoa(cpf);
-		} else {
+		} else if (atributo.equalsIgnoreCase("nome")) {
 			return this.getNomeDePessoa(cpf);
+		} else if (atributo.equalsIgnoreCase("participacoes")) {
+			
 		}
+		throw new Exception("Atributo inexistente");
 	}
 	
 	private String getEmailDePessoa(String cpf) throws Exception {

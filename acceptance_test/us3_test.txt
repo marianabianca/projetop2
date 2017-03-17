@@ -70,4 +70,3 @@ associaGraduando cpfPessoa="234.765.067-64" codigoProjeto=${cod5} valorHora=25.0
 removePessoa cpf=${cpf5}
 
 fechaSistema
-

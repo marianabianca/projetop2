@@ -3,6 +3,8 @@ package participacao;
 import pessoa.PessoaService;
 import projeto.ProjetoService;
 import validacao.ModuloDeValidacao;
+import validacao.ValidaPessoa;
+import validacao.ValidaProjeto;
 
 public class ParticipacaoController {
 	
@@ -19,12 +21,12 @@ public class ParticipacaoController {
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
 			int qntHoras) throws Exception {
 		try {
-			ModuloDeValidacao.cpfInvalido(cpfPessoa);
+			ValidaPessoa.validaCpf(cpfPessoa);
 			ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora < 0) {
 				throw new Exception("Valor da hora Invalido");
 			}
-			ModuloDeValidacao.duracaoInvalida(qntHoras);
+			ValidaProjeto.validaDuracao(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -39,12 +41,12 @@ public class ParticipacaoController {
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
 			throws Exception {
 		try {
-			ModuloDeValidacao.cpfInvalido(cpfPessoa);
+			ValidaPessoa.validaCpf(cpfPessoa);
 			ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora <= 0) {
 				throw new Exception("Valor da hora Invalido");
 			}
-			ModuloDeValidacao.duracaoInvalida(qntHoras);
+			ValidaProjeto.validaDuracao(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -60,12 +62,12 @@ public class ParticipacaoController {
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
 			int qntHoras) throws Exception {
 		try {
-			ModuloDeValidacao.cpfInvalido(cpfPessoa);
+			ValidaPessoa.validaCpf(cpfPessoa);
 			ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			if (valorHora <= 0) {
 				throw new Exception("Valor da hora Invalido");
 			}
-			ModuloDeValidacao.duracaoInvalida(qntHoras);
+			ValidaProjeto.validaDuracao(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -76,7 +78,7 @@ public class ParticipacaoController {
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
-		ModuloDeValidacao.cpfInvalido(cpfPessoa);
+		ValidaPessoa.validaCpf(cpfPessoa);
 		ModuloDeValidacao.stringInvalida(atributo);
 		ModuloDeValidacao.stringInvalida(valor);
 		atributo = atributo.toLowerCase();

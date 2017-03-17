@@ -15,14 +15,18 @@ public abstract class Projeto {
 	private Map<String, Participacao> participacoes;
 
 	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
-		this.setNome(nome);
+		this.nome = nome;
 		this.objetivo = objetivo;
 		this.dataInicio = dataInicio;
-		this.setDuracao(duracao);
+		this.duracao = duracao;
 		this.custos = new ArrayList<>();
 		this.codigo = codigo;
 		this.participacoes = new HashMap<>();
 	}
+	
+	public abstract String getInfoProjeto(String atributo) throws Exception;
+	
+	public abstract void editaProjeto(String atributo, String valor) throws Exception;
 
 	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) {
 		this.participacoes.put(cpfPessoa, participacao);
@@ -53,7 +57,7 @@ public abstract class Projeto {
 	}
 
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
@@ -90,7 +94,7 @@ public abstract class Projeto {
 	}
 
 	public int getDuracao() {
-		return this.duracao;
+		return duracao;
 	}
 
 	public void setDuracao(int duracao) {
@@ -100,5 +104,6 @@ public abstract class Projeto {
 	public String getCodigo() {
 		return this.codigo;
 	}
+
 
 }

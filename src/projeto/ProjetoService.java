@@ -1,8 +1,10 @@
 package projeto;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
+import exception.ObjetoNuloException;
 import participacao.Participacao;
 import pessoa.Pessoa;
 
@@ -62,67 +64,12 @@ public class ProjetoService {
 
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		Projeto projeto = this.getProjeto(codigo);
-		if (atributo.equals("nome")){
-			return projeto.getNome();
-		} else if (atributo.equals("data de inicio")){
-			return projeto.getDataInicio();
-		} else if (atributo.equals("duracao")) {
-			return Integer.toString(projeto.getDuracao());
-		} else if (atributo.equals("objetivo")) {
-			return projeto.getObjetivo();
-			
-		} else if(projeto.getClass() == ProjetoPET.class){
-			
-			ProjetoPET pet = (ProjetoPET) projeto;
-			if (atributo.equals("producao tecnica")){
-				return Integer.toString(pet.getProdTecnica());
-			} else if (atributo.equals("producao academica")){
-				return Integer.toString(pet.getProdAcademica());
-			} else if (atributo.equals("patentes")){
-				return Integer.toString(pet.getPatentes());
-			} else if (atributo.equals("rendimento")){
-				return Integer.toString(pet.getRendimento());
-			} else if (atributo.equals("impacto")){
-				return Integer.toString(pet.getImpacto());
-			}
-			
-		} else if(projeto.getClass() == ProjetoPED.class){
-			
-			ProjetoPED ped = (ProjetoPED) projeto;
-			if (atributo.equals("producao tecnica")){
-				return Integer.toString(ped.getProdTecnica());
-			} else if (atributo.equals("producao academica")){
-				return Integer.toString(ped.getProdAcademica());
-			} else if (atributo.equals("patentes")){
-				return Integer.toString(ped.getPatentes());
-				
-			}
-			
-		} else if(projeto.getClass() == ProjetoExtensao.class) {
-			ProjetoExtensao extensao = (ProjetoExtensao) projeto;
-			if (atributo.equals("impacto")){
-				return Integer.toString(extensao.getImpacto());
-			}
-			
-		} else if (projeto.getClass() == ProjetoMonitoria.class) {
-			ProjetoMonitoria monitoria = (ProjetoMonitoria) projeto;
-			if (atributo.equals("rendimento")){
-				return Integer.toString(monitoria.getRendimento());
-			}
-		}
-		
-		throw new Exception("Atributo nao existe");
+		return projeto.getInfoProjeto(atributo);
 	}
 
-	public void editaProjeto(String codigo, String atributo, String valor) {
+	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
 		Projeto projeto = this.getProjeto(codigo);
-		if (atributo.equals("objetivo")) {
-			projeto.setObjetivo(valor);
-		} else if (atributo.equals("data de inicio")) {
-			projeto.setDataInicio(valor);
-		} else {
-			projeto.setDataInicio(valor);
-		}
+		projeto.editaProjeto(atributo, valor);
 	}
 
 	private String geraCodigo() {
@@ -130,7 +77,10 @@ public class ProjetoService {
 		return codigo;
 	}
 
-	private Projeto getProjeto(String codigo) {
+	private Projeto getProjeto(String codigo) throws Exception {
+		if (!projetos.containsKey(codigo)) {
+			throw new Exception("Projeto nao encontrado");
+		}
 		Projeto projeto = projetos.get(codigo);
 		return projeto;
 	}
@@ -144,15 +94,18 @@ public class ProjetoService {
 		Projeto projeto = projetos.get(codigo);
 		return projeto.getObjetivo();
 	}
-
-	public String getCodigoProjeto(String nome) throws Exception {
-		for (String chave : projetos.keySet()) {
-			if (projetos.get(chave).getNome().equals(nome)){
-				return projetos.get(chave).getCodigo();
+	
+	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
+		Iterable<Projeto> objetosProjetos = projetos.values();
+		for (Iterator<Projeto> iterator = objetosProjetos.iterator(); iterator.hasNext();) {
+			Projeto projeto = (Projeto) iterator.next();
+			String nomeProjeto = projeto.getNome();
+			if (nomeProjeto.equals(nome)){
+				return projeto.getCodigo();
 			}
 		}
-		//TODO
-		throw new Exception("Projeto nao encontrado");
+		
+		throw new ObjetoNuloException("Projeto não encontrado");
 	}
 
 }

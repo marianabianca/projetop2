@@ -20,7 +20,7 @@ public class ValidaProjeto {
 	
 	private static boolean atributoValido(String atributo) {
 		String[] atributosValidos = {"nome", "disciplina", "rendimento", "objetivo", "periodo", "data de inicio",
-				"duracao", "impacto", "producao tecnica", "producao academica", "patentes", "categoria"};
+				"duracao", "impacto", "producao tecnica", "producao academica", "patentes", "categoria", "participacoes"};
 		for (String atributoValido : atributosValidos) {
 			if (atributo.equalsIgnoreCase(atributoValido)){
 				return true;				

@@ -9,6 +9,7 @@ import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;
 
 public class ProjetoController {
+
 	private Map<String, Projeto> projetos;
 	private int contadorCodigo;
 
@@ -58,7 +59,6 @@ public class ProjetoController {
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
-
 	}
 
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
@@ -76,7 +76,6 @@ public class ProjetoController {
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
-
 	}
 
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
@@ -98,22 +97,6 @@ public class ProjetoController {
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
-
-	}
-
-	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
-		try {
-			ValidaProjeto.validaAtributo(atributo);
-			ValidaProjeto.validaValorAtributo(atributo, valor);
-			Projeto projeto = this.getProjeto(codigo);
-			projeto.editaProjeto(atributo, valor);
-		} catch (Exception e) {
-			throw new Exception("Erro na atualizacao de projeto: " + e.getMessage());
-		}
-	}
-
-	public void removeProjeto(String codigo) {
-		this.projetos.remove(codigo);
 	}
 
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
@@ -133,6 +116,21 @@ public class ProjetoController {
 			}
 		}
 		throw new ObjetoNuloException("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
+	}
+
+	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
+		try {
+			ValidaProjeto.validaAtributo(atributo);
+			ValidaProjeto.validaValorAtributo(atributo, valor);
+			Projeto projeto = this.getProjeto(codigo);
+			projeto.editaProjeto(atributo, valor);
+		} catch (Exception e) {
+			throw new Exception("Erro na atualizacao de projeto: " + e.getMessage());
+		}
+	}
+
+	public void removeProjeto(String codigo) {
+		this.projetos.remove(codigo);
 	}
 
 	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws Exception {

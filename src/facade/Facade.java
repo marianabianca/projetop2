@@ -2,8 +2,8 @@ package facade;
 
 import pessoa.PessoaController;
 import projeto.ProjetoController;
-import easyaccept.EasyAccept;
 import participacao.ParticipacaoController;
+import easyaccept.EasyAccept;
 
 public class Facade {
 
@@ -36,16 +36,16 @@ public class Facade {
 		return pessoaController.cadastraPessoa(cpf, nome, email);
 	}
 
-	public void removePessoa(String cpf) {
-		pessoaController.removePessoa(cpf);
-	}
-
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
 		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
 
-	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
-		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
+	public void editaPessoa(String cpf, String atributo, String valor) throws Exception {
+		pessoaController.editaPessoa(cpf, atributo, valor);
+	}
+
+	public void removePessoa(String cpf) {
+		pessoaController.removePessoa(cpf);
 	}
 
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -71,20 +71,20 @@ public class Facade {
 				dataInicio, duracao);
 	}
 
-	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
-		projetoController.editaProjeto(codigo, atributo, valor);
-	}
-
-	public void removeProjeto(String codigo) {
-		projetoController.removeProjeto(codigo);
-	}
-
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
 
 	public String getCodigoProjeto(String nome) throws Exception {
 		return projetoController.getCodigoProjeto(nome);
+	}
+
+	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
+		projetoController.editaProjeto(codigo, atributo, valor);
+	}
+
+	public void removeProjeto(String codigo) {
+		projetoController.removeProjeto(codigo);
 	}
 
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
@@ -105,4 +105,5 @@ public class Facade {
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
+
 }

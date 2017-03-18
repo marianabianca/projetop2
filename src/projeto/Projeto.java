@@ -24,15 +24,6 @@ public abstract class Projeto {
 		this.participacoes = new ArrayList<>();
 	}
 
-	public boolean temProfessorAssociado() {
-		for (Participacao participacao : participacoes) {
-			if (participacao.getClass().equals(Professor.class)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
@@ -41,12 +32,51 @@ public abstract class Projeto {
 		this.participacoes.add(participacao);
 	}
 
+	public boolean temProfessorAssociado() {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass().equals(Professor.class)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public double calculaCustoTotal() {
 		double despesaTotal = 0;
 		for (Despesa despesa : custos) {
 			despesaTotal = despesaTotal + despesa.getValor();
 		}
 		return despesaTotal;
+	}
+
+	public String getParticipacoes() {
+		String listaParticipacoes = "";
+		ordenaParticipacoesPeloNomeDasPessoas();
+		for (Participacao participacao : participacoes) {
+			listaParticipacoes += participacao.getNomeDaPessoa() + ", ";
+		}
+		if (listaParticipacoes.endsWith(", ")) {
+			return listaParticipacoes.substring(0, listaParticipacoes.length() - 2);
+		}
+		return listaParticipacoes;
+	}
+
+	public void removeParticipacao(String cpfPessoa) throws Exception {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCpfDaPessoa().equals(cpfPessoa)) {
+				participacoes.remove(participacao);
+				return;
+			}
+		}
+		throw new Exception("Pessoa nao possui participacao no projeto indicado");
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getObjetivo() {
@@ -65,16 +95,20 @@ public abstract class Projeto {
 		this.dataInicio = dataInicio;
 	}
 
-	public String getNome() {
-		return nome;
+	public int getDuracao() {
+		return this.duracao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDuracao(int duracao) {
+		this.duracao = duracao;
+	}
+
+	public String getCodigo() {
+		return this.codigo;
 	}
 
 	public void adicionaDespesa(Despesa despesa) {
-		custos.add(despesa);
+		this.custos.add(despesa);
 	}
 
 	@Override
@@ -102,42 +136,8 @@ public abstract class Projeto {
 		return true;
 	}
 
-	public int getDuracao() {
-		return duracao;
-	}
-
-	public void setDuracao(int duracao) {
-		this.duracao = duracao;
-	}
-
-	public String getCodigo() {
-		return this.codigo;
-	}
-	
-	public void ordenaParticipacoesPeloNomeDasPessoas() {
-		Collections.sort(participacoes); 
-	}
-
-	public String getParticipacoes() {
-		String listaParticipacoes = "";
-		ordenaParticipacoesPeloNomeDasPessoas();
-		for (Participacao participacao : participacoes) {
-			listaParticipacoes += participacao.getNomeDaPessoa() + ", ";
-		}
-		if (listaParticipacoes.endsWith(", ")) {
-			return listaParticipacoes.substring(0, listaParticipacoes.length() - 2);
-		}
-		return listaParticipacoes;
-	}
-
-	public void removeParticipacao(String cpfPessoa) throws Exception {
-		for (Participacao participacao : participacoes) {
-			if (participacao.getCpfDaPessoa().equals(cpfPessoa)) {
-				participacoes.remove(participacao);
-				return;
-			}
-		}
-		throw new Exception("Pessoa nao possui participacao no projeto indicado");
+	private void ordenaParticipacoesPeloNomeDasPessoas() {
+		Collections.sort(participacoes);
 	}
 
 }

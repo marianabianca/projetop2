@@ -12,7 +12,7 @@ public class ProjetoPED extends Projeto {
 
 	private String categoria;
 	private Map<String, Produtividade> produtividade;
-	private String[] atributosValidos = {"nome", "categoria", "producao tecnica", "producao academica", "patentes", "objetivo",
+	private final String[] atributosValidos = {"nome", "categoria", "producao tecnica", "producao academica", "patentes", "objetivo",
 			"data de inicio", "duracao", "participacoes"};
 
 	public ProjetoPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo,

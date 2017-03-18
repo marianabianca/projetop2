@@ -5,7 +5,7 @@ import java.util.List;
 
 import participacao.Participacao;
 
-public class Pessoa implements Comparable<Pessoa> {
+public class Pessoa {
 
 	private String nome, email, cpf;
 	private List<Participacao> participacoes;
@@ -19,6 +19,27 @@ public class Pessoa implements Comparable<Pessoa> {
 
 	public void adicionaParticipacao(Participacao participacao) {
 		this.participacoes.add(participacao);
+	}
+
+	public void removeParticipacao(String codigoProjeto) throws Exception {
+		if (!this.temParticipacaoEmProjeto(codigoProjeto)) {
+			throw new Exception("Pessoa nao possui participacao no projeto indicado");
+		}
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
+				participacoes.remove(participacao);
+				return;
+			}
+		}
+	}
+
+	public boolean temParticipacaoEmProjeto(String codigoProjeto) {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public String getNome() {
@@ -84,32 +105,6 @@ public class Pessoa implements Comparable<Pessoa> {
 	@Override
 	public String toString() {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
-	}
-
-	@Override
-	public int compareTo(Pessoa outra) {
-		return this.nome.compareTo(outra.getNome());
-	}
-
-	public void removeParticipacao(String codigoProjeto) throws Exception {
-		if (!this.temParticipacaoEmProjeto(codigoProjeto)) {
-			throw new Exception("Pessoa nao possui participacao no projeto indicado");
-		}
-		for (Participacao participacao : participacoes) {
-			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
-				participacoes.remove(participacao);
-				return;
-			}
-		}
-	}
-
-	public boolean temParticipacaoEmProjeto(String codigoProjeto) {
-		for (Participacao participacao : participacoes) {
-			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 }

@@ -4,8 +4,8 @@ public class ProjetoMonitoria extends Projeto {
 
 	private String disciplina, periodo;
 	private int rendimento;
-	private String[] atributosValidos = { "nome", "discilina", "rendimento", "objetivo", "periodo", "data de inicio",
-			"duracao", "participacoes" };
+	private final String[] atributosValidos = { "nome", "discilina", "rendimento", "objetivo", "periodo",
+			"data de inicio", "duracao", "participacoes" };
 
 	public ProjetoMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao, String codigo) {
@@ -43,12 +43,24 @@ public class ProjetoMonitoria extends Projeto {
 		return this.periodo;
 	}
 
+	private void setPeriodo(String valor) {
+		this.periodo = valor;
+	}
+
 	private int getRendimento() {
 		return this.rendimento;
 	}
 
+	private void setRendimento(int valor) {
+		this.rendimento = valor;
+	}
+
 	private String getDisciplina() {
 		return this.disciplina;
+	}
+
+	private void setDisciplina(String valor) {
+		this.disciplina = valor;
 	}
 
 	private boolean temAtributo(String atributo) {
@@ -75,7 +87,6 @@ public class ProjetoMonitoria extends Projeto {
 			this.setRendimento(Integer.parseInt(valor));
 		} else if (atributo.equalsIgnoreCase("objetivo")) {
 			super.setObjetivo(valor);
-			;
 		} else if (atributo.equalsIgnoreCase("periodo")) {
 			this.setPeriodo(valor);
 		} else if (atributo.equalsIgnoreCase("data de inicio")) {
@@ -83,18 +94,6 @@ public class ProjetoMonitoria extends Projeto {
 		} else {
 			super.setDuracao(Integer.parseInt(valor));
 		}
-	}
-
-	private void setPeriodo(String valor) {
-		this.periodo = valor;
-	}
-
-	private void setRendimento(int valor) {
-		this.rendimento = valor;
-	}
-
-	private void setDisciplina(String valor) {
-		this.disciplina = valor;
 	}
 
 }

@@ -17,29 +17,29 @@ public abstract class Participacao implements Comparable<Participacao> {
 		this.qntHoras = qntHoras;
 	}
 
-	public String getNomeDoProjeto() {
-		return this.projeto.getNome();
-	}
-
 	public String getNomeDaPessoa() {
 		return this.pessoa.getNome();
 	}
-	
+
+	public String getCpfDaPessoa() {
+		return this.pessoa.getCpf();
+	}
+
 	public Pessoa getPessoa() {
 		return this.pessoa;
 	}
 
-	@Override
-	public int compareTo(Participacao outra) {
-		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
+	public String getNomeDoProjeto() {
+		return this.projeto.getNome();
 	}
 
 	public String getCodigoDoProjeto() {
 		return this.projeto.getCodigo();
 	}
 
-	public String getCpfDaPessoa() {
-		return this.pessoa.getCpf();
+	@Override
+	public int compareTo(Participacao outra) {
+		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
 	}
 
 }

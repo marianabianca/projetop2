@@ -38,7 +38,6 @@ public class ProjetoExtensao extends Projeto {
 		if (!this.temAtributo(atributo)) {
 			throw new Exception("Extensao nao possui " + atributo);
 		}
-
 		if (atributo.equalsIgnoreCase("nome")) {
 			super.setNome(valor);
 		} else if (atributo.equalsIgnoreCase("objetivo")) {
@@ -52,12 +51,12 @@ public class ProjetoExtensao extends Projeto {
 		}
 	}
 
-	private void setImpacto(String valor) {
-		this.impacto = Integer.parseInt(valor);
-	}
-
 	private int getImpacto() {
 		return this.impacto;
+	}
+	
+	private void setImpacto(String valor) {
+		this.impacto = Integer.parseInt(valor);
 	}
 
 	private boolean temAtributo(String atributo) {
@@ -66,7 +65,6 @@ public class ProjetoExtensao extends Projeto {
 				return true;
 			}
 		}
-
 		return false;
 	}
 

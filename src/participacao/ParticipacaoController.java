@@ -10,7 +10,7 @@ import validacao.ValidaPessoa;
 import validacao.ValidaProjeto;
 
 public class ParticipacaoController {
-	
+
 	private FactoryDeParticipacao factoryDeParticipacao;
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
@@ -18,7 +18,7 @@ public class ParticipacaoController {
 	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController) {
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
-		factoryDeParticipacao = new FactoryDeParticipacao();
+		this.factoryDeParticipacao = new FactoryDeParticipacao();
 	}
 
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
@@ -27,18 +27,18 @@ public class ParticipacaoController {
 		Projeto projeto = null;
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
-			// ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			ValidaProjeto.validaQtdHoras(qntHoras);
 			ValidaProjeto.validaValorHora(valorHora);
 			if (projeto.temProfessorAssociado() && projeto.getClass().equals(ProjetoMonitoria.class)) {
 				throw new Exception("Monitoria nao pode ter mais de um professor");
-			}		
+			}
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
-		Participacao participacao = factoryDeParticipacao.criaProfessor(pessoa, projeto, coordenador, valorHora, qntHoras);
+		Participacao participacao = factoryDeParticipacao.criaProfessor(pessoa, projeto, coordenador, valorHora,
+				qntHoras);
 		adicionaParticipacaoAPessoa(cpfPessoa, participacao);
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
@@ -49,7 +49,6 @@ public class ParticipacaoController {
 		Projeto projeto = null;
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
-			// ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			if (pessoa.temParticipacaoEmProjeto(codigoProjeto)) {
@@ -72,7 +71,6 @@ public class ParticipacaoController {
 		Projeto projeto = null;
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
-			// ModuloDeValidacao.codigoInvalido(codigoProjeto);
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			ValidaProjeto.validaValorHora(valorHora);
@@ -86,24 +84,6 @@ public class ParticipacaoController {
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
 
-	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
-		ValidaPessoa.validaCpf(cpfPessoa);
-		ModuloDeValidacao.stringInvalida(atributo);
-		ModuloDeValidacao.stringInvalida(valor);
-		atributo = atributo.toLowerCase();
-		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
-	}
-
-	private void adicionaParticipacaoAPessoa(String cpfPessoa, Participacao participacao)
-			throws Exception {
-		pessoaController.adicionaParticipacao(cpfPessoa, participacao);
-	}
-
-	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao)
-			throws Exception {
-		projetoController.adicionaParticipacao(codigoProjeto, participacao);
-	}
-	
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		try {
 			if (!projetoController.existeProjeto(codigoProjeto)) {
@@ -113,6 +93,22 @@ public class ParticipacaoController {
 		} catch (Exception e) {
 			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
 		}
+	}
+
+	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
+		ValidaPessoa.validaCpf(cpfPessoa);
+		ModuloDeValidacao.stringInvalida(atributo);
+		ModuloDeValidacao.stringInvalida(valor);
+		atributo = atributo.toLowerCase();
+		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
+	}
+
+	private void adicionaParticipacaoAPessoa(String cpfPessoa, Participacao participacao) throws Exception {
+		pessoaController.adicionaParticipacao(cpfPessoa, participacao);
+	}
+
+	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao) throws Exception {
+		projetoController.adicionaParticipacao(codigoProjeto, participacao);
 	}
 
 }

@@ -30,17 +30,6 @@ public class PessoaController {
 		return cpf;
 	}
 
-	private boolean contemPessoa(String cpf) {
-		if (pessoas.containsKey(cpf)) {
-			return true;
-		}
-		return false;
-	}
-
-	public void removePessoa(String cpf) {
-		this.pessoas.remove(cpf, pessoas.get(cpf));
-	}
-
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
 		try {
 			Pessoa pessoa = this.getPessoa(cpf);
@@ -66,6 +55,10 @@ public class PessoaController {
 		throw new Exception("Pessoa nao encontrada");
 	}
 
+	public void removePessoa(String cpf) {
+		this.pessoas.remove(cpf, pessoas.get(cpf));
+	}
+
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
@@ -82,6 +75,23 @@ public class PessoaController {
 		}
 	}
 
+	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
+		pessoa.adicionaParticipacao(participacao);
+	}
+
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
+		pessoa.removeParticipacao(codigoProjeto);
+	}
+
+	private boolean contemPessoa(String cpf) {
+		if (pessoas.containsKey(cpf)) {
+			return true;
+		}
+		return false;
+	}
+
 	private void valorAtributoValidos(String atributo, String valor) throws Exception {
 		if (atributo.equalsIgnoreCase("cpf")) {
 			throw new Exception("CPF nao pode ser alterado");
@@ -92,13 +102,4 @@ public class PessoaController {
 		}
 	}
 
-	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws Exception {
-		Pessoa pessoa = this.getPessoa(cpfPessoa);
-		pessoa.adicionaParticipacao(participacao);
-	}
-
-	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
-		Pessoa pessoa = this.getPessoa(cpfPessoa);
-		pessoa.removeParticipacao(codigoProjeto);
-	}
 }

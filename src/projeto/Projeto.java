@@ -1,6 +1,7 @@
 package projeto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import participacao.Participacao;
@@ -21,9 +22,9 @@ public abstract class Projeto {
 		this.custos = new ArrayList<>();
 		this.participacoes = new ArrayList<>();
 	}
-	
+
 	public abstract String getInfoProjeto(String atributo) throws Exception;
-	
+
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
 
 	public void adicionaParticipacao(Participacao participacao) {
@@ -102,6 +103,21 @@ public abstract class Projeto {
 	public String getCodigo() {
 		return this.codigo;
 	}
+	
+	public void ordenaParticipacoesPeloNomeDasPessoas() {
+		Collections.sort(participacoes); 
+	}
 
+	public String getParticipacoes() {
+		String listaParticipacoes = "";
+		ordenaParticipacoesPeloNomeDasPessoas();
+		for (Participacao participacao : participacoes) {
+			listaParticipacoes += participacao.getNomeDaPessoa() + ", ";
+		}
+		if (listaParticipacoes.endsWith(", ")) {
+			return listaParticipacoes.substring(0, listaParticipacoes.length() - 2);
+		}
+		return listaParticipacoes;
+	}
 
 }

@@ -13,7 +13,7 @@ public class ProjetoPED extends Projeto {
 	private String categoria;
 	private Map<String, Produtividade> produtividade;
 	private String[] atributosValidos = {"nome", "categoria", "producao tecnica", "producao academica", "patentes", "objetivo",
-			"data de inicio", "duracao"};
+			"data de inicio", "duracao", "participacoes"};
 
 	public ProjetoPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo,
 			String dataInicio, int duracao, String codigo) {
@@ -51,7 +51,6 @@ public class ProjetoPED extends Projeto {
 		if (!this.temAtributo(atributo)){
 			throw new Exception("PED nao possui " + atributo);
 		}
-		
 		if (atributo.equalsIgnoreCase("nome")) {
 			return super.getNome();
 		} else if (atributo.equalsIgnoreCase("categoria")) {
@@ -66,8 +65,10 @@ public class ProjetoPED extends Projeto {
 			return super.getObjetivo();
 		} else if (atributo.equalsIgnoreCase("data de inicio")) {
 			return super.getDataInicio();
-		} else {
+		} else if (atributo.equalsIgnoreCase("duracao")) {
 			return Integer.toString(super.getDuracao());
+		} else {
+			return super.getParticipacoes();
 		}
 	}
 	

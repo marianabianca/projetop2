@@ -3,7 +3,8 @@ package projeto;
 public class ProjetoExtensao extends Projeto {
 
 	private int impacto;
-	private String[] atributosValidos = {"nome", "objetivo", "impacto", "data de inicio", "duracao", "codigo"};
+	private final String[] atributosValidos = { "nome", "objetivo", "impacto", "data de inicio", "duracao", "codigo",
+			"participacoes" };
 
 	public ProjetoExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao, String codigo) {
 		super(nome, objetivo, dataInicio, duracao, codigo);
@@ -12,10 +13,9 @@ public class ProjetoExtensao extends Projeto {
 
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
-		if (!this.temAtributo(atributo)){
+		if (!this.temAtributo(atributo)) {
 			throw new Exception("Extensao nao possui " + atributo);
 		}
-		
 		if (atributo.equalsIgnoreCase("nome")) {
 			return super.getNome();
 		} else if (atributo.equalsIgnoreCase("objetivo")) {
@@ -24,17 +24,21 @@ public class ProjetoExtensao extends Projeto {
 			return Integer.toString(this.getImpacto());
 		} else if (atributo.equalsIgnoreCase("data de inicio")) {
 			return super.getDataInicio();
-		} else {
+		} else if (atributo.equalsIgnoreCase("nome")) {
+			return super.getNome();
+		} else if (atributo.equalsIgnoreCase("duracao")) {
 			return Integer.toString(super.getDuracao());
+		} else {
+			return super.getParticipacoes();
 		}
 	}
-	
+
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
-		if (!this.temAtributo(atributo)){
+		if (!this.temAtributo(atributo)) {
 			throw new Exception("Extensao nao possui " + atributo);
 		}
-		
+
 		if (atributo.equalsIgnoreCase("nome")) {
 			super.setNome(valor);
 		} else if (atributo.equalsIgnoreCase("objetivo")) {
@@ -45,7 +49,7 @@ public class ProjetoExtensao extends Projeto {
 			super.setDataInicio(valor);
 		} else {
 			super.setDuracao(Integer.parseInt(valor));
-		}		
+		}
 	}
 
 	private void setImpacto(String valor) {
@@ -58,11 +62,11 @@ public class ProjetoExtensao extends Projeto {
 
 	private boolean temAtributo(String atributo) {
 		for (String atributoValido : atributosValidos) {
-			if (atributoValido.equalsIgnoreCase(atributo)){
+			if (atributoValido.equalsIgnoreCase(atributo)) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 

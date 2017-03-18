@@ -12,7 +12,7 @@ public class Pesquisador extends Profissional {
 
 	@Override
 	public int calculaPontuacaoProfissional() {
-		// TODO Auto-generated method stub
+		// TODO calcular Pesquisador PED
 		return 0;
 	}
 	

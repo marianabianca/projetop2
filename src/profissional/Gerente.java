@@ -11,7 +11,7 @@ public class Gerente extends Profissional {
 
 	@Override
 	public int calculaPontuacaoProfissional() {
-		//calcular Gerente PED
+		// TODO calcular Gerente PED
 		return 0;
 	}
 	

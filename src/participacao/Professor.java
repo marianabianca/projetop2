@@ -2,6 +2,7 @@ package participacao;
 
 import pessoa.Pessoa;
 import projeto.Projeto;
+import projeto.ProjetoMonitoria;
 
 public class Professor extends Participacao {
 
@@ -14,8 +15,11 @@ public class Professor extends Participacao {
 
 	@Override
 	public int calculaPontuacao() {
-		// TODO Auto-generated method stub
-		return 0;
+		if (super.projeto.getClass() == ProjetoMonitoria.class) {
+			return 4;
+		}else{
+			return (super.projeto.calculaPontuacao() + 4);		
+		}
 	}
 
 }

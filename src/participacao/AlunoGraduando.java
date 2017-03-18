@@ -13,9 +13,9 @@ public class AlunoGraduando extends Participacao {
 	@Override
 	public int calculaPontuacao() {
 		if (super.projeto.getClass() == ProjetoMonitoria.class ){
-			// calcula pra monitoria
+			// TODO calcula pra monitoria
 		}else{
-			// calcula pra ped, pet e extensão
+			// TODO calcula pra ped, pet e extensão
 		}
 		return 0;
 	}

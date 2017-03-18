@@ -150,4 +150,14 @@ public abstract class Projeto {
 		Collections.sort(participacoes);
 	}
 
+	public int calculaPontuacao() {
+		int acumulador = 0;
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass() == AlunoGraduando.class) {
+				acumulador += 1;
+			}
+		}
+		return acumulador;
+	}
+
 }

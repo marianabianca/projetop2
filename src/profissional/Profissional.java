@@ -14,11 +14,10 @@ public abstract class Profissional extends Participacao {
 	@Override
 	public int calculaPontuacao() {
 		if (super.projeto.getClass() == ProjetoPED.class){
-			calculaPontuacaoProfissional();
-		}else{
+			return calculaPontuacaoProfissional();
+		}else {
 			return 0;
 		}
-		return 0;
 	}
 	
 	public abstract int calculaPontuacaoProfissional();

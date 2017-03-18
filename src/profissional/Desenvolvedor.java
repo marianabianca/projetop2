@@ -11,7 +11,7 @@ public class Desenvolvedor extends Profissional{
 
 	@Override
 	public int calculaPontuacaoProfissional() {
-		//calcular Desenvolvedor PED
+		// TODO calcular Desenvolvedor PED
 		return 0;
 	}
 

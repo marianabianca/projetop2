@@ -113,7 +113,7 @@ public class Pessoa {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
 
-	public double calculaPontuacaoPorParticipacao() {
+	public int calculaPontuacaoPorParticipacao() {
 		int acumulador = 0;
 		int acumuladorGraduandoPED = 0;
 		int acumuladorGraduandoPET = 0;
@@ -121,24 +121,22 @@ public class Pessoa {
 		int acumuladorGraduandoExtensao = 0;
 		for (Participacao participacao : participacoes) {
 			if (participacao.getClass() == AlunoGraduando.class) {
-				if (acumuladorGraduandoPED != 8 && participacao.getProjeto().getClass() == ProjetoPED.class) {
+				if (acumuladorGraduandoPED != 8 && participacao.getTipoDeProjeto().equals("PED")) {
 					acumuladorGraduandoPED += participacao.calculaPontuacao();
 					if (acumuladorGraduandoPED > 8) {
 						acumuladorGraduandoPED = 8;
 					}
-				} else if (acumuladorGraduandoPET != 8 && participacao.getProjeto().getClass() == ProjetoPET.class) {
+				} else if (acumuladorGraduandoPET != 8 && participacao.getTipoDeProjeto().equals("PET")) {
 					acumuladorGraduandoPED += participacao.calculaPontuacao();
 					if (acumuladorGraduandoPET > 8) {
 						acumuladorGraduandoPET = 8;
 					}
-				} else if (acumuladorGraduandoExtensao != 8
-						&& participacao.getProjeto().getClass() == ProjetoExtensao.class) {
+				} else if (acumuladorGraduandoExtensao != 8 && participacao.getTipoDeProjeto().equals("EXTENSAO")) {
 					acumuladorGraduandoExtensao += participacao.calculaPontuacao();
 					if (acumuladorGraduandoExtensao > 8) {
 						acumuladorGraduandoExtensao = 8;
 					}
-				} else if (acumuladorGraduandoMonitoria != 6
-						&& participacao.getProjeto().getClass() == ProjetoMonitoria.class) {
+				} else if (acumuladorGraduandoMonitoria != 6 && participacao.getTipoDeProjeto().equals("MONITORIA")) {
 					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
 					if (acumuladorGraduandoMonitoria > 6) {
 						acumuladorGraduandoMonitoria = 6;

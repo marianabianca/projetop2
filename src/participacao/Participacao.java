@@ -2,6 +2,9 @@ package participacao;
 
 import pessoa.Pessoa;
 import projeto.Projeto;
+import projeto.ProjetoExtensao;
+import projeto.ProjetoPED;
+import projeto.ProjetoPET;
 
 public abstract class Participacao implements Comparable<Participacao> {
 
@@ -51,5 +54,17 @@ public abstract class Participacao implements Comparable<Participacao> {
 	}
 
 	public abstract int calculaPontuacao();
+	
+	public String getTipoDeProjeto() {
+		if (this.projeto.getClass() == ProjetoPED.class) {
+			return "PED";
+		} else if (this.projeto.getClass() == ProjetoPET.class) {
+			return "PET";
+		} else if (this.projeto.getClass() == ProjetoExtensao.class) {
+			return "EXTENSAO";
+		} else {
+			return "MONITORIA";
+		}
+	}
 
 }

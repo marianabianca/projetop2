@@ -21,5 +21,8 @@ public class Professor extends Participacao {
 			return (super.projeto.calculaPontuacao() + 4);		
 		}
 	}
-
+	
+	public boolean isCoordenador() {
+		return coordenador;
+	}
 }

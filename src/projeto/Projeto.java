@@ -50,6 +50,18 @@ public abstract class Projeto {
 		}
 		return false;
 	}
+	
+	public boolean temCoordenadorAssociado() {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass().equals(Professor.class)) {
+				Professor prof = (Professor) participacao;
+				if (prof.isCoordenador()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	public double calculaCustoTotal() {
 		double despesaTotal = 0;

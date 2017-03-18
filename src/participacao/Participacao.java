@@ -6,7 +6,7 @@ import projeto.Projeto;
 public abstract class Participacao implements Comparable<Participacao> {
 
 	private Pessoa pessoa;
-	private Projeto projeto;
+	protected Projeto projeto;
 	private double valorHora;
 	private int qntHoras;
 

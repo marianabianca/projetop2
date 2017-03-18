@@ -102,4 +102,7 @@ public class Facade {
 		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
 
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+		pessoaController.removeParticipacao(cpfPessoa, codigoProjeto);		
+	}
 }

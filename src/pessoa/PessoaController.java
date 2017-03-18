@@ -22,13 +22,11 @@ public class PessoaController {
 			if (this.contemPessoa(cpf)) {
 				throw new Exception("Pessoa com mesmo CPF ja cadastrada");
 			}
-
 			Pessoa pessoa = new Pessoa(nome, email, cpf);
 			pessoas.put(cpf, pessoa);
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de pessoa: " + e.getMessage());
 		}
-
 		return cpf;
 	}
 
@@ -36,7 +34,6 @@ public class PessoaController {
 		if (pessoas.containsKey(cpf)) {
 			return true;
 		}
-
 		return false;
 	}
 
@@ -50,9 +47,14 @@ public class PessoaController {
 		} else if (atributo.equalsIgnoreCase("nome")) {
 			return this.getNomeDePessoa(cpf);
 		} else if (atributo.equalsIgnoreCase("participacoes")) {
-
+			return this.getParticipacoesDePessoa(cpf);
 		}
 		throw new Exception("Atributo inexistente");
+	}
+
+	private String getParticipacoesDePessoa(String cpf) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpf);
+		return pessoa.getParticipacoes();
 	}
 
 	public Pessoa getPessoa(String cpf) throws Exception {
@@ -104,5 +106,10 @@ public class PessoaController {
 			throws Exception {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.adicionaParticipacao(participacao);
+	}
+
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);	
+		pessoa.removeParticipacao(codigoProjeto);
 	}
 }

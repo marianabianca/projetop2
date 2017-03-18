@@ -1,9 +1,7 @@
 package projeto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import participacao.Participacao;
 
@@ -12,24 +10,24 @@ public abstract class Projeto {
 	private String nome, objetivo, dataInicio, codigo;
 	private int duracao;
 	private List<Despesa> custos;
-	private Map<String, Participacao> participacoes;
+	private List<Participacao> participacoes;
 
 	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
 		this.nome = nome;
 		this.objetivo = objetivo;
 		this.dataInicio = dataInicio;
 		this.duracao = duracao;
-		this.custos = new ArrayList<>();
 		this.codigo = codigo;
-		this.participacoes = new HashMap<>();
+		this.custos = new ArrayList<>();
+		this.participacoes = new ArrayList<>();
 	}
 	
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 	
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
 
-	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) {
-		this.participacoes.put(cpfPessoa, participacao);
+	public void adicionaParticipacao(Participacao participacao) {
+		this.participacoes.add(participacao);
 	}
 
 	public double calculaCustoTotal() {

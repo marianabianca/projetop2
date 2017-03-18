@@ -1,24 +1,24 @@
 package pessoa;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import participacao.Participacao;
 
 public class Pessoa {
 
 	private String nome, email, cpf;
-	private Map<String, Participacao> participacoes;
+	private List<Participacao> participacoes;
 
 	public Pessoa(String nome, String email, String cpf) {
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
-		this.participacoes = new HashMap<>();
+		this.participacoes = new ArrayList<>();
 	}
 
-	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) {
-		this.participacoes.put(codigoProjeto, participacao);
+	public void adicionaParticipacao(Participacao participacao) {
+		this.participacoes.add(participacao);
 	}
 
 	public String getNome() {

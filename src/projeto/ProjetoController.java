@@ -135,10 +135,10 @@ public class ProjetoController {
 		throw new ObjetoNuloException("Projeto nao encontrado");
 	}
 
-	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao)
+	public void adicionaParticipacao(String codigoProjeto, Participacao participacao)
 			throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
-		projeto.adicionaParticipacao(cpfPessoa, participacao);
+		projeto.adicionaParticipacao(participacao);
 	}
 
 	private String geraCodigo() {

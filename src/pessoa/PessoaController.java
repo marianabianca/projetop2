@@ -100,9 +100,9 @@ public class PessoaController {
 		}
 	}
 
-	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao)
+	public void adicionaParticipacao(String cpfPessoa, Participacao participacao)
 			throws Exception {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
-		pessoa.adicionaParticipacao(codigoProjeto, participacao);
+		pessoa.adicionaParticipacao(participacao);
 	}
 }

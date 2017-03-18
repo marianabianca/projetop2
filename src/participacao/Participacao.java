@@ -3,8 +3,8 @@ package participacao;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public abstract class Participacao {
-	
+public abstract class Participacao implements Comparable<Participacao> {
+
 	private Pessoa pessoa;
 	private Projeto projeto;
 	private double valorHora;
@@ -15,6 +15,27 @@ public abstract class Participacao {
 		this.projeto = projeto;
 		this.valorHora = valorHora;
 		this.qntHoras = qntHoras;
+	}
+
+	public String getNomeDoProjeto() {
+		return this.projeto.getNome();
+	}
+
+	public String getNomeDaPessoa() {
+		return this.pessoa.getNome();
+	}
+	
+	public Pessoa getPessoa() {
+		return this.pessoa;
+	}
+
+	@Override
+	public int compareTo(Participacao outra) {
+		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
+	}
+
+	public Object getCodigoDoProjeto() {
+		return this.projeto.getCodigo();
 	}
 
 }

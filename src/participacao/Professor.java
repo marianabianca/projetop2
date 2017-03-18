@@ -12,4 +12,10 @@ public class Professor extends Participacao {
 		this.coordenador = coordenador;
 	}
 
+	@Override
+	public int calculaPontuacao() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import participacao.AlunoGraduando;
 import participacao.Participacao;
 import participacao.Professor;
 
@@ -35,6 +36,15 @@ public abstract class Projeto {
 	public boolean temProfessorAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getClass().equals(Professor.class)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean temAlunoAssociado() {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass() == AlunoGraduando.class){
 				return true;
 			}
 		}

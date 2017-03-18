@@ -30,7 +30,11 @@ public class ParticipacaoController {
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			ValidaProjeto.validaQtdHoras(qntHoras);
-			ValidaProjeto.validaValorHora(valorHora);
+			if (coordenador) {
+				ValidaProjeto.validaValorHoraDeCoordenador(valorHora);
+			} else {
+				ValidaProjeto.validaValorHora(valorHora);
+			}
 			if (projeto.temProfessorAssociado() && projeto.getClass().equals(ProjetoMonitoria.class)) {
 				throw new Exception("Monitoria nao pode ter mais de um professor");
 			}

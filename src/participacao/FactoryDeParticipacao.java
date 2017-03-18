@@ -2,6 +2,8 @@ package participacao;
 
 import pessoa.Pessoa;
 import projeto.Projeto;
+import profissional.FactoryProfissional;
+import profissional.Profissional;
 
 public class FactoryDeParticipacao {
 
@@ -13,8 +15,9 @@ public class FactoryDeParticipacao {
 		return new AlunoGraduando(pessoa, projeto, valorHora, qntHoras);
 	}
 
-	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras) {
-		return new Profissional(pessoa, projeto, valorHora, qntHoras, cargo);
+	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras) throws Exception {
+		FactoryProfissional fabrica = new FactoryProfissional();
+		return fabrica.FactoryProfissional(pessoa, projeto, cargo, valorHora, qntHoras);
 	}
 
 }

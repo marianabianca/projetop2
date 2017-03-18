@@ -1,4 +1,4 @@
-package participacao;
+package profissional;
 
 import pessoa.Pessoa;
 import projeto.Projeto;

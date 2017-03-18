@@ -1,5 +1,6 @@
-package participacao;
+package profissional;
 
+import participacao.Participacao;
 import pessoa.Pessoa;
 import projeto.Projeto;
 import projeto.ProjetoPED;

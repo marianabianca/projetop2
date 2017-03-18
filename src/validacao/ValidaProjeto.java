@@ -165,4 +165,10 @@ public class ValidaProjeto {
 		}	
 	}
 
+	public static void validaValorHoraDeCoordenador(double valorHora) throws Exception {
+		if (valorHora < 0) {
+			throw new Exception("Valor da Hora invalido");
+		}
+	}
+
 }

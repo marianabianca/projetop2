@@ -1,17 +1,22 @@
 package projeto;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import exception.ObjetoNuloException;
-import projeto.ProjetoService;
+import participacao.Participacao;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;
 
 public class ProjetoController {
-	private ProjetoService projetoService;
-	
-	public ProjetoController(){
-		projetoService = new ProjetoService();
-	}	
-	
+	private Map<String, Projeto> projetos;
+	private int contadorCodigo;
+
+	public ProjetoController() {
+		this.projetos = new HashMap<>();
+		this.contadorCodigo = 0;
+	}
+
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao) throws Exception {
 		try {
@@ -22,7 +27,11 @@ public class ProjetoController {
 			ValidaProjeto.validaPeriodo(periodo);
 			ModuloDeValidacao.dataInvalida(dataInicio);
 			ValidaProjeto.validaDuracao(duracao);
-			return projetoService.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+			String codigo = this.geraCodigo();
+			Projeto monitoria = new ProjetoMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio,
+					duracao, codigo);
+			projetos.put(codigo, monitoria);
+			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
@@ -41,13 +50,15 @@ public class ProjetoController {
 			ValidaProjeto.validaPatentes(patentes);
 			ModuloDeValidacao.dataInvalida(dataInicio);
 			ValidaProjeto.validaDuracao(duracao);
-			return projetoService.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
-					dataInicio, duracao);	
+			String codigo = this.geraCodigo();
+			Projeto pet = new ProjetoPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
+					dataInicio, duracao, codigo);
+			projetos.put(codigo, pet);
+			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
 
-		
 	}
 
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
@@ -58,7 +69,10 @@ public class ProjetoController {
 			ValidaProjeto.validaImpacto(impacto);
 			ModuloDeValidacao.dataInvalida(dataInicio);
 			ValidaProjeto.validaDuracao(duracao);
-			return projetoService.adicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
+			String codigo = this.geraCodigo();
+			Projeto extensao = new ProjetoExtensao(nome, objetivo, impacto, dataInicio, duracao, codigo);
+			projetos.put(codigo, extensao);
+			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
@@ -76,8 +90,11 @@ public class ProjetoController {
 			ValidaProjeto.validaObjetivo(objetivo);
 			ModuloDeValidacao.dataInvalida(dataInicio);
 			ValidaProjeto.validaDuracao(duracao);
-			return projetoService.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
-					duracao);			
+			String codigo = this.geraCodigo();
+			Projeto ped = new ProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
+					duracao, codigo);
+			projetos.put(codigo, ped);
+			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
 		}
@@ -88,28 +105,53 @@ public class ProjetoController {
 		try {
 			ValidaProjeto.validaAtributo(atributo);
 			ValidaProjeto.validaValorAtributo(atributo, valor);
-			projetoService.editaProjeto(codigo, atributo, valor);
+			Projeto projeto = this.getProjeto(codigo);
+			projeto.editaProjeto(atributo, valor);
 		} catch (Exception e) {
 			throw new Exception("Erro na atualizacao de projeto: " + e.getMessage());
 		}
 	}
 
 	public void removeProjeto(String codigo) {
-		projetoService.removeProjeto(codigo);
+		this.projetos.remove(codigo);
 	}
 
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		try {
 			ValidaProjeto.validaAtributo(atributo);
-			return projetoService.getInfoProjeto(codigo, atributo);
+			Projeto projeto = this.getProjeto(codigo);
+			return projeto.getInfoProjeto(atributo);
 		} catch (Exception e) {
 			throw new Exception("Erro na consulta de projeto: " + e.getMessage());
 		}
 	}
 
-
-	public String getCodigoProjeto(String nome) throws ObjetoNuloException{
-		return projetoService.getCodigoProjeto(nome);
+	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
+		for (Projeto projeto : projetos.values()) {
+			if (projeto.getNome().equals(nome)) {
+				return projeto.getCodigo();
+			}
+		}
+		throw new ObjetoNuloException("Projeto nao encontrado");
 	}
-	
+
+	public void adicionaParticipacao(String cpfPessoa, String codigoProjeto, Participacao participacao)
+			throws Exception {
+		Projeto projeto = getProjeto(codigoProjeto);
+		projeto.adicionaParticipacao(cpfPessoa, participacao);
+	}
+
+	private String geraCodigo() {
+		String codigo = Integer.toString(contadorCodigo++);
+		return codigo;
+	}
+
+	public Projeto getProjeto(String codigo) throws Exception {
+		if (!projetos.containsKey(codigo)) {
+			throw new Exception("Projeto nao encontrado");
+		}
+		Projeto projeto = projetos.get(codigo);
+		return projeto;
+	}
+
 }

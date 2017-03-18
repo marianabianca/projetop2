@@ -2,7 +2,7 @@ package facade;
 
 import pessoa.PessoaController;
 import projeto.ProjetoController;
-import easyaccept.*;
+import easyaccept.EasyAccept;
 import participacao.ParticipacaoController;
 
 public class Facade {
@@ -21,7 +21,7 @@ public class Facade {
 	public Facade() {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
-		participacaoController = new ParticipacaoController();
+		participacaoController = new ParticipacaoController(pessoaController, projetoController);
 	}
 
 	public void iniciaSistema() {

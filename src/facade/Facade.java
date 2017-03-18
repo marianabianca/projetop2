@@ -2,8 +2,8 @@ package facade;
 
 import pessoa.PessoaController;
 import projeto.ProjetoController;
-import participacao.ParticipacaoController;
 import easyaccept.EasyAccept;
+import participacao.ParticipacaoController;
 
 public class Facade {
 

@@ -5,6 +5,7 @@ import pessoa.PessoaController;
 import projeto.Projeto;
 import projeto.ProjetoController;
 import projeto.ProjetoMonitoria;
+import projeto.ProjetoPED;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaPessoa;
 import validacao.ValidaProjeto;
@@ -20,32 +21,80 @@ public class ParticipacaoController {
 		this.projetoController = projetoController;
 		this.factoryDeParticipacao = new FactoryDeParticipacao();
 	}
-
-	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
-			int qntHoras) throws Exception {
-		Pessoa pessoa = null;
-		Projeto projeto = null;
+	
+	public void associaProfessor(String cpfProfessor, String codigoProjeto, boolean ehCoordenador, double valorPorHora,
+			int quantidadeDeHoras) throws Exception {
+		Pessoa professor;
+		Projeto projeto;
 		try {
-			ValidaPessoa.validaCpf(cpfPessoa);
-			pessoa = pessoaController.getPessoa(cpfPessoa);
+			ValidaPessoa.validaCpf(cpfProfessor);
+			ValidaProjeto.validaQtdHoras(quantidadeDeHoras);
+			professor = pessoaController.getPessoa(cpfProfessor);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			ValidaProjeto.validaQtdHoras(qntHoras);
-			if (coordenador) {
-				ValidaProjeto.validaValorHoraDeCoordenador(valorHora);
-			} else {
-				ValidaProjeto.validaValorHora(valorHora);
-			}
-			if (projeto.temProfessorAssociado() && projeto.getClass().equals(ProjetoMonitoria.class)) {
-				throw new Exception("Monitoria nao pode ter mais de um professor");
+			if (projeto.getClass() == ProjetoPED.class){
+				if (!ehCoordenador){
+					ValidaProjeto.validaValorHora(valorPorHora);
+					if (projeto.temProfessorAssociado()){
+						throw new Exception("Projetos P&D nao podem ter mais de um professor");
+					}
+				} else {
+					ValidaProjeto.validaValorHoraDeCoordenador(valorPorHora);
+					if (projeto.temProfessorAssociado()){
+						if (projeto.temCoordenadorAssociado()){
+							throw new Exception("Projetos P&D nao podem ter mais de um coordenador");
+						} else {
+							throw new Exception("Projetos P&D nao podem ter mais de um professor associado");
+						}
+					}
+				}
+			} 
+			if (projeto.getClass() == ProjetoMonitoria.class) {
+				ValidaProjeto.validaValorHoraDeMonitoria(valorPorHora);
 			}
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
-		Participacao participacao = factoryDeParticipacao.criaProfessor(pessoa, projeto, coordenador, valorHora,
-				qntHoras);
-		adicionaParticipacaoAPessoa(cpfPessoa, participacao);
+		Participacao participacao = factoryDeParticipacao.criaProfessor(professor, projeto, ehCoordenador, valorPorHora, quantidadeDeHoras);
+		adicionaParticipacaoAPessoa(cpfProfessor, participacao);
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
+		
 	}
+
+//	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
+//			int qntHoras) throws Exception {
+//		Pessoa pessoa;
+//		Projeto projeto;
+//		try {
+//			ValidaPessoa.validaCpf(cpfPessoa);
+//			pessoa = pessoaController.getPessoa(cpfPessoa);
+//			projeto = projetoController.getProjeto(codigoProjeto);
+//			ValidaProjeto.validaQtdHoras(qntHoras);
+//			if (coordenador) {
+//				ValidaProjeto.validaValorHoraDeCoordenador(valorHora);
+//			} else {
+//				ValidaProjeto.validaValorHora(valorHora);
+//			}
+//			if (projeto.getClass().equals(ProjetoMonitoria.class)) {
+//				ValidaProjeto.validaValorHoraDeMonitoria(valorHora);
+//				if (projeto.temProfessorAssociado()){
+//					ValidaProjeto.validaValorHoraDeMonitoria(valorHora);					
+//				}
+//			}
+//			if (projeto.temProfessorAssociado() && projeto.getClass().equals(ProjetoPED.class)) {
+//				if (!(projeto.temCoordenadorAssociado())) {
+//					throw new Exception("Projetos P&D nao podem ter mais de um professor");
+//				} else {
+//					throw new Exception("Projetos P&D nao podem ter mais de um coordenador");
+//				}
+//			}
+//		} catch (Exception e) {
+//			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+//		}
+//		Participacao participacao = factoryDeParticipacao.criaProfessor(pessoa, projeto, coordenador, valorHora,
+//				qntHoras);
+//		adicionaParticipacaoAPessoa(cpfPessoa, participacao);
+//		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
+//	}
 
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
 			throws Exception {

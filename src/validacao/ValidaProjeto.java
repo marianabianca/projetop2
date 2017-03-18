@@ -171,4 +171,11 @@ public class ValidaProjeto {
 		}
 	}
 
+	public static void validaValorHoraDeMonitoria(double valorHora) throws Exception {
+		if (valorHora != 0){
+			throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
+		}
+		
+	}
+
 }

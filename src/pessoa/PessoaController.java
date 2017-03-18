@@ -101,5 +101,10 @@ public class PessoaController {
 			ValidaPessoa.validaEmail(valor);
 		}
 	}
+	
+	public void calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
+		pessoa.calculaPontuacaoPorParticipacao();		
+	}
 
 }

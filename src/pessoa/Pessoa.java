@@ -106,5 +106,12 @@ public class Pessoa {
 	public String toString() {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
+	
+	public void calculaPontuacaoPorParticipacao() {
+		int acumulador = 0;
+		for (Participacao participacao : participacoes){
+			acumulador += participacao.calculaPontuacao();
+		}
+	}
 
 }

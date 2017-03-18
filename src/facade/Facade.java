@@ -105,5 +105,9 @@ public class Facade {
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
+	
+	public void calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception{
+		pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
+	}
 
 }

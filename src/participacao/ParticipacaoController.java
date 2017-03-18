@@ -50,6 +50,9 @@ public class ParticipacaoController {
 			} 
 			if (projeto.getClass() == ProjetoMonitoria.class) {
 				ValidaProjeto.validaValorHoraDeMonitoria(valorPorHora);
+				if (projeto.temProfessorAssociado()){
+					throw new Exception("Monitoria nao pode ter mais de um professor");
+				}
 			}
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());

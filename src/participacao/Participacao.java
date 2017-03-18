@@ -41,11 +41,15 @@ public abstract class Participacao implements Comparable<Participacao> {
 	public int compareTo(Participacao outra) {
 		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
 	}
-	
-	public String getDataInicioDoProjeto() {
-		return this.projeto.getDataInicio();
+
+	public int getDuracaoDoProjeto() {
+		return this.projeto.getDuracao();
 	}
-	
+
+	public Projeto getProjeto() {
+		return this.projeto;
+	}
+
 	public abstract int calculaPontuacao();
 
 }

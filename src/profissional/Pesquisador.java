@@ -12,11 +12,9 @@ public class Pesquisador extends Profissional {
 
 	@Override
 	public int calculaPontuacaoProfissional() {
-		// TODO calcular Pesquisador PED
-		return 0;
+		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao() / 12);
+		int pontos = tempoRemunerado * 6;
+		return pontos;
 	}
-	
-	
-	
 
 }

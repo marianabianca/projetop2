@@ -11,8 +11,9 @@ public class Desenvolvedor extends Profissional{
 
 	@Override
 	public int calculaPontuacaoProfissional() {
-		// TODO calcular Desenvolvedor PED
-		return 0;
+		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao()/12);
+		int pontos = tempoRemunerado * 5;
+		return pontos;
 	}
 
 }

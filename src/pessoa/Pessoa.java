@@ -1,9 +1,15 @@
 package pessoa;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import participacao.AlunoGraduando;
 import participacao.Participacao;
+import projeto.ProjetoExtensao;
+import projeto.ProjetoMonitoria;
+import projeto.ProjetoPED;
+import projeto.ProjetoPET;
 
 public class Pessoa {
 
@@ -106,12 +112,45 @@ public class Pessoa {
 	public String toString() {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
-	
-	public void calculaPontuacaoPorParticipacao() {
+
+	public double calculaPontuacaoPorParticipacao() {
 		int acumulador = 0;
-		for (Participacao participacao : participacoes){
-			acumulador += participacao.calculaPontuacao();
+		int acumuladorGraduandoPED = 0;
+		int acumuladorGraduandoPET = 0;
+		int acumuladorGraduandoMonitoria = 0;
+		int acumuladorGraduandoExtensao = 0;
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass() == AlunoGraduando.class) {
+				if (acumuladorGraduandoPED != 8 && participacao.getProjeto().getClass() == ProjetoPED.class) {
+					acumuladorGraduandoPED += participacao.calculaPontuacao();
+					if (acumuladorGraduandoPED > 8) {
+						acumuladorGraduandoPED = 8;
+					}
+				} else if (acumuladorGraduandoPET != 8 && participacao.getProjeto().getClass() == ProjetoPET.class) {
+					acumuladorGraduandoPED += participacao.calculaPontuacao();
+					if (acumuladorGraduandoPET > 8) {
+						acumuladorGraduandoPET = 8;
+					}
+				} else if (acumuladorGraduandoExtensao != 8
+						&& participacao.getProjeto().getClass() == ProjetoExtensao.class) {
+					acumuladorGraduandoExtensao += participacao.calculaPontuacao();
+					if (acumuladorGraduandoExtensao > 8) {
+						acumuladorGraduandoExtensao = 8;
+					}
+				} else if (acumuladorGraduandoMonitoria != 6
+						&& participacao.getProjeto().getClass() == ProjetoMonitoria.class) {
+					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
+					if (acumuladorGraduandoMonitoria > 6) {
+						acumuladorGraduandoMonitoria = 6;
+					}
+				}
+			} else {
+				acumulador += participacao.calculaPontuacao();
+			}
 		}
+		acumulador += acumuladorGraduandoExtensao + acumuladorGraduandoMonitoria + acumuladorGraduandoPED
+				+ acumuladorGraduandoPET;
+		return acumulador;
 	}
 
 }

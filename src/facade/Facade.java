@@ -103,6 +103,6 @@ public class Facade {
 	}
 
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
-		pessoaController.removeParticipacao(cpfPessoa, codigoProjeto);		
+		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
 }

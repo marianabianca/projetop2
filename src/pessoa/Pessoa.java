@@ -44,12 +44,12 @@ public class Pessoa implements Comparable<Pessoa> {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
+
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
 		for (Participacao participacao : participacoes) {
 			listaParticipacoes += participacao.getNomeDoProjeto() + ", ";
-		} 
+		}
 		if (listaParticipacoes.endsWith(", ")) {
 			return listaParticipacoes.substring(0, listaParticipacoes.length() - 2);
 		}
@@ -91,13 +91,25 @@ public class Pessoa implements Comparable<Pessoa> {
 		return this.nome.compareTo(outra.getNome());
 	}
 
-	public void removeParticipacao(String codigoProjeto) {
+	public void removeParticipacao(String codigoProjeto) throws Exception {
+		if (!this.temParticipacaoEmProjeto(codigoProjeto)) {
+			throw new Exception("Pessoa nao possui participacao no projeto indicado");
+		}
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
 				participacoes.remove(participacao);
 				return;
 			}
 		}
+	}
+
+	public boolean temParticipacaoEmProjeto(String codigoProjeto) {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

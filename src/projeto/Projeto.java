@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import participacao.Participacao;
+import participacao.Professor;
 
 public abstract class Projeto {
 
@@ -23,6 +24,15 @@ public abstract class Projeto {
 		this.participacoes = new ArrayList<>();
 	}
 
+	public boolean temProfessorAssociado() {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass().equals(Professor.class)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
@@ -118,6 +128,16 @@ public abstract class Projeto {
 			return listaParticipacoes.substring(0, listaParticipacoes.length() - 2);
 		}
 		return listaParticipacoes;
+	}
+
+	public void removeParticipacao(String cpfPessoa) throws Exception {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCpfDaPessoa().equals(cpfPessoa)) {
+				participacoes.remove(participacao);
+				return;
+			}
+		}
+		throw new Exception("Pessoa nao possui participacao no projeto indicado");
 	}
 
 }

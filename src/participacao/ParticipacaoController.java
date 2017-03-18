@@ -4,6 +4,7 @@ import pessoa.Pessoa;
 import pessoa.PessoaController;
 import projeto.Projeto;
 import projeto.ProjetoController;
+import projeto.ProjetoMonitoria;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaPessoa;
 import validacao.ValidaProjeto;
@@ -22,15 +23,18 @@ public class ParticipacaoController {
 
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
 			int qntHoras) throws Exception {
-		Pessoa pessoa = pessoaController.getPessoa(cpfPessoa);
-		Projeto projeto = projetoController.getProjeto(codigoProjeto);
+		Pessoa pessoa = null;
+		Projeto projeto = null;
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
 			// ModuloDeValidacao.codigoInvalido(codigoProjeto);
-			if (valorHora < 0) {
-				throw new Exception("Valor da hora Invalido");
-			}
-			ValidaProjeto.validaDuracao(qntHoras);
+			pessoa = pessoaController.getPessoa(cpfPessoa);
+			projeto = projetoController.getProjeto(codigoProjeto);
+			ValidaProjeto.validaQtdHoras(qntHoras);
+			ValidaProjeto.validaValorHora(valorHora);
+			if (projeto.temProfessorAssociado() && projeto.getClass().equals(ProjetoMonitoria.class)) {
+				throw new Exception("Monitoria nao pode ter mais de um professor");
+			}		
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -41,15 +45,18 @@ public class ParticipacaoController {
 
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
 			throws Exception {
-		Pessoa pessoa = pessoaController.getPessoa(cpfPessoa);
-		Projeto projeto = projetoController.getProjeto(codigoProjeto);
+		Pessoa pessoa = null;
+		Projeto projeto = null;
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
 			// ModuloDeValidacao.codigoInvalido(codigoProjeto);
-			if (valorHora <= 0) {
-				throw new Exception("Valor da hora Invalido");
+			pessoa = pessoaController.getPessoa(cpfPessoa);
+			projeto = projetoController.getProjeto(codigoProjeto);
+			if (pessoa.temParticipacaoEmProjeto(codigoProjeto)) {
+				throw new Exception("Aluno ja esta cadastrado nesse projeto");
 			}
-			ValidaProjeto.validaDuracao(qntHoras);
+			ValidaProjeto.validaValorHora(valorHora);
+			ValidaProjeto.validaQtdHoras(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -61,15 +68,15 @@ public class ParticipacaoController {
 
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
 			int qntHoras) throws Exception {
-		Pessoa pessoa = pessoaController.getPessoa(cpfPessoa);
-		Projeto projeto = projetoController.getProjeto(codigoProjeto);
+		Pessoa pessoa = null;
+		Projeto projeto = null;
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
 			// ModuloDeValidacao.codigoInvalido(codigoProjeto);
-			if (valorHora <= 0) {
-				throw new Exception("Valor da hora Invalido");
-			}
-			ValidaProjeto.validaDuracao(qntHoras);
+			pessoa = pessoaController.getPessoa(cpfPessoa);
+			projeto = projetoController.getProjeto(codigoProjeto);
+			ValidaProjeto.validaValorHora(valorHora);
+			ValidaProjeto.validaQtdHoras(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -95,6 +102,17 @@ public class ParticipacaoController {
 	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao)
 			throws Exception {
 		projetoController.adicionaParticipacao(codigoProjeto, participacao);
+	}
+	
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+		try {
+			if (!projetoController.existeProjeto(codigoProjeto)) {
+				throw new Exception("Projeto nao encontrado");
+			}
+			pessoaController.removeParticipacao(cpfPessoa, codigoProjeto);
+		} catch (Exception e) {
+			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
+		}
 	}
 
 }

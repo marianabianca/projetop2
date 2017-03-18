@@ -1,35 +1,35 @@
 package validacao;
 
-
 import exception.StringInvalidaException;
 
 public class ValidaProjeto {
 
 	public static void validaAtributo(String atributo) throws Exception {
-		if((!atributoValido(atributo))){
+		if ((!atributoValido(atributo))) {
 			throw new Exception("Atributo nulo ou invalido");
 		}
-		
+
 		try {
 			ModuloDeValidacao.stringInvalida(atributo);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Atributo nulo ou invalido");
 		}
-		
+
 	}
-	
+
 	private static boolean atributoValido(String atributo) {
-		String[] atributosValidos = {"nome", "disciplina", "rendimento", "objetivo", "periodo", "data de inicio",
-				"duracao", "impacto", "producao tecnica", "producao academica", "patentes", "categoria", "participacoes"};
+		String[] atributosValidos = { "nome", "disciplina", "rendimento", "objetivo", "periodo", "data de inicio",
+				"duracao", "impacto", "producao tecnica", "producao academica", "patentes", "categoria",
+				"participacoes" };
 		for (String atributoValido : atributosValidos) {
-			if (atributo.equalsIgnoreCase(atributoValido)){
-				return true;				
+			if (atributo.equalsIgnoreCase(atributoValido)) {
+				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	private static void validaValor(String valor, String atributo) throws Exception {
 		if (atributo.equalsIgnoreCase("nome")) {
 			ValidaProjeto.validaNome(valor);
@@ -56,7 +56,7 @@ public class ValidaProjeto {
 		} else {
 			ValidaProjeto.validaCategoria(valor);
 		}
-	}	
+	}
 
 	public static void validaNome(String nome) throws StringInvalidaException {
 		try {
@@ -94,9 +94,9 @@ public class ValidaProjeto {
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Periodo " + e.getMessage());
 		}
-		
+
 		String formaPeriodo = "[1-9][0-9]{3}\\.[1-2]";
-		if (!periodo.matches(formaPeriodo)){
+		if (!periodo.matches(formaPeriodo)) {
 			throw new Exception("Formato de periodo invalido");
 		}
 	}
@@ -104,6 +104,12 @@ public class ValidaProjeto {
 	public static void validaDuracao(int duracao) throws Exception {
 		if (duracao <= 0) {
 			throw new Exception("Duracao invalida");
+		}
+	}
+
+	public static void validaQtdHoras(int qtdHoras) throws Exception {
+		if (qtdHoras <= 0) {
+			throw new Exception("Quantidade de horas invalida");
 		}
 	}
 
@@ -118,13 +124,13 @@ public class ValidaProjeto {
 			throw new Exception("Numero de producoes academicas invalido");
 		}
 	}
-	
+
 	public static void validaProdTecnica(int prodTecnica) throws Exception {
 		if (prodTecnica < 0) {
 			throw new Exception("Numero de producoes tecnicas invalido");
 		}
 	}
-	
+
 	public static void validaPatentes(int patentes) throws Exception {
 		if (patentes < 0) {
 			throw new Exception("Numero de patentes invalido");
@@ -136,10 +142,10 @@ public class ValidaProjeto {
 			ModuloDeValidacao.stringInvalida(categoria);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Categoria " + e.getMessage());
-		} 
-		
-		if (!(categoria.equalsIgnoreCase("pibic") || categoria.equalsIgnoreCase("pibiti") || categoria.equalsIgnoreCase("pivic")
-				|| categoria.equalsIgnoreCase("coop"))){
+		}
+
+		if (!(categoria.equalsIgnoreCase("pibic") || categoria.equalsIgnoreCase("pibiti")
+				|| categoria.equalsIgnoreCase("pivic") || categoria.equalsIgnoreCase("coop"))) {
 			throw new Exception("Categoria invalida");
 		}
 	}
@@ -151,6 +157,12 @@ public class ValidaProjeto {
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException(atributo + " " + e.getMessage());
 		}
+	}
+
+	public static void validaValorHora(double valorHora) throws Exception {
+		if (valorHora <= 0) {
+			throw new Exception("Valor da hora invalido");
+		}	
 	}
 
 }

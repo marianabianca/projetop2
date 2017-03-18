@@ -42,19 +42,19 @@ public class PessoaController {
 	}
 
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
-		if (atributo.equalsIgnoreCase("email")) {
-			return this.getEmailDePessoa(cpf);
-		} else if (atributo.equalsIgnoreCase("nome")) {
-			return this.getNomeDePessoa(cpf);
-		} else if (atributo.equalsIgnoreCase("participacoes")) {
-			return this.getParticipacoesDePessoa(cpf);
+		try {
+			Pessoa pessoa = this.getPessoa(cpf);
+			if (atributo.equalsIgnoreCase("email")) {
+				return pessoa.getEmail();
+			} else if (atributo.equalsIgnoreCase("nome")) {
+				return pessoa.getNome();
+			} else if (atributo.equalsIgnoreCase("participacoes")) {
+				return pessoa.getParticipacoes();
+			}
+		} catch (Exception e) {
+			throw new Exception("Erro na consulta de pessoa: " + e.getMessage());
 		}
 		throw new Exception("Atributo inexistente");
-	}
-
-	private String getParticipacoesDePessoa(String cpf) throws Exception {
-		Pessoa pessoa = this.getPessoa(cpf);
-		return pessoa.getParticipacoes();
 	}
 
 	public Pessoa getPessoa(String cpf) throws Exception {
@@ -63,17 +63,7 @@ public class PessoaController {
 				return pessoas.get(cpfDaPessoa);
 			}
 		}
-		throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
-	}
-
-	private String getEmailDePessoa(String cpf) throws Exception {
-		Pessoa pessoa = this.getPessoa(cpf);
-		return pessoa.getEmail();
-	}
-
-	private String getNomeDePessoa(String cpf) throws Exception {
-		Pessoa pessoa = this.getPessoa(cpf);
-		return pessoa.getNome();
+		throw new Exception("Pessoa nao encontrada");
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
@@ -102,14 +92,13 @@ public class PessoaController {
 		}
 	}
 
-	public void adicionaParticipacao(String cpfPessoa, Participacao participacao)
-			throws Exception {
+	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws Exception {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.adicionaParticipacao(participacao);
 	}
 
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
-		Pessoa pessoa = this.getPessoa(cpfPessoa);	
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.removeParticipacao(codigoProjeto);
 	}
 }

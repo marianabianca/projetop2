@@ -132,13 +132,21 @@ public class ProjetoController {
 				return projeto.getCodigo();
 			}
 		}
-		throw new ObjetoNuloException("Projeto nao encontrado");
+		throw new ObjetoNuloException("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
 	}
 
-	public void adicionaParticipacao(String codigoProjeto, Participacao participacao)
-			throws Exception {
+	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
 		projeto.adicionaParticipacao(participacao);
+	}
+
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+		try {
+			Projeto projeto = this.getProjeto(cpfPessoa);
+			projeto.removeParticipacao(codigoProjeto);
+		} catch (Exception e) {
+			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
+		}
 	}
 
 	private String geraCodigo() {
@@ -152,6 +160,10 @@ public class ProjetoController {
 		}
 		Projeto projeto = projetos.get(codigo);
 		return projeto;
+	}
+
+	public boolean existeProjeto(String codigoProjeto) {
+		return projetos.containsKey(codigoProjeto);
 	}
 
 }

@@ -50,4 +50,3 @@ expectError "Erro na remocao de participacao: Projeto nao encontrado" removePart
 
 
 fechaSistema
-

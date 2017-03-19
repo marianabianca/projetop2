@@ -111,16 +111,16 @@ public class Pessoa {
 
 	public double calculaPontuacaoPorParticipacao() {
 		int acumulador = 0;
-		int acumuladorPEDExtensaoPET = 0;
+		int acumuladorGraduandoPEDExtensaoPET = 0;
 		int acumuladorGraduandoMonitoria = 0;
 		for (Participacao participacao : participacoes) {
 			if (participacao.getClass() == AlunoGraduando.class) {
-				if (acumuladorPEDExtensaoPET != 8 && participacao.getTipoDeProjeto().equals("PED")) {
-					acumuladorPEDExtensaoPET += participacao.calculaPontuacao();
-					if (acumuladorPEDExtensaoPET > 8) {
-						acumuladorPEDExtensaoPET = 8;
+				if (acumuladorGraduandoPEDExtensaoPET != 8 && participacao.getTipoDeProjeto().equals("IsntMonitoria")) {
+					acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
+					if (acumuladorGraduandoPEDExtensaoPET > 8) {
+						acumuladorGraduandoPEDExtensaoPET = 8;
 					}
-				} else if (acumuladorGraduandoMonitoria != 6 && participacao.getTipoDeProjeto().equals("MONITORIA")) {
+				} else if (acumuladorGraduandoMonitoria != 6 && participacao.getTipoDeProjeto().equals("IsMonitoria")) {
 					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
 					if (acumuladorGraduandoMonitoria > 6) {
 						acumuladorGraduandoMonitoria = 6;
@@ -130,7 +130,7 @@ public class Pessoa {
 				acumulador += participacao.calculaPontuacao();
 			}
 		}
-		acumulador += acumuladorGraduandoMonitoria + acumuladorPEDExtensaoPET;
+		acumulador += acumuladorGraduandoMonitoria + acumuladorGraduandoPEDExtensaoPET;
 		return acumulador;
 	}
 

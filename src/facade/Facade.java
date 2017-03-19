@@ -101,6 +101,11 @@ public class Facade {
 			int qntHoras) throws Exception {
 		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
+	
+	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
+			int qntHoras) throws Exception {
+		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, vinculo, valorHora, qntHoras);
+	}
 
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);

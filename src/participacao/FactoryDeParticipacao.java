@@ -20,4 +20,8 @@ public class FactoryDeParticipacao {
 		return fabrica.FactoryProfissional(pessoa, projeto, cargo, valorHora, qntHoras);
 	}
 
+	public Participacao criaPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, String vinculo) {
+		return new AlunoPosGraduando(pessoa, projeto, valorHora, qntHoras, vinculo);
+	}
+
 }

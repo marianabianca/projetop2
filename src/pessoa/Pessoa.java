@@ -6,10 +6,6 @@ import java.util.List;
 
 import participacao.AlunoGraduando;
 import participacao.Participacao;
-import projeto.ProjetoExtensao;
-import projeto.ProjetoMonitoria;
-import projeto.ProjetoPED;
-import projeto.ProjetoPET;
 
 public class Pessoa {
 
@@ -113,7 +109,7 @@ public class Pessoa {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
 
-	public int calculaPontuacaoPorParticipacao() {
+	public double calculaPontuacaoPorParticipacao() {
 		int acumulador = 0;
 		int acumuladorGraduandoPED = 0;
 		int acumuladorGraduandoPET = 0;

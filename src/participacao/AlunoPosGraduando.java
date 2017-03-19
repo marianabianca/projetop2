@@ -13,7 +13,7 @@ public class AlunoPosGraduando extends Participacao {
 	}
 
 	@Override
-	public int calculaPontuacao() {
+	public double calculaPontuacao() {
 		return 0;
 	}
 

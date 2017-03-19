@@ -11,16 +11,15 @@ public class AlunoGraduando extends Participacao {
 	}
 
 	@Override
-	public int calculaPontuacao() {
+	public double calculaPontuacao() {
+		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao() / 6);
+		int pontos = 0;
 		if (super.projeto.getClass() == ProjetoMonitoria.class) {
-			int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao()/6);
-			int pontos = (int) Math.floor(tempoRemunerado * 1.5);
-			return pontos;
-		} else {	
-			int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao()/6);
-			int pontos = (int) Math.floor(tempoRemunerado * 2);
-			return pontos;
+			pontos = (int) Math.floor(tempoRemunerado * 1.5);
+		} else {
+			pontos = (int) Math.floor(tempoRemunerado * 2);
 		}
+		return pontos;
 	}
 
 }

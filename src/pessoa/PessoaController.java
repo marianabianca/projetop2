@@ -102,9 +102,9 @@ public class PessoaController {
 		}
 	}
 	
-	public void calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
+	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
-		pessoa.calculaPontuacaoPorParticipacao();		
+		return pessoa.calculaPontuacaoPorParticipacao();		
 	}
 
 }

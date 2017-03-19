@@ -10,7 +10,7 @@ public class Desenvolvedor extends Profissional{
 	}
 
 	@Override
-	public int calculaPontuacaoProfissional() {
+	public double calculaPontuacaoProfissional() {
 		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao()/12);
 		int pontos = tempoRemunerado * 5;
 		return pontos;

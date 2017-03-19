@@ -14,7 +14,7 @@ public class Professor extends Participacao {
 	}
 
 	@Override
-	public int calculaPontuacao() {
+	public double calculaPontuacao() {
 		if (super.projeto.getClass() == ProjetoMonitoria.class) {
 			return 4;
 		}else{

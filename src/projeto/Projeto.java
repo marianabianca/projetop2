@@ -42,9 +42,18 @@ public abstract class Projeto {
 		return false;
 	}
 	
-	public boolean temAlunoAssociado() {
+	public boolean temGraduandoAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getClass() == AlunoGraduando.class){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean temParticipacaoPorCPF(String cpfDaParticipacao){
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCpfDaPessoa().equals(cpfDaParticipacao)){
 				return true;
 			}
 		}

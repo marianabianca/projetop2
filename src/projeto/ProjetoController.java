@@ -140,8 +140,8 @@ public class ProjetoController {
 
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		try {
-			Projeto projeto = this.getProjeto(cpfPessoa);
-			projeto.removeParticipacao(codigoProjeto);
+			Projeto projeto = this.getProjeto(codigoProjeto);
+			projeto.removeParticipacao(cpfPessoa);
 		} catch (Exception e) {
 			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
 		}

@@ -15,13 +15,14 @@ public class Professor extends Participacao {
 
 	@Override
 	public double calculaPontuacao() {
+		double porAno = (projeto.getDuracao() / 12);
 		if (super.projeto.getClass() == ProjetoMonitoria.class) {
-			return 4;
-		}else{
-			return (super.projeto.calculaPontuacao() + 4);		
+			return (porAno * 4);
+		} else {
+			return (super.projeto.calculaPontuacao() + (porAno * 4));
 		}
 	}
-	
+
 	public boolean isCoordenador() {
 		return coordenador;
 	}

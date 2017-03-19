@@ -56,7 +56,7 @@ public abstract class Participacao implements Comparable<Participacao> {
 	public abstract double getModificadorBolsa();
 	
 	public double getBolsa() {
-		return this.getModificadorBolsa() * this.qntHoras * this.valorHora;
+		return Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
 	}
 
 	public boolean isMonitoria() {

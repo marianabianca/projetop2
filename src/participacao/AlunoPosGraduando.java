@@ -20,7 +20,7 @@ public class AlunoPosGraduando extends Participacao {
 	@Override
 	public double getModificadorBolsa() {
 		if (vinculo.equalsIgnoreCase("doutorado")) {
-			return 4/3;
+			return 4.0/3.0;
 		}
 		return 1;
 	}

@@ -52,12 +52,11 @@ public abstract class Participacao implements Comparable<Participacao> {
 
 	public abstract double calculaPontuacao();
 
-	public String getTipoDeProjeto() {
+	public boolean isMonitoria() {
 		if (this.projeto.getClass() == ProjetoMonitoria.class) {
-			return "IsMonitoria";
-		} else {
-			return "IsntMonitoria";
+			return true;
 		}
+		return false;
 	}
 
 }

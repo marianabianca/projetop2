@@ -115,12 +115,12 @@ public class Pessoa {
 		int acumuladorGraduandoMonitoria = 0;
 		for (Participacao participacao : participacoes) {
 			if (participacao.getClass() == AlunoGraduando.class) {
-				if (acumuladorGraduandoPEDExtensaoPET != 8 && participacao.getTipoDeProjeto().equals("IsntMonitoria")) {
+				if (acumuladorGraduandoPEDExtensaoPET != 8 && !participacao.isMonitoria()) {
 					acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
 					if (acumuladorGraduandoPEDExtensaoPET > 8) {
 						acumuladorGraduandoPEDExtensaoPET = 8;
 					}
-				} else if (acumuladorGraduandoMonitoria != 6 && participacao.getTipoDeProjeto().equals("IsMonitoria")) {
+				} else if (acumuladorGraduandoMonitoria != 6 && participacao.isMonitoria()) {
 					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
 					if (acumuladorGraduandoMonitoria > 6) {
 						acumuladorGraduandoMonitoria = 6;

@@ -6,6 +6,7 @@ import projeto.Projeto;
 import projeto.ProjetoController;
 import projeto.ProjetoMonitoria;
 import projeto.ProjetoPED;
+import projeto.ProjetoPET;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaPessoa;
 import validacao.ValidaProjeto;
@@ -49,7 +50,7 @@ public class ParticipacaoController {
 				}
 			}
 			if (projeto.getClass() == ProjetoMonitoria.class) {
-				ValidaProjeto.validaValorHoraDeCoordenador(valorPorHora);
+				ValidaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 				if (projeto.temProfessorAssociado()) {
 					ValidaProjeto.validaValorHoraDeMonitoria(valorPorHora);
 					throw new Exception("Monitoria nao pode ter mais de um professor");
@@ -65,62 +66,33 @@ public class ParticipacaoController {
 
 	}
 
-	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais)
-			throws Exception {
+	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais) throws Exception {
 		Pessoa graduando;
 		Projeto projeto;
 		try {
 			ValidaPessoa.validaCpf(cpfGraduando);
 			ValidaProjeto.validaQtdHoras(horasSemanais);
-			ValidaProjeto.validaValorHora(valorPorHora);
+			ValidaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 			graduando = pessoaController.getPessoa(cpfGraduando);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			if (projeto instanceof ProjetoPED) {
-				if (projeto.temGraduandoAssociado()) {
-					if (graduando.temParticipacaoEmProjeto(codigoProjeto)) {
-						throw new Exception("Projetos P&D nao podem ter mais de um graduando");
+			if (projeto instanceof ProjetoPED){
+				ProjetoPED ped = (ProjetoPED) projeto;
+				if (projeto.temGraduandoAssociado() && !ped.getCategoria().equalsIgnoreCase("coop")) {
+					throw new Exception("Projetos P&D nao podem ter mais de um graduando");
+				} else if (projeto.temGraduandoAssociado() && ped.getCategoria().equalsIgnoreCase("coop")) {
+					if (graduando.temParticipacaoEmProjeto(codigoProjeto)){
+						throw new Exception("Aluno ja esta cadastrado nesse projeto");
 					}
 				}
 			}
-
+				
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
-		Participacao participacao = factoryDeParticipacao.criaGraduando(graduando, projeto, valorPorHora,
-				horasSemanais);
+		Participacao participacao = factoryDeParticipacao.criaGraduando(graduando, projeto, valorPorHora, horasSemanais);
 		adicionaParticipacaoAPessoa(cpfGraduando, participacao);
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
-
-	// public void associaGraduando(String cpfPessoa, String codigoProjeto,
-	// double valorHora, int qntHoras)
-	// throws Exception {
-	// Pessoa pessoa = null;
-	// Projeto projeto = null;
-	// try {
-	// ValidaPessoa.validaCpf(cpfPessoa);
-	// pessoa = pessoaController.getPessoa(cpfPessoa);
-	// projeto = projetoController.getProjeto(codigoProjeto);
-	// if (projeto.temAlunoAssociado()){
-	// if (pessoa.temParticipacaoEmProjeto(codigoProjeto)) {
-	// throw new Exception("Aluno ja esta cadastrado nesse projeto");
-	// }
-	// if (projeto.getClass() == ProjetoPED.class){
-	// throw new Exception("Projetos P&D nao podem ter mais de um graduando");
-	// }
-	// }
-	// ValidaProjeto.validaValorHoraDeCoordenador(valorHora);
-	// ValidaProjeto.validaQtdHoras(qntHoras);
-	// } catch (Exception e) {
-	// throw new Exception("Erro na associacao de pessoa a projeto: " +
-	// e.getMessage());
-	// }
-	//
-	// Participacao participacao = factoryDeParticipacao.criaGraduando(pessoa,
-	// projeto, valorHora, qntHoras);
-	// adicionaParticipacaoAPessoa(cpfPessoa, participacao);
-	// adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
-	// }
 
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
 			int qntHoras) throws Exception {
@@ -150,6 +122,9 @@ public class ParticipacaoController {
 			ValidaProjeto.validaValorHora(valorHora);
 			posGraduando = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
+			if (projeto instanceof ProjetoMonitoria || projeto instanceof ProjetoPET) {
+				throw new Exception("Tipo de projeto invalido para pos graduando");
+			}
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}

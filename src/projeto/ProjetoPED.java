@@ -87,7 +87,7 @@ public class ProjetoPED extends Projeto {
 		return produtividade.getQuantidade();
 	}
 	
-	private String getCategoria() {
+	public String getCategoria() {
 		return this.categoria;
 	}
 

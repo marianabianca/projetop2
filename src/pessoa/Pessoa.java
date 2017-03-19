@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import participacao.AlunoGraduando;
+import participacao.AlunoPosGraduando;
 import participacao.Participacao;
+import participacao.Professor;
 
 public class Pessoa {
 
@@ -134,4 +136,14 @@ public class Pessoa {
 		return acumulador;
 	}
 
+	public double getValorBolsa() {
+		int acumulador = 0;
+		for (Participacao participacao : participacoes) {
+			acumulador += participacao.getBolsa();
+		}
+		if (acumulador < 350) {
+			return 350;
+		}
+		return acumulador;
+	}
 }

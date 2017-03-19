@@ -181,4 +181,8 @@ public abstract class Projeto {
 		return acumulador;
 	}
 
+	public int getNumeroDeParticipantes() {
+		return this.participacoes.size();
+	}
+
 }

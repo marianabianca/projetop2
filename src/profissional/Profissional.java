@@ -12,6 +12,11 @@ public abstract class Profissional extends Participacao {
 	}
 
 	@Override
+	public double getModificadorBolsa() {
+		return 1;
+	}
+	
+	@Override
 	public double calculaPontuacao() {
 		if (super.projeto.getClass() == ProjetoPED.class) {
 			return calculaPontuacaoProfissional();

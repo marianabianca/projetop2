@@ -16,5 +16,13 @@ public class AlunoPosGraduando extends Participacao {
 	public double calculaPontuacao() {
 		return 0;
 	}
+	
+	@Override
+	public double getModificadorBolsa() {
+		if (vinculo.equalsIgnoreCase("doutorado")) {
+			return 4/3;
+		}
+		return 1;
+	}
 
 }

@@ -2,10 +2,7 @@ package participacao;
 
 import pessoa.Pessoa;
 import projeto.Projeto;
-import projeto.ProjetoExtensao;
 import projeto.ProjetoMonitoria;
-import projeto.ProjetoPED;
-import projeto.ProjetoPET;
 
 public abstract class Participacao implements Comparable<Participacao> {
 
@@ -40,6 +37,10 @@ public abstract class Participacao implements Comparable<Participacao> {
 	public String getCodigoDoProjeto() {
 		return this.projeto.getCodigo();
 	}
+	
+	public int getNumeroDeParticipantes() {
+		return this.projeto.getNumeroDeParticipantes();
+	}
 
 	@Override
 	public int compareTo(Participacao outra) {
@@ -51,6 +52,12 @@ public abstract class Participacao implements Comparable<Participacao> {
 	}
 
 	public abstract double calculaPontuacao();
+	
+	public abstract double getModificadorBolsa();
+	
+	public double getBolsa() {
+		return this.getModificadorBolsa() * this.qntHoras * this.valorHora;
+	}
 
 	public boolean isMonitoria() {
 		if (this.projeto.getClass() == ProjetoMonitoria.class) {
@@ -59,4 +66,12 @@ public abstract class Participacao implements Comparable<Participacao> {
 		return false;
 	}
 
+	public double getValorDaHora() {
+		return this.valorHora;
+	}
+	
+	public int getQntHoras() {
+		return this.qntHoras;
+	}
+	
 }

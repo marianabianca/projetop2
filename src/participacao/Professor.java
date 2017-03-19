@@ -24,6 +24,14 @@ public class Professor extends Participacao {
 	}
 
 	public boolean isCoordenador() {
-		return coordenador;
+		return this.coordenador;
+	}
+
+	@Override
+	public double getModificadorBolsa() {
+		if (this.coordenador) {
+			return 1.4;
+		}
+		return 1;
 	}
 }

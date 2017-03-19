@@ -107,4 +107,9 @@ public class PessoaController {
 		return pessoa.calculaPontuacaoPorParticipacao();		
 	}
 
+	public double getValorBolsa(String cpfPessoa) throws Exception {
+		Pessoa pessoa = this.getPessoa(cpfPessoa);
+		return pessoa.getValorBolsa();
+	}
+
 }

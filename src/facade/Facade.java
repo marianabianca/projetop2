@@ -14,7 +14,8 @@ public class Facade {
 	public static void main(String[] args) {
 		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
 				"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt",
-				"acceptance_test/us3_test.txt", "acceptance_test/us3_test_exception.txt", "acceptance_test/us4_test.txt" };
+				"acceptance_test/us3_test.txt", "acceptance_test/us3_test_exception.txt",
+				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt" };
 		EasyAccept.main(args);
 	}
 
@@ -101,7 +102,7 @@ public class Facade {
 			int qntHoras) throws Exception {
 		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
-	
+
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
 			int qntHoras) throws Exception {
 		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, vinculo, valorHora, qntHoras);
@@ -110,9 +111,13 @@ public class Facade {
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
-	
-	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception{
+
+	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
 		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
+	}
+	
+	public double getValorBolsa(String cpfPessoa) throws Exception {
+		return pessoaController.getValorBolsa(cpfPessoa);
 	}
 
 }

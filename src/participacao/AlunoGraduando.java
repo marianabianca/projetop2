@@ -22,4 +22,9 @@ public class AlunoGraduando extends Participacao {
 		return pontos;
 	}
 
+	@Override
+	public double getModificadorBolsa() {
+		return 1;
+	}
+
 }

@@ -4,6 +4,14 @@ import exception.StringInvalidaException;
 
 public class ValidaProjeto {
 
+	/**
+	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O ATRIBUTO RECEBIDO É VÁLIDO.
+	 * 
+	 * @param atributo
+	 *            ATRIBUTO A SER TESTADO.
+	 * @throws Exception
+	 *             EXCEÇÃO A SER LANÇADA.
+	 */
 	public static void validaAtributo(String atributo) throws Exception {
 		if ((!atributoValido(atributo))) {
 			throw new Exception("Atributo nulo ou invalido");
@@ -17,6 +25,15 @@ public class ValidaProjeto {
 
 	}
 
+	/**
+	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O ATRIBUTO RECEBIDO REALMENTE
+	 * CONFERE A UM ATRIBUTO DE PROJETO.
+	 * 
+	 * @param atributo
+	 *            ATRIBUTO A SER TESTADO.
+	 * @return DETERMINAR SE O ATRIBUTO REALMENTE EXISTE O ATRIBUTO PASSADO COMO
+	 *         PARÂMETRO.
+	 */
 	private static boolean atributoValido(String atributo) {
 		String[] atributosValidos = { "nome", "disciplina", "rendimento", "objetivo", "periodo", "data de inicio",
 				"duracao", "impacto", "producao tecnica", "producao academica", "patentes", "categoria",
@@ -162,7 +179,7 @@ public class ValidaProjeto {
 	public static void validaValorHora(double valorHora) throws Exception {
 		if (valorHora <= 0) {
 			throw new Exception("Valor da hora invalido");
-		}	
+		}
 	}
 
 	public static void validaValorHoraMenorQueZero(double valorHora) throws Exception {
@@ -172,10 +189,10 @@ public class ValidaProjeto {
 	}
 
 	public static void validaValorHoraDeMonitoria(double valorHora) throws Exception {
-		if (valorHora != 0){
+		if (valorHora != 0) {
 			throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
 		}
-		
+
 	}
 
 }

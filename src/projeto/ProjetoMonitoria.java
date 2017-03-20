@@ -39,6 +39,29 @@ public class ProjetoMonitoria extends Projeto {
 		}
 	}
 
+	@Override
+	public void editaProjeto(String atributo, String valor) throws Exception {
+		if (!this.temAtributo(atributo)) {
+			throw new Exception("Monitoria nao possui " + atributo);
+		}
+
+		if (atributo.equalsIgnoreCase("nome")) {
+			super.setNome(valor);
+		} else if (atributo.equalsIgnoreCase("disciplina")) {
+			this.setDisciplina(valor);
+		} else if (atributo.equalsIgnoreCase("rendimento")) {
+			this.setRendimento(Integer.parseInt(valor));
+		} else if (atributo.equalsIgnoreCase("objetivo")) {
+			super.setObjetivo(valor);
+		} else if (atributo.equalsIgnoreCase("periodo")) {
+			this.setPeriodo(valor);
+		} else if (atributo.equalsIgnoreCase("data de inicio")) {
+			super.setDataInicio(valor);
+		} else {
+			super.setDuracao(Integer.parseInt(valor));
+		}
+	}
+
 	private String getPeriodo() {
 		return this.periodo;
 	}
@@ -71,29 +94,6 @@ public class ProjetoMonitoria extends Projeto {
 		}
 
 		return false;
-	}
-
-	@Override
-	public void editaProjeto(String atributo, String valor) throws Exception {
-		if (!this.temAtributo(atributo)) {
-			throw new Exception("Monitoria nao possui " + atributo);
-		}
-
-		if (atributo.equalsIgnoreCase("nome")) {
-			super.setNome(valor);
-		} else if (atributo.equalsIgnoreCase("disciplina")) {
-			this.setDisciplina(valor);
-		} else if (atributo.equalsIgnoreCase("rendimento")) {
-			this.setRendimento(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			super.setObjetivo(valor);
-		} else if (atributo.equalsIgnoreCase("periodo")) {
-			this.setPeriodo(valor);
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			super.setDataInicio(valor);
-		} else {
-			super.setDuracao(Integer.parseInt(valor));
-		}
 	}
 
 }

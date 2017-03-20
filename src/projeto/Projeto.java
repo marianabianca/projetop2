@@ -41,32 +41,32 @@ public abstract class Projeto {
 		}
 		return false;
 	}
-	
-	public boolean temGraduandoAssociado() {
-		for (Participacao participacao : participacoes) {
-			if (participacao.getClass() == AlunoGraduando.class){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public boolean temParticipacaoPorCPF(String cpfDaParticipacao){
-		for (Participacao participacao : participacoes) {
-			if (participacao.getCpfDaPessoa().equals(cpfDaParticipacao)){
-				return true;
-			}
-		}
-		return false;
-	}
-	
+
 	public boolean temCoordenadorAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getClass().equals(Professor.class)) {
 				Professor prof = (Professor) participacao;
-				if (prof.isCoordenador()){
+				if (prof.isCoordenador()) {
 					return true;
 				}
+			}
+		}
+		return false;
+	}
+
+	public boolean temGraduandoAssociado() {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass() == AlunoGraduando.class) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean temParticipacaoPorCPF(String cpfDaParticipacao) {
+		for (Participacao participacao : participacoes) {
+			if (participacao.getCpfDaPessoa().equals(cpfDaParticipacao)) {
+				return true;
 			}
 		}
 		return false;
@@ -100,6 +100,10 @@ public abstract class Projeto {
 			}
 		}
 		throw new Exception("Pessoa nao possui participacao no projeto indicado");
+	}
+
+	public void adicionaDespesa(Despesa despesa) {
+		this.custos.add(despesa);
 	}
 
 	public String getNome() {
@@ -136,10 +140,6 @@ public abstract class Projeto {
 
 	public String getCodigo() {
 		return this.codigo;
-	}
-
-	public void adicionaDespesa(Despesa despesa) {
-		this.custos.add(despesa);
 	}
 
 	@Override

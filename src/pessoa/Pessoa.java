@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import participacao.AlunoGraduando;
-import participacao.AlunoPosGraduando;
 import participacao.Participacao;
-import participacao.Professor;
 
 public class Pessoa {
 
@@ -44,6 +42,42 @@ public class Pessoa {
 			}
 		}
 		return false;
+	}
+
+	public double calculaPontuacaoPorParticipacao() {
+		int acumulador = 0;
+		int acumuladorGraduandoPEDExtensaoPET = 0;
+		int acumuladorGraduandoMonitoria = 0;
+		for (Participacao participacao : participacoes) {
+			if (participacao.getClass() == AlunoGraduando.class) {
+				if (acumuladorGraduandoPEDExtensaoPET != 8 && !participacao.isMonitoria()) {
+					acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
+					if (acumuladorGraduandoPEDExtensaoPET > 8) {
+						acumuladorGraduandoPEDExtensaoPET = 8;
+					}
+				} else if (acumuladorGraduandoMonitoria != 6 && participacao.isMonitoria()) {
+					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
+					if (acumuladorGraduandoMonitoria > 6) {
+						acumuladorGraduandoMonitoria = 6;
+					}
+				}
+			} else {
+				acumulador += participacao.calculaPontuacao();
+			}
+		}
+		acumulador += acumuladorGraduandoMonitoria + acumuladorGraduandoPEDExtensaoPET;
+		return acumulador;
+	}
+
+	public double getValorBolsa() {
+		int acumulador = 0;
+		for (Participacao participacao : participacoes) {
+			acumulador += participacao.getBolsa();
+		}
+		if (acumulador < 350) {
+			return 350;
+		}
+		return acumulador;
 	}
 
 	public String getNome() {
@@ -111,39 +145,4 @@ public class Pessoa {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);
 	}
 
-	public double calculaPontuacaoPorParticipacao() {
-		int acumulador = 0;
-		int acumuladorGraduandoPEDExtensaoPET = 0;
-		int acumuladorGraduandoMonitoria = 0;
-		for (Participacao participacao : participacoes) {
-			if (participacao.getClass() == AlunoGraduando.class) {
-				if (acumuladorGraduandoPEDExtensaoPET != 8 && !participacao.isMonitoria()) {
-					acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
-					if (acumuladorGraduandoPEDExtensaoPET > 8) {
-						acumuladorGraduandoPEDExtensaoPET = 8;
-					}
-				} else if (acumuladorGraduandoMonitoria != 6 && participacao.isMonitoria()) {
-					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
-					if (acumuladorGraduandoMonitoria > 6) {
-						acumuladorGraduandoMonitoria = 6;
-					}
-				}
-			} else {
-				acumulador += participacao.calculaPontuacao();
-			}
-		}
-		acumulador += acumuladorGraduandoMonitoria + acumuladorGraduandoPEDExtensaoPET;
-		return acumulador;
-	}
-
-	public double getValorBolsa() {
-		int acumulador = 0;
-		for (Participacao participacao : participacoes) {
-			acumulador += participacao.getBolsa();
-		}
-		if (acumulador < 350) {
-			return 350;
-		}
-		return acumulador;
-	}
 }

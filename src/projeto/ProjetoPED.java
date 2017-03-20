@@ -12,8 +12,8 @@ public class ProjetoPED extends Projeto {
 
 	private String categoria;
 	private Map<String, Produtividade> produtividade;
-	private final String[] atributosValidos = {"nome", "categoria", "producao tecnica", "producao academica", "patentes", "objetivo",
-			"data de inicio", "duracao", "participacoes"};
+	private final String[] atributosValidos = { "nome", "categoria", "producao tecnica", "producao academica",
+			"patentes", "objetivo", "data de inicio", "duracao", "participacoes" };
 
 	public ProjetoPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo,
 			String dataInicio, int duracao, String codigo) {
@@ -25,30 +25,10 @@ public class ProjetoPED extends Projeto {
 		this.adicionaProdAcademica(prodAcademica);
 		this.adicionaPatentes(patentes);
 	}
-	
-	private void criaColecaoProdutividade() {
-		this.produtividade.put("prodTecnica", new ProdTecnica(0));
-		this.produtividade.put("prodAcademica", new ProdAcademica(0));
-		this.produtividade.put("patentes", new Patente(0));		
-	}
-	private void adicionaProdTecnica(int prodTecnica) {
-		Produtividade produtividade = this.produtividade.get("prodTecnica");
-		produtividade.adicionaQuantidade(prodTecnica);
-	}
-	
-	private void adicionaProdAcademica(int prodAcademica) {
-		Produtividade produtividade = this.produtividade.get("prodAcademica");
-		produtividade.adicionaQuantidade(prodAcademica);
-	}
-	
-	private void adicionaPatentes(int patentes) {
-		Produtividade produtividade = this.produtividade.get("patentes");
-		produtividade.adicionaQuantidade(patentes);
-	}
-	
+
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
-		if (!this.temAtributo(atributo)){
+		if (!this.temAtributo(atributo)) {
 			throw new Exception("PED nao possui " + atributo);
 		}
 		if (atributo.equalsIgnoreCase("nome")) {
@@ -71,42 +51,12 @@ public class ProjetoPED extends Projeto {
 			return super.getParticipacoes();
 		}
 	}
-	
-	private int getProdTecnica() {
-		Produtividade produtividade = this.produtividade.get("prodTecnica");
-		return produtividade.getQuantidade();
-	}
-	
-	private int getProdAcademica() {
-		Produtividade produtividade = this.produtividade.get("prodAcademica");
-		return produtividade.getQuantidade();
-	}
-	
-	private int getPatentes() {
-		Produtividade produtividade = this.produtividade.get("patentes");
-		return produtividade.getQuantidade();
-	}
-	
-	public String getCategoria() {
-		return this.categoria;
-	}
-
-	private boolean temAtributo(String atributo) {
-		for (String atributoValido : atributosValidos) {
-			if (atributoValido.equalsIgnoreCase(atributo)){
-				return true;
-			}
-		}
-		
-		return false;
-	}
 
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
-		if (!this.temAtributo(atributo)){
+		if (!this.temAtributo(atributo)) {
 			throw new Exception("PED nao possui " + atributo);
 		}
-		
 		if (atributo.equalsIgnoreCase("nome")) {
 			super.setNome(valor);
 		} else if (atributo.equalsIgnoreCase("categoria")) {
@@ -123,17 +73,52 @@ public class ProjetoPED extends Projeto {
 			super.setDataInicio(valor);
 		} else {
 			super.setDataInicio(valor);
-		}		
+		}
+	}
+
+	private void criaColecaoProdutividade() {
+		this.produtividade.put("prodTecnica", new ProdTecnica(0));
+		this.produtividade.put("prodAcademica", new ProdAcademica(0));
+		this.produtividade.put("patentes", new Patente(0));
+	}
+
+	private void adicionaProdTecnica(int prodTecnica) {
+		Produtividade produtividade = this.produtividade.get("prodTecnica");
+		produtividade.adicionaQuantidade(prodTecnica);
+	}
+
+	private void adicionaProdAcademica(int prodAcademica) {
+		Produtividade produtividade = this.produtividade.get("prodAcademica");
+		produtividade.adicionaQuantidade(prodAcademica);
+	}
+
+	private void adicionaPatentes(int patentes) {
+		Produtividade produtividade = this.produtividade.get("patentes");
+		produtividade.adicionaQuantidade(patentes);
+	}
+
+	private boolean temAtributo(String atributo) {
+		for (String atributoValido : atributosValidos) {
+			if (atributoValido.equalsIgnoreCase(atributo)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private int getProdAcademica() {
+		Produtividade produtividade = this.produtividade.get("prodAcademica");
+		return produtividade.getQuantidade();
 	}
 
 	private void setProdAcademica(int prodAcademica) {
 		Produtividade produtividade = this.produtividade.get("prodAcademica");
 		produtividade.setQuantidade(prodAcademica);
 	}
-	
-	private void setPatentes(int patentes) {
-		Produtividade produtividade = this.produtividade.get("patentes");
-		produtividade.setQuantidade(patentes);
+
+	private int getProdTecnica() {
+		Produtividade produtividade = this.produtividade.get("prodTecnica");
+		return produtividade.getQuantidade();
 	}
 
 	private void setProdTecnica(int prodTecnica) {
@@ -141,11 +126,22 @@ public class ProjetoPED extends Projeto {
 		produtividade.setQuantidade(prodTecnica);
 	}
 
+	private int getPatentes() {
+		Produtividade produtividade = this.produtividade.get("patentes");
+		return produtividade.getQuantidade();
+	}
+
+	private void setPatentes(int patentes) {
+		Produtividade produtividade = this.produtividade.get("patentes");
+		produtividade.setQuantidade(patentes);
+	}
+
+	public String getCategoria() {
+		return this.categoria;
+	}
+
 	private void setCategoria(String valor) {
 		this.categoria = valor;
 	}
-	
-	
-	
 
 }

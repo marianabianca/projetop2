@@ -13,6 +13,10 @@ public class Professor extends Participacao {
 		this.coordenador = coordenador;
 	}
 
+	public boolean isCoordenador() {
+		return this.coordenador;
+	}
+
 	@Override
 	public double calculaPontuacao() {
 		double porAno = (projeto.getDuracao() / 12);
@@ -21,10 +25,6 @@ public class Professor extends Participacao {
 		} else {
 			return (super.projeto.calculaPontuacao() + (porAno * 4));
 		}
-	}
-
-	public boolean isCoordenador() {
-		return this.coordenador;
 	}
 
 	@Override

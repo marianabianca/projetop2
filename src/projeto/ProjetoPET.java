@@ -32,7 +32,6 @@ public class ProjetoPET extends Projeto {
 		if (!this.temAtributo(atributo)) {
 			throw new Exception("PET nao possui " + atributo);
 		}
-
 		if (atributo.equalsIgnoreCase("nome")) {
 			return super.getNome();
 		} else if (atributo.equalsIgnoreCase("objetivo")) {
@@ -80,6 +79,21 @@ public class ProjetoPET extends Projeto {
 		} else {
 			super.setDuracao(Integer.parseInt(valor));
 		}
+	}
+
+	private void criaColecaoProdutividade() {
+		this.produtividade.put("prodTecnica", new ProdTecnica(0));
+		this.produtividade.put("prodAcademica", new ProdAcademica(0));
+		this.produtividade.put("patentes", new Patente(0));
+	}
+
+	private boolean temAtributo(String atributo) {
+		for (String atributoValido : atributosValidos) {
+			if (atributoValido.equalsIgnoreCase(atributo)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private void adicionaProdTecnica(int prodTecnica) {
@@ -141,21 +155,6 @@ public class ProjetoPET extends Projeto {
 
 	private void setImpacto(int impacto) {
 		this.impacto = impacto;
-	}
-
-	private boolean temAtributo(String atributo) {
-		for (String atributoValido : atributosValidos) {
-			if (atributoValido.equalsIgnoreCase(atributo)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private void criaColecaoProdutividade() {
-		this.produtividade.put("prodTecnica", new ProdTecnica(0));
-		this.produtividade.put("prodAcademica", new ProdAcademica(0));
-		this.produtividade.put("patentes", new Patente(0));
 	}
 
 }

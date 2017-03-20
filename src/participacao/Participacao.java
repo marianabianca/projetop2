@@ -38,25 +38,12 @@ public abstract class Participacao implements Comparable<Participacao> {
 		return this.projeto.getCodigo();
 	}
 	
-	public int getNumeroDeParticipantes() {
-		return this.projeto.getNumeroDeParticipantes();
-	}
-
-	@Override
-	public int compareTo(Participacao outra) {
-		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
-	}
-
 	public int getDuracaoDoProjeto() {
 		return this.projeto.getDuracao();
 	}
-
-	public abstract double calculaPontuacao();
 	
-	public abstract double getModificadorBolsa();
-	
-	public double getBolsa() {
-		return Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
+	public int getNumeroDeParticipantes() {
+		return this.projeto.getNumeroDeParticipantes();
 	}
 
 	public boolean isMonitoria() {
@@ -64,7 +51,7 @@ public abstract class Participacao implements Comparable<Participacao> {
 			return true;
 		}
 		return false;
-	}
+	}	
 
 	public double getValorDaHora() {
 		return this.valorHora;
@@ -72,6 +59,19 @@ public abstract class Participacao implements Comparable<Participacao> {
 	
 	public int getQntHoras() {
 		return this.qntHoras;
+	}
+	
+	public abstract double calculaPontuacao();
+	
+	public abstract double getModificadorBolsa();
+	
+	public double getBolsa() {
+		return Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
+	}
+	
+	@Override
+	public int compareTo(Participacao outra) {
+		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
 	}
 	
 }

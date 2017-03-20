@@ -66,7 +66,8 @@ public class ParticipacaoController {
 
 	}
 
-	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais) throws Exception {
+	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais)
+			throws Exception {
 		Pessoa graduando;
 		Projeto projeto;
 		try {
@@ -75,21 +76,22 @@ public class ParticipacaoController {
 			ValidaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 			graduando = pessoaController.getPessoa(cpfGraduando);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			if (projeto instanceof ProjetoPED){
+			if (projeto instanceof ProjetoPED) {
 				ProjetoPED ped = (ProjetoPED) projeto;
 				if (projeto.temGraduandoAssociado() && !ped.getCategoria().equalsIgnoreCase("coop")) {
 					throw new Exception("Projetos P&D nao podem ter mais de um graduando");
 				} else if (projeto.temGraduandoAssociado() && ped.getCategoria().equalsIgnoreCase("coop")) {
-					if (graduando.temParticipacaoEmProjeto(codigoProjeto)){
+					if (graduando.temParticipacaoEmProjeto(codigoProjeto)) {
 						throw new Exception("Aluno ja esta cadastrado nesse projeto");
 					}
 				}
 			}
-				
+
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
-		Participacao participacao = factoryDeParticipacao.criaGraduando(graduando, projeto, valorPorHora, horasSemanais);
+		Participacao participacao = factoryDeParticipacao.criaGraduando(graduando, projeto, valorPorHora,
+				horasSemanais);
 		adicionaParticipacaoAPessoa(cpfGraduando, participacao);
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
@@ -113,7 +115,8 @@ public class ParticipacaoController {
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
 
-	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora, int qntHoras) throws Exception {
+	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
+			int qntHoras) throws Exception {
 		Pessoa posGraduando;
 		Projeto projeto;
 		try {
@@ -128,8 +131,8 @@ public class ParticipacaoController {
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
-		Participacao participacao = factoryDeParticipacao.criaPosGraduando(posGraduando, projeto, valorHora,
-				qntHoras, vinculo);
+		Participacao participacao = factoryDeParticipacao.criaPosGraduando(posGraduando, projeto, valorHora, qntHoras,
+				vinculo);
 		adicionaParticipacaoAPessoa(cpfPessoa, participacao);
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}

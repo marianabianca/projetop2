@@ -34,18 +34,69 @@ public class Facade {
 		// TODO
 	}
 
+	/**
+	 * MÉTODO "cadastraPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * 
+	 * @param cpf
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 * @param nome
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO NOME PARA A NOVA PESSOA.
+	 * @param email
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO EMAIL PARA A NOVA PESSOA.
+	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 * @throws Exception
+	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
 		return pessoaController.cadastraPessoa(cpf, nome, email);
 	}
 
+	/**
+	 * MÉTODO "getInfoPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * 
+	 * @param cpf
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 * @param atributo
+	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO BUSCADA SOBRE O
+	 *            USUÁRIO.
+	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 * @throws Exception
+	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 */
 	public String getInfoPessoa(String cpf, String atributo) throws Exception {
 		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
 
+	/**
+	 * MÉTODO "editaPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * 
+	 * @param cpf
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 * @param atributo
+	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO QUE DESEJA SER
+	 *            MODIFICADA EM PESSOA.
+	 * @param valor
+	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
+	 *            MUDADO PESSOA.
+	 * @throws Exception
+	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 */
 	public void editaPessoa(String cpf, String atributo, String valor) throws Exception {
 		pessoaController.editaPessoa(cpf, atributo, valor);
 	}
 
+	/**
+	 * MÉTODO "editaPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * 
+	 * @param cpf
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA REMOVER A
+	 *            PESSOA.
+	 */
 	public void removePessoa(String cpf) {
 		pessoaController.removePessoa(cpf);
 	}
@@ -114,15 +165,22 @@ public class Facade {
 	}
 
 	/**
-	 * MÉTODO "calculaPontuacaoPorParticipacao" CHAMA O MÉTODO DE "pessoaController".
-	 * @param cpfPessoa RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA CALCULAR.
-	 * @return CHAMARÁ O MÉTODO EM CONTROLLER.
-	 * @throws Exception TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR 
+	 * MÉTODO "calculaPontuacaoPorParticipacao" CHAMA O MÉTODO DE
+	 * "pessoaController".
+	 * 
+	 * @param cpfPessoa
+	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
+	 *            CALCULAR.
+	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 * @throws Exception
+	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
 	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
 		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
 	}
-	
+
 	public double getValorBolsa(String cpfPessoa) throws Exception {
 		return pessoaController.getValorBolsa(cpfPessoa);
 	}

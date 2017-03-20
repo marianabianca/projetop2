@@ -12,8 +12,9 @@ public abstract class Profissional extends Participacao {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR OS PONTOS DE PARTICIPACÃO EM CLASSES FILHAS, QUE PODEM SER:
-	 * "Gerente", "Pesquisador" E "Desenvolvedor".
+	 * O MÉTODO TEM COMO OBJETIVO CALCULAR OS PONTOS DE PARTICIPACÃO EM CLASSES
+	 * FILHAS, QUE PODEM SER: "Gerente", "Pesquisador" E "Desenvolvedor".
+	 * 
 	 * @return RETORNA OS PONTOS DA PARTICIPACÃO.
 	 */
 	public abstract double calculaPontuacaoProfissional();

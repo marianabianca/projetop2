@@ -45,11 +45,13 @@ public class Pessoa {
 	}
 
 	/**
-	 * MÉTODO "calculaPontuacaoPorParticipacao" TEM COMO OBJETIVO ACUMULAR OS VALORES RETORNADOS
-	 * NOS MÉTODOS DE CADA PARTICIPACÃO. ALÉM DISSO, TRATA OS CASOS QUE TEM UM LIMITE DE PONTOS
-	 * ACUMULADOS, COMO O CASO DO "AlunoGraduando" QUE PARA AS PARTICIPAÇÕES EM PROJETOS DE
-	 * MONITORIA ELE ACUMULARÁ NO MÁXIMO 6 E PARA OS OUTROS TIPOS DE PROJETO ELE ACUMULARÁ NO 
+	 * MÉTODO "calculaPontuacaoPorParticipacao" TEM COMO OBJETIVO ACUMULAR OS
+	 * VALORES RETORNADOS NOS MÉTODOS DE CADA PARTICIPACÃO. ALÉM DISSO, TRATA OS
+	 * CASOS QUE TEM UM LIMITE DE PONTOS ACUMULADOS, COMO O CASO DO
+	 * "AlunoGraduando" QUE PARA AS PARTICIPAÇÕES EM PROJETOS DE MONITORIA ELE
+	 * ACUMULARÁ NO MÁXIMO 6 E PARA OS OUTROS TIPOS DE PROJETO ELE ACUMULARÁ NO
 	 * MÁXIMO 8.
+	 * 
 	 * @return RETORNA O RESULTADO FINAL DE PONTOS.
 	 */
 	public double calculaPontuacaoPorParticipacao() {
@@ -88,6 +90,11 @@ public class Pessoa {
 		return acumulador;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DA PESSOA.
+	 * 
+	 * @return RETORNARÁ O NOME DA PESSOA.
+	 */
 	public String getNome() {
 		return this.nome;
 	}
@@ -96,6 +103,11 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O EMAIL DA PESSOA.
+	 * 
+	 * @return RETORNARÁ O EMAIL DA PESSOA.
+	 */
 	public String getEmail() {
 		return this.email;
 	}
@@ -104,6 +116,11 @@ public class Pessoa {
 		this.email = email;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O CPF DA PESSOA.
+	 * 
+	 * @return RETORNARÁ O CPF DA PESSOA.
+	 */
 	public String getCpf() {
 		return this.cpf;
 	}

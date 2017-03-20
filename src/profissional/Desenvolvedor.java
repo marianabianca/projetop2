@@ -3,7 +3,7 @@ package profissional;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public class Desenvolvedor extends Profissional{
+public class Desenvolvedor extends Profissional {
 
 	public Desenvolvedor(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		super(pessoa, projeto, valorHora, qntHoras);
@@ -11,11 +11,13 @@ public class Desenvolvedor extends Profissional{
 
 	/**
 	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS, QUE SERÁ 5 POR ANO.
-	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE DE "Desenvolvedor".
+	 * 
+	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE
+	 *         DE "Desenvolvedor".
 	 */
 	@Override
 	public double calculaPontuacaoProfissional() {
-		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao()/12);
+		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao() / 12);
 		int pontos = tempoRemunerado * 5;
 		return pontos;
 	}

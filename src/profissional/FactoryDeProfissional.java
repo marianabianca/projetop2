@@ -5,8 +5,8 @@ import projeto.Projeto;
 
 public class FactoryDeProfissional {
 
-	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora,
-			int qntHoras) throws Exception {
+	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras)
+			throws Exception {
 		if (cargo.equalsIgnoreCase("desenvolvedor")) {
 			return criaDesenvolvedor(pessoa, projeto, valorHora, qntHoras);
 		} else if (cargo.equalsIgnoreCase("gerente")) {

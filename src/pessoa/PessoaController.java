@@ -106,7 +106,14 @@ public class PessoaController {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.calculaPontuacaoPorParticipacao();		
 	}
-
+	
+	/**
+	 * MÉTODO "calculaPontuacaoPorParticipacao" TEM COMO OBJETIVO ENCONTRAR A PESSOA ATRAVÉS 
+	 * DO CPF E DEPOIS DISSO CHAMAR O MÉTODO DE "Pessoa" A PARTIR DA "pessoa" ENCONTRADA.
+	 * @param cpfPessoa RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA CALCULAR.
+	 * @return CHAMARÁ O MÉTODO DE "Pessoa" A PARTIR DA "pessoa" ENCONTRADA.
+	 * @throws Exception TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR 
+	 */
 	public double getValorBolsa(String cpfPessoa) throws Exception {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.getValorBolsa();

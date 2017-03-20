@@ -11,7 +11,12 @@ public class AlunoPosGraduando extends Participacao {
 		super(pessoa, projeto, valorHora, qntHoras);
 		this.vinculo = vinculo;
 	}
-
+	
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO GARANTIR QUE OS PONTOS REFERENTES A 
+	 * PARTICIPACÃO DO "AlunoPosGraduando" SERÁ SEMPRE ZERO.
+	 * @return RETORNARÁ OS PONTOS SEMPRE ZERO.
+	 */
 	@Override
 	public double calculaPontuacao() {
 		return 0;

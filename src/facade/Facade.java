@@ -113,6 +113,12 @@ public class Facade {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
 
+	/**
+	 * MÉTODO "calculaPontuacaoPorParticipacao" CHAMA O MÉTODO DE "pessoaController".
+	 * @param cpfPessoa RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA CALCULAR.
+	 * @return CHAMARÁ O MÉTODO EM CONTROLLER.
+	 * @throws Exception TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR 
+	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
 		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
 	}

@@ -10,6 +10,11 @@ public class AlunoGraduando extends Participacao {
 		super(pessoa, projeto, valorHora, qntHoras);
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS POR SEMESTRE. CASO SEJA MONITORIA, SERÁ 1,5 PONTOS A CADA
+	 * SEMESTRE, CASO SEJA OUTRO TIPO, SERÁ 2 PONTOS A CADA SEMESTRE.
+	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE DE "AlunoGraduando".
+	 */
 	@Override
 	public double calculaPontuacao() {
 		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao() / 6);

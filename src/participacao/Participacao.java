@@ -38,14 +38,14 @@ public abstract class Participacao implements Comparable<Participacao> {
 		return this.projeto.getCodigo();
 	}
 	
-	public int getDuracaoDoProjeto() {
-		return this.projeto.getDuracao();
-	}
-	
 	public int getNumeroDeParticipantes() {
 		return this.projeto.getNumeroDeParticipantes();
 	}
-
+	
+	/**
+	 * O MÉTODO TEM COM OBJETIVO DIZER SE O PROJETO É REFERENTE A MONITORIA OU NÃO.
+	 * @return RETORNA SE É MONITORIA(TRUE) OU SE NÃO É(FALSE).
+	 */
 	public boolean isMonitoria() {
 		if (this.projeto.getClass() == ProjetoMonitoria.class) {
 			return true;
@@ -61,6 +61,11 @@ public abstract class Participacao implements Comparable<Participacao> {
 		return this.qntHoras;
 	}
 	
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO CALCULAR OS PONTOS DE PARTICIPACAO EM CLASSES FILHAS, QUE PODEM SER:
+	 * "Professor", "AlunoGraduando", "AlunoGraduando" E "Profissional" (COM SUAS FILHAS).
+	 * @return RETORNA OS PONTOS DA PARTICIPACA.
+	 */
 	public abstract double calculaPontuacao();
 	
 	public abstract double getModificadorBolsa();

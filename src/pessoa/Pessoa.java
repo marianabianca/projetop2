@@ -44,6 +44,14 @@ public class Pessoa {
 		return false;
 	}
 
+	/**
+	 * MÉTODO "calculaPontuacaoPorParticipacao" TEM COMO OBJETIVO ACUMULAR OS VALORES RETORNADOS
+	 * NOS MÉTODOS DE CADA PARTICIPACÃO. ALÉM DISSO, TRATA OS CASOS QUE TEM UM LIMITE DE PONTOS
+	 * ACUMULADOS, COMO O CASO DO "AlunoGraduando" QUE PARA AS PARTICIPAÇÕES EM PROJETOS DE
+	 * MONITORIA ELE ACUMULARÁ NO MÁXIMO 6 E PARA OS OUTROS TIPOS DE PROJETO ELE ACUMULARÁ NO 
+	 * MÁXIMO 8.
+	 * @return RETORNA O RESULTADO FINAL DE PONTOS.
+	 */
 	public double calculaPontuacaoPorParticipacao() {
 		int acumulador = 0;
 		int acumuladorGraduandoPEDExtensaoPET = 0;

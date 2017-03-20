@@ -129,13 +129,17 @@ public abstract class Projeto {
 	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-
-	public int getDuracao() {
-		return this.duracao;
-	}
-
+	
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
+	}
+	
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A DURAÇÃO DO PROJETO.
+	 * @return RETORNARÁ A DURAÇÃO DO PROJETO.
+	 */
+	public int getDuracao() {
+		return this.duracao;
 	}
 
 	public String getCodigo() {
@@ -171,6 +175,11 @@ public abstract class Projeto {
 		Collections.sort(participacoes);
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO CONTAR A QUANTIDADE DE ALUNOS QUE POSSUEM NAS 
+	 * PARTICIAPAÇÕES DE DETERMINADO PROJETO.
+	 * @return RETORNARÁ O NÚMERO DE ALUNOS NO PROJETO.
+	 */
 	public double calculaPontuacao() {
 		double acumulador = 0;
 		for (Participacao participacao : participacoes) {

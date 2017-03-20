@@ -9,6 +9,10 @@ public class Desenvolvedor extends Profissional{
 		super(pessoa, projeto, valorHora, qntHoras);
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS, QUE SERÁ 5 POR ANO.
+	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE DE "Desenvolvedor".
+	 */
 	@Override
 	public double calculaPontuacaoProfissional() {
 		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao()/12);

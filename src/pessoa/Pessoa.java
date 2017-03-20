@@ -99,6 +99,12 @@ public class Pessoa {
 		return this.nome;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR O NOME DE PESSOA.
+	 * 
+	 * @param email
+	 *            NOVO NOME.
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -112,6 +118,12 @@ public class Pessoa {
 		return this.email;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR O EMAIL DE PESSOA.
+	 * 
+	 * @param email
+	 *            NOVO EMAIL.
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -125,6 +137,12 @@ public class Pessoa {
 		return this.cpf;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR O CPF DE PESSOA.
+	 * 
+	 * @param email
+	 *            NOVO CPF.
+	 */
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
@@ -165,6 +183,10 @@ public class Pessoa {
 		return true;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR UMA STRING COM TODAS AS INFORMAÇÕES
+	 * DE PESSOA.
+	 */
 	@Override
 	public String toString() {
 		return ("Nome: " + this.nome + ", e-mail: " + this.email + ", CPF: " + this.cpf);

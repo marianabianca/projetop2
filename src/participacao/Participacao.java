@@ -18,26 +18,59 @@ public abstract class Participacao implements Comparable<Participacao> {
 		this.qntHoras = qntHoras;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DA PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ O NOME.
+	 */
 	public String getNomeDaPessoa() {
 		return this.pessoa.getNome();
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O CPF DA PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ O CPF.
+	 */
 	public String getCpfDaPessoa() {
 		return this.pessoa.getCpf();
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A PESSOA DA PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ A PESSOA.
+	 */
 	public Pessoa getPessoa() {
 		return this.pessoa;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DO PROJETO REFERENTE A
+	 * PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ O NOME.
+	 */
 	public String getNomeDoProjeto() {
 		return this.projeto.getNome();
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O CÓDIGO DO PROJETO REFERENTE A
+	 * PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ O CÓDIGO.
+	 */
 	public String getCodigoDoProjeto() {
 		return this.projeto.getCodigo();
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NÚMERO DE PARTICIPANTES DO PROJETO
+	 * REFERENTE A PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ O NÚMERO DE PESSOAS.
+	 */
 	public int getNumeroDeParticipantes() {
 		return this.projeto.getNumeroDeParticipantes();
 	}
@@ -55,10 +88,21 @@ public abstract class Participacao implements Comparable<Participacao> {
 		return false;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O VALOR DA HORA DA PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ O VALOR DA HORA.
+	 */
 	public double getValorDaHora() {
 		return this.valorHora;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O QUANTIDADE DE HORAS SEMANAIS DA
+	 * PARTICIPAÇÃO.
+	 * 
+	 * @return RETORNARÁ A QUANTIDADE DE HORAS SEMANAIS.
+	 */
 	public int getQntHoras() {
 		return this.qntHoras;
 	}

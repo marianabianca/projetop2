@@ -106,30 +106,70 @@ public abstract class Projeto {
 		this.custos.add(despesa);
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DO PROJETO.
+	 * 
+	 * @return RETORNARÁ O NOME DO PROJETO.
+	 */
 	public String getNome() {
 		return this.nome;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR O NOME DO PROJETO.
+	 * 
+	 * @param nome
+	 *            NOVO NOME
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O OBJETIVO DO PROJETO.
+	 * 
+	 * @return RETORNARÁ O OBJETIVO DO PROJETO.
+	 */
 	public String getObjetivo() {
 		return this.objetivo;
 	}
 
+	/**
+	 * 
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR O OBJETIVO DO PROJETO.
+	 * 
+	 * @param objetivo
+	 *            NOVO OBJEITVO
+	 */
 	public void setObjetivo(String objetivo) {
 		this.objetivo = objetivo;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A DATA DE INÍCIO DO PROJETO.
+	 * 
+	 * @return RETORNARÁ A DATA DE INÍCIO DO PROJETO.
+	 */
 	public String getDataInicio() {
 		return this.dataInicio;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR A DATA DE INÍCIO DO PROJETO.
+	 * 
+	 * @param dataInicio
+	 *            NOVA DATA DE INÍCIO.
+	 */
 	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO MUDAR A DURACÃO DO PROJETO.
+	 * 
+	 * @param duracao
+	 *            NOVA DURACÃO.
+	 */
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
@@ -143,6 +183,11 @@ public abstract class Projeto {
 		return this.duracao;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A CÓDIGO DO PROJETO.
+	 * 
+	 * @return RETORNARÁ A DURAÇÃO DO CÓDIGO.
+	 */
 	public String getCodigo() {
 		return this.codigo;
 	}
@@ -172,6 +217,9 @@ public abstract class Projeto {
 		return true;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO ORDENAR AS PARTICIPACOES DO PROJETO PELO NOME.
+	 */
 	private void ordenaParticipacoesPeloNomeDasPessoas() {
 		Collections.sort(participacoes);
 	}
@@ -192,6 +240,11 @@ public abstract class Projeto {
 		return acumulador;
 	}
 
+	/**
+	 * O MÉTODO TEM COMO OBJETIVO SABER O NÚMERO DE PARTICIPANTES DO PROJETO.
+	 * 
+	 * @return RETORNARÁ O NÚMERO DE PARTICIPANTES.
+	 */
 	public int getNumeroDeParticipantes() {
 		return this.participacoes.size();
 	}

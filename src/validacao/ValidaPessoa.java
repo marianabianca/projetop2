@@ -1,5 +1,8 @@
 package validacao;
 
+import exception.CPFInvalidoException;
+import exception.EmailInvalidoException;
+import exception.NomeInvalidoException;
 import exception.StringInvalidaException;
 
 public class ValidaPessoa {
@@ -12,11 +15,11 @@ public class ValidaPessoa {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaNome(String nome) throws StringInvalidaException {
+	public static void validaNome(String nome) throws NomeInvalidoException {
 		try {
 			ModuloDeValidacao.stringInvalida(nome);
 		} catch (StringInvalidaException e) {
-			throw new StringInvalidaException("Nome " + e.getMessage());
+			throw new NomeInvalidoException(e.getMessage());
 		}
 	}
 
@@ -29,16 +32,16 @@ public class ValidaPessoa {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaEmail(String email) throws Exception {
+	public static void validaEmail(String email) throws EmailInvalidoException {
 		try {
 			ModuloDeValidacao.stringInvalida(email);
 		} catch (StringInvalidaException e) {
-			throw new StringInvalidaException("Email " + e.getMessage());
+			throw new EmailInvalidoException(e.getMessage());
 		}
 
 		String formaEmail = "[\\._a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-z]+)+";
 		if (!email.matches(formaEmail)) {
-			throw new Exception("Email invalido");
+			throw new EmailInvalidoException("invalido");
 		}
 	}
 
@@ -51,16 +54,16 @@ public class ValidaPessoa {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaCpf(String cpf) throws StringInvalidaException {
+	public static void validaCpf(String cpf) throws CPFInvalidoException {
 		try {
 			ModuloDeValidacao.stringInvalida(cpf);
 		} catch (StringInvalidaException e) {
-			throw new StringInvalidaException("CPF " + e.getMessage());
+			throw new CPFInvalidoException(e.getMessage());
 		}
 
 		String formaCpf = "\\d{3}.\\d{3}.\\d{3}-\\d{2}";
 		if (!cpf.matches(formaCpf)) {
-			throw new StringInvalidaException("CPF invalido");
+			throw new CPFInvalidoException("invalido");
 		}
 	}
 

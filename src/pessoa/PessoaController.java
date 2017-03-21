@@ -71,8 +71,8 @@ public class PessoaController {
 			} else if (atributo.equalsIgnoreCase("participacoes")) {
 				return pessoa.getParticipacoes();
 			}
-		} catch (Exception e) {
-			throw new Exception("Erro na consulta de pessoa: " + e.getMessage());
+		} catch (NullPointerException e) {
+			throw new NullPointerException("Erro na consulta de pessoa: " + e.getMessage());
 		}
 		throw new Exception("Atributo inexistente");
 	}
@@ -88,13 +88,13 @@ public class PessoaController {
 	 *             CASO O CPF NÃO CORRESPONDA A DETERMINADA PESSOA, O SISTEMA
 	 *             DEVERÁ LANÇAR UMA EXCEPTION.
 	 */
-	public Pessoa getPessoa(String cpf) throws Exception {
+	public Pessoa getPessoa(String cpf) throws NullPointerException {
 		for (String cpfDaPessoa : pessoas.keySet()) {
 			if (cpf.equals(cpfDaPessoa)) {
 				return pessoas.get(cpfDaPessoa);
 			}
 		}
-		throw new Exception("Pessoa nao encontrada");
+		throw new NullPointerException("Pessoa nao encontrada");
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class PessoaController {
 		}
 	}
 
-	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws Exception {
+	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws NullPointerException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.adicionaParticipacao(participacao);
 	}
@@ -202,12 +202,12 @@ public class PessoaController {
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 */
-	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
+	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws NullPointerException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.calculaPontuacaoPorParticipacao();
 	}
 
-	public double getValorBolsa(String cpfPessoa) throws Exception {
+	public double getValorBolsa(String cpfPessoa) throws NullPointerException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.getValorBolsa();
 	}

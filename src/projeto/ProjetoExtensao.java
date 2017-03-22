@@ -3,8 +3,6 @@ package projeto;
 public class ProjetoExtensao extends Projeto {
 
 	private int impacto;
-	private final String[] atributosValidos = { "nome", "objetivo", "impacto", "data de inicio", "duracao", "codigo",
-			"participacoes" };
 
 	public ProjetoExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao, String codigo) {
 		super(nome, objetivo, dataInicio, duracao, codigo);
@@ -12,60 +10,46 @@ public class ProjetoExtensao extends Projeto {
 	}
 
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {
-		if (!this.temAtributo(atributo)) {
-			throw new Exception("Extensao nao possui " + atributo);
-		}
-		if (atributo.equalsIgnoreCase("nome")) {
+	public String getInfoProjeto(String atributo) throws Exception {	
+		switch (atributo.toLowerCase()) {
+		case "nome":
 			return super.getNome();
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
+		case "objetivo":
 			return super.getObjetivo();
-		} else if (atributo.equalsIgnoreCase("impacto")) {
-			return Integer.toString(this.getImpacto());
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
+		case "impacto":
+			return Integer.toString(this.impacto);
+		case "data de inicio":
 			return super.getDataInicio();
-		} else if (atributo.equalsIgnoreCase("nome")) {
-			return super.getNome();
-		} else if (atributo.equalsIgnoreCase("duracao")) {
+		case "duracao":
 			return Integer.toString(super.getDuracao());
-		} else {
-			return super.getParticipacoes();
+		case "participacoes":
+			return super.getParticipacoes();			
+		default:
+			throw new Exception("Extensao nao possui " + atributo);
 		}
 	}
 
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
-		if (!this.temAtributo(atributo)) {
+		switch (atributo.toLowerCase()) {
+		case "nome":
+			super.setNome(valor);
+			break;
+		case "objetivo":
+			super.setObjetivo(valor);
+			break;
+		case "impacto":
+			this.impacto = Integer.parseInt(valor);
+			break;
+		case "data de inicio":
+			super.setDataInicio(valor);
+			break;
+		case "duracao":
+			super.setDuracao(Integer.parseInt(valor));
+			break;
+		default:
 			throw new Exception("Extensao nao possui " + atributo);
 		}
-		if (atributo.equalsIgnoreCase("nome")) {
-			super.setNome(valor);
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			super.setObjetivo(valor);
-		} else if (atributo.equalsIgnoreCase("impacto")) {
-			this.setImpacto(valor);
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			super.setDataInicio(valor);
-		} else {
-			super.setDuracao(Integer.parseInt(valor));
-		}
-	}
-
-	private int getImpacto() {
-		return this.impacto;
 	}
 	
-	private void setImpacto(String valor) {
-		this.impacto = Integer.parseInt(valor);
-	}
-
-	private boolean temAtributo(String atributo) {
-		for (String atributoValido : atributosValidos) {
-			if (atributoValido.equalsIgnoreCase(atributo)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 }

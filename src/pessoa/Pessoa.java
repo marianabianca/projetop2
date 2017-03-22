@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import exception.LogicaException;
 import participacao.AlunoGraduando;
 import participacao.Participacao;
 
@@ -23,9 +24,9 @@ public class Pessoa {
 		this.participacoes.add(participacao);
 	}
 
-	public void removeParticipacao(String codigoProjeto) throws Exception {
+	public void removeParticipacao(String codigoProjeto) throws LogicaException {
 		if (!this.temParticipacaoEmProjeto(codigoProjeto)) {
-			throw new Exception("Pessoa nao possui participacao no projeto indicado");
+			throw new LogicaException("Pessoa nao possui participacao no projeto indicado");
 		}
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {

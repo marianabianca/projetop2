@@ -3,6 +3,7 @@ package pessoa;
 import java.util.HashMap;
 import java.util.Map;
 
+import exception.LogicaException;
 import participacao.Participacao;
 import validacao.ValidaPessoa;
 
@@ -30,18 +31,18 @@ public class PessoaController {
 	 *             CASO OS PARÂMETROS NÃO SEJAM VÁLIDOS, O SISTEMA LANÇARÁ O UMA
 	 *             MENSAGEM DE ERRO.
 	 */
-	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
+	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
 		try {
 			ValidaPessoa.validaCpf(cpf);
 			ValidaPessoa.validaNome(nome);
 			ValidaPessoa.validaEmail(email);
 			if (this.contemPessoa(cpf)) {
-				throw new Exception("Pessoa com mesmo CPF ja cadastrada");
+				throw new LogicaException("Pessoa com mesmo CPF ja cadastrada");
 			}
 			Pessoa pessoa = new Pessoa(nome, email, cpf);
 			pessoas.put(cpf, pessoa);
-		} catch (Exception e) {
-			throw new Exception("Erro no cadastro de pessoa: " + e.getMessage());
+		} catch (LogicaException e) {
+			throw new LogicaException("Erro no cadastro de pessoa: " + e.getMessage());
 		}
 		return cpf;
 	}
@@ -74,7 +75,8 @@ public class PessoaController {
 		} catch (NullPointerException e) {
 			throw new NullPointerException("Erro na consulta de pessoa: " + e.getMessage());
 		}
-		throw new Exception("Atributo inexistente");
+		
+		throw new LogicaException("Atributo inexistente");
 	}
 
 	/**
@@ -127,7 +129,7 @@ public class PessoaController {
 	 *             UMA MENSAGEM DE ERRO
 	 * 
 	 */
-	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
+	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws LogicaException {
 		try {
 			ValidaPessoa.validaCpf(cpfPessoa);
 			this.valorAtributoValidos(atributo, valor);
@@ -139,7 +141,7 @@ public class PessoaController {
 				aEditar.setEmail(valor);
 			}
 		} catch (Exception e) {
-			throw new Exception("Erro na atualizacao de pessoa: " + e.getMessage());
+			throw new LogicaException("Erro na atualizacao de pessoa: " + e.getMessage());
 		}
 	}
 
@@ -148,7 +150,7 @@ public class PessoaController {
 		pessoa.adicionaParticipacao(participacao);
 	}
 
-	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.removeParticipacao(codigoProjeto);
 	}
@@ -177,11 +179,11 @@ public class PessoaController {
 	 * @param valor
 	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
 	 *            MUDADO PESSOA.
-	 * @throws Exception
+	 * @throws LogicaException
 	 */
-	private void valorAtributoValidos(String atributo, String valor) throws Exception {
+	private void valorAtributoValidos(String atributo, String valor) throws LogicaException {
 		if (atributo.equalsIgnoreCase("cpf")) {
-			throw new Exception("CPF nao pode ser alterado");
+			throw new LogicaException("CPF nao pode ser alterado");
 		} else if (atributo.equalsIgnoreCase("nome")) {
 			ValidaPessoa.validaNome(valor);
 		} else {
@@ -198,7 +200,7 @@ public class PessoaController {
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
 	 *            CALCULAR.
 	 * @return CHAMARÁ O MÉTODO DE "Pessoa" A PARTIR DA "pessoa" ENCONTRADA.
-	 * @throws Exception
+	 * @throws NullPointerException
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 */
@@ -207,6 +209,13 @@ public class PessoaController {
 		return pessoa.calculaPontuacaoPorParticipacao();
 	}
 
+	/**
+	 * Método usado para "pegar" o valor total da(s) bolsa(s) recebidas por uma pessoa
+	 * 
+	 * @param cpfPessoa - cpf da pessoa a ser "pego" o valor da bolsa
+	 * @return double - o valor total da(s) bolsa(s)
+	 * @throws NullPointerException - caso o cpf não seja referente a uma pessoa cadastrada no sistema
+	 */
 	public double getValorBolsa(String cpfPessoa) throws NullPointerException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.getValorBolsa();

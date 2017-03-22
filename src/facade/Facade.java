@@ -19,6 +19,8 @@ public class Facade {
 				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt" };
 		EasyAccept.main(args);
 	}
+	
+	// TODO tirar pirâmides do egito, tirar produtividade, LogicaException, tratamento de exception na Facade
 
 	public Facade() {
 		pessoaController = new PessoaController();

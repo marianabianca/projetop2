@@ -97,6 +97,7 @@ public class ProjetoPED extends Projeto {
 		produtividade.adicionaQuantidade(patentes);
 	}
 
+	// TODO usar switch
 	private boolean temAtributo(String atributo) {
 		for (String atributoValido : atributosValidos) {
 			if (atributoValido.equalsIgnoreCase(atributo)) {

@@ -22,4 +22,14 @@ public class Desenvolvedor extends Profissional {
 		return pontos;
 	}
 
+	@Override
+	public boolean isAlunoGraduando() {
+		return false;
+	}
+
+	@Override
+	public boolean isProfessor() {
+		return false;
+	}
+
 }

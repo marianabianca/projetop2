@@ -82,10 +82,16 @@ public abstract class Participacao implements Comparable<Participacao> {
 	 * @return RETORNA SE É MONITORIA(TRUE) OU SE NÃO É(FALSE).
 	 */
 	public boolean isMonitoria() {
-		if (this.projeto.getClass() == ProjetoMonitoria.class) {
-			return true;
-		}
-		return false;
+		return projeto.isMonitoria();
+	}
+
+	/**
+	 * O MÉTODO TEM COM OBJETIVO DIZER SE O PROJETO É REFERENTE A PED OU NÃO.
+	 * 
+	 * @return RETORNA SE É PED(TRUE) OU SE NÃO É(FALSE).
+	 */
+	public boolean isPED() {
+		return projeto.isPED();
 	}
 
 	/**
@@ -127,4 +133,19 @@ public abstract class Participacao implements Comparable<Participacao> {
 		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
 	}
 
+	/**
+	 * O MÉTODO TEM COM OBJETIVO DIZER SE A PARTICIPACÃO É REFERENTE A ALUNO
+	 * GRADUANDO OU NÃO.
+	 * 
+	 * @return RETORNA SE É ALUNO GRADUANDO(TRUE) OU SE NÃO É(FALSE).
+	 */
+	public abstract boolean isAlunoGraduando();
+
+	/**
+	 * O MÉTODO TEM COM OBJETIVO DIZER SE A PARTICIPACÃO É REFERENTE A PROFESSOR
+	 * OU NÃO.
+	 * 
+	 * @return RETORNA SE É PROFESSOR(TRUE) OU SE NÃO É(FALSE).
+	 */
+	public abstract boolean isProfessor();
 }

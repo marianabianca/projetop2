@@ -22,7 +22,7 @@ public class AlunoGraduando extends Participacao {
 	public double calculaPontuacao() {
 		int tempoRemunerado = (int) Math.floor(super.projeto.getDuracao() / 6);
 		int pontos = 0;
-		if (super.projeto.getClass() == ProjetoMonitoria.class) {
+		if (isMonitoria()) {
 			pontos = (int) Math.floor(tempoRemunerado * 1.5);
 		} else {
 			pontos = (int) Math.floor(tempoRemunerado * 2);
@@ -33,6 +33,16 @@ public class AlunoGraduando extends Participacao {
 	@Override
 	public double getModificadorBolsa() {
 		return 1;
+	}
+
+	@Override
+	public boolean isAlunoGraduando() {
+		return true;
+	}
+
+	@Override
+	public boolean isProfessor() {
+		return false;
 	}
 
 }

@@ -31,4 +31,14 @@ public class Pesquisador extends Profissional {
 		return super.getBolsa() + 500;
 	}
 
+	@Override
+	public boolean isAlunoGraduando() {
+		return false;
+	}
+
+	@Override
+	public boolean isProfessor() {
+		return false;
+	}
+
 }

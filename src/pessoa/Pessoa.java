@@ -56,28 +56,46 @@ public class Pessoa {
 	 * @return RETORNA O RESULTADO FINAL DE PONTOS.
 	 */
 	public double calculaPontuacaoPorParticipacao() {
-		int acumulador = 0;
-		int acumuladorGraduandoPEDExtensaoPET = 0;
-		int acumuladorGraduandoMonitoria = 0;
+		double acumulador = 0;
+		double acumuladorGraduandoPEDExtensaoPET = 0;
+		double acumuladorGraduandoMonitoria = 0;
 		for (Participacao participacao : participacoes) {
-			if (participacao.getClass() == AlunoGraduando.class) {
-				if (acumuladorGraduandoPEDExtensaoPET != 8 && !participacao.isMonitoria()) {
-					acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
-					if (acumuladorGraduandoPEDExtensaoPET > 8) {
-						acumuladorGraduandoPEDExtensaoPET = 8;
-					}
-				} else if (acumuladorGraduandoMonitoria != 6 && participacao.isMonitoria()) {
-					acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
-					if (acumuladorGraduandoMonitoria > 6) {
-						acumuladorGraduandoMonitoria = 6;
-					}
-				}
+			if (participacao.isAlunoGraduando() && !participacao.isMonitoria()) {
+				acumuladorGraduandoPEDExtensaoPET = calculaPontuacaoPorParticipacaoPEDExtensaoPET(
+						acumuladorGraduandoPEDExtensaoPET, participacao);
+			} else if (participacao.isAlunoGraduando() && participacao.isMonitoria()) {
+				acumuladorGraduandoMonitoria = calculaPontuacaoPorParticipacaoPEDExtensaoPET(
+						acumuladorGraduandoMonitoria, participacao);
 			} else {
 				acumulador += participacao.calculaPontuacao();
 			}
 		}
 		acumulador += acumuladorGraduandoMonitoria + acumuladorGraduandoPEDExtensaoPET;
 		return acumulador;
+	}
+
+	public double calculaPontuacaoPorParticipacaoPEDExtensaoPET(double acumuladorGraduandoPEDExtensaoPET,
+			Participacao participacao) {
+		if (acumuladorGraduandoPEDExtensaoPET != 8) {
+			acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
+			if (acumuladorGraduandoPEDExtensaoPET > 8) {
+				return 8.0;
+			}
+			return acumuladorGraduandoPEDExtensaoPET;
+		}
+		return 8.0;
+	}
+
+	public double calculaPontuacaoPorParticipacaoMonitoria(double acumuladorGraduandoMonitoria,
+			Participacao participacao) {
+		if (acumuladorGraduandoMonitoria != 6) {
+			acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
+			if (acumuladorGraduandoMonitoria > 6) {
+				return 6.0;
+			}
+			return acumuladorGraduandoMonitoria;
+		}
+		return 6.0;
 	}
 
 	public double getValorBolsa() {

@@ -78,4 +78,14 @@ public class ProjetoPED extends Projeto {
 		return this.categoria;
 	}
 
+	@Override
+	public boolean isMonitoria() {
+		return false;
+	}
+
+	@Override
+	public boolean isPED() {
+		return true;
+	}
+
 }

@@ -29,7 +29,7 @@ public class Professor extends Participacao {
 	@Override
 	public double calculaPontuacao() {
 		double porAno = (projeto.getDuracao() / 12);
-		if (super.projeto.getClass() == ProjetoMonitoria.class) {
+		if (isMonitoria()) {
 			return (porAno * 4);
 		} else {
 			return (super.projeto.calculaPontuacao() + (porAno * 4));
@@ -42,5 +42,15 @@ public class Professor extends Participacao {
 			return 1.4;
 		}
 		return 1;
+	}
+
+	@Override
+	public boolean isAlunoGraduando() {
+		return false;
+	}
+
+	@Override
+	public boolean isProfessor() {
+		return true;
 	}
 }

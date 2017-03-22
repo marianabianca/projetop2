@@ -20,28 +20,28 @@ public class ProjetoPET extends Projeto {
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
 		switch (atributo.toLowerCase()) {
-			case "nome":
-				return super.getNome();
-			case "objetivo":
-				return super.getObjetivo();
-			case "impacto":
-				return Integer.toString(this.impacto);
-			case "rendimento":
-				return Integer.toString(this.rendimento);
-			case "producao tecnica":
-				return Integer.toString(this.prodTecnica);
-			case "producao academica":
-				return Integer.toString(this.prodAcademica);
-			case "patentes":
-				return Integer.toString(this.patentes);
-			case "data de inicio":
-				return super.getDataInicio();
-			case "duracao":
-				return Integer.toString(super.getDuracao());
-			case "participacoes":
-				return super.getParticipacoes();				
-			default:
-				throw new Exception("PET nao possui " + atributo);
+		case "nome":
+			return super.getNome();
+		case "objetivo":
+			return super.getObjetivo();
+		case "impacto":
+			return Integer.toString(this.impacto);
+		case "rendimento":
+			return Integer.toString(this.rendimento);
+		case "producao tecnica":
+			return Integer.toString(this.prodTecnica);
+		case "producao academica":
+			return Integer.toString(this.prodAcademica);
+		case "patentes":
+			return Integer.toString(this.patentes);
+		case "data de inicio":
+			return super.getDataInicio();
+		case "duracao":
+			return Integer.toString(super.getDuracao());
+		case "participacoes":
+			return super.getParticipacoes();
+		default:
+			throw new Exception("PET nao possui " + atributo);
 		}
 	}
 
@@ -78,6 +78,16 @@ public class ProjetoPET extends Projeto {
 		default:
 			throw new Exception("PET nao possui " + atributo);
 		}
+	}
+
+	@Override
+	public boolean isMonitoria() {
+		return false;
+	}
+
+	@Override
+	public boolean isPED() {
+		return false;
 	}
 
 }

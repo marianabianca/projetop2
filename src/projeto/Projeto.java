@@ -35,7 +35,7 @@ public abstract class Projeto {
 
 	public boolean temProfessorAssociado() {
 		for (Participacao participacao : participacoes) {
-			if (participacao.getClass().equals(Professor.class)) {
+			if (participacao.isProfessor()) {
 				return true;
 			}
 		}
@@ -44,7 +44,7 @@ public abstract class Projeto {
 
 	public boolean temCoordenadorAssociado() {
 		for (Participacao participacao : participacoes) {
-			if (participacao.getClass().equals(Professor.class)) {
+			if (participacao.isProfessor()) {
 				Professor prof = (Professor) participacao;
 				if (prof.isCoordenador()) {
 					return true;
@@ -56,7 +56,7 @@ public abstract class Projeto {
 
 	public boolean temGraduandoAssociado() {
 		for (Participacao participacao : participacoes) {
-			if (participacao.getClass() == AlunoGraduando.class) {
+			if (participacao.isAlunoGraduando()) {
 				return true;
 			}
 		}
@@ -233,7 +233,7 @@ public abstract class Projeto {
 	public double calculaPontuacao() {
 		double acumulador = 0;
 		for (Participacao participacao : participacoes) {
-			if (participacao.getClass() == AlunoGraduando.class) {
+			if (participacao.isAlunoGraduando()) {
 				acumulador += 1;
 			}
 		}
@@ -248,5 +248,9 @@ public abstract class Projeto {
 	public int getNumeroDeParticipantes() {
 		return this.participacoes.size();
 	}
+	
+	public abstract boolean isMonitoria();
+
+	public abstract boolean isPED();
 
 }

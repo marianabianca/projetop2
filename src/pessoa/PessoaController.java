@@ -32,18 +32,15 @@ public class PessoaController {
 	 *             MENSAGEM DE ERRO.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
-		try {
-			ValidaPessoa.validaCpf(cpf);
-			ValidaPessoa.validaNome(nome);
-			ValidaPessoa.validaEmail(email);
-			if (this.contemPessoa(cpf)) {
-				throw new LogicaException("Pessoa com mesmo CPF ja cadastrada");
-			}
-			Pessoa pessoa = new Pessoa(nome, email, cpf);
-			pessoas.put(cpf, pessoa);
-		} catch (LogicaException e) {
-			throw new LogicaException("Erro no cadastro de pessoa: " + e.getMessage());
+		ValidaPessoa.validaCpf(cpf);
+		ValidaPessoa.validaNome(nome);
+		ValidaPessoa.validaEmail(email);
+		if (this.contemPessoa(cpf)) {
+			throw new LogicaException("Pessoa com mesmo CPF ja cadastrada");
 		}
+		Pessoa pessoa = new Pessoa(nome, email, cpf);
+		pessoas.put(cpf, pessoa);
+		
 		return cpf;
 	}
 
@@ -130,18 +127,14 @@ public class PessoaController {
 	 * 
 	 */
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws LogicaException {
-		try {
-			ValidaPessoa.validaCpf(cpfPessoa);
-			this.valorAtributoValidos(atributo, valor);
+		ValidaPessoa.validaCpf(cpfPessoa);
+		this.valorAtributoValidos(atributo, valor);
 
-			Pessoa aEditar = getPessoa(cpfPessoa);
-			if (atributo.equalsIgnoreCase("nome")) {
-				aEditar.setNome(valor);
-			} else {
-				aEditar.setEmail(valor);
-			}
-		} catch (Exception e) {
-			throw new LogicaException("Erro na atualizacao de pessoa: " + e.getMessage());
+		Pessoa aEditar = getPessoa(cpfPessoa);
+		if (atributo.equalsIgnoreCase("nome")) {
+			aEditar.setNome(valor);
+		} else {
+			aEditar.setEmail(valor);
 		}
 	}
 

@@ -4,8 +4,6 @@ public class ProjetoMonitoria extends Projeto {
 
 	private String disciplina, periodo;
 	private int rendimento;
-	private final String[] atributosValidos = { "nome", "discilina", "rendimento", "objetivo", "periodo",
-			"data de inicio", "duracao", "participacoes" };
 
 	public ProjetoMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao, String codigo) {
@@ -17,83 +15,55 @@ public class ProjetoMonitoria extends Projeto {
 
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
-		if (!this.temAtributo(atributo)) {
-			throw new Exception("Monitoria nao possui " + atributo);
-		}
-		if (atributo.equalsIgnoreCase("nome")) {
-			return super.getNome();
-		} else if (atributo.equalsIgnoreCase("disciplina")) {
-			return this.getDisciplina();
-		} else if (atributo.equalsIgnoreCase("rendimento")) {
-			return Integer.toString(this.getRendimento());
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			return super.getObjetivo();
-		} else if (atributo.equalsIgnoreCase("periodo")) {
-			return this.getPeriodo();
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			return super.getDataInicio();
-		} else if (atributo.equalsIgnoreCase("duracao")) {
-			return Integer.toString(super.getDuracao());
-		} else {
-			return super.getParticipacoes();
+		switch (atributo.toLowerCase()) {
+			case "nome":
+				return super.getNome();
+			case "disciplina":
+				return this.disciplina;
+			case "rendimento":
+				return Integer.toString(this.rendimento);
+			case "objetivo":
+				return super.getObjetivo();
+			case "periodo":			
+				return this.periodo;
+			case "data de inicio":
+				return super.getDataInicio();
+			case "duracao":
+				return Integer.toString(super.getDuracao());
+			case "participacoes":			
+				return super.getParticipacoes();
+			default:
+				throw new Exception("Monitoria nao possui " + atributo);
 		}
 	}
 
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
-		if (!this.temAtributo(atributo)) {
-			throw new Exception("Monitoria nao possui " + atributo);
+		switch (atributo.toLowerCase()) {
+			case "nome":
+				super.setNome(valor);
+				break;
+			case "disciplina":
+				this.disciplina = valor;
+				break;
+			case "rendimento":
+				this.rendimento = Integer.parseInt(valor);
+				break;
+			case "objetivo":
+				super.setObjetivo(valor);
+				break;
+			case "periodo":			
+				this.periodo = valor;
+				break;
+			case "data de inicio":
+				super.setDataInicio(valor);
+				break;
+			case "duracao":
+				super.setDuracao(Integer.parseInt(valor));
+				break;
+			default:
+				throw new Exception("Monitoria nao possui " + atributo);
 		}
-
-		if (atributo.equalsIgnoreCase("nome")) {
-			super.setNome(valor);
-		} else if (atributo.equalsIgnoreCase("disciplina")) {
-			this.setDisciplina(valor);
-		} else if (atributo.equalsIgnoreCase("rendimento")) {
-			this.setRendimento(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			super.setObjetivo(valor);
-		} else if (atributo.equalsIgnoreCase("periodo")) {
-			this.setPeriodo(valor);
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			super.setDataInicio(valor);
-		} else {
-			super.setDuracao(Integer.parseInt(valor));
-		}
-	}
-
-	private String getPeriodo() {
-		return this.periodo;
-	}
-
-	private void setPeriodo(String valor) {
-		this.periodo = valor;
-	}
-
-	private int getRendimento() {
-		return this.rendimento;
-	}
-
-	private void setRendimento(int valor) {
-		this.rendimento = valor;
-	}
-
-	private String getDisciplina() {
-		return this.disciplina;
-	}
-
-	private void setDisciplina(String valor) {
-		this.disciplina = valor;
-	}
-
-	private boolean temAtributo(String atributo) {
-		for (String atributoValido : atributosValidos) {
-			if (atributoValido.equalsIgnoreCase(atributo)) {
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 }

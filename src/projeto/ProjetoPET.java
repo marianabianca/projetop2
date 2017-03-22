@@ -1,160 +1,83 @@
 package projeto;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import produtividade.Patente;
-import produtividade.ProdAcademica;
-import produtividade.ProdTecnica;
-import produtividade.Produtividade;
-
 public class ProjetoPET extends Projeto {
 
 	private int impacto, rendimento;
-	private Map<String, Produtividade> produtividade;
-	private final String[] atributosValidos = { "nome", "objetivo", "impacto", "rendimento", "producao tecnica",
-			"producao academica", "patentes", "data de inicio", "duracao", "participacoes" };
+	private int prodAcademica;
+	private int prodTecnica;
+	private int patentes;
 
 	public ProjetoPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica,
 			int patentes, String dataInicio, int duracao, String codigo) {
 		super(nome, objetivo, dataInicio, duracao, codigo);
 		this.impacto = impacto;
 		this.rendimento = rendimento;
-		this.produtividade = new HashMap<>();
-		this.criaColecaoProdutividade();
-		this.adicionaProdTecnica(prodTecnica);
-		this.adicionaProdAcademica(prodAcademica);
-		this.adicionaPatentes(patentes);
+		this.prodTecnica = 0;
+		this.prodAcademica = 0;
+		this.patentes = 0;
 	}
 
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
-		if (!this.temAtributo(atributo)) {
-			throw new Exception("PET nao possui " + atributo);
-		}
-		if (atributo.equalsIgnoreCase("nome")) {
-			return super.getNome();
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			return super.getObjetivo();
-		} else if (atributo.equalsIgnoreCase("impacto")) {
-			return Integer.toString(this.getImpacto());
-		} else if (atributo.equalsIgnoreCase("rendimento")) {
-			return Integer.toString(this.getRendimento());
-		} else if (atributo.equalsIgnoreCase("producao tecnica")) {
-			return Integer.toString(this.getProdTecnica());
-		} else if (atributo.equalsIgnoreCase("producao academica")) {
-			return Integer.toString(this.getProdAcademica());
-		} else if (atributo.equalsIgnoreCase("patentes")) {
-			return Integer.toString(this.getPatentes());
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			return super.getDataInicio();
-		} else if (atributo.equalsIgnoreCase("duracao")) {
-			return Integer.toString(super.getDuracao());
-		} else {
-			return super.getParticipacoes();
+		switch (atributo.toLowerCase()) {
+			case "nome":
+				return super.getNome();
+			case "objetivo":
+				return super.getObjetivo();
+			case "impacto":
+				return Integer.toString(this.impacto);
+			case "rendimento":
+				return Integer.toString(this.rendimento);
+			case "producao tecnica":
+				return Integer.toString(this.prodTecnica);
+			case "producao academica":
+				return Integer.toString(this.prodAcademica);
+			case "patentes":
+				return Integer.toString(this.patentes);
+			case "data de inicio":
+				return super.getDataInicio();
+			case "duracao":
+				return Integer.toString(super.getDuracao());
+			case "participacoes":
+				return super.getParticipacoes();				
+			default:
+				throw new Exception("PET nao possui " + atributo);
 		}
 	}
 
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
-		if (!this.temAtributo(atributo)) {
+		switch (atributo.toLowerCase()) {
+		case "nome":
+			super.setNome(valor);
+			break;
+		case "objetivo":
+			super.setObjetivo(valor);
+			break;
+		case "impacto":
+			this.impacto = Integer.parseInt(valor);
+			break;
+		case "rendimento":
+			this.rendimento = Integer.parseInt(valor);
+			break;
+		case "producao tecnica":
+			this.prodTecnica = Integer.parseInt(valor);
+			break;
+		case "producao academica":
+			this.prodAcademica = Integer.parseInt(valor);
+			break;
+		case "patentes":
+			this.patentes = Integer.parseInt(valor);
+			break;
+		case "data de inicio":
+			super.setDataInicio(valor);
+			break;
+		case "duracao":
+			super.setDuracao(Integer.parseInt(valor));
+			break;
+		default:
 			throw new Exception("PET nao possui " + atributo);
 		}
-		if (atributo.equalsIgnoreCase("nome")) {
-			super.setNome(valor);
-		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			super.setObjetivo(valor);
-		} else if (atributo.equalsIgnoreCase("impacto")) {
-			this.setImpacto(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("rendimento")) {
-			this.setRendimento(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("producao tecnica")) {
-			this.setProdTecnica(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("producao academica")) {
-			this.setProdAcademica(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("patentes")) {
-			this.setPatentes(Integer.parseInt(valor));
-		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			super.setDataInicio(valor);
-		} else {
-			super.setDuracao(Integer.parseInt(valor));
-		}
-	}
-
-	private void criaColecaoProdutividade() {
-		this.produtividade.put("prodTecnica", new ProdTecnica(0));
-		this.produtividade.put("prodAcademica", new ProdAcademica(0));
-		this.produtividade.put("patentes", new Patente(0));
-	}
-
-	private boolean temAtributo(String atributo) {
-		for (String atributoValido : atributosValidos) {
-			if (atributoValido.equalsIgnoreCase(atributo)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private void adicionaProdTecnica(int prodTecnica) {
-		Produtividade produtividade = this.produtividade.get("prodTecnica");
-		produtividade.adicionaQuantidade(prodTecnica);
-	}
-
-	private void adicionaProdAcademica(int prodAcademica) {
-		Produtividade produtividade = this.produtividade.get("prodAcademica");
-		produtividade.adicionaQuantidade(prodAcademica);
-	}
-
-	private void adicionaPatentes(int patentes) {
-		Produtividade produtividade = this.produtividade.get("patentes");
-		produtividade.adicionaQuantidade(patentes);
-	}
-
-	private int getProdTecnica() {
-		Produtividade produtividade = this.produtividade.get("prodTecnica");
-		return produtividade.getQuantidade();
-	}
-
-	private void setProdTecnica(int prodTecnica) {
-		Produtividade produtividade = this.produtividade.get("prodTecnica");
-		produtividade.setQuantidade(prodTecnica);
-	}
-
-	private int getProdAcademica() {
-		Produtividade produtividade = this.produtividade.get("prodAcademica");
-		return produtividade.getQuantidade();
-	}
-
-	private void setProdAcademica(int prodAcademica) {
-		Produtividade produtividade = this.produtividade.get("prodAcademica");
-		produtividade.setQuantidade(prodAcademica);
-	}
-
-	private int getPatentes() {
-		Produtividade produtividade = this.produtividade.get("patentes");
-		return produtividade.getQuantidade();
-	}
-
-	private void setPatentes(int patentes) {
-		Produtividade produtividade = this.produtividade.get("patentes");
-		produtividade.setQuantidade(patentes);
-	}
-
-	private int getRendimento() {
-		return this.rendimento;
-	}
-
-	private void setRendimento(int rendimento) {
-		this.rendimento = rendimento;
-	}
-
-	private int getImpacto() {
-		return this.impacto;
-	}
-
-	private void setImpacto(int impacto) {
-		this.impacto = impacto;
 	}
 
 }

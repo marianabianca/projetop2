@@ -12,22 +12,27 @@ public class ProjetoController {
 
 	private Map<String, Projeto> projetos;
 	private int contadorCodigo;
-
+	private ValidaProjeto validaProjeto;
+	private ModuloDeValidacao moduloDeValidacao;
+	
 	public ProjetoController() {
 		this.projetos = new HashMap<>();
 		this.contadorCodigo = 0;
+		
+		this.validaProjeto= new ValidaProjeto();
+		this.moduloDeValidacao = new ModuloDeValidacao();
 	}
 
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao) throws Exception {
 		try {
-			ValidaProjeto.validaNome(nome);
-			ValidaProjeto.validaDisciplina(disciplina);
-			ValidaProjeto.validaRendimento(rendimento);
-			ValidaProjeto.validaObjetivo(objetivo);
-			ValidaProjeto.validaPeriodo(periodo);
-			ModuloDeValidacao.dataInvalida(dataInicio);
-			ValidaProjeto.validaDuracao(duracao);
+			this.validaProjeto.validaNome(nome);
+			this.validaProjeto.validaDisciplina(disciplina);
+			this.validaProjeto.validaRendimento(rendimento);
+			this.validaProjeto.validaObjetivo(objetivo);
+			this.validaProjeto.validaPeriodo(periodo);
+			this.moduloDeValidacao.dataInvalida(dataInicio);
+			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
 			Projeto monitoria = new ProjetoMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio,
 					duracao, codigo);
@@ -42,15 +47,15 @@ public class ProjetoController {
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
 			int prodAcademica, int patentes, String dataInicio, int duracao) throws Exception {
 		try {
-			ValidaProjeto.validaNome(nome);
-			ValidaProjeto.validaObjetivo(objetivo);
-			ValidaProjeto.validaImpacto(impacto);
-			ValidaProjeto.validaRendimento(rendimento);
-			ValidaProjeto.validaProdTecnica(prodTecnica);
-			ValidaProjeto.validaProdTecnica(prodTecnica);
-			ValidaProjeto.validaPatentes(patentes);
-			ModuloDeValidacao.dataInvalida(dataInicio);
-			ValidaProjeto.validaDuracao(duracao);
+			this.validaProjeto.validaNome(nome);
+			this.validaProjeto.validaObjetivo(objetivo);
+			this.validaProjeto.validaImpacto(impacto);
+			this.validaProjeto.validaRendimento(rendimento);
+			this.validaProjeto.validaProdTecnica(prodTecnica);
+			this.validaProjeto.validaProdTecnica(prodTecnica);
+			this.validaProjeto.validaPatentes(patentes);
+			this.moduloDeValidacao.dataInvalida(dataInicio);
+			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
 			Projeto pet = new ProjetoPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
 					dataInicio, duracao, codigo);
@@ -64,11 +69,11 @@ public class ProjetoController {
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
 			throws Exception {
 		try {
-			ValidaProjeto.validaNome(nome);
-			ValidaProjeto.validaObjetivo(objetivo);
-			ValidaProjeto.validaImpacto(impacto);
-			ModuloDeValidacao.dataInvalida(dataInicio);
-			ValidaProjeto.validaDuracao(duracao);
+			this.validaProjeto.validaNome(nome);
+			this.validaProjeto.validaObjetivo(objetivo);
+			this.validaProjeto.validaImpacto(impacto);
+			this.moduloDeValidacao.dataInvalida(dataInicio);
+			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
 			Projeto extensao = new ProjetoExtensao(nome, objetivo, impacto, dataInicio, duracao, codigo);
 			projetos.put(codigo, extensao);
@@ -81,14 +86,14 @@ public class ProjetoController {
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
 			String objetivo, String dataInicio, int duracao) throws Exception {
 		try {
-			ValidaProjeto.validaNome(nome);
-			ValidaProjeto.validaCategoria(categoria);
-			ValidaProjeto.validaProdTecnica(prodTecnica);
-			ValidaProjeto.validaProdAcademica(prodAcademica);
-			ValidaProjeto.validaPatentes(patentes);
-			ValidaProjeto.validaObjetivo(objetivo);
-			ModuloDeValidacao.dataInvalida(dataInicio);
-			ValidaProjeto.validaDuracao(duracao);
+			this.validaProjeto.validaNome(nome);
+			this.validaProjeto.validaCategoria(categoria);
+			this.validaProjeto.validaProdTecnica(prodTecnica);
+			this.validaProjeto.validaProdAcademica(prodAcademica);
+			this.validaProjeto.validaPatentes(patentes);
+			this.validaProjeto.validaObjetivo(objetivo);
+			this.moduloDeValidacao.dataInvalida(dataInicio);
+			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
 			Projeto ped = new ProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
 					duracao, codigo);
@@ -101,7 +106,7 @@ public class ProjetoController {
 
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		try {
-			ValidaProjeto.validaAtributo(atributo);
+			this.validaProjeto.validaAtributo(atributo);
 			Projeto projeto = this.getProjeto(codigo);
 			return projeto.getInfoProjeto(atributo);
 		} catch (Exception e) {
@@ -120,8 +125,8 @@ public class ProjetoController {
 
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
 		try {
-			ValidaProjeto.validaAtributo(atributo);
-			ValidaProjeto.validaValorAtributo(atributo, valor);
+			this.validaProjeto.validaAtributo(atributo);
+			this.validaProjeto.validaValorAtributo(atributo, valor);
 			Projeto projeto = this.getProjeto(codigo);
 			projeto.editaProjeto(atributo, valor);
 		} catch (Exception e) {

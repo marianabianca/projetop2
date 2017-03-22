@@ -16,7 +16,7 @@ public class ModuloDeValidacao {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void stringInvalida(String str) throws StringInvalidaException {
+	public void stringInvalida(String str) throws StringInvalidaException {
 		if (str == null) {
 			throw new StringInvalidaException("nulo ou vazio");
 		}
@@ -34,7 +34,7 @@ public class ModuloDeValidacao {
 	 * @throws Exception
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void dataInvalida(String str) throws Exception {
+	public void dataInvalida(String str) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		sdf.setLenient(false);
 		if (!(str.length() == 10)) {

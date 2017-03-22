@@ -6,6 +6,12 @@ import exception.NomeInvalidoException;
 import exception.StringInvalidaException;
 
 public class ValidaPessoa {
+	
+	private ModuloDeValidacao moduloDeValidacao;
+	
+	public ValidaPessoa() {
+		this.moduloDeValidacao = new ModuloDeValidacao();
+	}
 
 	/**
 	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O NOME RECEBIDO É VÁLIDO.
@@ -15,9 +21,9 @@ public class ValidaPessoa {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaNome(String nome) throws NomeInvalidoException {
+	public void validaNome(String nome) throws NomeInvalidoException {
 		try {
-			ModuloDeValidacao.stringInvalida(nome);
+			this.moduloDeValidacao.stringInvalida(nome);
 		} catch (StringInvalidaException e) {
 			throw new NomeInvalidoException(e.getMessage());
 		}
@@ -32,9 +38,9 @@ public class ValidaPessoa {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaEmail(String email) throws EmailInvalidoException {
+	public void validaEmail(String email) throws EmailInvalidoException {
 		try {
-			ModuloDeValidacao.stringInvalida(email);
+			this.moduloDeValidacao.stringInvalida(email);
 		} catch (StringInvalidaException e) {
 			throw new EmailInvalidoException(e.getMessage());
 		}
@@ -54,9 +60,9 @@ public class ValidaPessoa {
 	 * @throws StringInvalidaException
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaCpf(String cpf) throws CPFInvalidoException {
+	public void validaCpf(String cpf) throws CPFInvalidoException {
 		try {
-			ModuloDeValidacao.stringInvalida(cpf);
+			this.moduloDeValidacao.stringInvalida(cpf);
 		} catch (StringInvalidaException e) {
 			throw new CPFInvalidoException(e.getMessage());
 		}

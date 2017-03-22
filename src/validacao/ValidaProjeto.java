@@ -3,6 +3,12 @@ package validacao;
 import exception.StringInvalidaException;
 
 public class ValidaProjeto {
+	
+	private ModuloDeValidacao moduloDeValidacao;
+	
+	public ValidaProjeto() {
+		this.moduloDeValidacao = new ModuloDeValidacao();
+	}
 
 	/**
 	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O ATRIBUTO RECEBIDO É VÁLIDO.
@@ -12,13 +18,13 @@ public class ValidaProjeto {
 	 * @throws Exception
 	 *             EXCEÇÃO A SER LANÇADA.
 	 */
-	public static void validaAtributo(String atributo) throws Exception {
+	public void validaAtributo(String atributo) throws Exception {
 		if ((!atributoValido(atributo))) {
 			throw new Exception("Atributo nulo ou invalido");
 		}
 
 		try {
-			ModuloDeValidacao.stringInvalida(atributo);
+			this.moduloDeValidacao.stringInvalida(atributo);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Atributo nulo ou invalido");
 		}
@@ -34,7 +40,7 @@ public class ValidaProjeto {
 	 * @return DETERMINAR SE O ATRIBUTO REALMENTE EXISTE O ATRIBUTO PASSADO COMO
 	 *         PARÂMETRO.
 	 */
-	private static boolean atributoValido(String atributo) {
+	private boolean atributoValido(String atributo) {
 		String[] atributosValidos = { "nome", "disciplina", "rendimento", "objetivo", "periodo", "data de inicio",
 				"duracao", "impacto", "producao tecnica", "producao academica", "patentes", "categoria",
 				"participacoes" };
@@ -47,67 +53,67 @@ public class ValidaProjeto {
 		return false;
 	}
 
-	private static void validaValor(String valor, String atributo) throws Exception {
+	private void validaValor(String valor, String atributo) throws Exception {
 		if (atributo.equalsIgnoreCase("nome")) {
-			ValidaProjeto.validaNome(valor);
+			this.validaNome(valor);
 		} else if (atributo.equalsIgnoreCase("disciplina")) {
-			ValidaProjeto.validaDisciplina(valor);
+			this.validaDisciplina(valor);
 		} else if (atributo.equalsIgnoreCase("rendimento")) {
-			ValidaProjeto.validaRendimento(Integer.parseInt(valor));
+			this.validaRendimento(Integer.parseInt(valor));
 		} else if (atributo.equalsIgnoreCase("objetivo")) {
-			ValidaProjeto.validaObjetivo(valor);
+			this.validaObjetivo(valor);
 		} else if (atributo.equalsIgnoreCase("periodo")) {
-			ValidaProjeto.validaPeriodo(valor);
+			this.validaPeriodo(valor);
 		} else if (atributo.equalsIgnoreCase("data de inicio")) {
-			ModuloDeValidacao.dataInvalida(valor);
+			this.moduloDeValidacao.dataInvalida(valor);
 		} else if (atributo.equalsIgnoreCase("duracao")) {
-			ValidaProjeto.validaDuracao(Integer.parseInt(valor));
+			this.validaDuracao(Integer.parseInt(valor));
 		} else if (atributo.equalsIgnoreCase("impacto")) {
-			ValidaProjeto.validaImpacto(Integer.parseInt(valor));
+			this.validaImpacto(Integer.parseInt(valor));
 		} else if (atributo.equalsIgnoreCase("producao tecnica")) {
-			ValidaProjeto.validaProdTecnica(Integer.parseInt(valor));
+			this.validaProdTecnica(Integer.parseInt(valor));
 		} else if (atributo.equalsIgnoreCase("producao academica")) {
-			ValidaProjeto.validaProdAcademica(Integer.parseInt(valor));
+			this.validaProdAcademica(Integer.parseInt(valor));
 		} else if (atributo.equalsIgnoreCase("patentes")) {
-			ValidaProjeto.validaProdAcademica(Integer.parseInt(valor));
+			this.validaProdAcademica(Integer.parseInt(valor));
 		} else {
-			ValidaProjeto.validaCategoria(valor);
+			this.validaCategoria(valor);
 		}
 	}
 
-	public static void validaNome(String nome) throws StringInvalidaException {
+	public void validaNome(String nome) throws StringInvalidaException {
 		try {
-			ModuloDeValidacao.stringInvalida(nome);
+			this.moduloDeValidacao.stringInvalida(nome);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Nome " + e.getMessage());
 		}
 	}
 
-	public static void validaDisciplina(String disciplina) throws StringInvalidaException {
+	public void validaDisciplina(String disciplina) throws StringInvalidaException {
 		try {
-			ModuloDeValidacao.stringInvalida(disciplina);
+			this.moduloDeValidacao.stringInvalida(disciplina);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Disciplina " + e.getMessage());
 		}
 	}
 
-	public static void validaRendimento(int rendimento) throws Exception {
+	public void validaRendimento(int rendimento) throws Exception {
 		if (rendimento < 0 || rendimento > 100) {
 			throw new Exception("Rendimento invalido");
 		}
 	}
 
-	public static void validaObjetivo(String objetivo) throws StringInvalidaException {
+	public void validaObjetivo(String objetivo) throws StringInvalidaException {
 		try {
-			ModuloDeValidacao.stringInvalida(objetivo);
+			this.moduloDeValidacao.stringInvalida(objetivo);
 		} catch (Exception e) {
 			throw new StringInvalidaException("Objetivo " + e.getMessage());
 		}
 	}
 
-	public static void validaPeriodo(String periodo) throws Exception {
+	public void validaPeriodo(String periodo) throws Exception {
 		try {
-			ModuloDeValidacao.stringInvalida(periodo);
+			this.moduloDeValidacao.stringInvalida(periodo);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Periodo " + e.getMessage());
 		}
@@ -118,45 +124,45 @@ public class ValidaProjeto {
 		}
 	}
 
-	public static void validaDuracao(int duracao) throws Exception {
+	public void validaDuracao(int duracao) throws Exception {
 		if (duracao <= 0) {
 			throw new Exception("Duracao invalida");
 		}
 	}
 
-	public static void validaQtdHoras(int qtdHoras) throws Exception {
+	public void validaQtdHoras(int qtdHoras) throws Exception {
 		if (qtdHoras <= 0) {
 			throw new Exception("Quantidade de horas invalida");
 		}
 	}
 
-	public static void validaImpacto(int impacto) throws Exception {
+	public void validaImpacto(int impacto) throws Exception {
 		if (impacto < 1 || impacto > 6) {
 			throw new Exception("Impacto invalido");
 		}
 	}
 
-	public static void validaProdAcademica(int prodAcademica) throws Exception {
+	public void validaProdAcademica(int prodAcademica) throws Exception {
 		if (prodAcademica < 0) {
 			throw new Exception("Numero de producoes academicas invalido");
 		}
 	}
 
-	public static void validaProdTecnica(int prodTecnica) throws Exception {
+	public void validaProdTecnica(int prodTecnica) throws Exception {
 		if (prodTecnica < 0) {
 			throw new Exception("Numero de producoes tecnicas invalido");
 		}
 	}
 
-	public static void validaPatentes(int patentes) throws Exception {
+	public void validaPatentes(int patentes) throws Exception {
 		if (patentes < 0) {
 			throw new Exception("Numero de patentes invalido");
 		}
 	}
 
-	public static void validaCategoria(String categoria) throws Exception {
+	public void validaCategoria(String categoria) throws Exception {
 		try {
-			ModuloDeValidacao.stringInvalida(categoria);
+			this.moduloDeValidacao.stringInvalida(categoria);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException("Categoria " + e.getMessage());
 		}
@@ -167,28 +173,28 @@ public class ValidaProjeto {
 		}
 	}
 
-	public static void validaValorAtributo(String atributo, String valor) throws Exception {
-		ValidaProjeto.validaValor(valor, atributo);
+	public void validaValorAtributo(String atributo, String valor) throws Exception {
+		this.validaValor(valor, atributo);
 		try {
-			ModuloDeValidacao.stringInvalida(valor);
+			this.moduloDeValidacao.stringInvalida(valor);
 		} catch (StringInvalidaException e) {
 			throw new StringInvalidaException(atributo + " " + e.getMessage());
 		}
 	}
 
-	public static void validaValorHora(double valorHora) throws Exception {
+	public void validaValorHora(double valorHora) throws Exception {
 		if (valorHora <= 0) {
 			throw new Exception("Valor da hora invalido");
 		}
 	}
 
-	public static void validaValorHoraMenorQueZero(double valorHora) throws Exception {
+	public void validaValorHoraMenorQueZero(double valorHora) throws Exception {
 		if (valorHora < 0) {
 			throw new Exception("Valor da hora invalido");
 		}
 	}
 
-	public static void validaValorHoraDeMonitoria(double valorHora) throws Exception {
+	public void validaValorHoraDeMonitoria(double valorHora) throws Exception {
 		if (valorHora != 0) {
 			throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
 		}

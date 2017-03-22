@@ -16,11 +16,18 @@ public class ParticipacaoController {
 	private FactoryDeParticipacao factoryDeParticipacao;
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
+	private ValidaPessoa validaPessoa;
+	private ValidaProjeto validaProjeto;
+	private ModuloDeValidacao moduloDeValidacao;
 
 	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController) {
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
 		this.factoryDeParticipacao = new FactoryDeParticipacao();
+		
+		this.validaPessoa = new ValidaPessoa();
+		this.validaProjeto = new ValidaProjeto();
+		this.moduloDeValidacao = new ModuloDeValidacao();
 	}
 
 	public void associaProfessor(String cpfProfessor, String codigoProjeto, boolean ehCoordenador, double valorPorHora,
@@ -28,18 +35,18 @@ public class ParticipacaoController {
 		Pessoa professor;
 		Projeto projeto;
 		try {
-			ValidaPessoa.validaCpf(cpfProfessor);
-			ValidaProjeto.validaQtdHoras(quantidadeDeHoras);
+			this.validaPessoa.validaCpf(cpfProfessor);
+			this.validaProjeto.validaQtdHoras(quantidadeDeHoras);
 			professor = pessoaController.getPessoa(cpfProfessor);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			if (projeto.getClass() == ProjetoPED.class) {
 				if (!ehCoordenador) {
-					ValidaProjeto.validaValorHora(valorPorHora);
+					this.validaProjeto.validaValorHora(valorPorHora);
 					if (projeto.temProfessorAssociado()) {
 						throw new Exception("Projetos P&D nao podem ter mais de um professor");
 					}
 				} else {
-					ValidaProjeto.validaValorHora(valorPorHora);
+					this.validaProjeto.validaValorHora(valorPorHora);
 					if (projeto.temProfessorAssociado()) {
 						if (projeto.temCoordenadorAssociado()) {
 							throw new Exception("Projetos P&D nao podem ter mais de um coordenador");
@@ -50,9 +57,9 @@ public class ParticipacaoController {
 				}
 			}
 			if (projeto.getClass() == ProjetoMonitoria.class) {
-				ValidaProjeto.validaValorHoraMenorQueZero(valorPorHora);
+				this.validaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 				if (projeto.temProfessorAssociado()) {
-					ValidaProjeto.validaValorHoraDeMonitoria(valorPorHora);
+					this.validaProjeto.validaValorHoraDeMonitoria(valorPorHora);
 					throw new Exception("Monitoria nao pode ter mais de um professor");
 				}
 			}
@@ -71,9 +78,9 @@ public class ParticipacaoController {
 		Pessoa graduando;
 		Projeto projeto;
 		try {
-			ValidaPessoa.validaCpf(cpfGraduando);
-			ValidaProjeto.validaQtdHoras(horasSemanais);
-			ValidaProjeto.validaValorHoraMenorQueZero(valorPorHora);
+			this.validaPessoa.validaCpf(cpfGraduando);
+			this.validaProjeto.validaQtdHoras(horasSemanais);
+			this.validaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 			graduando = pessoaController.getPessoa(cpfGraduando);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			if (projeto instanceof ProjetoPED) {
@@ -101,11 +108,11 @@ public class ParticipacaoController {
 		Pessoa pessoa = null;
 		Projeto projeto = null;
 		try {
-			ValidaPessoa.validaCpf(cpfPessoa);
+			this.validaPessoa.validaCpf(cpfPessoa);
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			ValidaProjeto.validaValorHora(valorHora);
-			ValidaProjeto.validaQtdHoras(qntHoras);
+			this.validaProjeto.validaValorHora(valorHora);
+			this.validaProjeto.validaQtdHoras(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -120,9 +127,9 @@ public class ParticipacaoController {
 		Pessoa posGraduando;
 		Projeto projeto;
 		try {
-			ValidaPessoa.validaCpf(cpfPessoa);
-			ValidaProjeto.validaQtdHoras(qntHoras);
-			ValidaProjeto.validaValorHora(valorHora);
+			this.validaPessoa.validaCpf(cpfPessoa);
+			this.validaProjeto.validaQtdHoras(qntHoras);
+			this.validaProjeto.validaValorHora(valorHora);
 			posGraduando = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
 			if (projeto instanceof ProjetoMonitoria || projeto instanceof ProjetoPET) {
@@ -150,9 +157,9 @@ public class ParticipacaoController {
 	}
 
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
-		ValidaPessoa.validaCpf(cpfPessoa);
-		ModuloDeValidacao.stringInvalida(atributo);
-		ModuloDeValidacao.stringInvalida(valor);
+		this.validaPessoa.validaCpf(cpfPessoa);
+		this.moduloDeValidacao.stringInvalida(atributo);
+		this.moduloDeValidacao.stringInvalida(valor);
 		atributo = atributo.toLowerCase();
 		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
 	}

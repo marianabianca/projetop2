@@ -10,9 +10,11 @@ import validacao.ValidaPessoa;
 public class PessoaController {
 
 	private Map<String, Pessoa> pessoas;
+	private ValidaPessoa validaPessoa;
 
 	public PessoaController() {
-		pessoas = new HashMap<>();
+		this.pessoas = new HashMap<>();
+		this.validaPessoa = new ValidaPessoa();
 	}
 
 	/**
@@ -32,9 +34,9 @@ public class PessoaController {
 	 *             MENSAGEM DE ERRO.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
-		ValidaPessoa.validaCpf(cpf);
-		ValidaPessoa.validaNome(nome);
-		ValidaPessoa.validaEmail(email);
+		validaPessoa.validaCpf(cpf);
+		validaPessoa.validaNome(nome);
+		validaPessoa.validaEmail(email);
 		if (this.contemPessoa(cpf)) {
 			throw new LogicaException("Pessoa com mesmo CPF ja cadastrada");
 		}
@@ -127,7 +129,7 @@ public class PessoaController {
 	 * 
 	 */
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws LogicaException {
-		ValidaPessoa.validaCpf(cpfPessoa);
+		validaPessoa.validaCpf(cpfPessoa);
 		this.valorAtributoValidos(atributo, valor);
 
 		Pessoa aEditar = getPessoa(cpfPessoa);
@@ -178,9 +180,9 @@ public class PessoaController {
 		if (atributo.equalsIgnoreCase("cpf")) {
 			throw new LogicaException("CPF nao pode ser alterado");
 		} else if (atributo.equalsIgnoreCase("nome")) {
-			ValidaPessoa.validaNome(valor);
+			validaPessoa.validaNome(valor);
 		} else {
-			ValidaPessoa.validaEmail(valor);
+			validaPessoa.validaEmail(valor);
 		}
 	}
 

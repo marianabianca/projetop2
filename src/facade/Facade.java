@@ -5,6 +5,7 @@ import projeto.ProjetoController;
 import participacao.ParticipacaoController;
 
 import easyaccept.EasyAccept;
+import exception.LogicaException;
 
 public class Facade {
 
@@ -20,7 +21,7 @@ public class Facade {
 		EasyAccept.main(args);
 	}
 	
-	// TODO tirar pirâmides do egito, tirar produtividade, LogicaException, tratamento de exception na Facade
+	// TODO tirar pirâmides do egito, LogicaException, tratamento de exception na Facade
 
 	public Facade() {
 		pessoaController = new PessoaController();
@@ -51,8 +52,12 @@ public class Facade {
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
 	 */
-	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
-		return pessoaController.cadastraPessoa(cpf, nome, email);
+	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
+		try {
+			return pessoaController.cadastraPessoa(cpf, nome, email);
+		} catch (LogicaException e) {
+			throw new LogicaException("Erro no cadastro de pessoa: " + e.getMessage());
+		}
 	}
 
 	/**
@@ -88,8 +93,12 @@ public class Facade {
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
 	 */
-	public void editaPessoa(String cpf, String atributo, String valor) throws Exception {
-		pessoaController.editaPessoa(cpf, atributo, valor);
+	public void editaPessoa(String cpf, String atributo, String valor) throws LogicaException {
+		try {
+			pessoaController.editaPessoa(cpf, atributo, valor);
+		} catch (LogicaException e) {
+			throw new LogicaException("Erro na atualizacao de pessoa: " + e.getMessage());
+		}
 	}
 
 	/**

@@ -61,21 +61,33 @@ public class PessoaController {
 	 *             CASO O ATRIBUTO NÃO SEJA VÁLIDO, O SISTEMA LANÇARÁ UMA
 	 *             MENSAGEM DE ERRO.
 	 */
-	public String getInfoPessoa(String cpf, String atributo) throws Exception {
+	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
 		try {
 			Pessoa pessoa = this.getPessoa(cpf);
-			if (atributo.equalsIgnoreCase("email")) {
-				return pessoa.getEmail();
-			} else if (atributo.equalsIgnoreCase("nome")) {
-				return pessoa.getNome();
-			} else if (atributo.equalsIgnoreCase("participacoes")) {
-				return pessoa.getParticipacoes();
-			}
-		} catch (NullPointerException e) {
-			throw new NullPointerException("Erro na consulta de pessoa: " + e.getMessage());
+			return this.selecionaInfoPessoa(pessoa, atributo);
+		} catch (LogicaException e) {
+			throw new LogicaException("Erro na consulta de pessoa: " + e.getMessage());
 		}
-		
-		throw new LogicaException("Atributo inexistente");
+	}
+
+	/**
+	 * O método seleciona qual método deve ser chamado para retornar a informação pedida como parâmentro "atributo"
+	 * @param pessoa - pessoa da informação desejada
+	 * @param atributo - atributo desejado para pegar a informação
+	 * @return String - a informação pedida no parâmetro "atributo"
+	 * @throws LogicaException - caso o atributo desejado não exista
+	 */
+	private String selecionaInfoPessoa(Pessoa pessoa, String atributo) throws LogicaException {
+		switch (atributo.toLowerCase()) {
+			case "email":
+				return pessoa.getEmail();			
+			case "nome":
+				return pessoa.getNome();
+			case "participacoes":
+				return pessoa.getParticipacoes();			
+			default:
+				throw new LogicaException("Atributo inexistente");
+		}
 	}
 
 	/**
@@ -85,17 +97,17 @@ public class PessoaController {
 	 * @param cpf
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA BUSCADA.
 	 * @return RETORNA A PESSOA DESEJADA.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             CASO O CPF NÃO CORRESPONDA A DETERMINADA PESSOA, O SISTEMA
 	 *             DEVERÁ LANÇAR UMA EXCEPTION.
 	 */
-	public Pessoa getPessoa(String cpf) throws NullPointerException {
+	public Pessoa getPessoa(String cpf) throws LogicaException {
 		for (String cpfDaPessoa : pessoas.keySet()) {
 			if (cpf.equals(cpfDaPessoa)) {
 				return pessoas.get(cpfDaPessoa);
 			}
 		}
-		throw new NullPointerException("Pessoa nao encontrada");
+		throw new LogicaException("Pessoa nao encontrada");
 	}
 
 	/**
@@ -140,7 +152,7 @@ public class PessoaController {
 		}
 	}
 
-	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws NullPointerException {
+	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.adicionaParticipacao(participacao);
 	}
@@ -199,7 +211,7 @@ public class PessoaController {
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 */
-	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws NullPointerException {
+	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.calculaPontuacaoPorParticipacao();
 	}
@@ -211,7 +223,7 @@ public class PessoaController {
 	 * @return double - o valor total da(s) bolsa(s)
 	 * @throws NullPointerException - caso o cpf não seja referente a uma pessoa cadastrada no sistema
 	 */
-	public double getValorBolsa(String cpfPessoa) throws NullPointerException {
+	public double getValorBolsa(String cpfPessoa) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		return pessoa.getValorBolsa();
 	}

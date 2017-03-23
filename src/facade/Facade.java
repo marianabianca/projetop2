@@ -48,7 +48,7 @@ public class Facade {
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO EMAIL PARA A NOVA PESSOA.
 	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
 	 */
@@ -70,11 +70,11 @@ public class Facade {
 	 *            USUÁRIO.
 	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
 	 */
-	public String getInfoPessoa(String cpf, String atributo) throws Exception {
+	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
 		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
 
@@ -89,7 +89,7 @@ public class Facade {
 	 * @param valor
 	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
 	 *            MUDADO PESSOA.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
 	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
 	 */

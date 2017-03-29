@@ -14,15 +14,38 @@ public class ProjetoController {
 	private int contadorCodigo;
 	private ValidaProjeto validaProjeto;
 	private ModuloDeValidacao moduloDeValidacao;
-	
+
 	public ProjetoController() {
 		this.projetos = new HashMap<>();
 		this.contadorCodigo = 0;
-		
-		this.validaProjeto= new ValidaProjeto();
+
+		this.validaProjeto = new ValidaProjeto();
 		this.moduloDeValidacao = new ModuloDeValidacao();
 	}
 
+	/**
+	 * Método responsável por criar e adicionar uma monitoria e verificar se
+	 * seus parâmetros são válidos.
+	 * 
+	 * @param nome
+	 *            - Nome do projeto a ser criado.
+	 * @param disciplina
+	 *            - Disciplina do projeto a ser criado.
+	 * @param rendimento
+	 *            - Rendimento do projeto a ser criado.
+	 * @param objetivo
+	 *            - Objetivo do projeto a ser criado.
+	 * @param periodo
+	 *            - Periodo do projeto a ser criado.
+	 * @param dataInicio
+	 *            - Data de Início do projeto a ser criado.
+	 * @param duracao
+	 *            - Duração do do projeto a ser criado.
+	 * @return - Retornará o código do projeto.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
 			String dataInicio, int duracao) throws Exception {
 		try {
@@ -44,6 +67,33 @@ public class ProjetoController {
 
 	}
 
+	/**
+	 * Método responsável por criar e adicionar um projeto PET e verificar se
+	 * seus parâmetros são válidos.
+	 * 
+	 * @param nome
+	 *            - Nome do projeto a ser criado.
+	 * @param objetivo
+	 *            - Objetivo do projeto a ser criado.
+	 * @param impacto
+	 *            - Impacto do projeto a ser criado.
+	 * @param rendimento
+	 *            - Rendimento do projeto a ser criado.
+	 * @param prodTecnica
+	 *            - Produção Técnica do projeto a ser criado.
+	 * @param prodAcademica
+	 *            - Produção Acadêmica do projeto a ser criado.
+	 * @param patentes
+	 *            - Patentes do projeto a ser criado.
+	 * @param dataInicio
+	 *            - Data de Início do projeto a ser criado.
+	 * @param duracao
+	 *            - Duração do do projeto a ser criado.
+	 * @return - Retornará o código do projeto.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
 			int prodAcademica, int patentes, String dataInicio, int duracao) throws Exception {
 		try {
@@ -66,6 +116,25 @@ public class ProjetoController {
 		}
 	}
 
+	/**
+	 * Método responsável por criar e adicionar um projeto extensão e verificar
+	 * se seus parâmetros são válidos.
+	 * 
+	 * @param nome
+	 *            - Nome do projeto a ser criado.
+	 * @param objetivo
+	 *            - Objetivo do projeto a ser criado.
+	 * @param impacto
+	 *            - Impacto do projeto a ser criado.
+	 * @param dataInicio
+	 *            - Data de Início do projeto a ser criado.
+	 * @param duracao
+	 *            - Duração do do projeto a ser criado.
+	 * @return - Retornará o código do projeto.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
 			throws Exception {
 		try {
@@ -83,6 +152,31 @@ public class ProjetoController {
 		}
 	}
 
+	/**
+	 * Método responsável por criar e adicionar um projeto PED e verificar se
+	 * seus parâmetros são válidos.
+	 * 
+	 * @param nome
+	 *            - Nome do projeto a ser criado.
+	 * @param categoria
+	 *            - Categoria do projeto a ser criado.
+	 * @param prodTecnica
+	 *            - Produção Técnica do projeto a ser criado.
+	 * @param prodAcademica
+	 *            - Produção Acadêmica do projeto a ser criado.
+	 * @param patentes
+	 *            - Patentes do projeto a ser criado.
+	 * @param objetivo
+	 *            - Objetivo do projeto a ser criado.
+	 * @param dataInicio
+	 *            - Data de Início do projeto a ser criado.
+	 * @param duracao
+	 *            - Duração do do projeto a ser criado.
+	 * @return - Retornará o código do projeto.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
 			String objetivo, String dataInicio, int duracao) throws Exception {
 		try {

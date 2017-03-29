@@ -42,7 +42,7 @@ public class PessoaController {
 		}
 		Pessoa pessoa = new Pessoa(nome, email, cpf);
 		pessoas.put(cpf, pessoa);
-		
+
 		return cpf;
 	}
 
@@ -71,22 +71,27 @@ public class PessoaController {
 	}
 
 	/**
-	 * O método seleciona qual método deve ser chamado para retornar a informação pedida como parâmentro "atributo"
-	 * @param pessoa - pessoa da informação desejada
-	 * @param atributo - atributo desejado para pegar a informação
+	 * O método seleciona qual método deve ser chamado para retornar a
+	 * informação pedida como parâmentro "atributo"
+	 * 
+	 * @param pessoa
+	 *            - pessoa da informação desejada
+	 * @param atributo
+	 *            - atributo desejado para pegar a informação
 	 * @return String - a informação pedida no parâmetro "atributo"
-	 * @throws LogicaException - caso o atributo desejado não exista
+	 * @throws LogicaException
+	 *             - caso o atributo desejado não exista
 	 */
 	private String selecionaInfoPessoa(Pessoa pessoa, String atributo) throws LogicaException {
 		switch (atributo.toLowerCase()) {
-			case "email":
-				return pessoa.getEmail();			
-			case "nome":
-				return pessoa.getNome();
-			case "participacoes":
-				return pessoa.getParticipacoes();			
-			default:
-				throw new LogicaException("Atributo inexistente");
+		case "email":
+			return pessoa.getEmail();
+		case "nome":
+			return pessoa.getNome();
+		case "participacoes":
+			return pessoa.getParticipacoes();
+		default:
+			throw new LogicaException("Atributo inexistente");
 		}
 	}
 
@@ -152,11 +157,33 @@ public class PessoaController {
 		}
 	}
 
+	/**
+	 * O método é responsável por adicionar participações dentro de pessoa.
+	 * 
+	 * @param cpfPessoa
+	 *            - cpf da pessoa que deseja adicionar a participação.
+	 * @param participacao
+	 *            - participação a ser adicionada.
+	 * @throws LogicaException
+	 *             - caso os parâmetros não sejam os esperados, lançará uma
+	 *             exceção.
+	 */
 	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.adicionaParticipacao(participacao);
 	}
 
+	/**
+	 * O método é responsável por remover participações dentro de pessoa.
+	 * 
+	 * @param cpfPessoa
+	 *            - cpf da pessoa que deseja remover a participação.
+	 * @param codigoProjeto
+	 *            - participacao de projeto a ser removida.
+	 * @throws LogicaException
+	 *             - caso os parâmetros não sejam os esperados, lançará uma
+	 *             exceção.
+	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
 		pessoa.removeParticipacao(codigoProjeto);
@@ -187,6 +214,8 @@ public class PessoaController {
 	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
 	 *            MUDADO PESSOA.
 	 * @throws LogicaException
+	 *             CASO O CPF NÃO SEJA REFERENTE A UMA PESSOA CADASTRADA NO
+	 *             SISTEMA.
 	 */
 	private void valorAtributoValidos(String atributo, String valor) throws LogicaException {
 		if (atributo.equalsIgnoreCase("cpf")) {
@@ -207,9 +236,9 @@ public class PessoaController {
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
 	 *            CALCULAR.
 	 * @return CHAMARÁ O MÉTODO DE "Pessoa" A PARTIR DA "pessoa" ENCONTRADA.
-	 * @throws NullPointerException
-	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
+	 * @throws LogicaException
+	 *             CASO O CPF NÃO SEJA REFERENTE A UMA PESSOA CADASTRADA NO
+	 *             SISTEMA.
 	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
@@ -217,11 +246,15 @@ public class PessoaController {
 	}
 
 	/**
-	 * Método usado para "pegar" o valor total da(s) bolsa(s) recebidas por uma pessoa
+	 * Método usado para "pegar" o valor total da(s) bolsa(s) recebidas por uma
+	 * pessoa
 	 * 
-	 * @param cpfPessoa - cpf da pessoa a ser "pego" o valor da bolsa
+	 * @param cpfPessoa
+	 *            - cpf da pessoa a ser "pego" o valor da bolsa
 	 * @return double - o valor total da(s) bolsa(s)
-	 * @throws NullPointerException - caso o cpf não seja referente a uma pessoa cadastrada no sistema
+	 * @throws LogicaException
+	 *             - caso o cpf não seja referente a uma pessoa cadastrada no
+	 *             sistema
 	 */
 	public double getValorBolsa(String cpfPessoa) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);

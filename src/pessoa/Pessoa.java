@@ -20,10 +20,24 @@ public class Pessoa {
 		this.participacoes = new ArrayList<>();
 	}
 
+	/**
+	 * O método é responsável por adicionar participações dentro de pessoa.
+	 * 
+	 * @param participacao
+	 *            - participação a ser adicionada.
+	 */
 	public void adicionaParticipacao(Participacao participacao) {
 		this.participacoes.add(participacao);
 	}
 
+	/**
+	 * Metodo Responsável por remover a participação da pessoa.
+	 * 
+	 * @param codigoProjeto
+	 *            - codigo do projeto, o qual será tirada a participacao.
+	 * @throws LogicaException
+	 *             - caso o parâmetro não seja o esperado, lançará uma exceção.
+	 */
 	public void removeParticipacao(String codigoProjeto) throws LogicaException {
 		if (!this.temParticipacaoEmProjeto(codigoProjeto)) {
 			throw new LogicaException("Pessoa nao possui participacao no projeto indicado");
@@ -36,6 +50,14 @@ public class Pessoa {
 		}
 	}
 
+	/**
+	 * Metódo responsável por avaliar se há participação no projeto
+	 * especificado.
+	 * 
+	 * @param codigoProjeto
+	 *            - código do projeto a ser analizado.
+	 * @return - se há(true) ou não(false).
+	 */
 	public boolean temParticipacaoEmProjeto(String codigoProjeto) {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCodigoDoProjeto().equals(codigoProjeto)) {
@@ -46,14 +68,9 @@ public class Pessoa {
 	}
 
 	/**
-	 * MÉTODO "calculaPontuacaoPorParticipacao" TEM COMO OBJETIVO ACUMULAR OS
-	 * VALORES RETORNADOS NOS MÉTODOS DE CADA PARTICIPACÃO. ALÉM DISSO, TRATA OS
-	 * CASOS QUE TEM UM LIMITE DE PONTOS ACUMULADOS, COMO O CASO DO
-	 * "AlunoGraduando" QUE PARA AS PARTICIPAÇÕES EM PROJETOS DE MONITORIA ELE
-	 * ACUMULARÁ NO MÁXIMO 6 E PARA OS OUTROS TIPOS DE PROJETO ELE ACUMULARÁ NO
-	 * MÁXIMO 8.
+	 * Método responsável por calcular o número de pontos de uma pessoa.
 	 * 
-	 * @return RETORNA O RESULTADO FINAL DE PONTOS.
+	 * @return - retorna a quantidade final de pontos.
 	 */
 	public double calculaPontuacaoPorParticipacao() {
 		double acumulador = 0;
@@ -74,6 +91,19 @@ public class Pessoa {
 		return acumulador;
 	}
 
+	/**
+	 * Metódo auxiliar de "calculaPontuacaoPorParticipacao" com o objetivo de
+	 * calcular todos os projetos que sejam de aluno graduando e que não são
+	 * monitoria, o qual pode no máximo acumular 8 pontos.
+	 * 
+	 * @param acumuladorGraduandoPEDExtensaoPET
+	 *            - acumulador de pontos recebido de
+	 *            "calculaPontuacaoPorParticipacao".
+	 * @param participacao
+	 *            - participacao a ser calculada de
+	 *            "calculaPontuacaoPorParticipacao".
+	 * @return - chama o método "calculaPontuacao" de participação.
+	 */
 	public double calculaPontuacaoPorParticipacaoPEDExtensaoPET(double acumuladorGraduandoPEDExtensaoPET,
 			Participacao participacao) {
 		if (acumuladorGraduandoPEDExtensaoPET != 8) {
@@ -86,6 +116,19 @@ public class Pessoa {
 		return 8.0;
 	}
 
+	/**
+	 * Metódo auxiliar de "calculaPontuacaoPorParticipacao" com o objetivo de
+	 * calcular todos os projetos que sejam de aluno graduando e que são
+	 * monitoria, o qual pode no máximo acumular 6 pontos.
+	 * 
+	 * @param acumuladorGraduandoMonitoria
+	 *            - acumulador de pontos recebido de
+	 *            "calculaPontuacaoPorParticipacao".
+	 * @param participacao
+	 *            - participacao a ser calculada de
+	 *            "calculaPontuacaoPorParticipacao".
+	 * @return - chama o método "calculaPontuacao" de participação.
+	 */
 	public double calculaPontuacaoPorParticipacaoMonitoria(double acumuladorGraduandoMonitoria,
 			Participacao participacao) {
 		if (acumuladorGraduandoMonitoria != 6) {
@@ -98,6 +141,11 @@ public class Pessoa {
 		return 6.0;
 	}
 
+	/**
+	 * Metódo responsável por acumular o valor da bolsa de uma pessoa.
+	 * 
+	 * @return - retornará o valor da bolsa em double.
+	 */
 	public double getValorBolsa() {
 		int acumulador = 0;
 		for (Participacao participacao : participacoes) {
@@ -166,6 +214,11 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
+	/**
+	 * Método responsável por definir as participações em uma String.
+	 * 
+	 * @return -retornará a String de lista de participações.
+	 */
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
 		for (Participacao participacao : participacoes) {
@@ -177,6 +230,9 @@ public class Pessoa {
 		return listaParticipacoes;
 	}
 
+	/**
+	 * Hashcode do CPF.
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -185,6 +241,9 @@ public class Pessoa {
 		return result;
 	}
 
+	/**
+	 * Equals do CPF.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

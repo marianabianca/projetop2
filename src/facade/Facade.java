@@ -20,8 +20,9 @@ public class Facade {
 				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt" };
 		EasyAccept.main(args);
 	}
-	
-	// TODO tirar pirâmides do egito, LogicaException, tratamento de exception na Facade
+
+	// TODO tirar pirâmides do egito, LogicaException, tratamento de exception
+	// na Facade
 
 	public Facade() {
 		pessoaController = new PessoaController();
@@ -46,11 +47,10 @@ public class Facade {
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO NOME PARA A NOVA PESSOA.
 	 * @param email
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO EMAIL PARA A NOVA PESSOA.
-	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 * @return CHAMA MÉTODO DE "pessoaController".
 	 * @throws LogicaException
-	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ESPERADO.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
 		try {
@@ -68,11 +68,10 @@ public class Facade {
 	 * @param atributo
 	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO BUSCADA SOBRE O
 	 *            USUÁRIO.
-	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 * @return CHAMA MÉTODO DE "pessoaController".
 	 * @throws LogicaException
-	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ESPERADO.
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
 		return pessoaController.getInfoPessoa(cpf, atributo);
@@ -90,8 +89,8 @@ public class Facade {
 	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
 	 *            MUDADO PESSOA.
 	 * @throws LogicaException
-	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ESPERADO.
 	 */
 	public void editaPessoa(String cpf, String atributo, String valor) throws LogicaException {
 		try {
@@ -182,11 +181,10 @@ public class Facade {
 	 * @param cpfPessoa
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
 	 *            CALCULAR.
-	 * @return TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *         FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
-	 * @throws Exception
-	 *             TODO FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR
-	 *             FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR FALTA DEFINIR.
+	 * @return CHAMA MÉTODO DE "pessoaController".
+	 * @throws LogicaException
+	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ESPERADO.
 	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
 		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);

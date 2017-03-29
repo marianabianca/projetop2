@@ -9,8 +9,11 @@ public class ProjetoExtensao extends Projeto {
 		this.impacto = impacto;
 	}
 
+	/**
+	 * Método responável por oferecer determinada informacão do projeto.
+	 */
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {	
+	public String getInfoProjeto(String atributo) throws Exception {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			return super.getNome();
@@ -23,12 +26,15 @@ public class ProjetoExtensao extends Projeto {
 		case "duracao":
 			return Integer.toString(super.getDuracao());
 		case "participacoes":
-			return super.getParticipacoes();			
+			return super.getParticipacoes();
 		default:
 			throw new Exception("Extensao nao possui " + atributo);
 		}
 	}
 
+	/**
+	 * Método responsável por mudar o atributo para o valor especificado.
+	 */
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
 		switch (atributo.toLowerCase()) {
@@ -50,5 +56,5 @@ public class ProjetoExtensao extends Projeto {
 		default:
 			throw new Exception("Extensao nao possui " + atributo);
 		}
-	}	
+	}
 }

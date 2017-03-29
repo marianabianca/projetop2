@@ -8,6 +8,11 @@ public class Despesa {
 		this.valor = valor;
 	}
 
+	/**
+	 * Método responsável por retornar o valor da despesa.
+	 * 
+	 * @return - Retornará o valor da despesa.
+	 */
 	public double getValor() {
 		return this.valor;
 	}

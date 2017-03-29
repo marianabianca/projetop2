@@ -231,7 +231,7 @@ public class Pessoa {
 	}
 
 	/**
-	 * Hashcode do CPF.
+	 * Hashcode com CPF sendo referência.
 	 */
 	@Override
 	public int hashCode() {
@@ -242,7 +242,7 @@ public class Pessoa {
 	}
 
 	/**
-	 * Equals do CPF.
+	 * Equals com CPF sendo referência.
 	 */
 	@Override
 	public boolean equals(Object obj) {

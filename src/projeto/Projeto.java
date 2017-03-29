@@ -25,14 +25,41 @@ public abstract class Projeto {
 		this.participacoes = new ArrayList<>();
 	}
 
+	/**
+	 * Método abstrato com função de repassar atividade para classes filhas.
+	 * 
+	 * @param atributo
+	 *            - Atributo o qual deseja a informação.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 
+	/**
+	 * Método abstrato com função de repassar atividade para classes filhas.
+	 * 
+	 * @param atributo
+	 *            - Atributo do projeto que deseja a editar.
+	 * @param valor
+	 *            - Valor a ser substituido no atributo.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
 
+	/**
+	 * Método responsável por adicionar participação.
+	 * 
+	 * @param participacao
+	 *            - Participação a ser adicionada
+	 */
 	public void adicionaParticipacao(Participacao participacao) {
 		this.participacoes.add(participacao);
 	}
 
+	// TODO
 	public boolean temProfessorAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isProfessor()) {
@@ -42,6 +69,7 @@ public abstract class Projeto {
 		return false;
 	}
 
+	// TODO
 	public boolean temCoordenadorAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isProfessor()) {
@@ -54,6 +82,7 @@ public abstract class Projeto {
 		return false;
 	}
 
+	// TODO
 	public boolean temGraduandoAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isAlunoGraduando()) {
@@ -63,6 +92,15 @@ public abstract class Projeto {
 		return false;
 	}
 
+	/**
+	 * Método responsável por determinar se há participação de uma pessoa em
+	 * determinado projeto.
+	 * 
+	 * @param cpfDaParticipacao
+	 *            - CPF da pessoa que deseja determinar se há participação em
+	 *            determinado projeto.
+	 * @return - Retornará true, caso tenha, ou false, caso não tenha.
+	 */
 	public boolean temParticipacaoPorCPF(String cpfDaParticipacao) {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCpfDaPessoa().equals(cpfDaParticipacao)) {
@@ -72,6 +110,11 @@ public abstract class Projeto {
 		return false;
 	}
 
+	/**
+	 * Método responsável por calcular a despesa total.
+	 * 
+	 * @return - Retornará a despesa total.
+	 */
 	public double calculaCustoTotal() {
 		double despesaTotal = 0;
 		for (Despesa despesa : custos) {
@@ -80,6 +123,11 @@ public abstract class Projeto {
 		return despesaTotal;
 	}
 
+	/**
+	 * Método responsável por definir as participações em uma String.
+	 * 
+	 * @return -retornará a String de lista de participações.
+	 */
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
 		ordenaParticipacoesPeloNomeDasPessoas();
@@ -92,6 +140,16 @@ public abstract class Projeto {
 		return listaParticipacoes;
 	}
 
+	/**
+	 * Método responsável por remover determinada participação de determinada
+	 * pessoa.
+	 * 
+	 * @param cpfPessoa
+	 *            - CPF da pessoa que deseja remover a paritcipação
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void removeParticipacao(String cpfPessoa) throws Exception {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCpfDaPessoa().equals(cpfPessoa)) {
@@ -102,6 +160,12 @@ public abstract class Projeto {
 		throw new Exception("Pessoa nao possui participacao no projeto indicado");
 	}
 
+	/**
+	 * Método responsável por adicionar despesa.
+	 * 
+	 * @param despesa
+	 *            - Despesa a ser adicionada.
+	 */
 	public void adicionaDespesa(Despesa despesa) {
 		this.custos.add(despesa);
 	}
@@ -192,6 +256,9 @@ public abstract class Projeto {
 		return this.codigo;
 	}
 
+	/**
+	 * Hashcode com código sendo referência.
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -200,6 +267,9 @@ public abstract class Projeto {
 		return result;
 	}
 
+	/**
+	 * Equals com código sendo referência.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -248,12 +318,24 @@ public abstract class Projeto {
 	public int getNumeroDeParticipantes() {
 		return this.participacoes.size();
 	}
-	
-	public boolean isMonitoria(){
+
+	/**
+	 * Método resonsável por definir se o projeto é monitoria tendo o default de
+	 * ser falso e na filha monitoria há um override afirmando verdadeiro.
+	 * 
+	 * @return - Por default, falso.
+	 */
+	public boolean isMonitoria() {
 		return false;
 	}
 
-	public boolean isPED(){
+	/**
+	 * Método resonsável por definir se o projeto é PED tendo o default de ser
+	 * falso e na filha PED há um override afirmando verdadeiro.
+	 * 
+	 * @return - Por default, falso.
+	 */
+	public boolean isPED() {
 		return false;
 	}
 

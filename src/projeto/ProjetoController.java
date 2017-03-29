@@ -198,6 +198,19 @@ public class ProjetoController {
 		}
 	}
 
+	/**
+	 * Método responsável por chamar "getInfoProjeto" em "projeto", tratar as
+	 * exceções e encontrar o projeto desejado.
+	 * 
+	 * @param codigo
+	 *            - Código do projeto que deseja a informação.
+	 * @param atributo
+	 *            - Atributo o qual deseja a informação.
+	 * @return - Chama método em "projeto".
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		try {
 			this.validaProjeto.validaAtributo(atributo);
@@ -208,6 +221,17 @@ public class ProjetoController {
 		}
 	}
 
+	/**
+	 * Método responsável por chamar "getCodigo" em "projeto" e tratar a
+	 * exceção.
+	 * 
+	 * @param nome
+	 *            - Nome do projeto que deseja o código.
+	 * @return - Chama método em "projeto".
+	 * @throws ObjetoNuloException
+	 *             - Lançará uma ObjetoNuloException, caso os parâmetros não
+	 *             sejam os esperados.
+	 */
 	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
 		for (Projeto projeto : projetos.values()) {
 			if (projeto.getNome().equals(nome)) {
@@ -217,6 +241,20 @@ public class ProjetoController {
 		throw new ObjetoNuloException("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
 	}
 
+	/**
+	 * Método responsável por chamar "editaProjeto" em "projeto" e tratar a
+	 * exceção.
+	 * 
+	 * @param codigo
+	 *            - Codigo do projeto que deseja a editar.
+	 * @param atributo
+	 *            - Atributo do projeto que deseja a editar.
+	 * @param valor
+	 *            - Valor a ser substituido no atributo.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
 		try {
 			this.validaProjeto.validaAtributo(atributo);
@@ -228,15 +266,45 @@ public class ProjetoController {
 		}
 	}
 
+	/**
+	 * Método responsável por remover um projeto.
+	 * 
+	 * @param codigo
+	 *            - Codigo do projeto que deseja remover.
+	 */
 	public void removeProjeto(String codigo) {
 		this.projetos.remove(codigo);
 	}
 
+	/**
+	 * Método responsável por chamar "adicionaParticipacao" em "projeto" e
+	 * tratar a exceção.
+	 * 
+	 * @param codigoProjeto
+	 *            - Código do projeto a ter a paticipação adicionada.
+	 * @param participacao
+	 *            - Paticipação a ser adicionada.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
 		projeto.adicionaParticipacao(participacao);
 	}
 
+	/**
+	 * Método responsável por chamar "adicionaParticipacao" em "projeto" e
+	 * tratar a exceção.
+	 * 
+	 * @param codigoProjeto
+	 *            - Código do projeto a ter a paticipação removida.
+	 * @param participacao
+	 *            - Paticipação a ser removida.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		try {
 			Projeto projeto = this.getProjeto(codigoProjeto);
@@ -246,11 +314,27 @@ public class ProjetoController {
 		}
 	}
 
+	/**
+	 * Método responsável por gerar código.
+	 * 
+	 * @return - Retornará o código.
+	 */
 	private String geraCodigo() {
 		String codigo = Integer.toString(contadorCodigo++);
 		return codigo;
 	}
 
+	/**
+	 * Método resposável por encontrar projeto em projetos e tratar a execeção,
+	 * caso o parâmetro não corresponda a um projeto.
+	 * 
+	 * @param codigo
+	 *            - Código do projeto buscado.
+	 * @return - Retornará o projeto buscado.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public Projeto getProjeto(String codigo) throws Exception {
 		if (!projetos.containsKey(codigo)) {
 			throw new Exception("Projeto nao encontrado");
@@ -259,6 +343,14 @@ public class ProjetoController {
 		return projeto;
 	}
 
+	/**
+	 * Método resposável por definir se já existe algum projeto com determinado
+	 * código.
+	 * 
+	 * @param codigoProjeto
+	 *            - Código do projeto buscado.
+	 * @return - Retornará se já existe(true) ou não (false)
+	 */
 	public boolean existeProjeto(String codigoProjeto) {
 		return projetos.containsKey(codigoProjeto);
 	}

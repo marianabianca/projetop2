@@ -224,18 +224,59 @@ public class Facade {
 				dataInicio, duracao);
 	}
 
+	/**
+	 * Método responsável por chamar "getInfoProjeto" em "projetoController".
+	 * 
+	 * @param codigo
+	 *            - Código do projeto que deseja a informação.
+	 * @param atributo
+	 *            - Atributo o qual deseja a informação.
+	 * @return - Chama método em "projetoController".
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
 
+	/**
+	 * Método responsável por chamar "getCodigoProjeto" em "projetoController".
+	 * 
+	 * @param nome
+	 *            - Nome do projeto que deseja o código.
+	 * @return - Chama método em "projetoController".
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public String getCodigoProjeto(String nome) throws Exception {
 		return projetoController.getCodigoProjeto(nome);
 	}
 
+	/**
+	 * Método responsável por chamar "editaProjeto" em "projetoController".
+	 * 
+	 * @param codigo
+	 *            - Codigo do projeto que deseja editar.
+	 * @param atributo
+	 *            - Atributo do projeto que deseja editar.
+	 * @param valor
+	 *            - Valor a ser substituido no atributo.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 
+	/**
+	 * Método responsável por chamar "removeProjeto" em "projetoController".
+	 * 
+	 * @param codigo
+	 *            - Codigo do projeto que deseja remover.
+	 */
 	public void removeProjeto(String codigo) {
 		projetoController.removeProjeto(codigo);
 	}

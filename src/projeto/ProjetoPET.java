@@ -17,6 +17,9 @@ public class ProjetoPET extends Projeto {
 		this.patentes = 0;
 	}
 
+	/**
+	 * Método responável por oferecer determinada informacão do projeto.
+	 */
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
 		switch (atributo.toLowerCase()) {
@@ -45,6 +48,9 @@ public class ProjetoPET extends Projeto {
 		}
 	}
 
+	/**
+	 * Método responsável por mudar o atributo para o valor especificado.
+	 */
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
 		switch (atributo.toLowerCase()) {

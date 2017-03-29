@@ -31,14 +31,4 @@ public class Gerente extends Profissional {
 		return super.getBolsa() + 100;
 	}
 
-	@Override
-	public boolean isAlunoGraduando() {
-		return false;
-	}
-
-	@Override
-	public boolean isProfessor() {
-		return false;
-	}
-
 }

@@ -79,11 +79,6 @@ public class ProjetoPED extends Projeto {
 	}
 
 	@Override
-	public boolean isMonitoria() {
-		return false;
-	}
-
-	@Override
 	public boolean isPED() {
 		return true;
 	}

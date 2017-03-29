@@ -21,15 +21,4 @@ public class Desenvolvedor extends Profissional {
 		int pontos = tempoRemunerado * 5;
 		return pontos;
 	}
-
-	@Override
-	public boolean isAlunoGraduando() {
-		return false;
-	}
-
-	@Override
-	public boolean isProfessor() {
-		return false;
-	}
-
 }

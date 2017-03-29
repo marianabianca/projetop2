@@ -249,8 +249,12 @@ public abstract class Projeto {
 		return this.participacoes.size();
 	}
 	
-	public abstract boolean isMonitoria();
+	public boolean isMonitoria(){
+		return false;
+	}
 
-	public abstract boolean isPED();
+	public boolean isPED(){
+		return false;
+	}
 
 }

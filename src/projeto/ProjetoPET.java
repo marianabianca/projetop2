@@ -80,14 +80,4 @@ public class ProjetoPET extends Projeto {
 		}
 	}
 
-	@Override
-	public boolean isMonitoria() {
-		return false;
-	}
-
-	@Override
-	public boolean isPED() {
-		return false;
-	}
-
 }

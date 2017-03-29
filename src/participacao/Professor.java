@@ -45,11 +45,6 @@ public class Professor extends Participacao {
 	}
 
 	@Override
-	public boolean isAlunoGraduando() {
-		return false;
-	}
-
-	@Override
 	public boolean isProfessor() {
 		return true;
 	}

@@ -50,16 +50,5 @@ public class ProjetoExtensao extends Projeto {
 		default:
 			throw new Exception("Extensao nao possui " + atributo);
 		}
-	}
-
-	@Override
-	public boolean isMonitoria() {
-		return false;
-	}
-
-	@Override
-	public boolean isPED() {
-		return false;
-	}
-	
+	}	
 }

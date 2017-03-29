@@ -139,7 +139,9 @@ public abstract class Participacao implements Comparable<Participacao> {
 	 * 
 	 * @return RETORNA SE É ALUNO GRADUANDO(TRUE) OU SE NÃO É(FALSE).
 	 */
-	public abstract boolean isAlunoGraduando();
+	public boolean isAlunoGraduando() {
+		return false;
+	}
 
 	/**
 	 * O MÉTODO TEM COM OBJETIVO DIZER SE A PARTICIPACÃO É REFERENTE A PROFESSOR
@@ -147,5 +149,7 @@ public abstract class Participacao implements Comparable<Participacao> {
 	 * 
 	 * @return RETORNA SE É PROFESSOR(TRUE) OU SE NÃO É(FALSE).
 	 */
-	public abstract boolean isProfessor();
+	public boolean isProfessor() {
+		return false;
+	}
 }

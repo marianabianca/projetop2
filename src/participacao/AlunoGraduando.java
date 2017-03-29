@@ -40,9 +40,4 @@ public class AlunoGraduando extends Participacao {
 		return true;
 	}
 
-	@Override
-	public boolean isProfessor() {
-		return false;
-	}
-
 }

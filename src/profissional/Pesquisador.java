@@ -27,11 +27,7 @@ public class Pesquisador extends Profissional {
 	 */
 	@Override
 	public double getBolsa() {
-		int numeroDeParticipantes = super.getNumeroDeParticipantes();
-		if (numeroDeParticipantes <= 5) {
-			return super.getBolsa() + 100 * numeroDeParticipantes;
-		}
-		return super.getBolsa() + 500;
+		return super.getBolsa() + 100;
 	}
 
 }

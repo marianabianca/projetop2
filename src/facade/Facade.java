@@ -17,7 +17,8 @@ public class Facade {
 		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
 				"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt",
 				"acceptance_test/us3_test.txt", "acceptance_test/us3_test_exception.txt",
-				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt" };
+				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt", 
+				"acceptance_test/us6_test.txt", "acceptance_test/us6_test_exception.txt" };
 		EasyAccept.main(args);
 	}
 
@@ -39,7 +40,7 @@ public class Facade {
 	}
 
 	/**
-	 * Método "cadastrapessoa" chama o método de "pessoacontroller".
+	 * Metodo "cadastrapessoa" chama o metodo de "pessoacontroller".
 	 * 
 	 * @param cpf
 	 *           - Recebe uma string que corresponde ao cpf para a nova pessoa.
@@ -47,9 +48,9 @@ public class Facade {
 	 *           - Recebe uma string que corresponde ao nome para a nova pessoa.
 	 * @param email
 	 *           - Recebe uma string que corresponde ao email para a nova pessoa.
-	 * @return - Chama método de "pessoacontroller".
+	 * @return - Chama metodo de "pessoacontroller".
 	 * @throws logicaexception
-	 *            - Enviará uma mensagem de erro caso não ocorra o que é
+	 *            - Enviara uma mensagem de erro caso nao ocorra o que e
 	 *             esperado.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
@@ -61,16 +62,16 @@ public class Facade {
 	}
 
 	/**
-	 * MÉTODO "getInfoPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * MeTODO "getInfoPessoa" CHAMA O MeTODO DE "pessoaController".
 	 * 
 	 * @param cpf
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO BUSCADA SOBRE O
-	 *            USUÁRIO.
-	 * @return CHAMA MÉTODO DE "pessoaController".
+	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAcaO BUSCADA SOBRE O
+	 *            USUaRIO.
+	 * @return CHAMA MeTODO DE "pessoaController".
 	 * @throws LogicaException
-	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ENVIARa UMA MENSAGEM DE ERRO CASO NaO OCORRA O QUE e
 	 *             ESPERADO.
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
@@ -78,18 +79,18 @@ public class Facade {
 	}
 
 	/**
-	 * MÉTODO "editaPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * MeTODO "editaPessoa" CHAMA O MeTODO DE "pessoaController".
 	 * 
 	 * @param cpf
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO QUE DESEJA SER
+	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAcaO QUE DESEJA SER
 	 *            MODIFICADA EM PESSOA.
 	 * @param valor
-	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
+	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERa
 	 *            MUDADO PESSOA.
 	 * @throws LogicaException
-	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ENVIARa UMA MENSAGEM DE ERRO CASO NaO OCORRA O QUE e
 	 *             ESPERADO.
 	 */
 	public void editaPessoa(String cpf, String atributo, String valor) throws LogicaException {
@@ -101,7 +102,7 @@ public class Facade {
 	}
 
 	/**
-	 * MÉTODO "editaPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * MeTODO "editaPessoa" CHAMA O MeTODO DE "pessoaController".
 	 * 
 	 * @param cpf
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA REMOVER A
@@ -112,7 +113,7 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "adicionaMonitoria" em "projetoController".
+	 * Metodo responsavel por chamar "adicionaMonitoria" em "projetoController".
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -127,10 +128,10 @@ public class Facade {
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Chama método em "projetoController"
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Chama metodo em "projetoController"
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -140,7 +141,7 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "adicionaPET" em "projetoController".
+	 * Metodo responsavel por chamar "adicionaPET" em "projetoController".
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -151,18 +152,18 @@ public class Facade {
 	 * @param rendimento
 	 *            - Rendimento do projeto a ser criado.
 	 * @param prodTecnica
-	 *            - Produção Técnica do projeto a ser criado.
+	 *            - Producao Tecnica do projeto a ser criado.
 	 * @param prodAcademica
-	 *            - Produção Acadêmica do projeto a ser criado.
+	 *            - Producao Acadêmica do projeto a ser criado.
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Chama método em "projetoController".
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
@@ -172,7 +173,7 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "adicionaExtensao" em "projetoController".
+	 * Metodo responsavel por chamar "adicionaExtensao" em "projetoController".
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -183,10 +184,10 @@ public class Facade {
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Chama método em "projetoController".
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
@@ -195,16 +196,16 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "adicionaPED" em "projetoController".
+	 * Metodo responsavel por chamar "adicionaPED" em "projetoController".
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
 	 * @param categoria
 	 *            - Categoria do projeto a ser criado.
 	 * @param prodTecnica
-	 *            - Produção Técnica do projeto a ser criado.
+	 *            - Producao Tecnica do projeto a ser criado.
 	 * @param prodAcademica
-	 *            - Produção Acadêmica do projeto a ser criado.
+	 *            - Producao Acadêmica do projeto a ser criado.
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param objetivo
@@ -212,10 +213,10 @@ public class Facade {
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Chama método em "projetoController".
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
@@ -225,15 +226,15 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "getInfoProjeto" em "projetoController".
+	 * Metodo responsavel por chamar "getInfoProjeto" em "projetoController".
 	 * 
 	 * @param codigo
-	 *            - Código do projeto que deseja a informação.
+	 *            - Código do projeto que deseja a informacao.
 	 * @param atributo
-	 *            - Atributo o qual deseja a informação.
-	 * @return - Chama método em "projetoController".
+	 *            - Atributo o qual deseja a informacao.
+	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
@@ -241,13 +242,13 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "getCodigoProjeto" em "projetoController".
+	 * Metodo responsavel por chamar "getCodigoProjeto" em "projetoController".
 	 * 
 	 * @param nome
 	 *            - Nome do projeto que deseja o código.
-	 * @return - Chama método em "projetoController".
+	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String getCodigoProjeto(String nome) throws Exception {
@@ -255,7 +256,7 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "editaProjeto" em "projetoController".
+	 * Metodo responsavel por chamar "editaProjeto" em "projetoController".
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja editar.
@@ -264,7 +265,7 @@ public class Facade {
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
@@ -272,7 +273,7 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "removeProjeto" em "projetoController".
+	 * Metodo responsavel por chamar "removeProjeto" em "projetoController".
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
@@ -302,15 +303,15 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "removeParticipacao" em
+	 * Metodo responsavel por chamar "removeParticipacao" em
 	 * "participacaoController".
 	 * 
 	 * @param cpfPessoa
-	 *            - CPF da pessoa que deseja remover a participação.
+	 *            - CPF da pessoa que deseja remover a participacao.
 	 * @param codigoProjeto
-	 *            - Projeto que deseja remover a participação.
+	 *            - Projeto que deseja remover a participacao.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
@@ -318,15 +319,15 @@ public class Facade {
 	}
 
 	/**
-	 * MÉTODO "calculaPontuacaoPorParticipacao" CHAMA O MÉTODO DE
+	 * MeTODO "calculaPontuacaoPorParticipacao" CHAMA O MeTODO DE
 	 * "pessoaController".
 	 * 
 	 * @param cpfPessoa
 	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
 	 *            CALCULAR.
-	 * @return CHAMA MÉTODO DE "pessoaController".
+	 * @return CHAMA MeTODO DE "pessoaController".
 	 * @throws LogicaException
-	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
+	 *             ENVIARa UMA MENSAGEM DE ERRO CASO NaO OCORRA O QUE e
 	 *             ESPERADO.
 	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
@@ -334,17 +335,29 @@ public class Facade {
 	}
 
 	/**
-	 * Método responsável por chamar "getValorBolsa" em "pessoaController".
+	 * Metodo responsavel por chamar "getValorBolsa" em "pessoaController".
 	 * 
 	 * @param cpfPessoa
 	 *            - CPF da pessoa que deseja calcular a bolsa.
-	 * @return - Chamará o método de "pessoaController".
+	 * @return - Chamara o metodo de "pessoaController".
 	 * @throws Exception
-	 *             - Lancará uma Exception caso os parâmetros não sejam os
+	 *             - Lancara uma Exception caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public double getValorBolsa(String cpfPessoa) throws Exception {
 		return pessoaController.getValorBolsa(cpfPessoa);
+	}
+	
+	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws Exception {
+		projetoController.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
+	}
+	
+	public double calculaColaboracaoUASC(String codProjeto) throws Exception{
+		return projetoController.calculaColaboracaoUASC(codProjeto);
+	}
+	
+	public double calculaColaboracaoTotalUASC(){
+		return projetoController.calculaColaboracaoTotalUASC();
 	}
 
 }

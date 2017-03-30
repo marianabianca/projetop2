@@ -96,5 +96,25 @@ public class ProjetoPED extends Projeto {
 	public boolean isPED() {
 		return true;
 	}
+	
+	@Override
+	public double calculaColaboracaoUASC(){
+		double colaboracao = super.calculaColaboracaoUASC();
+		if (colaboracao == 0){
+			return 0;
+		}
+		double umPorcento = (colaboracao/10);
+		if (patentes != 0){
+			colaboracao += umPorcento * 3;
+		}
+		if (prodTecnica != 0){
+			colaboracao += (umPorcento * 0.3) * prodTecnica;
+		}
+		if (prodAcademica != 0){
+			colaboracao -= (umPorcento * 0.2) *prodAcademica;
+		}
+		colaboracao += Math.floorDiv((int) super.getCapital(), 100000);
+		return colaboracao;
+	}
 
 }

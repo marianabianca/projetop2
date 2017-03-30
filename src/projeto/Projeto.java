@@ -3,6 +3,8 @@ package projeto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import participacao.AlunoGraduando;
 import participacao.Participacao;
@@ -12,7 +14,7 @@ public abstract class Projeto {
 
 	private String nome, objetivo, dataInicio, codigo;
 	private int duracao;
-	private List<Despesa> custos;
+	private Map<String,Despesa> custos;
 	private List<Participacao> participacoes;
 
 	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
@@ -21,48 +23,48 @@ public abstract class Projeto {
 		this.dataInicio = dataInicio;
 		this.duracao = duracao;
 		this.codigo = codigo;
-		this.custos = new ArrayList<>();
+		this.geraMapa();
 		this.participacoes = new ArrayList<>();
 	}
 
 	/**
-	 * Método abstrato com função de repassar atividade para classes filhas.
+	 * Metodo abstrato com funcao de repassar atividade para classes filhas.
 	 * 
 	 * @param atributo
-	 *            - Atributo o qual deseja a informação.
+	 *            - Atributo o qual deseja a informacao.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 
 	/**
-	 * Método abstrato com função de repassar atividade para classes filhas.
+	 * Metodo abstrato com funcao de repassar atividade para classes filhas.
 	 * 
 	 * @param atributo
 	 *            - Atributo do projeto que deseja a editar.
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
 
 	/**
-	 * Método responsável por adicionar participação.
+	 * Metodo responsavel por adicionar participacao.
 	 * 
 	 * @param participacao
-	 *            - Participação a ser adicionada
+	 *            - Participacao a ser adicionada
 	 */
 	public void adicionaParticipacao(Participacao participacao) {
 		this.participacoes.add(participacao);
 	}
 
 	/**
-	 * Método responsável por verificar se há algum professor associado.
+	 * Metodo responsavel por verificar se ha algum professor associado.
 	 * 
-	 * @return - Retornará verdadeiro, caso haja, ou falso, caso não.
+	 * @return - Retornara verdadeiro, caso haja, ou falso, caso nao.
 	 */
 	public boolean temProfessorAssociado() {
 		for (Participacao participacao : participacoes) {
@@ -74,9 +76,9 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método responsável por verificar se há algum coordenador associado.
+	 * Metodo responsavel por verificar se ha algum coordenador associado.
 	 * 
-	 * @return - Retornará verdadeiro, caso haja, ou falso, caso não.
+	 * @return - Retornara verdadeiro, caso haja, ou falso, caso nao.
 	 */
 	public boolean temCoordenadorAssociado() {
 		for (Participacao participacao : participacoes) {
@@ -91,9 +93,9 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método responsável por verificar se há algum aluno graduando associado.
+	 * Metodo responsavel por verificar se ha algum aluno graduando associado.
 	 * 
-	 * @return - Retornará verdadeiro, caso haja, ou falso, caso não.
+	 * @return - Retornara verdadeiro, caso haja, ou falso, caso nao.
 	 */
 	public boolean temGraduandoAssociado() {
 		for (Participacao participacao : participacoes) {
@@ -105,13 +107,13 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método responsável por determinar se há participação de uma pessoa em
+	 * Metodo responsavel por determinar se ha participacao de uma pessoa em
 	 * determinado projeto.
 	 * 
 	 * @param cpfDaParticipacao
-	 *            - CPF da pessoa que deseja determinar se há participação em
+	 *            - CPF da pessoa que deseja determinar se ha participacao em
 	 *            determinado projeto.
-	 * @return - Retornará true, caso tenha, ou false, caso não tenha.
+	 * @return - Retornara true, caso tenha, ou false, caso nao tenha.
 	 */
 	public boolean temParticipacaoPorCPF(String cpfDaParticipacao) {
 		for (Participacao participacao : participacoes) {
@@ -123,22 +125,22 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método responsável por calcular a despesa total.
+	 * Metodo responsavel por calcular a despesa total.
 	 * 
-	 * @return - Retornará a despesa total.
+	 * @return - Retornara a despesa total.
 	 */
 	public double calculaCustoTotal() {
 		double despesaTotal = 0;
-		for (Despesa despesa : custos) {
-			despesaTotal = despesaTotal + despesa.getValor();
+		for (String despesa : custos.keySet()) {
+			despesaTotal += custos.get(despesa).getValor();
 		}
 		return despesaTotal;
 	}
 
 	/**
-	 * Método responsável por definir as participações em uma String.
+	 * Metodo responsavel por definir as participacões em uma String.
 	 * 
-	 * @return -retornará a String de lista de participações.
+	 * @return -retornara a String de lista de participacões.
 	 */
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
@@ -153,13 +155,13 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método responsável por remover determinada participação de determinada
+	 * Metodo responsavel por remover determinada participacao de determinada
 	 * pessoa.
 	 * 
 	 * @param cpfPessoa
-	 *            - CPF da pessoa que deseja remover a paritcipação
+	 *            - CPF da pessoa que deseja remover a paritcipacao
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa) throws Exception {
@@ -173,26 +175,26 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método responsável por adicionar despesa.
+	 * Metodo responsavel por adicionar despesa.
 	 * 
 	 * @param despesa
 	 *            - Despesa a ser adicionada.
 	 */
-	public void adicionaDespesa(Despesa despesa) {
-		this.custos.add(despesa);
+	public void adicionaDespesa(String tipoDespesa, Despesa despesa) {
+		this.custos.put(tipoDespesa, despesa);
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO RETORNAR O NOME DO PROJETO.
 	 * 
-	 * @return RETORNARÁ O NOME DO PROJETO.
+	 * @return RETORNARA O NOME DO PROJETO.
 	 */
 	public String getNome() {
 		return this.nome;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR O NOME DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO MUDAR O NOME DO PROJETO.
 	 * 
 	 * @param nome
 	 *            NOVO NOME
@@ -202,9 +204,9 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O OBJETIVO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO RETORNAR O OBJETIVO DO PROJETO.
 	 * 
-	 * @return RETORNARÁ O OBJETIVO DO PROJETO.
+	 * @return RETORNARA O OBJETIVO DO PROJETO.
 	 */
 	public String getObjetivo() {
 		return this.objetivo;
@@ -212,7 +214,7 @@ public abstract class Projeto {
 
 	/**
 	 * 
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR O OBJETIVO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO MUDAR O OBJETIVO DO PROJETO.
 	 * 
 	 * @param objetivo
 	 *            NOVO OBJEITVO
@@ -222,16 +224,16 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A DATA DE INÍCIO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO RETORNAR A DATA DE INÍCIO DO PROJETO.
 	 * 
-	 * @return RETORNARÁ A DATA DE INÍCIO DO PROJETO.
+	 * @return RETORNARA A DATA DE INÍCIO DO PROJETO.
 	 */
 	public String getDataInicio() {
 		return this.dataInicio;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR A DATA DE INÍCIO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO MUDAR A DATA DE INÍCIO DO PROJETO.
 	 * 
 	 * @param dataInicio
 	 *            NOVA DATA DE INÍCIO.
@@ -241,28 +243,28 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR A DURACÃO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO MUDAR A DURACaO DO PROJETO.
 	 * 
 	 * @param duracao
-	 *            NOVA DURACÃO.
+	 *            NOVA DURACAO.
 	 */
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A DURAÇÃO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO RETORNAR A DURACAO DO PROJETO.
 	 * 
-	 * @return RETORNARÁ A DURAÇÃO DO PROJETO.
+	 * @return RETORNARa A DURACAO DO PROJETO.
 	 */
 	public int getDuracao() {
 		return this.duracao;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A CÓDIGO DO PROJETO.
+	 * O METODO TEM COMO OBJETIVO RETORNAR A CÓDIGO DO PROJETO.
 	 * 
-	 * @return RETORNARÁ A DURAÇÃO DO CÓDIGO.
+	 * @return RETORNARA A DURAcaO DO CÓDIGO.
 	 */
 	public String getCodigo() {
 		return this.codigo;
@@ -300,17 +302,17 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO ORDENAR AS PARTICIPACOES DO PROJETO PELO NOME.
+	 * O MeTODO TEM COMO OBJETIVO ORDENAR AS PARTICIPACOES DO PROJETO PELO NOME.
 	 */
 	private void ordenaParticipacoesPeloNomeDasPessoas() {
 		Collections.sort(participacoes);
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CONTAR A QUANTIDADE DE ALUNOS QUE POSSUEM NAS
-	 * PARTICIAPAÇÕES DE DETERMINADO PROJETO.
+	 * O MeTODO TEM COMO OBJETIVO CONTAR A QUANTIDADE DE ALUNOS QUE POSSUEM NAS
+	 * PARTICIAPAcÕES DE DETERMINADO PROJETO.
 	 * 
-	 * @return RETORNARÁ O NÚMERO DE ALUNOS NO PROJETO.
+	 * @return RETORNARa O NÚMERO DE ALUNOS NO PROJETO.
 	 */
 	public double calculaPontuacao() {
 		double acumulador = 0;
@@ -323,16 +325,16 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO SABER O NÚMERO DE PARTICIPANTES DO PROJETO.
+	 * O MeTODO TEM COMO OBJETIVO SABER O NÚMERO DE PARTICIPANTES DO PROJETO.
 	 * 
-	 * @return RETORNARÁ O NÚMERO DE PARTICIPANTES.
+	 * @return RETORNARa O NÚMERO DE PARTICIPANTES.
 	 */
 	public int getNumeroDeParticipantes() {
 		return this.participacoes.size();
 	}
 
 	/**
-	 * Método resonsável por definir se o projeto é monitoria, tendo como
+	 * Metodo resonsavel por definir se o projeto e monitoria, tendo como
 	 * default falso e na filha monitoria um override afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
@@ -342,13 +344,61 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método resonsável por definir se o projeto é PED, tendo como default
+	 * Metodo resonsavel por definir se o projeto e PED, tendo como default
 	 * falso e na filha PED um override afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */
 	public boolean isPED() {
 		return false;
+	}
+
+	public void atualizaBolsas(double montanteBolsas) {
+		custos.get("bolsas").setValor(montanteBolsas);
+	}
+
+	public void atualizaCusteio(double montanteCusteio) {
+		custos.get("custeio").setValor(montanteCusteio);
+	}
+
+	public void atualizaCapital(double montanteCapital) {
+		custos.get("capital").setValor(montanteCapital);
+	}
+	
+	public double getCapital(){
+		return custos.get("capital").getValor();
+	}
+	
+	public double getBolsas(){
+		return custos.get("bolsas").getValor();
+	}
+	
+	public double getCusteio(){
+		return custos.get("custeio").getValor();
+	}
+
+	public double calculaColaboracaoUASC() {
+		if (this.getCusteio() == 0 && this.getCapital() == 0){
+			return 0;
+		} 
+		if (this.getCusteio() <= 10000 && this.getCapital() == 0){
+			return 0;
+		}
+		if (this.getCapital() <= 10000 && this.getCusteio() == 0){
+			return 0;
+		}
+		if (this.getCusteio() <= 10000 && this.getCapital() <= 10000){
+			return 0;
+		}
+		return 0.10 * this.calculaCustoTotal();
+	}
+	
+	private void geraMapa(){
+		custos = new HashMap<String, Despesa>();
+		custos.put("bolsas", new Despesa(0));
+		custos.put("custeio", new Despesa(0));
+		custos.put("capital", new Despesa(0));
+
 	}
 
 }

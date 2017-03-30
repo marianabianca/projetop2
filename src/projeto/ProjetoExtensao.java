@@ -57,4 +57,14 @@ public class ProjetoExtensao extends Projeto {
 			throw new Exception("Extensao nao possui " + atributo);
 		}
 	}
+	
+	@Override
+	public double calculaColaboracaoUASC(){
+		double colaboracaoDeProjeto = super.calculaColaboracaoUASC();
+		if (colaboracaoDeProjeto == 0){
+			return 0;
+		}
+		double colaboracao = super.calculaColaboracaoUASC() - 0.05*this.impacto*colaboracaoDeProjeto;
+		return colaboracao;
+	}
 }

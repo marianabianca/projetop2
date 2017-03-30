@@ -85,5 +85,10 @@ public class ProjetoPET extends Projeto {
 			throw new Exception("PET nao possui " + atributo);
 		}
 	}
+	
+	@Override
+	public double calculaColaboracaoUASC(){
+		return 0;
+	}
 
 }

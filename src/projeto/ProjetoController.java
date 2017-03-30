@@ -24,8 +24,8 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por criar e adicionar uma monitoria e verificar se
-	 * seus parâmetros são válidos.
+	 * Metodo responsavel por criar e adicionar uma monitoria e verificar se
+	 * seus parâmetros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -40,10 +40,10 @@ public class ProjetoController {
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Retornará o código do projeto.
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Retornara o código do projeto.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -68,8 +68,8 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por criar e adicionar um projeto PET e verificar se
-	 * seus parâmetros são válidos.
+	 * Metodo responsavel por criar e adicionar um projeto PET e verificar se
+	 * seus parâmetros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -80,18 +80,18 @@ public class ProjetoController {
 	 * @param rendimento
 	 *            - Rendimento do projeto a ser criado.
 	 * @param prodTecnica
-	 *            - Produção Técnica do projeto a ser criado.
+	 *            - Producao Tecnica do projeto a ser criado.
 	 * @param prodAcademica
-	 *            - Produção Acadêmica do projeto a ser criado.
+	 *            - Producao Acadêmica do projeto a ser criado.
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Retornará o código do projeto.
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Retornara o código do projeto.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
@@ -117,8 +117,8 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por criar e adicionar um projeto extensão e verificar
-	 * se seus parâmetros são válidos.
+	 * Metodo responsavel por criar e adicionar um projeto extensao e verificar
+	 * se seus parâmetros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -129,10 +129,10 @@ public class ProjetoController {
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Retornará o código do projeto.
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Retornara o código do projeto.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
@@ -153,17 +153,17 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por criar e adicionar um projeto PED e verificar se
-	 * seus parâmetros são válidos.
+	 * Metodo responsavel por criar e adicionar um projeto PED e verificar se
+	 * seus parâmetros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
 	 * @param categoria
 	 *            - Categoria do projeto a ser criado.
 	 * @param prodTecnica
-	 *            - Produção Técnica do projeto a ser criado.
+	 *            - Producao Tecnica do projeto a ser criado.
 	 * @param prodAcademica
-	 *            - Produção Acadêmica do projeto a ser criado.
+	 *            - Producao Acadêmica do projeto a ser criado.
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param objetivo
@@ -171,10 +171,10 @@ public class ProjetoController {
 	 * @param dataInicio
 	 *            - Data de Início do projeto a ser criado.
 	 * @param duracao
-	 *            - Duração do do projeto a ser criado.
-	 * @return - Retornará o código do projeto.
+	 *            - Duracao do do projeto a ser criado.
+	 * @return - Retornara o código do projeto.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
@@ -199,16 +199,16 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por chamar "getInfoProjeto" em "projeto", tratar as
-	 * exceções e encontrar o projeto desejado.
+	 * Metodo responsavel por chamar "getInfoProjeto" em "projeto", tratar as
+	 * excecões e encontrar o projeto desejado.
 	 * 
 	 * @param codigo
-	 *            - Código do projeto que deseja a informação.
+	 *            - Código do projeto que deseja a informacao.
 	 * @param atributo
-	 *            - Atributo o qual deseja a informação.
-	 * @return - Chama método em "projeto".
+	 *            - Atributo o qual deseja a informacao.
+	 * @return - Chama metodo em "projeto".
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
@@ -222,14 +222,14 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por chamar "getCodigo" em "projeto" e tratar a
-	 * exceção.
+	 * Metodo responsavel por chamar "getCodigo" em "projeto" e tratar a
+	 * excecao.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto que deseja o código.
-	 * @return - Chama método em "projeto".
+	 * @return - Chama metodo em "projeto".
 	 * @throws ObjetoNuloException
-	 *             - Lançará uma ObjetoNuloException, caso os parâmetros não
+	 *             - Lancara uma ObjetoNuloException, caso os parâmetros nao
 	 *             sejam os esperados.
 	 */
 	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
@@ -242,8 +242,8 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por chamar "editaProjeto" em "projeto" e tratar a
-	 * exceção.
+	 * Metodo responsavel por chamar "editaProjeto" em "projeto" e tratar a
+	 * excecao.
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja a editar.
@@ -252,7 +252,7 @@ public class ProjetoController {
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
@@ -267,7 +267,7 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por remover um projeto.
+	 * Metodo responsavel por remover um projeto.
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
@@ -277,15 +277,15 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por chamar "adicionaParticipacao" em "projeto" e
-	 * tratar a exceção.
+	 * Metodo responsavel por chamar "adicionaParticipacao" em "projeto" e
+	 * tratar a excecao.
 	 * 
 	 * @param codigoProjeto
-	 *            - Código do projeto a ter a paticipação adicionada.
+	 *            - Código do projeto a ter a paticipacao adicionada.
 	 * @param participacao
-	 *            - Paticipação a ser adicionada.
+	 *            - Paticipacao a ser adicionada.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws Exception {
@@ -294,15 +294,15 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por chamar "adicionaParticipacao" em "projeto" e
-	 * tratar a exceção.
+	 * Metodo responsavel por chamar "adicionaParticipacao" em "projeto" e
+	 * tratar a excecao.
 	 * 
 	 * @param codigoProjeto
-	 *            - Código do projeto a ter a paticipação removida.
+	 *            - Código do projeto a ter a paticipacao removida.
 	 * @param participacao
-	 *            - Paticipação a ser removida.
+	 *            - Paticipacao a ser removida.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
@@ -315,9 +315,9 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método responsável por gerar código.
+	 * Metodo responsavel por gerar código.
 	 * 
-	 * @return - Retornará o código.
+	 * @return - Retornara o código.
 	 */
 	private String geraCodigo() {
 		String codigo = Integer.toString(contadorCodigo++);
@@ -325,14 +325,14 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método resposável por encontrar projeto em projetos e tratar a execeção,
-	 * caso o parâmetro não corresponda a um projeto.
+	 * Metodo resposavel por encontrar projeto em projetos e tratar a exececao,
+	 * caso o parâmetro nao corresponda a um projeto.
 	 * 
 	 * @param codigo
 	 *            - Código do projeto buscado.
-	 * @return - Retornará o projeto buscado.
+	 * @return - Retornara o projeto buscado.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
 	 *             esperados.
 	 */
 	public Projeto getProjeto(String codigo) throws Exception {
@@ -344,15 +344,35 @@ public class ProjetoController {
 	}
 
 	/**
-	 * Método resposável por definir se já existe algum projeto com determinado
+	 * Metodo resposavel por definir se ja existe algum projeto com determinado
 	 * código.
 	 * 
 	 * @param codigoProjeto
 	 *            - Código do projeto buscado.
-	 * @return - Retornará se já existe(true) ou não (false)
+	 * @return - Retornara se ja existe(true) ou nao (false)
 	 */
 	public boolean existeProjeto(String codigoProjeto) {
 		return projetos.containsKey(codigoProjeto);
+	}
+
+	public void atualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws Exception {
+		Projeto aAtualizar = getProjeto(cod);
+		aAtualizar.atualizaBolsas(montanteBolsas);
+		aAtualizar.atualizaCusteio(montanteCusteio);
+		aAtualizar.atualizaCapital(montanteCapital);
+	}
+
+	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
+		Projeto aColaborar = getProjeto(codProjeto);
+		return aColaborar.calculaColaboracaoUASC();
+	}
+
+	public double calculaColaboracaoTotalUASC() {
+		double colaboracao = 0;
+		for (Projeto proj : projetos.values()) {
+			colaboracao += proj.calculaColaboracaoUASC();
+		}
+		return colaboracao;
 	}
 
 }

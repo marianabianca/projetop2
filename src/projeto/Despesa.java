@@ -9,12 +9,16 @@ public class Despesa {
 	}
 
 	/**
-	 * Método responsável por retornar o valor da despesa.
+	 * Metodo responsavel por retornar o valor da despesa.
 	 * 
-	 * @return - Retornará o valor da despesa.
+	 * @return - Retornara o valor da despesa.
 	 */
 	public double getValor() {
 		return this.valor;
+	}
+	
+	public void setValor(double novoValor){
+		this.valor = novoValor;
 	}
 
 }

@@ -79,4 +79,9 @@ public class ProjetoMonitoria extends Projeto {
 	public boolean isMonitoria() {
 		return true;
 	}
+	
+	@Override
+	public double calculaColaboracaoUASC(){
+		return 0;
+	}
 }

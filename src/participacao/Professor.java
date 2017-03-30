@@ -13,6 +13,11 @@ public class Professor extends Participacao {
 		this.coordenador = coordenador;
 	}
 
+	/**
+	 * Método responsável por analizar se é um coordenador.
+	 * 
+	 * @return true, se for coordenador, false, se não.
+	 */
 	public boolean isCoordenador() {
 		return this.coordenador;
 	}
@@ -36,6 +41,9 @@ public class Professor extends Participacao {
 		}
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public double getModificadorBolsa() {
 		if (this.coordenador) {
@@ -44,6 +52,9 @@ public class Professor extends Participacao {
 		return 1;
 	}
 
+	/**
+	 * Método responsável por quebrar o default da classe pai.
+	 */
 	@Override
 	public boolean isProfessor() {
 		return true;

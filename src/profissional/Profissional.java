@@ -19,6 +19,10 @@ public abstract class Profissional extends Participacao {
 	 */
 	public abstract double calculaPontuacaoProfissional();
 
+	/**
+	 * Método responsável por definir se o projeto em questão é PED, caso não
+	 * seja, retornará zero.
+	 */
 	@Override
 	public double calculaPontuacao() {
 		if (isPED()) {
@@ -27,6 +31,9 @@ public abstract class Profissional extends Participacao {
 		return 0;
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public double getModificadorBolsa() {
 		return 1;

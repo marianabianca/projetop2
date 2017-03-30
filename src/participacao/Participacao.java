@@ -122,32 +122,44 @@ public abstract class Participacao implements Comparable<Participacao> {
 	 */
 	public abstract double calculaPontuacao();
 
+	/**
+	 * TODO
+	 * @return
+	 */
 	public abstract double getModificadorBolsa();
 
+	/**
+	 * TODO
+	 * @return
+	 */
 	public double getBolsa() {
 		return Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public int compareTo(Participacao outra) {
 		return this.pessoa.getNome().compareTo(outra.getPessoa().getNome());
 	}
 
 	/**
-	 * O MÉTODO TEM COM OBJETIVO DIZER SE A PARTICIPACÃO É REFERENTE A ALUNO
-	 * GRADUANDO OU NÃO.
+	 * Método resonsável por definir se a participação é alundo graduando, tendo
+	 * como default falso e na filha professor há um override afirmando
+	 * verdadeiro.
 	 * 
-	 * @return RETORNA SE É ALUNO GRADUANDO(TRUE) OU SE NÃO É(FALSE).
+	 * @return - Por default, falso.
 	 */
 	public boolean isAlunoGraduando() {
 		return false;
 	}
 
 	/**
-	 * O MÉTODO TEM COM OBJETIVO DIZER SE A PARTICIPACÃO É REFERENTE A PROFESSOR
-	 * OU NÃO.
+	 * Método resonsável por definir se a participação é professor, tendo como
+	 * default falso e na filha professor há um override afirmando verdadeiro.
 	 * 
-	 * @return RETORNA SE É PROFESSOR(TRUE) OU SE NÃO É(FALSE).
+	 * @return - Por default, falso.
 	 */
 	public boolean isProfessor() {
 		return false;

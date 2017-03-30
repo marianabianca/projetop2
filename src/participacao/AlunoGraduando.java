@@ -30,11 +30,17 @@ public class AlunoGraduando extends Participacao {
 		return pontos;
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public double getModificadorBolsa() {
 		return 1;
 	}
 
+	/**
+	 * Método responsável por quebrar o default da classe pai.
+	 */
 	@Override
 	public boolean isAlunoGraduando() {
 		return true;

@@ -24,12 +24,22 @@ public class ParticipacaoController {
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
 		this.factoryDeParticipacao = new FactoryDeParticipacao();
-		
+
 		this.validaPessoa = new ValidaPessoa();
 		this.validaProjeto = new ValidaProjeto();
 		this.moduloDeValidacao = new ModuloDeValidacao();
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param cpfProfessor
+	 * @param codigoProjeto
+	 * @param ehCoordenador
+	 * @param valorPorHora
+	 * @param quantidadeDeHoras
+	 * @throws Exception
+	 */
 	public void associaProfessor(String cpfProfessor, String codigoProjeto, boolean ehCoordenador, double valorPorHora,
 			int quantidadeDeHoras) throws Exception {
 		Pessoa professor;
@@ -39,7 +49,7 @@ public class ParticipacaoController {
 			this.validaProjeto.validaQtdHoras(quantidadeDeHoras);
 			professor = pessoaController.getPessoa(cpfProfessor);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			if (projeto.getClass() == ProjetoPED.class) {
+			if (projeto.isPED()) {
 				if (!ehCoordenador) {
 					this.validaProjeto.validaValorHora(valorPorHora);
 					if (projeto.temProfessorAssociado()) {
@@ -56,7 +66,7 @@ public class ParticipacaoController {
 					}
 				}
 			}
-			if (projeto.getClass() == ProjetoMonitoria.class) {
+			if (projeto.isMonitoria()) {
 				this.validaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 				if (projeto.temProfessorAssociado()) {
 					this.validaProjeto.validaValorHoraDeMonitoria(valorPorHora);
@@ -73,6 +83,15 @@ public class ParticipacaoController {
 
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param cpfGraduando
+	 * @param codigoProjeto
+	 * @param valorPorHora
+	 * @param horasSemanais
+	 * @throws Exception
+	 */
 	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais)
 			throws Exception {
 		Pessoa graduando;
@@ -103,6 +122,16 @@ public class ParticipacaoController {
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param cpfPessoa
+	 * @param codigoProjeto
+	 * @param cargo
+	 * @param valorHora
+	 * @param qntHoras
+	 * @throws Exception
+	 */
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
 			int qntHoras) throws Exception {
 		Pessoa pessoa = null;
@@ -122,6 +151,16 @@ public class ParticipacaoController {
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param cpfPessoa
+	 * @param codigoProjeto
+	 * @param vinculo
+	 * @param valorHora
+	 * @param qntHoras
+	 * @throws Exception
+	 */
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
 			int qntHoras) throws Exception {
 		Pessoa posGraduando;
@@ -144,6 +183,19 @@ public class ParticipacaoController {
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
 	}
 
+	/**
+	 * método responsável por chamar método "removeParticipacao" em
+	 * "pessoaController" e "projetoController" e tratar os erros nos
+	 * parâmetros.
+	 * 
+	 * @param cpfPessoa
+	 *            - CPF da pessoa que deseja remover a participação.
+	 * @param codigoProjeto
+	 *            - Projeto que deseja remover a participação.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		try {
 			if (!projetoController.existeProjeto(codigoProjeto)) {
@@ -156,6 +208,14 @@ public class ParticipacaoController {
 		}
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param cpfPessoa
+	 * @param atributo
+	 * @param valor
+	 * @throws Exception
+	 */
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
 		this.validaPessoa.validaCpf(cpfPessoa);
 		this.moduloDeValidacao.stringInvalida(atributo);
@@ -164,10 +224,35 @@ public class ParticipacaoController {
 		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
 	}
 
+	/**
+	 * método responsável por chamar método "adicionaParticipacao" em
+	 * "pessoaController".
+	 * 
+	 * @param cpfPessoa
+	 *            - CPF da pessoa que deseja adicionar determinada participação.
+	 * @param participacao
+	 *            - Participação que deseja adicionar a determinada pessoa.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	private void adicionaParticipacaoAPessoa(String cpfPessoa, Participacao participacao) throws Exception {
 		pessoaController.adicionaParticipacao(cpfPessoa, participacao);
 	}
 
+	/**
+	 * método responsável por chamar método "adicionaParticipacao" em
+	 * "projetoController".
+	 * 
+	 * @param codigoProjeto
+	 *            - Código do projeto que deseja adicionar determinada
+	 *            participação.
+	 * @param participacao
+	 *            - Participação que deseja adicionar a determinado projeto.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao) throws Exception {
 		projetoController.adicionaParticipacao(codigoProjeto, participacao);
 	}

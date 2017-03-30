@@ -22,6 +22,9 @@ public class Pesquisador extends Profissional {
 		return pontos;
 	}
 
+	/**
+	 * TODO
+	 */
 	@Override
 	public double getBolsa() {
 		int numeroDeParticipantes = super.getNumeroDeParticipantes();

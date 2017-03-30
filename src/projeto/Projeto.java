@@ -59,7 +59,11 @@ public abstract class Projeto {
 		this.participacoes.add(participacao);
 	}
 
-	// TODO
+	/**
+	 * Método responsável por verificar se há algum professor associado.
+	 * 
+	 * @return - Retornará verdadeiro, caso haja, ou falso, caso não.
+	 */
 	public boolean temProfessorAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isProfessor()) {
@@ -69,7 +73,11 @@ public abstract class Projeto {
 		return false;
 	}
 
-	// TODO
+	/**
+	 * Método responsável por verificar se há algum coordenador associado.
+	 * 
+	 * @return - Retornará verdadeiro, caso haja, ou falso, caso não.
+	 */
 	public boolean temCoordenadorAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isProfessor()) {
@@ -82,7 +90,11 @@ public abstract class Projeto {
 		return false;
 	}
 
-	// TODO
+	/**
+	 * Método responsável por verificar se há algum aluno graduando associado.
+	 * 
+	 * @return - Retornará verdadeiro, caso haja, ou falso, caso não.
+	 */
 	public boolean temGraduandoAssociado() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isAlunoGraduando()) {
@@ -320,8 +332,8 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método resonsável por definir se o projeto é monitoria tendo o default de
-	 * ser falso e na filha monitoria há um override afirmando verdadeiro.
+	 * Método resonsável por definir se o projeto é monitoria, tendo como
+	 * default falso e na filha monitoria um override afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */
@@ -330,8 +342,8 @@ public abstract class Projeto {
 	}
 
 	/**
-	 * Método resonsável por definir se o projeto é PED tendo o default de ser
-	 * falso e na filha PED há um override afirmando verdadeiro.
+	 * Método resonsável por definir se o projeto é PED, tendo como default
+	 * falso e na filha PED um override afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */

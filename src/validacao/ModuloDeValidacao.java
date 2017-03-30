@@ -8,13 +8,13 @@ import exception.*;
 public class ModuloDeValidacao {
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE A STRING RECEBIDA É VÁLIDA, NO
-	 * CASO SE ELA É VAZIA OU NULA.
+	 * O método é responsável por verificar se a string recebida é válida, no
+	 * caso se ela é vazia ou nula.
 	 * 
 	 * @param str
-	 *            STRING A SER TESTADA.
-	 * @throws StringInvalidaException
-	 *             EXCEÇÃO A SER LANÇADA.
+	 *            - String a ser testada.
+	 * @throws stringinvalidaexception
+	 *             - exceção a ser lançada.
 	 */
 	public void stringInvalida(String str) throws StringInvalidaException {
 		if (str == null) {
@@ -26,13 +26,13 @@ public class ModuloDeValidacao {
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE A STRING RECEBIDA ESTÁ NO PADRÃO
-	 * DE DATA.
+	 * O método é responsável por verificar se a string recebida está no padrão
+	 * de data.
 	 * 
 	 * @param str
-	 *            STRING A SER TESTADA.
-	 * @throws Exception
-	 *             EXCEÇÃO A SER LANÇADA.
+	 *            - String a ser testada.
+	 * @throws exception
+	 *             - Exceção a ser lançada.
 	 */
 	public void dataInvalida(String str) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

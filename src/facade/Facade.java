@@ -39,18 +39,18 @@ public class Facade {
 	}
 
 	/**
-	 * MÉTODO "cadastraPessoa" CHAMA O MÉTODO DE "pessoaController".
+	 * Método "cadastrapessoa" chama o método de "pessoacontroller".
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 *           - Recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param nome
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO NOME PARA A NOVA PESSOA.
+	 *           - Recebe uma string que corresponde ao nome para a nova pessoa.
 	 * @param email
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO EMAIL PARA A NOVA PESSOA.
-	 * @return CHAMA MÉTODO DE "pessoaController".
-	 * @throws LogicaException
-	 *             ENVIARÁ UMA MENSAGEM DE ERRO CASO NÃO OCORRA O QUE É
-	 *             ESPERADO.
+	 *           - Recebe uma string que corresponde ao email para a nova pessoa.
+	 * @return - Chama método de "pessoacontroller".
+	 * @throws logicaexception
+	 *            - Enviará uma mensagem de erro caso não ocorra o que é
+	 *             esperado.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
 		try {
@@ -301,6 +301,18 @@ public class Facade {
 		participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, vinculo, valorHora, qntHoras);
 	}
 
+	/**
+	 * Método responsável por chamar "removeParticipacao" em
+	 * "participacaoController".
+	 * 
+	 * @param cpfPessoa
+	 *            - CPF da pessoa que deseja remover a participação.
+	 * @param codigoProjeto
+	 *            - Projeto que deseja remover a participação.
+	 * @throws Exception
+	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             esperados.
+	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}

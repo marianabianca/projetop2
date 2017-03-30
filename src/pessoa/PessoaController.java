@@ -1,5 +1,6 @@
 package pessoa;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,8 +8,12 @@ import exception.LogicaException;
 import participacao.Participacao;
 import validacao.ValidaPessoa;
 
-public class PessoaController {
+public class PessoaController implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Map<String, Pessoa> pessoas;
 	private ValidaPessoa validaPessoa;
 

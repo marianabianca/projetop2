@@ -1,5 +1,6 @@
 package projeto;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +9,12 @@ import participacao.Participacao;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;
 
-public class ProjetoController {
+public class ProjetoController implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Map<String, Projeto> projetos;
 	private int contadorCodigo;
 	private ValidaProjeto validaProjeto;

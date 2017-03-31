@@ -144,9 +144,9 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * Metodo responsavel por definir as participacões em uma String.
+	 * Metodo responsavel por definir as participacoes em uma String.
 	 * 
-	 * @return - retornara a String de lista de participacões.
+	 * @return - retornara a String de lista de participacoes.
 	 */
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
@@ -276,7 +276,7 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * Hashcode com codigo sendo referência.
+	 * Hashcode com codigo sendo referencia.
 	 */
 	@Override
 	public int hashCode() {
@@ -287,7 +287,7 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * Equals com codigo sendo referência.
+	 * Equals com codigo sendo referencia.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -355,6 +355,16 @@ public abstract class Projeto implements Serializable {
 	 * @return - Por default, falso.
 	 */
 	public boolean isPED() {
+		return false;
+	}
+
+	/**
+	 * Metodo resonsavel por definir se o projeto eh Extensao, tendo como
+	 * default falso e na filha Extensao um override afirmando verdadeiro.
+	 * 
+	 * @return - Por default, falso.
+	 */
+	public boolean isExtensao() {
 		return false;
 	}
 

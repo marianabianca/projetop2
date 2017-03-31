@@ -85,4 +85,8 @@ public class ProjetoExtensao extends Projeto {
 		super.atualizaCusteio(montanteCusteio);
 	}
 	
+	@Override
+	public boolean isExtensao() {
+		return true;
+	}
 }

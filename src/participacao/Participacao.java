@@ -97,6 +97,10 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 		return projeto.isPED();
 	}
 
+	public boolean isExtensao() {
+		return projeto.isExtensao();
+	}
+
 	/**
 	 * o metodo tem como objetivo retornar o valor da hora da participacao.
 	 * 
@@ -138,7 +142,11 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	 * @return
 	 */
 	public double getBolsa() {
-		return Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
+		double bolsa = Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
+		if (bolsa < 350) {
+			bolsa = 350;
+		}
+		return bolsa;
 	}
 
 	/**
@@ -151,19 +159,19 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 
 	/**
 	 * metodo resonsavel por definir se a participacao eh alundo graduando,
-	 * tendo como default falso e na filha aluno graduando ha um override afirmando
-	 * verdadeiro.
+	 * tendo como default falso e na filha aluno graduando ha um override
+	 * afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */
 	public boolean isAlunoGraduando() {
 		return false;
 	}
-	
+
 	/**
 	 * metodo resonsavel por definir se a participacao eh alundo pos graduando,
-	 * tendo como default falso e na filha aluno pos graduando ha um override afirmando
-	 * verdadeiro.
+	 * tendo como default falso e na filha aluno pos graduando ha um override
+	 * afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */

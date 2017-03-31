@@ -63,13 +63,16 @@ public class Professor extends Participacao {
 	public boolean isProfessor() {
 		return true;
 	}
-	
+
 	@Override
 	public double getBolsa() {
+		double bolsa = super.getBolsa();
 		if (this.isCoordenador()) {
-			return 0;
-		} else {
-			return super.getBolsa();
+			if (this.isExtensao() || this.isMonitoria()) {
+				return 0;
+			}
 		}
+		return bolsa;
 	}
+
 }

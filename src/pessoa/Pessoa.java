@@ -151,11 +151,7 @@ public class Pessoa implements Serializable{
 	public double getValorBolsa() {
 		int acumulador = 0;
 		for (Participacao participacao : participacoes) {
-			if (participacao.getBolsa() < 350) {
-				acumulador += 350;
-			}	else { 
-				acumulador += participacao.getBolsa();
-			}
+			acumulador += participacao.getBolsa();
 		}
 		return acumulador;
 	}                        

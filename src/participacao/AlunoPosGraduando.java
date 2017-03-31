@@ -5,9 +5,6 @@ import projeto.Projeto;
 
 public class AlunoPosGraduando extends Participacao {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String vinculo;
 
@@ -17,10 +14,10 @@ public class AlunoPosGraduando extends Participacao {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO GARANTIR QUE OS PONTOS REFERENTES A
-	 * PARTICIPACÃO DO "AlunoPosGraduando" SERÁ SEMPRE ZERO.
+	 * o metodo tem como objetivo garantir que os pontos referentes a
+	 * participacao do "alunoposgraduando" sera sempre zero.
 	 * 
-	 * @return RETORNARÁ OS PONTOS SEMPRE ZERO.
+	 * @return - retornara os pontos sempre zero.
 	 */
 	@Override
 	public double calculaPontuacao() {

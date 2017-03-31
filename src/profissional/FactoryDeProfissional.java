@@ -18,51 +18,51 @@ public class FactoryDeProfissional {
 	}
 
 	/**
-	 * Método responsável por criar um novo desenvolvedor.
+	 * Metodo responsavel por criar um novo desenvolvedor.
 	 * 
 	 * @param pessoa
-	 *            - Pessoa associada à participação.
+	 *            - Pessoa associada a participacao.
 	 * @param projeto
-	 *            - Projeto associado à participação.
+	 *            - Projeto associado a participacao.
 	 * @param valorHora
 	 *            - Valor da hora.
 	 * @param qntHoras
 	 *            - Quantidade de horas.
-	 * @return - Retornará um novo desenvolvedor.
+	 * @return - Retornara um novo desenvolvedor.
 	 */
 	private Desenvolvedor criaDesenvolvedor(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		return new Desenvolvedor(pessoa, projeto, valorHora, qntHoras);
 	}
 
 	/**
-	 * Método responsável por criar um novo gerente.
+	 * Metodo responsavel por criar um novo gerente.
 	 * 
 	 * @param pessoa
-	 *            - Pessoa associada à participação.
+	 *            - Pessoa associada a participacao.
 	 * @param projeto
-	 *            - Projeto associado à participação.
+	 *            - Projeto associado a participacao.
 	 * @param valorHora
 	 *            - Valor da hora.
 	 * @param qntHoras
 	 *            - Quantidade de horas.
-	 * @return - Retornará um novo gerente.
+	 * @return - Retornara um novo gerente.
 	 */
 	private Gerente criaGerente(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		return new Gerente(pessoa, projeto, valorHora, qntHoras);
 	}
 
 	/**
-	 * Método responsável por criar um novo pesquisador.
+	 * Metodo responsavel por criar um novo pesquisador.
 	 * 
 	 * @param pessoa
-	 *            - Pessoa associada à participação.
+	 *            - Pessoa associada a participacao.
 	 * @param projeto
-	 *            - Projeto associado à participação.
+	 *            - Projeto associado a participacao.
 	 * @param valorHora
 	 *            - Valor da hora.
 	 * @param qntHoras
 	 *            - Quantidade de horas.
-	 * @return - Retornará um novo pesquisador.
+	 * @return - Retornara um novo pesquisador.
 	 */
 	private Pesquisador criaPesquisador(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		return new Pesquisador(pessoa, projeto, valorHora, qntHoras);

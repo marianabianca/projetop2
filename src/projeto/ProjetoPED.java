@@ -22,7 +22,7 @@ public abstract class ProjetoPED extends Projeto {
 	}
 
 	/**
-	 * Método responável por oferecer determinada informacão do projeto.
+	 * Metodo responavel por oferecer determinada informacao do projeto.
 	 */
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
@@ -51,7 +51,7 @@ public abstract class ProjetoPED extends Projeto {
 	}
 
 	/**
-	 * Método responsável por mudar o atributo para o valor especificado.
+	 * Metodo responsavel por mudar o atributo para o valor especificado.
 	 */
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
@@ -86,16 +86,16 @@ public abstract class ProjetoPED extends Projeto {
 	}
 
 	/**
-	 * Método resposável por enviar a categoria.
+	 * Metodo resposavel por enviar a categoria.
 	 * 
-	 * @return - Retornará a categoria.
+	 * @return - Retornara a categoria.
 	 */
 	public String getCategoria() {
 		return this.categoria;
 	}
 
 	/**
-	 * Método responsável por quebrar o default da classe pai.
+	 * Metodo responsavel por quebrar o default da classe pai.
 	 */
 	@Override
 	public boolean isPED() {

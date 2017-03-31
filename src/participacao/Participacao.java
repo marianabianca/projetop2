@@ -8,9 +8,6 @@ import projeto.ProjetoMonitoria;
 
 public abstract class Participacao implements Comparable<Participacao>, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
 	protected Projeto projeto;
@@ -25,117 +22,119 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DA PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o nome da participacao.
 	 * 
-	 * @return RETORNARÁ O NOME.
+	 * @return - retornara o nome.
 	 */
 	public String getNomeDaPessoa() {
 		return this.pessoa.getNome();
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O CPF DA PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o cpf da participacao.
 	 * 
-	 * @return RETORNARÁ O CPF.
+	 * @return - retornara o cpf.
 	 */
 	public String getCpfDaPessoa() {
 		return this.pessoa.getCpf();
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR A PESSOA DA PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar a pessoa da participacao.
 	 * 
-	 * @return RETORNARÁ A PESSOA.
+	 * @return - retornara a pessoa.
 	 */
 	public Pessoa getPessoa() {
 		return this.pessoa;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DO PROJETO REFERENTE A
-	 * PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o nome do projeto referente a
+	 * participacao.
 	 * 
-	 * @return RETORNARÁ O NOME.
+	 * @return - retornara o nome.
 	 */
 	public String getNomeDoProjeto() {
 		return this.projeto.getNome();
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O CÓDIGO DO PROJETO REFERENTE A
-	 * PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o codigo do projeto referente a
+	 * participacao.
 	 * 
-	 * @return RETORNARÁ O CÓDIGO.
+	 * @return - retornara o codigo.
 	 */
 	public String getCodigoDoProjeto() {
 		return this.projeto.getCodigo();
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NÚMERO DE PARTICIPANTES DO PROJETO
-	 * REFERENTE A PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o numero de participantes do projeto
+	 * referente a participacao.
 	 * 
-	 * @return RETORNARÁ O NÚMERO DE PESSOAS.
+	 * @return - retornara o numero de pessoas.
 	 */
 	public int getNumeroDeParticipantes() {
 		return this.projeto.getNumeroDeParticipantes();
 	}
 
 	/**
-	 * O MÉTODO TEM COM OBJETIVO DIZER SE O PROJETO É REFERENTE A MONITORIA OU
-	 * NÃO.
+	 * o metodo tem com objetivo dizer se o projeto eh referente a monitoria ou
+	 * nao.
 	 * 
-	 * @return RETORNA SE É MONITORIA(TRUE) OU SE NÃO É(FALSE).
+	 * @return - retorna se eh monitoria(true) ou se nao eh(false).
 	 */
 	public boolean isMonitoria() {
 		return projeto.isMonitoria();
 	}
 
 	/**
-	 * O MÉTODO TEM COM OBJETIVO DIZER SE O PROJETO É REFERENTE A PED OU NÃO.
+	 * o metodo tem com objetivo dizer se o projeto eh referente a PED ou nao.
 	 * 
-	 * @return RETORNA SE É PED(TRUE) OU SE NÃO É(FALSE).
+	 * @return - retorna se eh PED(true) ou se nao eh(false).
 	 */
 	public boolean isPED() {
 		return projeto.isPED();
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O VALOR DA HORA DA PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o valor da hora da participacao.
 	 * 
-	 * @return RETORNARÁ O VALOR DA HORA.
+	 * @return - retornara o valor da hora.
 	 */
 	public double getValorDaHora() {
 		return this.valorHora;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O QUANTIDADE DE HORAS SEMANAIS DA
-	 * PARTICIPAÇÃO.
+	 * o metodo tem como objetivo retornar o quantidade de horas semanais da
+	 * participacao.
 	 * 
-	 * @return RETORNARÁ A QUANTIDADE DE HORAS SEMANAIS.
+	 * @return - retornara a quantidade de horas semanais.
 	 */
 	public int getQntHoras() {
 		return this.qntHoras;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR OS PONTOS DE PARTICIPACAO EM CLASSES
-	 * FILHAS, QUE PODEM SER: "Professor", "AlunoGraduando", "AlunoGraduando" E
-	 * "Profissional" (COM SUAS FILHAS).
+	 * o metodo tem como objetivo calcular os pontos de participacao em classes
+	 * filhas, que podem ser: "professor", "alunograduando", "alunograduando" e
+	 * "profissional" (com suas filhas).
 	 * 
-	 * @return RETORNA OS PONTOS DA PARTICIPACÃO.
+	 * @return - retorna os pontos da participacao.
 	 */
 	public abstract double calculaPontuacao();
 
 	/**
 	 * TODO
+	 * 
 	 * @return
 	 */
 	public abstract double getModificadorBolsa();
 
 	/**
 	 * TODO
+	 * 
 	 * @return
 	 */
 	public double getBolsa() {
@@ -151,8 +150,8 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	}
 
 	/**
-	 * Método resonsável por definir se a participação é alundo graduando, tendo
-	 * como default falso e na filha professor há um override afirmando
+	 * metodo resonsavel por definir se a participacao eh alundo graduando,
+	 * tendo como default falso e na filha professor ha um override afirmando
 	 * verdadeiro.
 	 * 
 	 * @return - Por default, falso.
@@ -162,8 +161,8 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	}
 
 	/**
-	 * Método resonsável por definir se a participação é professor, tendo como
-	 * default falso e na filha professor há um override afirmando verdadeiro.
+	 * metodo resonsavel por definir se a participacao eh professor, tendo como
+	 * default falso e na filha professor ha um override afirmando verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */

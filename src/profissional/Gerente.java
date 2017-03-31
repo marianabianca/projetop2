@@ -10,10 +10,10 @@ public class Gerente extends Profissional {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS, QUE SERÁ 9 POR ANO.
+	 * o metodo tem como objetivo calcular o os pontos, que sera 9 por ano.
 	 * 
-	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE
-	 *         DE "Gerente".
+	 * @return - retornara os pontos referentes ao participacao, especificamente
+	 *         de "gerente".
 	 */
 	@Override
 	public double calculaPontuacaoProfissional() {

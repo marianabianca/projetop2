@@ -36,7 +36,7 @@ public class ProjetoController implements Serializable{
 
 	/**
 	 * Metodo responsavel por criar e adicionar uma monitoria e verificar se
-	 * seus parâmetros sao validos.
+	 * seus parametros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -49,12 +49,12 @@ public class ProjetoController implements Serializable{
 	 * @param periodo
 	 *            - Periodo do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
-	 * @return - Retornara o código do projeto.
+	 * @return - Retornara o codigo do projeto.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -80,7 +80,7 @@ public class ProjetoController implements Serializable{
 
 	/**
 	 * Metodo responsavel por criar e adicionar um projeto PET e verificar se
-	 * seus parâmetros sao validos.
+	 * seus parametros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -93,16 +93,16 @@ public class ProjetoController implements Serializable{
 	 * @param prodTecnica
 	 *            - Producao Tecnica do projeto a ser criado.
 	 * @param prodAcademica
-	 *            - Producao Acadêmica do projeto a ser criado.
+	 *            - Producao Academica do projeto a ser criado.
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
-	 * @return - Retornara o código do projeto.
+	 * @return - Retornara o codigo do projeto.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
@@ -129,7 +129,7 @@ public class ProjetoController implements Serializable{
 
 	/**
 	 * Metodo responsavel por criar e adicionar um projeto extensao e verificar
-	 * se seus parâmetros sao validos.
+	 * se seus parametros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -138,12 +138,12 @@ public class ProjetoController implements Serializable{
 	 * @param impacto
 	 *            - Impacto do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
-	 * @return - Retornara o código do projeto.
+	 * @return - Retornara o codigo do projeto.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
@@ -165,7 +165,7 @@ public class ProjetoController implements Serializable{
 
 	/**
 	 * Metodo responsavel por criar e adicionar um projeto PED e verificar se
-	 * seus parâmetros sao validos.
+	 * seus parametros sao validos.
 	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
@@ -174,18 +174,18 @@ public class ProjetoController implements Serializable{
 	 * @param prodTecnica
 	 *            - Producao Tecnica do projeto a ser criado.
 	 * @param prodAcademica
-	 *            - Producao Acadêmica do projeto a ser criado.
+	 *            - Producao Academica do projeto a ser criado.
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param objetivo
 	 *            - Objetivo do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
-	 * @return - Retornara o código do projeto.
+	 * @return - Retornara o codigo do projeto.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
@@ -214,12 +214,12 @@ public class ProjetoController implements Serializable{
 	 * excecões e encontrar o projeto desejado.
 	 * 
 	 * @param codigo
-	 *            - Código do projeto que deseja a informacao.
+	 *            - Codigo do projeto que deseja a informacao.
 	 * @param atributo
 	 *            - Atributo o qual deseja a informacao.
 	 * @return - Chama metodo em "projeto".
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
@@ -237,10 +237,10 @@ public class ProjetoController implements Serializable{
 	 * excecao.
 	 * 
 	 * @param nome
-	 *            - Nome do projeto que deseja o código.
+	 *            - Nome do projeto que deseja o codigo.
 	 * @return - Chama metodo em "projeto".
 	 * @throws ObjetoNuloException
-	 *             - Lancara uma ObjetoNuloException, caso os parâmetros nao
+	 *             - Lancara uma ObjetoNuloException, caso os parametros nao
 	 *             sejam os esperados.
 	 */
 	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
@@ -263,7 +263,7 @@ public class ProjetoController implements Serializable{
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
@@ -292,11 +292,11 @@ public class ProjetoController implements Serializable{
 	 * tratar a excecao.
 	 * 
 	 * @param codigoProjeto
-	 *            - Código do projeto a ter a paticipacao adicionada.
+	 *            - Codigo do projeto a ter a paticipacao adicionada.
 	 * @param participacao
 	 *            - Paticipacao a ser adicionada.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws Exception {
@@ -309,11 +309,11 @@ public class ProjetoController implements Serializable{
 	 * tratar a excecao.
 	 * 
 	 * @param codigoProjeto
-	 *            - Código do projeto a ter a paticipacao removida.
+	 *            - Codigo do projeto a ter a paticipacao removida.
 	 * @param participacao
 	 *            - Paticipacao a ser removida.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
@@ -326,9 +326,9 @@ public class ProjetoController implements Serializable{
 	}
 
 	/**
-	 * Metodo responsavel por gerar código.
+	 * Metodo responsavel por gerar codigo.
 	 * 
-	 * @return - Retornara o código.
+	 * @return - Retornara o codigo.
 	 */
 	private String geraCodigo() {
 		String codigo = Integer.toString(contadorCodigo++);
@@ -337,13 +337,13 @@ public class ProjetoController implements Serializable{
 
 	/**
 	 * Metodo resposavel por encontrar projeto em projetos e tratar a exececao,
-	 * caso o parâmetro nao corresponda a um projeto.
+	 * caso o parametro nao corresponda a um projeto.
 	 * 
 	 * @param codigo
-	 *            - Código do projeto buscado.
+	 *            - Codigo do projeto buscado.
 	 * @return - Retornara o projeto buscado.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public Projeto getProjeto(String codigo) throws Exception {
@@ -357,10 +357,10 @@ public class ProjetoController implements Serializable{
 
 	/**
 	 * Metodo resposavel por definir se ja existe algum projeto com determinado
-	 * código.
+	 * codigo.
 	 * 
 	 * @param codigoProjeto
-	 *            - Código do projeto buscado.
+	 *            - Codigo do projeto buscado.
 	 * @return - Retornara se ja existe(true) ou nao (false)
 	 */
 	public boolean existeProjeto(String codigoProjeto) {

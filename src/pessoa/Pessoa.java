@@ -11,9 +11,6 @@ import participacao.Participacao;
 
 public class Pessoa implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String nome, email, cpf;
 	private List<Participacao> participacoes;
@@ -26,22 +23,22 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * O método é responsável por adicionar participações dentro de pessoa.
+	 * O metodo eh responsavel por adicionar participacoes dentro de pessoa.
 	 * 
 	 * @param participacao
-	 *            - participação a ser adicionada.
+	 *            - pariticipacao a ser adicionada.
 	 */
 	public void adicionaParticipacao(Participacao participacao) {
 		this.participacoes.add(participacao);
 	}
 
 	/**
-	 * Metodo Responsável por remover a participação da pessoa.
+	 * Metodo responsavel por remover a pariticipacao da pessoa.
 	 * 
 	 * @param codigoProjeto
 	 *            - codigo do projeto, o qual será tirada a participacao.
 	 * @throws LogicaException
-	 *             - caso o parâmetro não seja o esperado, lançará uma exceção.
+	 *             - caso o parametro nao seja o esperado, lancara uma excecao.
 	 */
 	public void removeParticipacao(String codigoProjeto) throws LogicaException {
 		if (!this.temParticipacaoEmProjeto(codigoProjeto)) {
@@ -56,12 +53,12 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Metódo responsável por avaliar se há participação no projeto
+	 * Metodo responsavel por avaliar se ha pariticipacao no projeto
 	 * especificado.
 	 * 
 	 * @param codigoProjeto
-	 *            - código do projeto a ser analizado.
-	 * @return - se há(true) ou não(false).
+	 *            - codigo do projeto a ser analizado.
+	 * @return - se ha(true) ou nao(false).
 	 */
 	public boolean temParticipacaoEmProjeto(String codigoProjeto) {
 		for (Participacao participacao : participacoes) {
@@ -73,7 +70,7 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Método responsável por calcular o número de pontos de uma pessoa.
+	 * metodo responsavel por calcular o numero de pontos de uma pessoa.
 	 * 
 	 * @return - retorna a quantidade final de pontos.
 	 */
@@ -97,9 +94,9 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Metódo auxiliar de "calculaPontuacaoPorParticipacao" com o objetivo de
-	 * calcular todos os projetos que sejam de aluno graduando e que não são
-	 * monitoria, o qual pode no máximo acumular 8 pontos.
+	 * Metodo auxiliar de "calculaPontuacaoPorParticipacao" com o objetivo de
+	 * calcular todos os projetos que sejam de aluno graduando e que nao sao
+	 * monitoria, o qual pode no maximo acumular 8 pontos.
 	 * 
 	 * @param acumuladorGraduandoPEDExtensaoPET
 	 *            - acumulador de pontos recebido de
@@ -107,7 +104,7 @@ public class Pessoa implements Serializable{
 	 * @param participacao
 	 *            - participacao a ser calculada de
 	 *            "calculaPontuacaoPorParticipacao".
-	 * @return - chama o método "calculaPontuacao" de participação.
+	 * @return - chama o metodo "calculaPontuacao" de pariticipacao.
 	 */
 	public double calculaPontuacaoPorParticipacaoPEDExtensaoPET(double acumuladorGraduandoPEDExtensaoPET,
 			Participacao participacao) {
@@ -122,9 +119,9 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Metódo auxiliar de "calculaPontuacaoPorParticipacao" com o objetivo de
-	 * calcular todos os projetos que sejam de aluno graduando e que são
-	 * monitoria, o qual pode no máximo acumular 6 pontos.
+	 * Metodo auxiliar de "calculaPontuacaoPorParticipacao" com o objetivo de
+	 * calcular todos os projetos que sejam de aluno graduando e que sao
+	 * monitoria, o qual pode no maximo acumular 6 pontos.
 	 * 
 	 * @param acumuladorGraduandoMonitoria
 	 *            - acumulador de pontos recebido de
@@ -132,7 +129,7 @@ public class Pessoa implements Serializable{
 	 * @param participacao
 	 *            - participacao a ser calculada de
 	 *            "calculaPontuacaoPorParticipacao".
-	 * @return - chama o método "calculaPontuacao" de participação.
+	 * @return - chama o metodo "calculaPontuacao" de pariticipacao.
 	 */
 	public double calculaPontuacaoPorParticipacaoMonitoria(double acumuladorGraduandoMonitoria,
 			Participacao participacao) {
@@ -147,9 +144,9 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Metódo responsável por acumular o valor da bolsa de uma pessoa.
+	 * Metodo responsavel por acumular o valor da bolsa de uma pessoa.
 	 * 
-	 * @return - retornará o valor da bolsa em double.
+	 * @return - retornara o valor da bolsa em double.
 	 */
 	public double getValorBolsa() {
 		int acumulador = 0;
@@ -163,66 +160,66 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O NOME DA PESSOA.
+	 * o metodo tem como objetivo retornar o nome da pessoa.
 	 * 
-	 * @return RETORNARÁ O NOME DA PESSOA.
+	 * @return - retornara o nome da pessoa.
 	 */
 	public String getNome() {
 		return this.nome;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR O NOME DE PESSOA.
+	 * o metodo tem como objetivo mudar o nome de pessoa.
 	 * 
-	 * @param email
-	 *            NOVO NOME.
+	 * @param nome
+	 *            - novo nome.
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O EMAIL DA PESSOA.
+	 * o metodo tem como objetivo retornar o email da pessoa.
 	 * 
-	 * @return RETORNARÁ O EMAIL DA PESSOA.
+	 * @return - retornara o email da pessoa.
 	 */
 	public String getEmail() {
 		return this.email;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR O EMAIL DE PESSOA.
+	 * o metodo tem como objetivo mudar o email de pessoa.
 	 * 
 	 * @param email
-	 *            NOVO EMAIL.
+	 *            - novo email.
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR O CPF DA PESSOA.
+	 * o metodo tem como objetivo retornar o cpf da pessoa.
 	 * 
-	 * @return RETORNARÁ O CPF DA PESSOA.
+	 * @return - retornara o cpf da pessoa.
 	 */
 	public String getCpf() {
 		return this.cpf;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO MUDAR O CPF DE PESSOA.
+	 * o metodo tem como objetivo mudar o cpf de pessoa.
 	 * 
-	 * @param email
-	 *            NOVO CPF.
+	 * @param cpf
+	 *            - novo cpf.
 	 */
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
 	/**
-	 * Método responsável por definir as participações em uma String.
+	 * metodo responsavel por definir as participacoes em uma String.
 	 * 
-	 * @return -retornará a String de lista de participações.
+	 * @return - retornara a String de lista de participacoes.
 	 */
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
@@ -236,7 +233,7 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Hashcode com CPF sendo referência.
+	 * Hashcode com CPF sendo referencia.
 	 */
 	@Override
 	public int hashCode() {
@@ -247,7 +244,7 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * Equals com CPF sendo referência.
+	 * Equals com CPF sendo referencia.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -267,8 +264,8 @@ public class Pessoa implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO RETORNAR UMA STRING COM TODAS AS INFORMAÇÕES
-	 * DE PESSOA.
+	 * o metodo tem como objetivo retornar uma string com todas as informacoes
+	 * de pessoa.
 	 */
 	@Override
 	public String toString() {

@@ -18,22 +18,22 @@ public class Professor extends Participacao {
 	}
 
 	/**
-	 * Método responsável por analizar se é um coordenador.
+	 * Metodo responsavel por analizar se eh um coordenador.
 	 * 
-	 * @return true, se for coordenador, false, se não.
+	 * @return - true, se for coordenador, false, se nao.
 	 */
 	public boolean isCoordenador() {
 		return this.coordenador;
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS POR ANO. CASO SEJA
-	 * MONITORIA, SERÁ QUATRO PONTOS A CADA ANO, SENDO OUTRO TIPO(PET, PED,
-	 * EXTENSÃO), SERÁ QUATRO PONTOS A CADA ANO E MAIS UM PONTO POR CADA ALUNO
-	 * PARTICIPANTE DO PROJETO.
+	 * o metodo tem como objetivo calcular o os pontos por ano. caso seja
+	 * monitoria, sera quatro pontos a cada ano, sendo outro tipo(pet, ped,
+	 * extensao), sera quatro pontos a cada ano e mais um ponto por cada aluno
+	 * participante do projeto.
 	 * 
-	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE
-	 *         DE "Professor".
+	 * @return - retornara os pontos referentes ao participacao, especificamente
+	 *         de "professor".
 	 */
 	@Override
 	public double calculaPontuacao() {
@@ -57,7 +57,7 @@ public class Professor extends Participacao {
 	}
 
 	/**
-	 * Método responsável por quebrar o default da classe pai.
+	 * Metodo - responsavel por quebrar o default da classe pai.
 	 */
 	@Override
 	public boolean isProfessor() {

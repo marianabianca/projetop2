@@ -17,7 +17,7 @@ public class AlunoPosGraduando extends Participacao {
 	 * o metodo tem como objetivo garantir que os pontos referentes a
 	 * participacao do "alunoposgraduando" sera sempre zero.
 	 * 
-	 * @return retornara os pontos sempre zero.
+	 * @return - retornara os pontos sempre zero.
 	 */
 	@Override
 	public double calculaPontuacao() {

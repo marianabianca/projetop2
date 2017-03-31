@@ -25,13 +25,18 @@ public class Gerente extends Profissional {
 	/**
 	 * TODO
 	 */
-	@Override
 	public double getBolsa() {
-		int numeroDeParticipantes = super.getNumeroDeParticipantes();
-		if (numeroDeParticipantes <= 5) {
-			return super.getBolsa() + 20 * numeroDeParticipantes;
-		}
-		return super.getBolsa() + 100;
+        double bolsa = 0.0;
+        int numeroDeParticipantes = super.getNumeroDeParticipantes();
+        if (numeroDeParticipantes <= 5) {
+        	bolsa = super.getBolsa() + 20 * numeroDeParticipantes;
+        }
+        bolsa = super.getBolsa() + 100;
+        if (bolsa < 350) {
+        	return 350;
+        } else {
+        	return bolsa;
+        }
 	}
 
 }

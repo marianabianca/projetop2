@@ -169,17 +169,13 @@ public class ParticipacaoController implements Serializable {
 			int qntHoras) throws Exception {
 		Pessoa posGraduando;
 		Projeto projeto;
-		try {
-			this.validaPessoa.validaCpf(cpfPessoa);
-			this.validaProjeto.validaQtdHoras(qntHoras);
-			this.validaProjeto.validaValorHora(valorHora);
-			posGraduando = pessoaController.getPessoa(cpfPessoa);
-			projeto = projetoController.getProjeto(codigoProjeto);
-			if (projeto instanceof ProjetoMonitoria || projeto instanceof ProjetoPET) {
-				throw new Exception("Tipo de projeto invalido para pos graduando");
-			}
-		} catch (Exception e) {
-			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+		this.validaPessoa.validaCpf(cpfPessoa);
+		this.validaProjeto.validaQtdHoras(qntHoras);
+		this.validaProjeto.validaValorHora(valorHora);
+		posGraduando = pessoaController.getPessoa(cpfPessoa);
+		projeto = projetoController.getProjeto(codigoProjeto);
+		if (projeto instanceof ProjetoMonitoria || projeto instanceof ProjetoPET) {
+			throw new Exception("Tipo de projeto invalido para pos graduando");
 		}
 		Participacao participacao = factoryDeParticipacao.criaPosGraduando(posGraduando, projeto, valorHora, qntHoras,
 				vinculo);

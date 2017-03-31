@@ -151,12 +151,23 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 
 	/**
 	 * metodo resonsavel por definir se a participacao eh alundo graduando,
-	 * tendo como default falso e na filha professor ha um override afirmando
+	 * tendo como default falso e na filha aluno graduando ha um override afirmando
 	 * verdadeiro.
 	 * 
 	 * @return - Por default, falso.
 	 */
 	public boolean isAlunoGraduando() {
+		return false;
+	}
+	
+	/**
+	 * metodo resonsavel por definir se a participacao eh alundo pos graduando,
+	 * tendo como default falso e na filha aluno pos graduando ha um override afirmando
+	 * verdadeiro.
+	 * 
+	 * @return - Por default, falso.
+	 */
+	public boolean isAlunoPosGraduando() {
 		return false;
 	}
 

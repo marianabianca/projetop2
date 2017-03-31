@@ -322,7 +322,7 @@ public abstract class Projeto implements Serializable {
 	public double calculaPontuacao() {
 		double acumulador = 0;
 		for (Participacao participacao : participacoes) {
-			if (participacao.isAlunoGraduando()) {
+			if (participacao.isAlunoGraduando() || participacao.isAlunoPosGraduando()) {
 				acumulador += 1;
 			}
 		}

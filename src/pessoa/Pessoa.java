@@ -151,13 +151,14 @@ public class Pessoa implements Serializable{
 	public double getValorBolsa() {
 		int acumulador = 0;
 		for (Participacao participacao : participacoes) {
-			acumulador += participacao.getBolsa();
-		}
-		if (acumulador < 350) {
-			return 350;
+			if (participacao.getBolsa() < 350) {
+				acumulador += 350;
+			}	else { 
+				acumulador += participacao.getBolsa();
+			}
 		}
 		return acumulador;
-	}
+	}                        
 
 	/**
 	 * o metodo tem como objetivo retornar o nome da pessoa.

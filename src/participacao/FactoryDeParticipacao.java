@@ -94,9 +94,10 @@ public class FactoryDeParticipacao implements Serializable {
 	 * @param vinculo
 	 *            - Vinculo do aluno pos-graduando.
 	 * @return - Retornara um novo aluno pos-graduando.
+	 * @throws Exception - caso não seja possível criar a participacao
 	 */
 	public Participacao criaPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras,
-			String vinculo) {
+			String vinculo) throws Exception {
 		return new AlunoPosGraduando(pessoa, projeto, valorHora, qntHoras, vinculo);
 	}
 

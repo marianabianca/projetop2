@@ -9,9 +9,9 @@ public class ProjetoPIBICPIBITI extends ProjetoPED {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ProjetoPIBICPIBITI(String nome, int prodTecnica, int prodAcademica, int patentes,
+	public ProjetoPIBICPIBITI(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
 			String objetivo, String dataInicio, int duracao, String codigo) {
-		super(nome, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao, codigo);
+		super(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao, codigo);
 	}
 
 	@Override

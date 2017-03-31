@@ -27,7 +27,12 @@ public class Pesquisador extends Profissional {
 	 */
 	@Override
 	public double getBolsa() {
-		return super.getBolsa() + 100;
+		double bolsa = super.getBolsa() + 100;
+		if (bolsa < 350) {
+			return 350;
+		} else {
+			return bolsa;
+		}
 	}
 
 }

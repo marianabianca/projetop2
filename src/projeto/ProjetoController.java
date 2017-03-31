@@ -391,10 +391,10 @@ public class ProjetoController implements Serializable{
 	
 	public void diminuiReceita(double preco) throws LogicaException{
 		this.moduloDeValidacao.numeroNegativo(preco);
-		if (preco > this.calculaColaboracaoTotalUASC()) {
+		if (preco > this.calculaTotalEmCaixaUASC()) {
 			throw new LogicaException("a unidade nao possui fundos suficientes");
 		}
-		this.descontoReceita += preco;
+		this.descontoReceita = preco;
 	}
 
 	public double calculaTotalEmCaixaUASC() {

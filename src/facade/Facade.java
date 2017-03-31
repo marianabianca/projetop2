@@ -25,12 +25,12 @@ public class Facade {
 		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
 				"acceptance_test/us2_test.txt", "acceptance_test/us2_test_exception.txt",
 				"acceptance_test/us3_test.txt", "acceptance_test/us3_test_exception.txt",
-				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt", 
-				"acceptance_test/us6_test.txt", "acceptance_test/us6_test_exception.txt" };
+				"acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt", "acceptance_test/us6_test.txt",
+				"acceptance_test/us6_test_exception.txt" };
 		EasyAccept.main(args);
 	}
 
-	// TODO tirar pirâmides do egito, LogicaException, tratamento de exception
+	// TODO tirar piramides do egito, LogicaException, tratamento de exception
 	// na Facade
 
 	public Facade() {
@@ -40,94 +40,111 @@ public class Facade {
 	}
 
 	/**
-	 * Método para carregar o sistema salvo. Carrega os objetos pessoaController e ProjetoController
+	 * Metodo para carregar o sistema salvo. Carrega os objetos pessoaController
+	 * e ProjetoController
 	 * 
-	 * @throws IOException - caso haja algum problema com o arquivo
-	 * @throws ClassNotFoundException - caso o downcast não funcione, pois a classe não existe
+	 * @throws IOException
+	 *             - caso haja algum problema com o arquivo
+	 * @throws ClassNotFoundException
+	 *             - caso o downcast nao funcione, pois a classe nao existe
 	 */
 	public void iniciaSistema() throws IOException, ClassNotFoundException {
-//		try {
-//			this.iniciaPessoaController();
-//		} catch (FileNotFoundException e) {
-//			this.criaArquivo("pessoa_controller.objeto", this.pessoaController);
-//		}
-//		
-//		try {
-//			this.iniciaProjetoController();
-//		} catch (FileNotFoundException e) {
-//			this.criaArquivo("projeto_controller.objeto", this.pessoaController);
-//		}		
+		// try {
+		// this.iniciaPessoaController();
+		// } catch (FileNotFoundException e) {
+		// this.criaArquivo("pessoa_controller.objeto", this.pessoaController);
+		// }
+		//
+		// try {
+		// this.iniciaProjetoController();
+		// } catch (FileNotFoundException e) {
+		// this.criaArquivo("projeto_controller.objeto", this.pessoaController);
+		// }
 	}
-	
+
 	/**
-	 * Método para carregar o objeto pessoaController
+	 * Metodo para carregar o objeto pessoaController
 	 * 
-	 * @throws IOException - caso haja algum problema com o arquivo
-	 * @throws ClassNotFoundException - caso o downcast não funcione, pois a classe não existe
+	 * @throws IOException
+	 *             - caso haja algum problema com o arquivo
+	 * @throws ClassNotFoundException
+	 *             - caso o downcast nao funcione, pois a classe nao existe
 	 */
 	private void iniciaPessoaController() throws IOException, ClassNotFoundException {
-//		FileInputStream fis = new FileInputStream("pessoa_controller.objeto");
-//		ObjectInputStream ois = new ObjectInputStream(fis);
-//		this.pessoaController = (PessoaController) ois.readObject();
-//		fis.close();
+		// FileInputStream fis = new
+		// FileInputStream("pessoa_controller.objeto");
+		// ObjectInputStream ois = new ObjectInputStream(fis);
+		// this.pessoaController = (PessoaController) ois.readObject();
+		// fis.close();
 	}
-	
+
 	/**
-	 * Método para carregar o objeto projetoController
+	 * Metodo para carregar o objeto projetoController
 	 * 
-	 * @throws IOException - caso haja algum problema com o arquivo
-	 * @throws ClassNotFoundException - caso o downcast não funcione, pois a classe não existe
+	 * @throws IOException
+	 *             - caso haja algum problema com o arquivo
+	 * @throws ClassNotFoundException
+	 *             - caso o downcast nao funcione, pois a classe nao existe
 	 */
 	private void iniciaProjetoController() throws IOException, ClassNotFoundException {
-//		FileInputStream fis = new FileInputStream("projeto_controller.objeto");
-//		ObjectInputStream ois = new ObjectInputStream(fis);
-//		this.projetoController = (ProjetoController) ois.readObject();
-//		fis.close();
+		// FileInputStream fis = new
+		// FileInputStream("projeto_controller.objeto");
+		// ObjectInputStream ois = new ObjectInputStream(fis);
+		// this.projetoController = (ProjetoController) ois.readObject();
+		// fis.close();
 	}
 
 	/**
-	 * Método para a escrita em um novo arquivo de um objeto
+	 * Metodo para a escrita em um novo arquivo de um objeto
 	 * 
-	 * @param arquivo - nome do arquivo desejado
-	 * @param objeto - objeto a ser escrito no arquivo
-	 * @throws IOException - caso haja algum problema com o arquivo
+	 * @param arquivo
+	 *            - nome do arquivo desejado
+	 * @param objeto
+	 *            - objeto a ser escrito no arquivo
+	 * @throws IOException
+	 *             - caso haja algum problema com o arquivo
 	 */
 	private void criaArquivo(String arquivo, Object objeto) throws IOException {
-//		FileOutputStream fos = new FileOutputStream(arquivo);
-//		ObjectOutputStream oos = new ObjectOutputStream(fos);
-//		oos.writeObject(objeto);
-//		fos.close();
+		// FileOutputStream fos = new FileOutputStream(arquivo);
+		// ObjectOutputStream oos = new ObjectOutputStream(fos);
+		// oos.writeObject(objeto);
+		// fos.close();
 	}
 
 	/**
-	 * Método para a escrita dos objetos pessoaController e projetoController em arquivos a fim de salva-los
+	 * Metodo para a escrita dos objetos pessoaController e projetoController em
+	 * arquivos a fim de salva-los
 	 * 
-	 * @throws IOException - caso haja algum problema com o arquivo
+	 * @throws IOException
+	 *             - caso haja algum problema com o arquivo
 	 */
 	public void fechaSistema() throws IOException {
-//		FileOutputStream fos = new FileOutputStream("pessoa_controller.objeto");
-//		ObjectOutputStream oos = new ObjectOutputStream(fos);
-//		oos.writeObject(this.pessoaController);
-//		
-//		fos = new FileOutputStream("projeto_controller.objeto");
-//		oos = new ObjectOutputStream(fos);
-//		oos.writeObject(this.projetoController);
-//		
-//		fos.close();
+		// FileOutputStream fos = new
+		// FileOutputStream("pessoa_controller.objeto");
+		// ObjectOutputStream oos = new ObjectOutputStream(fos);
+		// oos.writeObject(this.pessoaController);
+		//
+		// fos = new FileOutputStream("projeto_controller.objeto");
+		// oos = new ObjectOutputStream(fos);
+		// oos.writeObject(this.projetoController);
+		//
+		// fos.close();
 	}
 
 	/**
 	 * Metodo "cadastrapessoa" chama o metodo de "pessoacontroller".
 	 * 
 	 * @param cpf
-	 *           - Recebe uma string que corresponde ao cpf para a nova pessoa.
+	 *            - Recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param nome
-	 *           - Recebe uma string que corresponde ao nome para a nova pessoa.
+	 *            - Recebe uma string que corresponde ao nome para a nova
+	 *            pessoa.
 	 * @param email
-	 *           - Recebe uma string que corresponde ao email para a nova pessoa.
+	 *            - Recebe uma string que corresponde ao email para a nova
+	 *            pessoa.
 	 * @return - Chama metodo de "pessoacontroller".
 	 * @throws logicaexception
-	 *            - Enviara uma mensagem de erro caso nao ocorra o que e
+	 *             - Enviara uma mensagem de erro caso nao ocorra o que e
 	 *             esperado.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
@@ -139,36 +156,36 @@ public class Facade {
 	}
 
 	/**
-	 * MeTODO "getInfoPessoa" CHAMA O MeTODO DE "pessoaController".
+	 * Metodo "getInfoPessoa" chama o metodo de "pessoaController".
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 *            - recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAcaO BUSCADA SOBRE O
-	 *            USUaRIO.
-	 * @return CHAMA MeTODO DE "pessoaController".
-	 * @throws LogicaException
-	 *             ENVIARa UMA MENSAGEM DE ERRO CASO NaO OCORRA O QUE e
-	 *             ESPERADO.
+	 *            - recebe uma string que corresponde a informacao buscada sobre
+	 *            o usuario.
+	 * @return chama metodo de "pessoacontroller".
+	 * @throws logicaexception
+	 *             - enviara uma mensagem de erro caso nao ocorra o que e
+	 *             esperado.
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
 		return pessoaController.getInfoPessoa(cpf, atributo);
 	}
 
 	/**
-	 * MeTODO "editaPessoa" CHAMA O MeTODO DE "pessoaController".
+	 * Metodo "editaPessoa" chama metodo de "pessoaController".
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 *            - recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAcaO QUE DESEJA SER
-	 *            MODIFICADA EM PESSOA.
+	 *            - recebe uma string que corresponde a informacao que deseja
+	 *            ser - modificada em pessoa.
 	 * @param valor
-	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERa
-	 *            MUDADO PESSOA.
-	 * @throws LogicaException
-	 *             ENVIARa UMA MENSAGEM DE ERRO CASO NaO OCORRA O QUE e
-	 *             ESPERADO.
+	 *            - recebe uma string que corresponde para o que o atributo sera
+	 *            mudado pessoa.
+	 * @throws logicaexception
+	 *             - enviara uma mensagem de erro caso nao ocorra o que e
+	 *             esperado.
 	 */
 	public void editaPessoa(String cpf, String atributo, String valor) throws LogicaException {
 		try {
@@ -179,11 +196,11 @@ public class Facade {
 	}
 
 	/**
-	 * MeTODO "editaPessoa" CHAMA O MeTODO DE "pessoaController".
+	 * metodo "editapessoa" chama o metodo de "pessoacontroller".
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA REMOVER A
-	 *            PESSOA.
+	 *            - recebe uma string que corresponde ao cpf para remover a
+	 *            pessoa.
 	 */
 	public void removePessoa(String cpf) {
 		pessoaController.removePessoa(cpf);
@@ -203,12 +220,12 @@ public class Facade {
 	 * @param periodo
 	 *            - Periodo do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController"
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
@@ -235,12 +252,12 @@ public class Facade {
 	 * @param patentes
 	 *            - Patentes do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
@@ -259,12 +276,12 @@ public class Facade {
 	 * @param impacto
 	 *            - Impacto do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
@@ -288,12 +305,12 @@ public class Facade {
 	 * @param objetivo
 	 *            - Objetivo do projeto a ser criado.
 	 * @param dataInicio
-	 *            - Data de Início do projeto a ser criado.
+	 *            - Data de Inicio do projeto a ser criado.
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
@@ -311,7 +328,7 @@ public class Facade {
 	 *            - Atributo o qual deseja a informacao.
 	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String getInfoProjeto(String codigo, String atributo) throws Exception {
@@ -325,7 +342,7 @@ public class Facade {
 	 *            - Nome do projeto que deseja o código.
 	 * @return - Chama metodo em "projetoController".
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String getCodigoProjeto(String nome) throws Exception {
@@ -342,7 +359,7 @@ public class Facade {
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
@@ -388,7 +405,7 @@ public class Facade {
 	 * @param codigoProjeto
 	 *            - Projeto que deseja remover a participacao.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
@@ -396,16 +413,16 @@ public class Facade {
 	}
 
 	/**
-	 * MeTODO "calculaPontuacaoPorParticipacao" CHAMA O MeTODO DE
-	 * "pessoaController".
+	 * Metodo "calculapontuacaoporparticipacao" chama o metodo de
+	 * "pessoacontroller".
 	 * 
-	 * @param cpfPessoa
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
-	 *            CALCULAR.
-	 * @return CHAMA MeTODO DE "pessoaController".
-	 * @throws LogicaException
-	 *             ENVIARa UMA MENSAGEM DE ERRO CASO NaO OCORRA O QUE e
-	 *             ESPERADO.
+	 * @param cpfpessoa
+	 *            - recebe uma string que corresponde ao cpf da pessoa que
+	 *            deseja calcular.
+	 * @return - chama metodo de "pessoacontroller".
+	 * @throws logicaexception
+	 *             - enviara uma mensagem de erro caso nao ocorra o que e
+	 *             esperado.
 	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
 		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
@@ -418,21 +435,22 @@ public class Facade {
 	 *            - CPF da pessoa que deseja calcular a bolsa.
 	 * @return - Chamara o metodo de "pessoaController".
 	 * @throws Exception
-	 *             - Lancara uma Exception caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public double getValorBolsa(String cpfPessoa) throws Exception {
 		return pessoaController.getValorBolsa(cpfPessoa);
 	}
-	
-	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws Exception {
+
+	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio,
+			double montanteCapital) throws Exception {
 		try {
 			projetoController.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
 		} catch (ParametroInvalidoException e) {
 			throw new ParametroInvalidoException("Erro na atualizacao de projeto: " + e.getMessage());
 		}
 	}
-	
+
 	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
 		try {
 			return projetoController.calculaColaboracaoUASC(codProjeto);
@@ -440,20 +458,20 @@ public class Facade {
 			throw new ParametroInvalidoException("Erro na consulta de projeto: " + e.getMessage());
 		}
 	}
-	
-	public double calculaColaboracaoTotalUASC(){
+
+	public double calculaColaboracaoTotalUASC() {
 		return projetoController.calculaColaboracaoTotalUASC();
 	}
-	
+
 	public void diminuiReceita(double valor) throws LogicaException {
 		try {
-			this.projetoController.diminuiReceita(valor);			
+			this.projetoController.diminuiReceita(valor);
 		} catch (LogicaException e) {
 			throw new ParametroInvalidoException("Erro na atualizacao da receita da unidade: " + e.getMessage());
 		}
 	}
-	
-	public double calculaTotalEmCaixaUASC(){
+
+	public double calculaTotalEmCaixaUASC() {
 		return this.projetoController.calculaTotalEmCaixaUASC();
 	}
 

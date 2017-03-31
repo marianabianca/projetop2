@@ -188,16 +188,16 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * método responsável por chamar método "removeParticipacao" em
+	 * metodo responsavel por chamar metodo "removeParticipacao" em
 	 * "pessoaController" e "projetoController" e tratar os erros nos
-	 * parâmetros.
+	 * parametros.
 	 * 
 	 * @param cpfPessoa
-	 *            - CPF da pessoa que deseja remover a participação.
+	 *            - CPF da pessoa que deseja remover a participacao.
 	 * @param codigoProjeto
-	 *            - Projeto que deseja remover a participação.
+	 *            - Projeto que deseja remover a participacao.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
@@ -229,15 +229,15 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * método responsável por chamar método "adicionaParticipacao" em
+	 * metodo responsavel por chamar metodo "adicionaParticipacao" em
 	 * "pessoaController".
 	 * 
 	 * @param cpfPessoa
-	 *            - CPF da pessoa que deseja adicionar determinada participação.
+	 *            - CPF da pessoa que deseja adicionar determinada participacao.
 	 * @param participacao
-	 *            - Participação que deseja adicionar a determinada pessoa.
+	 *            - Participacao que deseja adicionar a determinada pessoa.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	private void adicionaParticipacaoAPessoa(String cpfPessoa, Participacao participacao) throws Exception {
@@ -245,16 +245,16 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * método responsável por chamar método "adicionaParticipacao" em
+	 * metodo responsavel por chamar metodo "adicionaParticipacao" em
 	 * "projetoController".
 	 * 
 	 * @param codigoProjeto
-	 *            - Código do projeto que deseja adicionar determinada
-	 *            participação.
+	 *            - Codigo do projeto que deseja adicionar determinada
+	 *            participacao.
 	 * @param participacao
-	 *            - Participação que deseja adicionar a determinado projeto.
+	 *            - Participacao que deseja adicionar a determinado projeto.
 	 * @throws Exception
-	 *             - Lançará uma Exception, caso os parâmetros não sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao) throws Exception {

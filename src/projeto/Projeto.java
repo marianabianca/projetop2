@@ -20,7 +20,7 @@ public abstract class Projeto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String nome, objetivo, dataInicio, codigo;
 	private int duracao;
-	private Map<String,Despesa> custos;
+	private Map<String, Despesa> custos;
 	private List<Participacao> participacoes;
 
 	public Projeto(String nome, String objetivo, String dataInicio, int duracao, String codigo) {
@@ -39,7 +39,7 @@ public abstract class Projeto implements Serializable {
 	 * @param atributo
 	 *            - Atributo o qual deseja a informacao.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public abstract String getInfoProjeto(String atributo) throws Exception;
@@ -52,7 +52,7 @@ public abstract class Projeto implements Serializable {
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public abstract void editaProjeto(String atributo, String valor) throws Exception;
@@ -146,7 +146,7 @@ public abstract class Projeto implements Serializable {
 	/**
 	 * Metodo responsavel por definir as participacões em uma String.
 	 * 
-	 * @return -retornara a String de lista de participacões.
+	 * @return - retornara a String de lista de participacões.
 	 */
 	public String getParticipacoes() {
 		String listaParticipacoes = "";
@@ -167,7 +167,7 @@ public abstract class Projeto implements Serializable {
 	 * @param cpfPessoa
 	 *            - CPF da pessoa que deseja remover a paritcipacao
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parâmetros nao sejam os
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void removeParticipacao(String cpfPessoa) throws Exception {
@@ -191,93 +191,92 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO RETORNAR O NOME DO PROJETO.
+	 * o metodo tem como objetivo retornar o nome do projeto.
 	 * 
-	 * @return RETORNARA O NOME DO PROJETO.
+	 * @return - retornara o nome do projeto.
 	 */
 	public String getNome() {
 		return this.nome;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO MUDAR O NOME DO PROJETO.
+	 * o metodo tem como objetivo mudar o nome do projeto.
 	 * 
 	 * @param nome
-	 *            NOVO NOME
+	 *            - novo nome.
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO RETORNAR O OBJETIVO DO PROJETO.
+	 * o metodo tem como objetivo retornar o objetivo do projeto.
 	 * 
-	 * @return RETORNARA O OBJETIVO DO PROJETO.
+	 * @return - retornara o objetivo do projeto.
 	 */
 	public String getObjetivo() {
 		return this.objetivo;
 	}
 
 	/**
-	 * 
-	 * O METODO TEM COMO OBJETIVO MUDAR O OBJETIVO DO PROJETO.
+	 * o metodo tem como objetivo mudar o objetivo do projeto.
 	 * 
 	 * @param objetivo
-	 *            NOVO OBJEITVO
+	 *            - novo objetivo.
 	 */
 	public void setObjetivo(String objetivo) {
 		this.objetivo = objetivo;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO RETORNAR A DATA DE INÍCIO DO PROJETO.
+	 * o metodo tem como objetivo retornar a data de inicio do projeto.
 	 * 
-	 * @return RETORNARA A DATA DE INÍCIO DO PROJETO.
+	 * @return - retornara a data de incio do projeto.
 	 */
 	public String getDataInicio() {
 		return this.dataInicio;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO MUDAR A DATA DE INÍCIO DO PROJETO.
+	 * o metodo tem como objetivo mudar a data de inicio do projeto.
 	 * 
 	 * @param dataInicio
-	 *            NOVA DATA DE INÍCIO.
+	 *            - nova data de inicio.
 	 */
 	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO MUDAR A DURACaO DO PROJETO.
+	 * o metodo tem como objetivo mudar a duracao do projeto.
 	 * 
 	 * @param duracao
-	 *            NOVA DURACAO.
+	 *            - nova duracao.
 	 */
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO RETORNAR A DURACAO DO PROJETO.
+	 * o metodo tem como objetivo retornar a duracao do projeto.
 	 * 
-	 * @return RETORNARa A DURACAO DO PROJETO.
+	 * @return - retornara a duracao do projeto.
 	 */
 	public int getDuracao() {
 		return this.duracao;
 	}
 
 	/**
-	 * O METODO TEM COMO OBJETIVO RETORNAR A CÓDIGO DO PROJETO.
+	 * o metodo tem como objetivo retornar o codigo do projeto.
 	 * 
-	 * @return RETORNARA A DURAcaO DO CÓDIGO.
+	 * @return - retornara o codigo do projeto.
 	 */
 	public String getCodigo() {
 		return this.codigo;
 	}
 
 	/**
-	 * Hashcode com código sendo referência.
+	 * Hashcode com codigo sendo referência.
 	 */
 	@Override
 	public int hashCode() {
@@ -288,7 +287,7 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * Equals com código sendo referência.
+	 * Equals com codigo sendo referência.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -308,17 +307,17 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * O MeTODO TEM COMO OBJETIVO ORDENAR AS PARTICIPACOES DO PROJETO PELO NOME.
+	 * o metodo tem como objetivo ordenar as participacoes do projeto pelo nome.
 	 */
 	private void ordenaParticipacoesPeloNomeDasPessoas() {
 		Collections.sort(participacoes);
 	}
 
 	/**
-	 * O MeTODO TEM COMO OBJETIVO CONTAR A QUANTIDADE DE ALUNOS QUE POSSUEM NAS
-	 * PARTICIAPAcÕES DE DETERMINADO PROJETO.
+	 * o metodo tem como objetivo contar a quantidade de alunos que possuem nas
+	 * particiapacões de determinado projeto.
 	 * 
-	 * @return RETORNARa O NÚMERO DE ALUNOS NO PROJETO.
+	 * @return - retornara o número de alunos no projeto.
 	 */
 	public double calculaPontuacao() {
 		double acumulador = 0;
@@ -331,9 +330,9 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * O MeTODO TEM COMO OBJETIVO SABER O NÚMERO DE PARTICIPANTES DO PROJETO.
+	 * o metodo tem como objetivo saber o número de participantes do projeto.
 	 * 
-	 * @return RETORNARa O NÚMERO DE PARTICIPANTES.
+	 * @return - retornara o número de participantes.
 	 */
 	public int getNumeroDeParticipantes() {
 		return this.participacoes.size();
@@ -370,36 +369,36 @@ public abstract class Projeto implements Serializable {
 	public void atualizaCapital(double montanteCapital) {
 		custos.get("capital").setValor(montanteCapital);
 	}
-	
-	public double getCapital(){
+
+	public double getCapital() {
 		return custos.get("capital").getValor();
 	}
-	
-	public double getBolsas(){
+
+	public double getBolsas() {
 		return custos.get("bolsas").getValor();
 	}
-	
-	public double getCusteio(){
+
+	public double getCusteio() {
 		return custos.get("custeio").getValor();
 	}
 
 	public double calculaColaboracaoUASC() {
-		if (this.getCusteio() == 0 && this.getCapital() == 0){
-			return 0;
-		} 
-		if (this.getCusteio() <= 10000 && this.getCapital() == 0){
+		if (this.getCusteio() == 0 && this.getCapital() == 0) {
 			return 0;
 		}
-		if (this.getCapital() <= 10000 && this.getCusteio() == 0){
+		if (this.getCusteio() <= 10000 && this.getCapital() == 0) {
 			return 0;
 		}
-		if (this.getCusteio() <= 10000 && this.getCapital() <= 10000){
+		if (this.getCapital() <= 10000 && this.getCusteio() == 0) {
+			return 0;
+		}
+		if (this.getCusteio() <= 10000 && this.getCapital() <= 10000) {
 			return 0;
 		}
 		return 0.10 * this.calculaCustoTotal();
 	}
-	
-	private void geraMapa(){
+
+	private void geraMapa() {
 		custos = new HashMap<String, Despesa>();
 		custos.put("bolsas", new Despesa(0));
 		custos.put("custeio", new Despesa(0));
@@ -407,6 +406,7 @@ public abstract class Projeto implements Serializable {
 
 	}
 
-	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) throws ParametroInvalidoException;
+	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ParametroInvalidoException;
 
 }

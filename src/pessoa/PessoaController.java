@@ -8,7 +8,7 @@ import exception.LogicaException;
 import participacao.Participacao;
 import validacao.ValidaPessoa;
 
-public class PessoaController implements Serializable{
+public class PessoaController implements Serializable {
 
 	/**
 	 * 
@@ -23,20 +23,22 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO VERIFICAR SE O CPF, NOME E EMAIL PASSADOS SÃO
-	 * VÁLIDOS, CASO NÃO SEJA, ELE LANÇARÁ UMA EXCEPTION, CASO SEJA, ELE CRIARÁ
-	 * UMA NOVA PESSOA E COLOCARÁ DENTRO DO MAP DE PESSOAS.
+	 * O metodo tem como objetivo verificar se o cpf, nome e email passados sao
+	 * validos, caso nao seja, ele lancara uma exception, caso seja, ele criara
+	 * uma nova pessoa e colocara dentro do map de pessoas.
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 *            - recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param nome
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO NOME PARA A NOVA PESSOA.
+	 *            - recebe uma string que corresponde ao nome para a nova
+	 *            pessoa.
 	 * @param email
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO EMAIL PARA A NOVA PESSOA.
-	 * @return RETORNA O CPF DA PESSOA CRIADA.
-	 * @throws Exception
-	 *             CASO OS PARÂMETROS NÃO SEJAM VÁLIDOS, O SISTEMA LANÇARÁ O UMA
-	 *             MENSAGEM DE ERRO.
+	 *            - recebe uma string que corresponde ao email para a nova
+	 *            pessoa.
+	 * @return - retorna o cpf da pessoa criada.
+	 * @throws exception
+	 *             - caso os parametros nao sejam validos, o sistema lancara o
+	 *             uma mensagem de erro.
 	 */
 	public String cadastraPessoa(String cpf, String nome, String email) throws LogicaException {
 		validaPessoa.validaCpf(cpf);
@@ -52,19 +54,19 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR RETORNAR A INFORMAÇÃO PEDIDA PELO O USUÁRIO
-	 * SOBRE A PESSOA, CASO O ATRIBUTO NÃO SEJA O VÁLIDO, O SISTEMA DEVERÁ
-	 * LANÇAR UMA EXCEPTION.
+	 * o metodo eh responsavel por retornar a informacao pedida pelo o usuario
+	 * sobre a pessoa, caso o atributo nao seja o valido, o sistema devera
+	 * lancar uma exception.
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 *            - recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO BUSCADA SOBRE O
-	 *            PESSOA.
-	 * @return INFORMAÇÃO PEDIDA PELO USUÁRIO.
-	 * @throws Exception
-	 *             CASO O ATRIBUTO NÃO SEJA VÁLIDO, O SISTEMA LANÇARÁ UMA
-	 *             MENSAGEM DE ERRO.
+	 *            - recebe uma string que corresponde a informacao buscada sobre o
+	 *            pessoa.
+	 * @return - informacao pedida pelo usuário.
+	 * @throws exception
+	 *             - caso o atributo nao seja valido, o sistema lancara uma
+	 *             mensagem de erro.
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
 		try {
@@ -76,16 +78,16 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O método seleciona qual método deve ser chamado para retornar a
-	 * informação pedida como parâmentro "atributo"
+	 * O metodo seleciona qual metodo deve ser chamado para retornar a
+	 * informacao pedida como paramentro "atributo"
 	 * 
 	 * @param pessoa
-	 *            - pessoa da informação desejada
+	 *            - pessoa da informacao desejada
 	 * @param atributo
-	 *            - atributo desejado para pegar a informação
-	 * @return String - a informação pedida no parâmetro "atributo"
+	 *            - atributo desejado para pegar a informacao
+	 * @return String - a informacao pedida no parametro "atributo"
 	 * @throws LogicaException
-	 *             - caso o atributo desejado não exista
+	 *             - caso o atributo desejado nao exista
 	 */
 	private String selecionaInfoPessoa(Pessoa pessoa, String atributo) throws LogicaException {
 		switch (atributo.toLowerCase()) {
@@ -101,15 +103,15 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR PROCURAR UMA PESSOA EM "pessoas" A PARTIR DE
-	 * UM CPF.
+	 * o metodo eh responsavel por procurar uma pessoa em "pessoas" a partir de
+	 * um cpf.
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA BUSCADA.
-	 * @return RETORNA A PESSOA DESEJADA.
-	 * @throws LogicaException
-	 *             CASO O CPF NÃO CORRESPONDA A DETERMINADA PESSOA, O SISTEMA
-	 *             DEVERÁ LANÇAR UMA EXCEPTION.
+	 *           - recebe uma string que corresponde ao cpf da pessoa buscada.
+	 * @return - retorna a pessoa desejada.
+	 * @throws logicaexception
+	 *             - caso o cpf nao corresponda a determinada pessoa, o sistema
+	 *             devera lancar uma exception.
 	 */
 	public Pessoa getPessoa(String cpf) throws LogicaException {
 		for (String cpfDaPessoa : pessoas.keySet()) {
@@ -121,33 +123,33 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR REMOVER UMA PESSOA EM "pessoas" A PARTIR DE UM
-	 * CPF.
+	 * o metodo eh responsavel por remover uma pessoa em "pessoas" a partir de um
+	 * cpf.
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA BUSCADA.
-	 * @return RETORNA A OPERAÇÃO FOI FEITA COM SUCESSO.
+	 *           - recebe uma string que corresponde ao cpf da pessoa buscada.
+	 * @return - retorna a operacao foi feita com sucesso.
 	 */
 	public void removePessoa(String cpf) {
 		this.pessoas.remove(cpf, pessoas.get(cpf));
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL PARA EDITAR O "atributo" DA PESSOA CORRESPONDENTE
-	 * AO CPF PARA O VALOR, CASO OS PARÂMETROS NÃO SEJA O VÁLIDO, O SISTEMA
-	 * DEVERÁ LANÇAR UMA EXCEPTION.
+	 * o metodo eh responsavel para editar o "atributo" da pessoa correspondente
+	 * ao cpf para o valor, caso os parametros nao seja o valido, o sistema
+	 * devera lancar uma exception.
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF PARA A NOVA PESSOA.
+	 *            - recebe uma string que corresponde ao cpf para a nova pessoa.
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO QUE DESEJA SER
-	 *            MODIFICADA EM PESSOA.
+	 *            - recebe uma string que corresponde a informacao que deseja
+	 *            ser modificada em pessoa.
 	 * @param valor
-	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
-	 *            MUDADO PESSOA.
-	 * @throws Exception
-	 *             CASO OS PARÂMETROS NÃO SEJAM VÁLIDOS, O SISTEMA DEVERÁ LANÇAR
-	 *             UMA MENSAGEM DE ERRO
+	 *            - recebe uma string que corresponde para o que o atributo sera
+	 *            mudado pessoa.
+	 * @throws exception
+	 *             - caso os parametros nao sejam válidos, o sistema devera
+	 *             lancar uma mensagem de erro
 	 * 
 	 */
 	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws LogicaException {
@@ -163,15 +165,15 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O método é responsável por adicionar participações dentro de pessoa.
+	 * O metodo eh responsavel por adicionar participações dentro de pessoa.
 	 * 
 	 * @param cpfPessoa
 	 *            - cpf da pessoa que deseja adicionar a participação.
 	 * @param participacao
 	 *            - participação a ser adicionada.
 	 * @throws LogicaException
-	 *             - caso os parâmetros não sejam os esperados, lançará uma
-	 *             exceção.
+	 *             - caso os parametros nao sejam os esperados, lancara uma
+	 *             excecao.
 	 */
 	public void adicionaParticipacao(String cpfPessoa, Participacao participacao) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
@@ -179,15 +181,15 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * O método é responsável por remover participações dentro de pessoa.
+	 * O metodo eh responsavel por remover participacoes dentro de pessoa.
 	 * 
 	 * @param cpfPessoa
 	 *            - cpf da pessoa que deseja remover a participação.
 	 * @param codigoProjeto
 	 *            - participacao de projeto a ser removida.
 	 * @throws LogicaException
-	 *             - caso os parâmetros não sejam os esperados, lançará uma
-	 *             exceção.
+	 *             - caso os parametros nao sejam os esperados, lancara uma
+	 *             excecao.
 	 */
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
@@ -195,12 +197,13 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * MÉTODO RESPONSÁVEL POR VERIFICAR SE JÁ HÁ OUTRA PESSOA COM ESSE MESMO
-	 * CPF.
+	 * metodo responsavel por verificar se ja ha outra pessoa com esse mesmo
+	 * cpf.
 	 * 
 	 * @param cpf
-	 *            RECEBE UMA STRING QUE CORRESPONDE A UM CPF DE UMA PESSOA.
-	 * @return RETORNA SE HÁ(TRUE) OU NÃO(FALSE) ALGUMA PESSOA COM O MESMO CPF.
+	 *            - recebe uma string que corresponde a um cpf de uma pessoa.
+	 * @return - retorna se ha(true) ou nao(false) alguma pessoa com o mesmo
+	 *         cpf.
 	 */
 	private boolean contemPessoa(String cpf) {
 		if (pessoas.containsKey(cpf)) {
@@ -210,17 +213,17 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * MÉTODO RESPONSÁVEL POR VALIDAR AS ENTRADAS DE "valor".
+	 * metodo responsavel por validar as entradas de "valor".
 	 * 
 	 * @param atributo
-	 *            RECEBE UMA STRING QUE CORRESPONDE A INFORMAÇÃO QUE DESEJA SER
-	 *            MODIFICADA EM PESSOA.
+	 *            - recebe uma string que corresponde a informacao que deseja
+	 *            ser modificada em pessoa.
 	 * @param valor
-	 *            RECEBE UMA STRING QUE CORRESPONDE PARA O QUE O ATRIBUTO SERÁ
-	 *            MUDADO PESSOA.
-	 * @throws LogicaException
-	 *             CASO O CPF NÃO SEJA REFERENTE A UMA PESSOA CADASTRADA NO
-	 *             SISTEMA.
+	 *            - recebe uma string que corresponde para o que o atributo sera
+	 *            mudado pessoa.
+	 * @throws logicaexception
+	 *             - caso o cpf nao seja referente a uma pessoa cadastrada no
+	 *             sistema.
 	 */
 	private void valorAtributoValidos(String atributo, String valor) throws LogicaException {
 		if (atributo.equalsIgnoreCase("cpf")) {
@@ -233,17 +236,17 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * MÉTODO "calculaPontuacaoPorParticipacao" TEM COMO OBJETIVO ENCONTRAR A
-	 * PESSOA ATRAVÉS DO CPF E DEPOIS DISSO CHAMAR O MÉTODO DE "Pessoa" A PARTIR
-	 * DA "pessoa" ENCONTRADA.
+	 * metodo "calculapontuacaoporparticipacao" tem como objetivo encontrar a
+	 * pessoa atraves do cpf e depois disso chamar o metodo de "pessoa" a partir
+	 * da "pessoa" encontrada.
 	 * 
-	 * @param cpfPessoa
-	 *            RECEBE UMA STRING QUE CORRESPONDE AO CPF DA PESSOA QUE DESEJA
-	 *            CALCULAR.
-	 * @return CHAMARÁ O MÉTODO DE "Pessoa" A PARTIR DA "pessoa" ENCONTRADA.
-	 * @throws LogicaException
-	 *             CASO O CPF NÃO SEJA REFERENTE A UMA PESSOA CADASTRADA NO
-	 *             SISTEMA.
+	 * @param cpfpessoa
+	 *            - recebe uma string que corresponde ao cpf da pessoa que
+	 *            deseja calcular.
+	 * @return - chamara o metodo de "pessoa" a partir da "pessoa" encontrada.
+	 * @throws logicaexception
+	 *             - caso o cpf nao seja referente a uma pessoa cadastrada no
+	 *             sistema.
 	 */
 	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws LogicaException {
 		Pessoa pessoa = this.getPessoa(cpfPessoa);
@@ -251,14 +254,14 @@ public class PessoaController implements Serializable{
 	}
 
 	/**
-	 * Método usado para "pegar" o valor total da(s) bolsa(s) recebidas por uma
+	 * metodo usado para "pegar" o valor total da(s) bolsa(s) recebidas por uma
 	 * pessoa
 	 * 
 	 * @param cpfPessoa
 	 *            - cpf da pessoa a ser "pego" o valor da bolsa
 	 * @return double - o valor total da(s) bolsa(s)
 	 * @throws LogicaException
-	 *             - caso o cpf não seja referente a uma pessoa cadastrada no
+	 *             - caso o cpf nao seja referente a uma pessoa cadastrada no
 	 *             sistema
 	 */
 	public double getValorBolsa(String cpfPessoa) throws LogicaException {

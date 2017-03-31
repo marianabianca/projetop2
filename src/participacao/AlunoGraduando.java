@@ -6,9 +6,6 @@ import projeto.ProjetoMonitoria;
 
 public class AlunoGraduando extends Participacao {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public AlunoGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
@@ -16,12 +13,12 @@ public class AlunoGraduando extends Participacao {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS POR SEMESTRE. CASO SEJA
-	 * MONITORIA, SERÁ 1,5 PONTOS A CADA SEMESTRE, CASO SEJA OUTRO TIPO, SERÁ 2
-	 * PONTOS A CADA SEMESTRE.
+	 * o metodo tem como objetivo calcular o os pontos por semestre. caso seja
+	 * monitoria, sera 1,5 pontos a cada semestre, caso seja outro tipo, sera 2
+	 * pontos a cada semestre.
 	 * 
-	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE
-	 *         DE "AlunoGraduando".
+	 * @return - retornara os pontos referentes ao participacao, especificamente
+	 *         de "alunograduando".
 	 */
 	@Override
 	public double calculaPontuacao() {
@@ -44,7 +41,7 @@ public class AlunoGraduando extends Participacao {
 	}
 
 	/**
-	 * Método responsável por quebrar o default da classe pai.
+	 * Metodo responsavel por quebrar o default da classe pai.
 	 */
 	@Override
 	public boolean isAlunoGraduando() {

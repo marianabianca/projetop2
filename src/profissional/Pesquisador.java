@@ -10,10 +10,10 @@ public class Pesquisador extends Profissional {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS, QUE SERÁ 6 POR ANO.
+	 * o metodo tem como objetivo calcular o os pontos, que sera 6 por ano.
 	 * 
-	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE
-	 *         DE "Pesquisador".
+	 * @return - retornara os pontos referentes ao participacao, especificamente
+	 *         de "pesquisador".
 	 */
 	@Override
 	public double calculaPontuacaoProfissional() {

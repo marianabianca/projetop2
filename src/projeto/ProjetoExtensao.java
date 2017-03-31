@@ -16,7 +16,7 @@ public class ProjetoExtensao extends Projeto {
 	}
 
 	/**
-	 * Método responável por oferecer determinada informacão do projeto.
+	 * Metodo responsavel por oferecer determinada informacao do projeto.
 	 */
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
@@ -39,7 +39,7 @@ public class ProjetoExtensao extends Projeto {
 	}
 
 	/**
-	 * Método responsável por mudar o atributo para o valor especificado.
+	 * Metodo responsavel por mudar o atributo para o valor especificado.
 	 */
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {

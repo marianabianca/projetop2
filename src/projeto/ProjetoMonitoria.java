@@ -20,7 +20,7 @@ public class ProjetoMonitoria extends Projeto {
 	}
 
 	/**
-	 * Método responável por oferecer determinada informacão do projeto.
+	 * Metodo responsavel por oferecer determinada informacao do projeto.
 	 */
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
@@ -47,7 +47,7 @@ public class ProjetoMonitoria extends Projeto {
 	}
 
 	/**
-	 * Método responsável por mudar o atributo para o valor especificado.
+	 * Metodo responsavel por mudar o atributo para o valor especificado.
 	 */
 	@Override
 	public void editaProjeto(String atributo, String valor) throws Exception {
@@ -79,7 +79,7 @@ public class ProjetoMonitoria extends Projeto {
 	}
 
 	/**
-	 * Método responsável por quebrar o default da classe pai.
+	 * Metodo responsavel por quebrar o default da classe pai.
 	 */
 	@Override
 	public boolean isMonitoria() {

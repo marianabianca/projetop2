@@ -10,10 +10,10 @@ public class Desenvolvedor extends Profissional {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR O OS PONTOS, QUE SERÁ 5 POR ANO.
+	 * o metodo tem como objetivo calcular o os pontos, que sera 5 por ano.
 	 * 
-	 * @return RETORNARÁ OS PONTOS REFERENTES AO PARTICIPACÃO, ESPECIFICAMENTE
-	 *         DE "Desenvolvedor".
+	 * @return - retornara os pontos referentes ao participacao, especificamente
+	 *         de "desenvolvedor".
 	 */
 	@Override
 	public double calculaPontuacaoProfissional() {

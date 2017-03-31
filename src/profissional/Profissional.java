@@ -12,16 +12,16 @@ public abstract class Profissional extends Participacao {
 	}
 
 	/**
-	 * O MÉTODO TEM COMO OBJETIVO CALCULAR OS PONTOS DE PARTICIPACÃO EM CLASSES
-	 * FILHAS, QUE PODEM SER: "Gerente", "Pesquisador" E "Desenvolvedor".
+	 * O metodo tem como objetivo calcular os pontos de participacao em classes
+	 * filhas, que podem ser: "gerente", "pesquisador" e "desenvolvedor".
 	 * 
-	 * @return RETORNA OS PONTOS DA PARTICIPACÃO.
+	 * @return - retorna os pontos da participacao.
 	 */
 	public abstract double calculaPontuacaoProfissional();
 
 	/**
-	 * Método responsável por definir se o projeto em questão é PED, caso não
-	 * seja, retornará zero.
+	 * Metodo responsavel por definir se o projeto em questao eh PED, caso nao
+	 * seja, retornara zero.
 	 */
 	@Override
 	public double calculaPontuacao() {

@@ -1,7 +1,14 @@
 package projeto;
 
-public class FactoryDePED {
+import java.io.Serializable;
+
+public class FactoryDePED implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ProjetoPED criaProjetoPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo,
 			String dataInicio, int duracao, String codigo) {
 		if (categoria.equals("COOP")){

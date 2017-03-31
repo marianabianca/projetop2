@@ -2,6 +2,10 @@ package projeto;
 
 public class ProjetoMonitoria extends Projeto {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String disciplina, periodo;
 	private int rendimento;
 

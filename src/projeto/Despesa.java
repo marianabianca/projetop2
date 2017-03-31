@@ -1,7 +1,13 @@
 package projeto;
 
-public class Despesa {
+import java.io.Serializable;
 
+public class Despesa implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double valor;
 
 	public Despesa(double valor) {

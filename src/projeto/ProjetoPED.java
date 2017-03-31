@@ -2,6 +2,10 @@ package projeto;
 
 public class ProjetoPED extends Projeto {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String categoria;
 	private int prodAcademica;
 	private int prodTecnica;

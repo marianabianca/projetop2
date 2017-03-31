@@ -2,6 +2,10 @@ package projeto;
 
 public class ProjetoPET extends Projeto {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int impacto, rendimento;
 	private int prodAcademica;
 	private int prodTecnica;

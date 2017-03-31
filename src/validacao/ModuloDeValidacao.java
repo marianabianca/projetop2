@@ -1,11 +1,17 @@
 package validacao;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import exception.*;
 
-public class ModuloDeValidacao {
+public class ModuloDeValidacao implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * O método é responsável por verificar se a string recebida é válida, no

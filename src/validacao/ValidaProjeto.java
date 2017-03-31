@@ -1,9 +1,15 @@
 package validacao;
 
+import java.io.Serializable;
+
 import exception.StringInvalidaException;
 
-public class ValidaProjeto {
+public class ValidaProjeto implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ModuloDeValidacao moduloDeValidacao;
 	
 	public ValidaProjeto() {

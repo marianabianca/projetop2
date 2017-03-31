@@ -1,11 +1,17 @@
 package participacao;
 
+import java.io.Serializable;
+
 import pessoa.Pessoa;
 import projeto.Projeto;
 import projeto.ProjetoMonitoria;
 
-public abstract class Participacao implements Comparable<Participacao> {
+public abstract class Participacao implements Comparable<Participacao>, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
 	protected Projeto projeto;
 	private double valorHora;

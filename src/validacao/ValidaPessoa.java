@@ -1,12 +1,18 @@
 package validacao;
 
+import java.io.Serializable;
+
 import exception.CPFInvalidoException;
 import exception.EmailInvalidoException;
 import exception.NomeInvalidoException;
 import exception.StringInvalidaException;
 
-public class ValidaPessoa {
+public class ValidaPessoa implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ModuloDeValidacao moduloDeValidacao;
 	
 	public ValidaPessoa() {

@@ -2,6 +2,10 @@ package projeto;
 
 public class ProjetoExtensao extends Projeto {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int impacto;
 
 	public ProjetoExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao, String codigo) {

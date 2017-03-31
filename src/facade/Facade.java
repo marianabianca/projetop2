@@ -80,7 +80,7 @@ public class Facade {
 	private void iniciaProjetoController() throws IOException, ClassNotFoundException {
 		FileInputStream fis = new FileInputStream("projeto_controller.objeto");
 		ObjectInputStream ois = new ObjectInputStream(fis);
-		this.pessoaController = (PessoaController) ois.readObject();
+		this.projetoController = (ProjetoController) ois.readObject();
 		fis.close();
 	}
 

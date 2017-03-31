@@ -1,5 +1,7 @@
 package participacao;
 
+import java.io.Serializable;
+
 import pessoa.Pessoa;
 import pessoa.PessoaController;
 import projeto.Projeto;
@@ -11,8 +13,12 @@ import validacao.ModuloDeValidacao;
 import validacao.ValidaPessoa;
 import validacao.ValidaProjeto;
 
-public class ParticipacaoController {
+public class ParticipacaoController implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private FactoryDeParticipacao factoryDeParticipacao;
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;

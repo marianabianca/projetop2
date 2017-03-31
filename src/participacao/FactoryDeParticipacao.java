@@ -1,12 +1,18 @@
 package participacao;
 
+import java.io.Serializable;
+
 import pessoa.Pessoa;
 import projeto.Projeto;
 import profissional.FactoryDeProfissional;
 import profissional.Profissional;
 
-public class FactoryDeParticipacao {
+public class FactoryDeParticipacao implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	FactoryDeProfissional factoryDeProfissional;
 
 	public FactoryDeParticipacao() {

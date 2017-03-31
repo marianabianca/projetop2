@@ -1,5 +1,6 @@
 package pessoa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -8,8 +9,12 @@ import exception.LogicaException;
 import participacao.AlunoGraduando;
 import participacao.Participacao;
 
-public class Pessoa {
+public class Pessoa implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome, email, cpf;
 	private List<Participacao> participacoes;
 

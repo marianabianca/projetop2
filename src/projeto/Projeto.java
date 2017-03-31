@@ -1,5 +1,6 @@
 package projeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,8 +11,12 @@ import participacao.AlunoGraduando;
 import participacao.Participacao;
 import participacao.Professor;
 
-public abstract class Projeto {
+public abstract class Projeto implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome, objetivo, dataInicio, codigo;
 	private int duracao;
 	private Map<String,Despesa> custos;

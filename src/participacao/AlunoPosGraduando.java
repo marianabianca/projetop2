@@ -5,6 +5,10 @@ import projeto.Projeto;
 
 public class AlunoPosGraduando extends Participacao {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String vinculo;
 
 	public AlunoPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, String vinculo) {

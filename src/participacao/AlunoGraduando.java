@@ -6,6 +6,11 @@ import projeto.ProjetoMonitoria;
 
 public class AlunoGraduando extends Participacao {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public AlunoGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		super(pessoa, projeto, valorHora, qntHoras);
 	}

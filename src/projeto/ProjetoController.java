@@ -19,6 +19,7 @@ public class ProjetoController implements Serializable{
 	private int contadorCodigo;
 	private ValidaProjeto validaProjeto;
 	private ModuloDeValidacao moduloDeValidacao;
+	private double descontoReceita;
 
 	public ProjetoController() {
 		this.projetos = new HashMap<>();
@@ -26,6 +27,7 @@ public class ProjetoController implements Serializable{
 
 		this.validaProjeto = new ValidaProjeto();
 		this.moduloDeValidacao = new ModuloDeValidacao();
+		this.descontoReceita = 0;
 	}
 
 	/**
@@ -378,6 +380,16 @@ public class ProjetoController implements Serializable{
 			colaboracao += proj.calculaColaboracaoUASC();
 		}
 		return colaboracao;
+	}
+	
+	public void diminuiReceita(double preco){
+		this.descontoReceita = preco;
+	}
+
+	public double calculaTotalEmCaixaUASC() {
+		double total = this.calculaColaboracaoTotalUASC();
+		total -= this.descontoReceita;
+		return total;
 	}
 
 }

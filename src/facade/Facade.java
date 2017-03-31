@@ -435,5 +435,13 @@ public class Facade {
 	public double calculaColaboracaoTotalUASC(){
 		return projetoController.calculaColaboracaoTotalUASC();
 	}
+	
+	public void diminuiReceita(double valor) {
+		this.projetoController.diminuiReceita(valor);
+	}
+	
+	public double calculaTotalEmCaixaUASC(){
+		return this.projetoController.calculaTotalEmCaixaUASC();
+	}
 
 }

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import exception.LogicaException;
 import exception.ObjetoNuloException;
+import exception.ParametroInvalidoException;
 import participacao.Participacao;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;
@@ -19,6 +21,7 @@ public class ProjetoController implements Serializable{
 	private int contadorCodigo;
 	private ValidaProjeto validaProjeto;
 	private ModuloDeValidacao moduloDeValidacao;
+	private FactoryDePED factoryDePED;
 	private double descontoReceita;
 
 	public ProjetoController() {
@@ -27,6 +30,7 @@ public class ProjetoController implements Serializable{
 
 		this.validaProjeto = new ValidaProjeto();
 		this.moduloDeValidacao = new ModuloDeValidacao();
+		this.factoryDePED = new FactoryDePED();
 		this.descontoReceita = 0;
 	}
 
@@ -196,7 +200,7 @@ public class ProjetoController implements Serializable{
 			this.moduloDeValidacao.dataInvalida(dataInicio);
 			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
-			Projeto ped = new ProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
+			Projeto ped = this.factoryDePED.criaProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
 					duracao, codigo);
 			projetos.put(codigo, ped);
 			return codigo;
@@ -343,6 +347,7 @@ public class ProjetoController implements Serializable{
 	 *             esperados.
 	 */
 	public Projeto getProjeto(String codigo) throws Exception {
+		this.validaProjeto.validaCodigo(codigo);
 		if (!projetos.containsKey(codigo)) {
 			throw new Exception("Projeto nao encontrado");
 		}
@@ -363,10 +368,12 @@ public class ProjetoController implements Serializable{
 	}
 
 	public void atualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws Exception {
+		this.validaProjeto.validaCodigo(cod);
+		this.validaProjeto.validaValorAtributo(montanteBolsas);
+		this.validaProjeto.validaValorAtributo(montanteCusteio);
+		this.validaProjeto.validaValorAtributo(montanteCapital);
 		Projeto aAtualizar = getProjeto(cod);
-		aAtualizar.atualizaBolsas(montanteBolsas);
-		aAtualizar.atualizaCusteio(montanteCusteio);
-		aAtualizar.atualizaCapital(montanteCapital);
+		aAtualizar.atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
 	}
 
 	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
@@ -382,7 +389,11 @@ public class ProjetoController implements Serializable{
 		return colaboracao;
 	}
 	
-	public void diminuiReceita(double preco){
+	public void diminuiReceita(double preco) throws LogicaException{
+		this.moduloDeValidacao.numeroNegativo(preco);
+		if (preco > this.calculaColaboracaoTotalUASC()) {
+			throw new LogicaException("a unidade nao possui fundos suficientes");
+		}
 		this.descontoReceita = preco;
 	}
 

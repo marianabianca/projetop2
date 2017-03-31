@@ -2,6 +2,7 @@ package validacao;
 
 import java.io.Serializable;
 
+import exception.ParametroInvalidoException;
 import exception.StringInvalidaException;
 
 public class ValidaProjeto implements Serializable{
@@ -187,6 +188,12 @@ public class ValidaProjeto implements Serializable{
 			throw new StringInvalidaException(atributo + " " + e.getMessage());
 		}
 	}
+	
+	public void validaValorAtributo(double valor) throws ParametroInvalidoException {
+		if (valor < 0) {
+			throw new ParametroInvalidoException("valor negativo");
+		}
+	}
 
 	public void validaValorHora(double valorHora) throws Exception {
 		if (valorHora <= 0) {
@@ -205,6 +212,14 @@ public class ValidaProjeto implements Serializable{
 			throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
 		}
 
+	}
+
+	public void validaCodigo(String cod) throws ParametroInvalidoException {
+		try {
+			this.moduloDeValidacao.stringInvalida(cod);
+		} catch (Exception e) {
+			throw new ParametroInvalidoException("codigo nulo ou vazio");
+		}
 	}
 
 }

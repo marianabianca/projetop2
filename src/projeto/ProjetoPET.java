@@ -1,5 +1,7 @@
 package projeto;
 
+import exception.ParametroInvalidoException;
+
 public class ProjetoPET extends Projeto {
 
 	/**
@@ -93,6 +95,17 @@ public class ProjetoPET extends Projeto {
 	@Override
 	public double calculaColaboracaoUASC(){
 		return 0;
+	}
+	
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ParametroInvalidoException {
+		if (montanteCapital > 0) {
+			throw new ParametroInvalidoException("projeto do tipo PET nao permite despesas de capital");
+		}
+		
+		super.atualizaBolsas(montanteBolsas);
+		super.atualizaCusteio(montanteCusteio);
 	}
 
 }

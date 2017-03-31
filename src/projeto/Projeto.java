@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
+import exception.ParametroInvalidoException;
 import participacao.AlunoGraduando;
 import participacao.Participacao;
 import participacao.Professor;
@@ -405,5 +406,7 @@ public abstract class Projeto implements Serializable {
 		custos.put("capital", new Despesa(0));
 
 	}
+
+	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital) throws ParametroInvalidoException;
 
 }

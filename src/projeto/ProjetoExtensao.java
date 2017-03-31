@@ -1,5 +1,7 @@
 package projeto;
 
+import exception.ParametroInvalidoException;
+
 public class ProjetoExtensao extends Projeto {
 
 	/**
@@ -71,4 +73,16 @@ public class ProjetoExtensao extends Projeto {
 		double colaboracao = super.calculaColaboracaoUASC() - 0.05*this.impacto*colaboracaoDeProjeto;
 		return colaboracao;
 	}
+
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ParametroInvalidoException {
+		if (montanteCapital > 0) {
+			throw new ParametroInvalidoException("projeto do tipo Extensao nao permite despesas de capital");
+		}
+		
+		super.atualizaBolsas(montanteBolsas);
+		super.atualizaCusteio(montanteCusteio);
+	}
+	
 }

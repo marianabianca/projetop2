@@ -1,6 +1,8 @@
 package projeto;
 
-public class ProjetoPED extends Projeto {
+import exception.ParametroInvalidoException;
+
+public abstract class ProjetoPED extends Projeto {
 
 	/**
 	 * 
@@ -11,10 +13,9 @@ public class ProjetoPED extends Projeto {
 	private int prodTecnica;
 	private int patentes;
 
-	public ProjetoPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo,
+	public ProjetoPED(String nome, int prodTecnica, int prodAcademica, int patentes, String objetivo,
 			String dataInicio, int duracao, String codigo) {
 		super(nome, objetivo, dataInicio, duracao, codigo);
-		this.categoria = categoria;
 		this.prodAcademica = prodAcademica;
 		this.prodTecnica = prodTecnica;
 		this.patentes = patentes;

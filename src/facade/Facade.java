@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 
 import easyaccept.EasyAccept;
 import exception.LogicaException;
+import exception.ParametroInvalidoException;
 
 public class Facade {
 
@@ -425,19 +426,31 @@ public class Facade {
 	}
 	
 	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws Exception {
-		projetoController.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
+		try {
+			projetoController.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
+		} catch (ParametroInvalidoException e) {
+			throw new ParametroInvalidoException("Erro na atualizacao de projeto: " + e.getMessage());
+		}
 	}
 	
-	public double calculaColaboracaoUASC(String codProjeto) throws Exception{
-		return projetoController.calculaColaboracaoUASC(codProjeto);
+	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
+		try {
+			return projetoController.calculaColaboracaoUASC(codProjeto);
+		} catch (ParametroInvalidoException e) {
+			throw new ParametroInvalidoException("Erro na consulta de projeto: " + e.getMessage());
+		}
 	}
 	
 	public double calculaColaboracaoTotalUASC(){
 		return projetoController.calculaColaboracaoTotalUASC();
 	}
 	
-	public void diminuiReceita(double valor) {
-		this.projetoController.diminuiReceita(valor);
+	public void diminuiReceita(double valor) throws LogicaException {
+		try {
+			this.projetoController.diminuiReceita(valor);			
+		} catch (LogicaException e) {
+			throw new ParametroInvalidoException("Erro na atualizacao da receita da unidade: " + e.getMessage());
+		}
 	}
 	
 	public double calculaTotalEmCaixaUASC(){

@@ -53,4 +53,10 @@ public class ModuloDeValidacao implements Serializable {
 		}
 	}
 
+	public void numeroNegativo(double numero) throws ParametroInvalidoException {
+		if (numero < 0){
+			throw new ParametroInvalidoException("valor negativo");
+		}
+	}
+
 }

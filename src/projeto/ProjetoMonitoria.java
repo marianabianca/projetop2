@@ -1,5 +1,7 @@
 package projeto;
 
+import exception.ParametroInvalidoException;
+
 public class ProjetoMonitoria extends Projeto {
 
 	/**
@@ -88,4 +90,15 @@ public class ProjetoMonitoria extends Projeto {
 	public double calculaColaboracaoUASC(){
 		return 0;
 	}
+	
+	@Override
+	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws ParametroInvalidoException {
+		if (montanteCusteio > 0 || montanteCapital > 0) {
+			throw new ParametroInvalidoException("projeto do tipo monitoria nao permite despesas de custeio ou capital");
+		}
+		
+		super.atualizaBolsas(montanteBolsas);
+	}
+
 }

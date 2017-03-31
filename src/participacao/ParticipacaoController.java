@@ -6,9 +6,11 @@ import pessoa.Pessoa;
 import pessoa.PessoaController;
 import projeto.Projeto;
 import projeto.ProjetoController;
+import projeto.ProjetoCoop;
 import projeto.ProjetoMonitoria;
 import projeto.ProjetoPED;
 import projeto.ProjetoPET;
+import projeto.ProjetoPIBICPIBITI;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaPessoa;
 import validacao.ValidaProjeto;
@@ -108,17 +110,13 @@ public class ParticipacaoController implements Serializable {
 			this.validaProjeto.validaValorHoraMenorQueZero(valorPorHora);
 			graduando = pessoaController.getPessoa(cpfGraduando);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			if (projeto instanceof ProjetoPED) {
-				ProjetoPED ped = (ProjetoPED) projeto;
-				if (projeto.temGraduandoAssociado() && !ped.getCategoria().equalsIgnoreCase("coop")) {
-					throw new Exception("Projetos P&D nao podem ter mais de um graduando");
-				} else if (projeto.temGraduandoAssociado() && ped.getCategoria().equalsIgnoreCase("coop")) {
-					if (graduando.temParticipacaoEmProjeto(codigoProjeto)) {
-						throw new Exception("Aluno ja esta cadastrado nesse projeto");
-					}
+			if (projeto instanceof ProjetoCoop && projeto.temGraduandoAssociado()) {
+				if (graduando.temParticipacaoEmProjeto(codigoProjeto)) {
+					throw new Exception("Aluno ja esta cadastrado nesse projeto");
 				}
+			} else if (projeto instanceof ProjetoPIBICPIBITI && projeto.temGraduandoAssociado()) {
+				throw new Exception("Projetos P&D nao podem ter mais de um graduando");
 			}
-
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}

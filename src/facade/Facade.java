@@ -45,17 +45,17 @@ public class Facade {
 	 * @throws ClassNotFoundException - caso o downcast não funcione, pois a classe não existe
 	 */
 	public void iniciaSistema() throws IOException, ClassNotFoundException {
-		try {
-			this.iniciaPessoaController();
-		} catch (FileNotFoundException e) {
-			this.criaArquivo("pessoa_controller.objeto", this.pessoaController);
-		}
-		
-		try {
-			this.iniciaProjetoController();
-		} catch (FileNotFoundException e) {
-			this.criaArquivo("projeto_controller.objeto", this.pessoaController);
-		}		
+//		try {
+//			this.iniciaPessoaController();
+//		} catch (FileNotFoundException e) {
+//			this.criaArquivo("pessoa_controller.objeto", this.pessoaController);
+//		}
+//		
+//		try {
+//			this.iniciaProjetoController();
+//		} catch (FileNotFoundException e) {
+//			this.criaArquivo("projeto_controller.objeto", this.pessoaController);
+//		}		
 	}
 	
 	/**
@@ -65,10 +65,10 @@ public class Facade {
 	 * @throws ClassNotFoundException - caso o downcast não funcione, pois a classe não existe
 	 */
 	private void iniciaPessoaController() throws IOException, ClassNotFoundException {
-		FileInputStream fis = new FileInputStream("pessoa_controller.objeto");
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		this.pessoaController = (PessoaController) ois.readObject();
-		fis.close();
+//		FileInputStream fis = new FileInputStream("pessoa_controller.objeto");
+//		ObjectInputStream ois = new ObjectInputStream(fis);
+//		this.pessoaController = (PessoaController) ois.readObject();
+//		fis.close();
 	}
 	
 	/**
@@ -78,10 +78,10 @@ public class Facade {
 	 * @throws ClassNotFoundException - caso o downcast não funcione, pois a classe não existe
 	 */
 	private void iniciaProjetoController() throws IOException, ClassNotFoundException {
-		FileInputStream fis = new FileInputStream("projeto_controller.objeto");
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		this.projetoController = (ProjetoController) ois.readObject();
-		fis.close();
+//		FileInputStream fis = new FileInputStream("projeto_controller.objeto");
+//		ObjectInputStream ois = new ObjectInputStream(fis);
+//		this.projetoController = (ProjetoController) ois.readObject();
+//		fis.close();
 	}
 
 	/**
@@ -92,10 +92,10 @@ public class Facade {
 	 * @throws IOException - caso haja algum problema com o arquivo
 	 */
 	private void criaArquivo(String arquivo, Object objeto) throws IOException {
-		FileOutputStream fos = new FileOutputStream(arquivo);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(objeto);
-		fos.close();
+//		FileOutputStream fos = new FileOutputStream(arquivo);
+//		ObjectOutputStream oos = new ObjectOutputStream(fos);
+//		oos.writeObject(objeto);
+//		fos.close();
 	}
 
 	/**
@@ -104,15 +104,15 @@ public class Facade {
 	 * @throws IOException - caso haja algum problema com o arquivo
 	 */
 	public void fechaSistema() throws IOException {
-		FileOutputStream fos = new FileOutputStream("pessoa_controller.objeto");
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(this.pessoaController);
-		
-		fos = new FileOutputStream("projeto_controller.objeto");
-		oos = new ObjectOutputStream(fos);
-		oos.writeObject(this.projetoController);
-		
-		fos.close();
+//		FileOutputStream fos = new FileOutputStream("pessoa_controller.objeto");
+//		ObjectOutputStream oos = new ObjectOutputStream(fos);
+//		oos.writeObject(this.pessoaController);
+//		
+//		fos = new FileOutputStream("projeto_controller.objeto");
+//		oos = new ObjectOutputStream(fos);
+//		oos.writeObject(this.projetoController);
+//		
+//		fos.close();
 	}
 
 	/**

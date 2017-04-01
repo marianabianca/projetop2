@@ -28,7 +28,9 @@ public class Gerente extends Profissional {
 	}
 
 	/**
-	 * TODO
+	 * o metodo calcula a bolsa da pessoa
+	 * 
+	 * @return double - bolsa que a pessoa recebe
 	 */
 	public double getBolsa() {
         double bolsa = 0.0;

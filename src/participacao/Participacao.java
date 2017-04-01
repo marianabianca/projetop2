@@ -136,9 +136,9 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	public abstract double getModificadorBolsa();
 
 	/**
-	 * TODO
+	 * oo metodo calcula a bolsa que a pessoa recebe
 	 * 
-	 * @return
+	 * @return double - o valor da bolsa
 	 */
 	public double getBolsa() {
 		double bolsa = Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);

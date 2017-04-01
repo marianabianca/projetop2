@@ -430,15 +430,6 @@ public abstract class Projeto implements Serializable {
 	 * @return - Valor do calculo.
 	 */
 	public double calculaColaboracaoUASC() {
-		if (this.getCusteio() == 0 && this.getCapital() == 0) {
-			return 0;
-		}
-		if (this.getCusteio() <= 10000 && this.getCapital() == 0) {
-			return 0;
-		}
-		if (this.getCapital() <= 10000 && this.getCusteio() == 0) {
-			return 0;
-		}
 		if (this.getCusteio() <= 10000 && this.getCapital() <= 10000) {
 			return 0;
 		}

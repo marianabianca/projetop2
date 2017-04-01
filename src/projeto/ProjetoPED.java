@@ -1,5 +1,7 @@
 package projeto;
 
+import exception.LogicaException;
+
 public abstract class ProjetoPED extends Projeto {
 
 	/**
@@ -24,7 +26,7 @@ public abstract class ProjetoPED extends Projeto {
 	 * Metodo responavel por oferecer determinada informacao do projeto.
 	 */
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {
+	public String getInfoProjeto(String atributo) throws LogicaException {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			return super.getNome();
@@ -45,7 +47,7 @@ public abstract class ProjetoPED extends Projeto {
 		case "participacoes":
 			return super.getParticipacoes();
 		default:
-			throw new Exception("PED nao possui " + atributo);
+			throw new LogicaException("PED nao possui " + atributo);
 		}
 	}
 
@@ -53,7 +55,7 @@ public abstract class ProjetoPED extends Projeto {
 	 * Metodo responsavel por mudar o atributo para o valor especificado.
 	 */
 	@Override
-	public void editaProjeto(String atributo, String valor) throws Exception {
+	public void editaProjeto(String atributo, String valor) throws LogicaException {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			super.setNome(valor);
@@ -80,7 +82,7 @@ public abstract class ProjetoPED extends Projeto {
 			super.setDuracao(Integer.parseInt(valor));
 			break;
 		default:
-			throw new Exception("PED nao possui " + atributo);
+			throw new LogicaException("PED nao possui " + atributo);
 		}
 	}
 

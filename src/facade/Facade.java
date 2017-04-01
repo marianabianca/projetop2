@@ -312,27 +312,97 @@ public class Facade {
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public void removeProjeto(String codigo) throws Exception {
 		projetoController.removeProjeto(codigo);
 	}
 
+	/**
+	 * Metodo responsavel por chamar "associaProfessor" em
+	 * "participacaoController".
+	 * 
+	 * @param cpfProfessor
+	 *            - CPF do professor.
+	 * @param codigoProjeto
+	 *            - Codigo do projeto.
+	 * @param ehCoordenador
+	 *            - Se eh coordenador.
+	 * @param valorPorHora
+	 *            - Valor por hora
+	 * @param quantidadeDeHoras
+	 *            - Quantidade de horas.
+	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
 			int qntHoras) throws Exception {
 		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
 	}
 
+	/**
+	 * Metodo responsavel por chamar "associaGraduando" em
+	 * "participacaoController".
+	 * 
+	 * @param cpfProfessor
+	 *            - CPF do professor.
+	 * @param codigoProjeto
+	 *            - Codigo do projeto.
+	 * @param valorHora
+	 *            - Valor hora.
+	 * @param quantidadeDeHoras
+	 *            - Quantidade de horas.
+	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
 			throws Exception {
 		participacaoController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
 	}
 
+	/**
+	 * Metodo responsavel por chamar "associaProfissional" em
+	 * "participacaoController".
+	 * 
+	 * @param cpfPessoa
+	 *            - CPF da pessoa.
+	 * @param codigoProjeto
+	 *            - Codigo do projeto.
+	 * @param cargo
+	 *            - Cargo do profissional.
+	 * @param valorHora
+	 *            - Valor da hora.
+	 * @param qntHoras
+	 *            - Quantidade de horas.
+	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
 			int qntHoras) throws Exception {
 		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
 
+	/**
+	 * Metodo responsavel por chamar "associaPosGraduando" em
+	 * "participacaoController".
+	 * 
+	 * @param cpfPessoa
+	 *            - CPF da pessoa.
+	 * @param codigoProjeto
+	 *            - Codigo do projeto.
+	 * @param vinculo
+	 *            - Vinculo.
+	 * @param valorHora
+	 *            - Valor da hora.
+	 * @param qntHoras
+	 *            - Quantidade de horas.
+	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
 			int qntHoras) throws Exception {
 		try {

@@ -108,14 +108,15 @@ public class Pessoa implements Serializable{
 	 */
 	public double calculaPontuacaoPorParticipacaoPEDExtensaoPET(double acumuladorGraduandoPEDExtensaoPET,
 			Participacao participacao) {
-		if (acumuladorGraduandoPEDExtensaoPET != 8) {
+		if (acumuladorGraduandoPEDExtensaoPET < 8) {
 			acumuladorGraduandoPEDExtensaoPET += participacao.calculaPontuacao();
-			if (acumuladorGraduandoPEDExtensaoPET > 8) {
-				return 8.0;
-			}
+		}
+		
+		if (acumuladorGraduandoPEDExtensaoPET > 8) {
+			return 8.0;
+		} else {
 			return acumuladorGraduandoPEDExtensaoPET;
 		}
-		return 8.0;
 	}
 
 	/**
@@ -133,14 +134,15 @@ public class Pessoa implements Serializable{
 	 */
 	public double calculaPontuacaoPorParticipacaoMonitoria(double acumuladorGraduandoMonitoria,
 			Participacao participacao) {
-		if (acumuladorGraduandoMonitoria != 6) {
+		if (acumuladorGraduandoMonitoria < 6) {
 			acumuladorGraduandoMonitoria += participacao.calculaPontuacao();
-			if (acumuladorGraduandoMonitoria > 6) {
-				return 6.0;
-			}
-			return acumuladorGraduandoMonitoria;
 		}
-		return 6.0;
+		
+		if (acumuladorGraduandoMonitoria > 6) {
+			return 6.0;
+		} else {
+			return acumuladorGraduandoMonitoria;			
+		}
 	}
 
 	/**

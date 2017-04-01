@@ -11,6 +11,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 import easyaccept.EasyAccept;
 import exception.LogicaException;
@@ -52,9 +54,13 @@ public class Facade {
 	 *             - caso o downcast nao funcione, pois a classe nao existe
 	 */
 	public void iniciaSistema() throws IOException, ClassNotFoundException {
-		pessoaController = this.persistencia.iniciaPessoaController();
-		projetoController = this.persistencia.iniciaProjetoController();
-		participacaoController = new ParticipacaoController(pessoaController, projetoController);
+		try {
+			this.persistencia.iniciaSistema();
+			this.pessoaController = persistencia.iniciaPessoa();
+			this.projetoController = persistencia.iniciaProjeto();
+			this.participacaoController = persistencia.iniciaParticipacao();
+		} catch (FileNotFoundException e) {
+		}
 	}
 
 	/**

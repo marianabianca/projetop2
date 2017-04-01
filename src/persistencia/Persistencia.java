@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 import participacao.ParticipacaoController;
 import pessoa.PessoaController;
@@ -18,30 +20,32 @@ public class Persistencia {
 	private File path = new File("arquivos_sistema");
 	private File arquivo = new File (path + File.separator + "cpc_ufcg.dat");
 	
-	private Controllers iniciaSistema() throws IOException, ClassNotFoundException{
-		try {
+	public Persistencia() {
+		controllers = new Controllers(new ProjetoController(), new PessoaController());
+	}
+	
+	public void iniciaSistema() throws IOException, ClassNotFoundException{
+		try{			
 			FileInputStream fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			controllers = (Controllers) ois.readObject();
-			fis.close();
+			fis.close();				
 		} catch (FileNotFoundException e) {
-			controllers = new Controllers(new ProjetoController(), new PessoaController());
 			path.mkdir();
+			throw new FileNotFoundException(e.getMessage());
 		}
-
-		return controllers;
 	}
 	
-	public PessoaController iniciaPessoaController() throws ClassNotFoundException, IOException {
-		return this.iniciaSistema().getPessoaController();
+	public PessoaController iniciaPessoa() {
+		return this.controllers.getPessoaController();
 	}
 	
-	public ProjetoController iniciaProjetoController() throws ClassNotFoundException, IOException {
-		return this.iniciaSistema().getProjetoController();
+	public ProjetoController iniciaProjeto() {
+		return this.controllers.getProjetoController();
 	}
 	
-	public ParticipacaoController iniciaParticipacaoController() throws ClassNotFoundException, IOException {
-		return this.iniciaSistema().getParticipacaoController();
+	public ParticipacaoController iniciaParticipacao() {
+		return this.controllers.getParticipacaoController();
 	}
 	
 	public void fechaSistma(ProjetoController projetoController, PessoaController pessoaController, 

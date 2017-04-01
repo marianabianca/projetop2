@@ -29,8 +29,7 @@ public class Facade {
 		EasyAccept.main(args);
 	}
 
-	// TODO tirar piramides do egito, LogicaException, tratamento de exception
-	// na Facade
+	// TODO tirar piramides do egito
 
 	public Facade() {
 		pessoaController = new PessoaController();

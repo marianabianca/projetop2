@@ -1,8 +1,8 @@
 package projeto;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import exception.LogicaException;
 import exception.ObjetoNuloException;
@@ -16,7 +16,7 @@ public class ProjetoController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Map<String, Projeto> projetos;
+	private List<Projeto> projetos1;
 	private int contadorCodigo;
 	private ValidaProjeto validaProjeto;
 	private ModuloDeValidacao moduloDeValidacao;
@@ -24,7 +24,7 @@ public class ProjetoController implements Serializable {
 	private double descontoReceita;
 
 	public ProjetoController() {
-		this.projetos = new HashMap<>();
+		this.projetos1 = new ArrayList<Projeto>();
 		this.contadorCodigo = 0;
 
 		this.validaProjeto = new ValidaProjeto();
@@ -69,7 +69,7 @@ public class ProjetoController implements Serializable {
 			String codigo = this.geraCodigo();
 			Projeto monitoria = new ProjetoMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio,
 					duracao, codigo);
-			projetos.put(codigo, monitoria);
+			projetos1.add(monitoria);
 			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
@@ -80,7 +80,6 @@ public class ProjetoController implements Serializable {
 	/**
 	 * Metodo responsavel por criar e adicionar um projeto PET e verificar se
 	 * seus parametros sao validos.
-	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
 	 * @param objetivo
@@ -119,7 +118,7 @@ public class ProjetoController implements Serializable {
 			String codigo = this.geraCodigo();
 			Projeto pet = new ProjetoPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
 					dataInicio, duracao, codigo);
-			projetos.put(codigo, pet);
+			projetos1.add(pet);
 			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
@@ -155,7 +154,7 @@ public class ProjetoController implements Serializable {
 			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
 			Projeto extensao = new ProjetoExtensao(nome, objetivo, impacto, dataInicio, duracao, codigo);
-			projetos.put(codigo, extensao);
+			projetos1.add(extensao);
 			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
@@ -201,7 +200,7 @@ public class ProjetoController implements Serializable {
 			String codigo = this.geraCodigo();
 			Projeto ped = this.factoryDePED.criaProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes,
 					objetivo, dataInicio, duracao, codigo);
-			projetos.put(codigo, ped);
+			projetos1.add(ped);
 			return codigo;
 		} catch (Exception e) {
 			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
@@ -243,8 +242,8 @@ public class ProjetoController implements Serializable {
 	 *             sejam os esperados.
 	 */
 	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
-		for (Projeto projeto : projetos.values()) {
-			if (projeto.getNome().equals(nome)) {
+		for (Projeto projeto : projetos1) {
+			if (projeto.getNome().equalsIgnoreCase(nome)) {
 				return projeto.getCodigo();
 			}
 		}
@@ -281,9 +280,11 @@ public class ProjetoController implements Serializable {
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
+	 * @throws Exception - casoo o projeto nao exista
 	 */
-	public void removeProjeto(String codigo) {
-		this.projetos.remove(codigo);
+	public void removeProjeto(String codigo) throws Exception {
+		Projeto projeto = this.getProjeto(codigo);
+		this.projetos1.remove(projeto);
 	}
 
 	/**
@@ -347,11 +348,12 @@ public class ProjetoController implements Serializable {
 	 */
 	public Projeto getProjeto(String codigo) throws Exception {
 		this.validaProjeto.validaCodigo(codigo);
-		if (!projetos.containsKey(codigo)) {
-			throw new Exception("Projeto nao encontrado");
+		for (Projeto projeto : projetos1) {
+			if (projeto.getCodigo().equals(codigo)) {
+				return projeto;
+			}
 		}
-		Projeto projeto = projetos.get(codigo);
-		return projeto;
+		throw new Exception("Projeto nao encontrado");
 	}
 
 	/**
@@ -363,7 +365,12 @@ public class ProjetoController implements Serializable {
 	 * @return - Retornara se ja existe(true) ou nao (false)
 	 */
 	public boolean existeProjeto(String codigoProjeto) {
-		return projetos.containsKey(codigoProjeto);
+		for (Projeto projeto : projetos1) {
+			if (projeto.getCodigo().equals(codigoProjeto)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -415,8 +422,8 @@ public class ProjetoController implements Serializable {
 	 */
 	public double calculaColaboracaoTotalUASC() {
 		double colaboracao = 0;
-		for (Projeto proj : projetos.values()) {
-			colaboracao += proj.calculaColaboracaoUASC();
+		for (Projeto projeto : projetos1) {
+			colaboracao += projeto.calculaColaboracaoUASC();
 		}
 		return colaboracao;
 	}

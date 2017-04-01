@@ -312,8 +312,9 @@ public class Facade {
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
+	 * @throws Exception 
 	 */
-	public void removeProjeto(String codigo) {
+	public void removeProjeto(String codigo) throws Exception {
 		projetoController.removeProjeto(codigo);
 	}
 

@@ -10,7 +10,7 @@ import participacao.Participacao;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;
 
-public class ProjetoController implements Serializable{
+public class ProjetoController implements Serializable {
 
 	/**
 	 * 
@@ -199,8 +199,8 @@ public class ProjetoController implements Serializable{
 			this.moduloDeValidacao.dataInvalida(dataInicio);
 			this.validaProjeto.validaDuracao(duracao);
 			String codigo = this.geraCodigo();
-			Projeto ped = this.factoryDePED.criaProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio,
-					duracao, codigo);
+			Projeto ped = this.factoryDePED.criaProjetoPED(nome, categoria, prodTecnica, prodAcademica, patentes,
+					objetivo, dataInicio, duracao, codigo);
 			projetos.put(codigo, ped);
 			return codigo;
 		} catch (Exception e) {
@@ -366,7 +366,24 @@ public class ProjetoController implements Serializable{
 		return projetos.containsKey(codigoProjeto);
 	}
 
-	public void atualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws Exception {
+	/**
+	 * Metodo responsavel por chamar "atualizaDespesasProjeto" do projeto
+	 * especifico e validar os parametros.
+	 * 
+	 * @param cod
+	 *            - Código do projeto a ser atualizadas despesas.
+	 * @param montanteBolsas
+	 *            - Montante de bolsas para qual vai ser atualizada.
+	 * @param montanteCusteio
+	 *            - Montante de custeio para qual vai ser atualizada.
+	 * @param montanteCapital
+	 *            - Montante de capital para qual vai ser atualizada.
+	 * @throws Exception
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
+	public void atualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital)
+			throws Exception {
 		this.validaProjeto.validaCodigo(cod);
 		this.validaProjeto.validaValorAtributo(montanteBolsas);
 		this.validaProjeto.validaValorAtributo(montanteCusteio);
@@ -375,11 +392,27 @@ public class ProjetoController implements Serializable{
 		aAtualizar.atualizaDespesas(montanteBolsas, montanteCusteio, montanteCapital);
 	}
 
+	/**
+	 * Metodo responsavel por chamar "atualizaDespesasProjeto" do projeto
+	 * especifico e validar os parametros.
+	 * 
+	 * @param codProjeto
+	 *            - Código do projeto a ser calculado.
+	 * @return - Valor do calculo.
+	 * @throws Exception
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
 		Projeto aColaborar = getProjeto(codProjeto);
 		return aColaborar.calculaColaboracaoUASC();
 	}
 
+	/**
+	 * Metodo responsavel por acumular todas as colaboracoes e retorna-la.
+	 * 
+	 * @return - Valor do calculo de todas as colaborações UASC dos projetos.
+	 */
 	public double calculaColaboracaoTotalUASC() {
 		double colaboracao = 0;
 		for (Projeto proj : projetos.values()) {
@@ -387,8 +420,17 @@ public class ProjetoController implements Serializable{
 		}
 		return colaboracao;
 	}
-	
-	public void diminuiReceita(double preco) throws LogicaException{
+
+	/**
+	 * Metodo responsavel por definir o desconto da receita e tratar excecoes
+	 * 
+	 * @param preco
+	 *            - Preco canditado a descontoReceita
+	 * @throws LogicaException
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
+	public void diminuiReceita(double preco) throws LogicaException {
 		this.moduloDeValidacao.numeroNegativo(preco);
 		if (preco > this.calculaTotalEmCaixaUASC()) {
 			throw new LogicaException("a unidade nao possui fundos suficientes");
@@ -396,6 +438,12 @@ public class ProjetoController implements Serializable{
 		this.descontoReceita = preco;
 	}
 
+	/**
+	 * Metodo responsavel calcular o valor final arrecadado na caixa UASC com
+	 * desconto da receita.
+	 * 
+	 * @return - Valor total em caixa UASC.
+	 */
 	public double calculaTotalEmCaixaUASC() {
 		double total = this.calculaColaboracaoTotalUASC();
 		total -= this.descontoReceita;

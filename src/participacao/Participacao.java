@@ -149,7 +149,7 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por comparar nome da pessoa da participacao.
 	 */
 	@Override
 	public int compareTo(Participacao outra) {

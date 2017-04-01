@@ -1,6 +1,7 @@
 package facade;
 
 import pessoa.PessoaController;
+
 import projeto.ProjetoController;
 import participacao.ParticipacaoController;
 import persistencia.Persistencia;
@@ -58,8 +59,8 @@ public class Facade {
 	}
 
 	/**
-	 * Metodo para a escrita dos objetos pessoaController e projetoController em um
-	 * arquivo a fim de salva-los
+	 * Metodo para a escrita dos objetos pessoaController e projetoController em
+	 * um arquivo a fim de salva-los
 	 * 
 	 * @throws IOException
 	 *             - caso haja algum problema com o arquivo
@@ -330,7 +331,7 @@ public class Facade {
 
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
 			int qntHoras) throws Exception {
-		try{
+		try {
 			participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, vinculo, valorHora, qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
@@ -383,6 +384,22 @@ public class Facade {
 		return pessoaController.getValorBolsa(cpfPessoa);
 	}
 
+	/**
+	 * Metodo responsavel por chamar "atualizaDespesasProjeto" em
+	 * "projetoController" ou testar se o parametro eh invalido.
+	 * 
+	 * @param cod
+	 *            - Código do projeto a ser atualizadas despesas.
+	 * @param montanteBolsas
+	 *            - Montante de bolsas para qual vai ser atualizada.
+	 * @param montanteCusteio
+	 *            - Montante de custeio para qual vai ser atualizada.
+	 * @param montanteCapital
+	 *            - Montante de capital para qual vai ser atualizada.
+	 * @throws Exception
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio,
 			double montanteCapital) throws Exception {
 		try {
@@ -392,6 +409,17 @@ public class Facade {
 		}
 	}
 
+	/**
+	 * Metodo responsavel por chamar "calculaColaboracaoUASC" em
+	 * "projetoController" ou testar se o parametro eh invalido.
+	 * 
+	 * @param codProjeto
+	 *            - Código do projeto a ser calculado.
+	 * @return - Valor do calculo.
+	 * @throws Exception
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
 		try {
 			return projetoController.calculaColaboracaoUASC(codProjeto);
@@ -400,10 +428,26 @@ public class Facade {
 		}
 	}
 
+	/**
+	 * Metodo responsavel por chamar "calculaColaboracaoTotalUASC" em
+	 * "projetoController" ou testar se o parametro eh invalido.
+	 * 
+	 * @return - Valor do calculo de todas as colaborações UASC dos projetos.
+	 */
 	public double calculaColaboracaoTotalUASC() {
 		return projetoController.calculaColaboracaoTotalUASC();
 	}
 
+	/**
+	 * Metodo responsavel por chamar "diminuiReceita" em "projetoController" ou
+	 * testar se o parametro eh invalido.
+	 * 
+	 * @param valor
+	 *            - Valor a ser trocado.
+	 * @throws LogicaException
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public void diminuiReceita(double valor) throws LogicaException {
 		try {
 			this.projetoController.diminuiReceita(valor);
@@ -412,6 +456,12 @@ public class Facade {
 		}
 	}
 
+	/**
+	 * Metodo responsavel por chamar "calculaTotalEmCaixaUASC" em
+	 * "projetoController".
+	 * 
+	 * @return - Valor total em caixa UASC.
+	 */
 	public double calculaTotalEmCaixaUASC() {
 		return this.projetoController.calculaTotalEmCaixaUASC();
 	}

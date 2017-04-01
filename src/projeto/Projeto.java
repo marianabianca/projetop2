@@ -367,30 +367,68 @@ public abstract class Projeto implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Metodo responsavel por atualizar o valor de bolsas em custos.
+	 * 
+	 * @param montanteBolsas
+	 *            - Montante para qual vai ser mudado.
+	 */
 	public void atualizaBolsas(double montanteBolsas) {
 		custos.get("bolsas").setValor(montanteBolsas);
 	}
 
+	/**
+	 * Metodo responsavel por atualizar o valor de custeio em custos.
+	 * 
+	 * @param montanteCusteio
+	 *            - Montante para qual vai ser mudado.
+	 */
 	public void atualizaCusteio(double montanteCusteio) {
 		custos.get("custeio").setValor(montanteCusteio);
 	}
 
+	/**
+	 * Metodo responsavel por atualizar o valor de capital em custos.
+	 * 
+	 * @param montanteCapital
+	 *            - Montante para qual vai ser mudado.
+	 */
 	public void atualizaCapital(double montanteCapital) {
 		custos.get("capital").setValor(montanteCapital);
 	}
 
+	/**
+	 * Metodo responsavel por retornar o valor de capital.
+	 * 
+	 * @return - Retornara o valor desse custo.
+	 */
 	public double getCapital() {
 		return custos.get("capital").getValor();
 	}
 
+	/**
+	 * Metodo responsavel por retornar o valor de bolsas.
+	 * 
+	 * @return - Retornara o valor desse custo.
+	 */
 	public double getBolsas() {
 		return custos.get("bolsas").getValor();
 	}
 
+	/**
+	 * Metodo responsavel por retornar o valor de custeio.
+	 * 
+	 * @return - Retornara o valor desse custo.
+	 */
 	public double getCusteio() {
 		return custos.get("custeio").getValor();
 	}
 
+	/**
+	 * Metodo recursivo que tem como funcao calcular o valor da colaboracao UASC
+	 * 
+	 * @return - Valor do calculo.
+	 */
 	public double calculaColaboracaoUASC() {
 		if (this.getCusteio() == 0 && this.getCapital() == 0) {
 			return 0;
@@ -415,6 +453,20 @@ public abstract class Projeto implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * Metodo abstrato com funcao de repassar atividade para classes filhas.
+	 * 
+	 * @param montanteBolsas
+	 *            - Montante de bolsas para qual vai ser atualizada.
+	 * @param montanteCusteio
+	 *            - Montante de custeio para qual vai ser atualizada.
+	 * @param montanteCapital
+	 *            - Montante de capital para qual vai ser atualizada.
+	 * @throws ParametroInvalidoException
+	 *             - Lancara uma Exception caso os parametros nao sejam os
+	 *             esperados.
+	 */
 	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ParametroInvalidoException;
 

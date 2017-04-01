@@ -207,21 +207,6 @@ public class ParticipacaoController implements Serializable {
 		}
 	}
 
-	/**
-	 * TODO
-	 * 
-	 * @param cpfPessoa
-	 * @param atributo
-	 * @param valor
-	 * @throws Exception
-	 */
-	public void editaPessoa(String cpfPessoa, String atributo, String valor) throws Exception {
-		this.validaPessoa.validaCpf(cpfPessoa);
-		this.moduloDeValidacao.stringInvalida(atributo);
-		this.moduloDeValidacao.stringInvalida(valor);
-		atributo = atributo.toLowerCase();
-		pessoaController.editaPessoa(cpfPessoa, atributo, valor);
-	}
 
 	/**
 	 * metodo responsavel por chamar metodo "adicionaParticipacao" em

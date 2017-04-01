@@ -92,11 +92,19 @@ public class ProjetoPET extends Projeto {
 		}
 	}
 	
+	/**
+	 * Metodo recursivo que tem como funcao calcular o valor da colaboracao UASC
+	 * 
+	 * @return - Valor do calculo.
+	 */
 	@Override
 	public double calculaColaboracaoUASC(){
 		return 0;
 	}
 	
+	/**
+	 * Metodo responsavel por definir a atualizacao das bolsas e custeio em PET.
+	 */
 	@Override
 	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ParametroInvalidoException {

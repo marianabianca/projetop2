@@ -445,6 +445,9 @@ public abstract class Projeto implements Serializable {
 		return 0.10 * this.calculaCustoTotal();
 	}
 
+	/**
+	 * Metodo responsavel por gerar o mapa.
+	 */
 	private void geraMapa() {
 		custos = new HashMap<String, Despesa>();
 		custos.put("bolsas", new Despesa(0));

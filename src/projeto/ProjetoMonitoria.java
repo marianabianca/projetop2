@@ -85,19 +85,28 @@ public class ProjetoMonitoria extends Projeto {
 	public boolean isMonitoria() {
 		return true;
 	}
-	
+
+	/**
+	 * Metodo recursivo que tem como funcao calcular o valor da colaboracao UASC
+	 * 
+	 * @return - Valor do calculo.
+	 */
 	@Override
-	public double calculaColaboracaoUASC(){
+	public double calculaColaboracaoUASC() {
 		return 0;
 	}
-	
+
+	/**
+	 * Metodo responsavel por definir a atualizacao das bolsas em monitoria.
+	 */
 	@Override
 	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ParametroInvalidoException {
 		if (montanteCusteio > 0 || montanteCapital > 0) {
-			throw new ParametroInvalidoException("projeto do tipo monitoria nao permite despesas de custeio ou capital");
+			throw new ParametroInvalidoException(
+					"projeto do tipo monitoria nao permite despesas de custeio ou capital");
 		}
-		
+
 		super.atualizaBolsas(montanteBolsas);
 	}
 

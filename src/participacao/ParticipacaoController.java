@@ -38,14 +38,21 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por criar uma participacao do tipo associa professor.
 	 * 
 	 * @param cpfProfessor
+	 *            - CPF do professor.
 	 * @param codigoProjeto
+	 *            - Codigo do projeto.
 	 * @param ehCoordenador
+	 *            - Se eh coordenador.
 	 * @param valorPorHora
+	 *            - Valor por hora
 	 * @param quantidadeDeHoras
+	 *            - Quantidade de horas.
 	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
 	 */
 	public void associaProfessor(String cpfProfessor, String codigoProjeto, boolean ehCoordenador, double valorPorHora,
 			int quantidadeDeHoras) throws Exception {
@@ -91,13 +98,19 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por criar uma participacao do tipo associa graduando.
 	 * 
 	 * @param cpfGraduando
+	 *            - CPF do graduando.
 	 * @param codigoProjeto
+	 *            - Codigo do projeto.
 	 * @param valorPorHora
+	 *            - Valor da hora.
 	 * @param horasSemanais
+	 *            - Horas semanais.
 	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
 	 */
 	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais)
 			throws Exception {
@@ -126,14 +139,21 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por criar uma participacao do tipo associa graduando.
 	 * 
 	 * @param cpfPessoa
+	 *            - CPF da pessoa.
 	 * @param codigoProjeto
+	 *            - Codigo do projeto.
 	 * @param cargo
+	 *            - Cargo do profissional.
 	 * @param valorHora
+	 *            - Valor da hora.
 	 * @param qntHoras
+	 *            - Quantidade de horas.
 	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
 	 */
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
 			int qntHoras) throws Exception {
@@ -155,14 +175,22 @@ public class ParticipacaoController implements Serializable {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por criar uma participacao do tipo associa pos-
+	 * graduando.
 	 * 
 	 * @param cpfPessoa
+	 *            - CPF da pessoa.
 	 * @param codigoProjeto
+	 *            - Codigo do projeto.
 	 * @param vinculo
+	 *            - Vinculo.
 	 * @param valorHora
+	 *            - Valor da hora.
 	 * @param qntHoras
+	 *            - Quantidade de horas.
 	 * @throws Exception
+	 *             - Lancara uma Exception, caso os parametros nao sejam os
+	 *             esperados.
 	 */
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
 			int qntHoras) throws Exception {
@@ -206,7 +234,6 @@ public class ParticipacaoController implements Serializable {
 			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
 		}
 	}
-
 
 	/**
 	 * metodo responsavel por chamar metodo "adicionaParticipacao" em

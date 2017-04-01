@@ -63,28 +63,40 @@ public class ProjetoExtensao extends Projeto {
 			throw new Exception("Extensao nao possui " + atributo);
 		}
 	}
-	
+
+	/**
+	 * Metodo recursivo que tem como funcao calcular o valor da colaboracao UASC
+	 * 
+	 * @return - Valor do calculo.
+	 */
 	@Override
-	public double calculaColaboracaoUASC(){
+	public double calculaColaboracaoUASC() {
 		double colaboracaoDeProjeto = super.calculaColaboracaoUASC();
-		if (colaboracaoDeProjeto == 0){
+		if (colaboracaoDeProjeto == 0) {
 			return 0;
 		}
-		double colaboracao = super.calculaColaboracaoUASC() - 0.05*this.impacto*colaboracaoDeProjeto;
+		double colaboracao = super.calculaColaboracaoUASC() - 0.05 * this.impacto * colaboracaoDeProjeto;
 		return colaboracao;
 	}
 
+	/**
+	 * Metodo responsavel por definir a atualizacao das bolsas e custeio em
+	 * extensao.
+	 */
 	@Override
 	public void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ParametroInvalidoException {
 		if (montanteCapital > 0) {
 			throw new ParametroInvalidoException("projeto do tipo Extensao nao permite despesas de capital");
 		}
-		
+
 		super.atualizaBolsas(montanteBolsas);
 		super.atualizaCusteio(montanteCusteio);
 	}
-	
+
+	/**
+	 * Metodo responsavel por quebrar o default da classe pai.
+	 */
 	@Override
 	public boolean isExtensao() {
 		return true;

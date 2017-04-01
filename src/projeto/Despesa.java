@@ -2,7 +2,7 @@ package projeto;
 
 import java.io.Serializable;
 
-public class Despesa implements Serializable{
+public class Despesa implements Serializable {
 
 	/**
 	 * 
@@ -22,8 +22,14 @@ public class Despesa implements Serializable{
 	public double getValor() {
 		return this.valor;
 	}
-	
-	public void setValor(double novoValor){
+
+	/**
+	 * Metodo responsavel por modificar o valor da despesa
+	 * 
+	 * @param novoValor
+	 *            - Novo valor.
+	 */
+	public void setValor(double novoValor) {
 		this.valor = novoValor;
 	}
 

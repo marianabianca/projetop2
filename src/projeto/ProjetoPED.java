@@ -1,7 +1,5 @@
 package projeto;
 
-import exception.ParametroInvalidoException;
-
 public abstract class ProjetoPED extends Projeto {
 
 	/**

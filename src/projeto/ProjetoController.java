@@ -6,7 +6,6 @@ import java.util.Map;
 
 import exception.LogicaException;
 import exception.ObjetoNuloException;
-import exception.ParametroInvalidoException;
 import participacao.Participacao;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;

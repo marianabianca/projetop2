@@ -8,7 +8,6 @@ import projeto.Projeto;
 import projeto.ProjetoController;
 import projeto.ProjetoCoop;
 import projeto.ProjetoMonitoria;
-import projeto.ProjetoPED;
 import projeto.ProjetoPET;
 import projeto.ProjetoPIBICPIBITI;
 import validacao.ModuloDeValidacao;

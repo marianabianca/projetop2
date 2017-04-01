@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import pessoa.Pessoa;
 import projeto.Projeto;
-import projeto.ProjetoMonitoria;
 
 public abstract class Participacao implements Comparable<Participacao>, Serializable {
 

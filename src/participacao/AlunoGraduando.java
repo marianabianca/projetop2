@@ -2,7 +2,6 @@ package participacao;
 
 import pessoa.Pessoa;
 import projeto.Projeto;
-import projeto.ProjetoMonitoria;
 
 public class AlunoGraduando extends Participacao {
 

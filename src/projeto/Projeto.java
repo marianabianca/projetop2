@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exception.ParametroInvalidoException;
-import participacao.AlunoGraduando;
 import participacao.Participacao;
 import participacao.Professor;
 

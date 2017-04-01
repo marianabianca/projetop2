@@ -106,7 +106,11 @@ public class Facade {
 	 *             esperado.
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
-		return pessoaController.getInfoPessoa(cpf, atributo);
+		try {
+			return pessoaController.getInfoPessoa(cpf, atributo);
+		} catch (LogicaException e) {
+			throw new LogicaException("Erro na consulta de pessoa: " + e.getMessage());
+		}
 	}
 
 	/**

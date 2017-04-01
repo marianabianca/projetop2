@@ -69,12 +69,8 @@ public class PessoaController implements Serializable {
 	 *             mensagem de erro.
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws LogicaException {
-		try {
-			Pessoa pessoa = this.getPessoa(cpf);
-			return this.selecionaInfoPessoa(pessoa, atributo);
-		} catch (LogicaException e) {
-			throw new LogicaException("Erro na consulta de pessoa: " + e.getMessage());
-		}
+		Pessoa pessoa = this.getPessoa(cpf);
+		return this.selecionaInfoPessoa(pessoa, atributo);
 	}
 
 	/**

@@ -1,9 +1,16 @@
 package profissional;
 
+import java.io.Serializable;
+
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public class FactoryDeProfissional {
+public class FactoryDeProfissional implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras)
 			throws Exception {

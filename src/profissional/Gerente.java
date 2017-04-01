@@ -5,6 +5,11 @@ import projeto.Projeto;
 
 public class Gerente extends Profissional {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Gerente(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		super(pessoa, projeto, valorHora, qntHoras);
 	}

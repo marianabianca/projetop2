@@ -3,9 +3,13 @@ package profissional;
 import participacao.Participacao;
 import pessoa.Pessoa;
 import projeto.Projeto;
-import projeto.ProjetoPED;
 
 public abstract class Profissional extends Participacao {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Profissional(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras) {
 		super(pessoa, projeto, valorHora, qntHoras);

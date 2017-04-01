@@ -3,6 +3,7 @@ package facade;
 import pessoa.PessoaController;
 import projeto.ProjetoController;
 import participacao.ParticipacaoController;
+import persistencia.Persistencia;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ public class Facade {
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
 	private ParticipacaoController participacaoController;
+	private Persistencia persistencia;
 
 	public static void main(String[] args) {
 		args = new String[] { "facade.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us1_test_exception.txt",
@@ -37,6 +39,7 @@ public class Facade {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
 		participacaoController = new ParticipacaoController(pessoaController, projetoController);
+		persistencia = new Persistencia();
 	}
 
 	/**
@@ -49,86 +52,20 @@ public class Facade {
 	 *             - caso o downcast nao funcione, pois a classe nao existe
 	 */
 	public void iniciaSistema() throws IOException, ClassNotFoundException {
-		// try {
-		// this.iniciaPessoaController();
-		// } catch (FileNotFoundException e) {
-		// this.criaArquivo("pessoa_controller.objeto", this.pessoaController);
-		// }
-		//
-		// try {
-		// this.iniciaProjetoController();
-		// } catch (FileNotFoundException e) {
-		// this.criaArquivo("projeto_controller.objeto", this.pessoaController);
-		// }
+		pessoaController = this.persistencia.iniciaPessoaController();
+		projetoController = this.persistencia.iniciaProjetoController();
+		participacaoController = new ParticipacaoController(pessoaController, projetoController);
 	}
 
 	/**
-	 * Metodo para carregar o objeto pessoaController
-	 * 
-	 * @throws IOException
-	 *             - caso haja algum problema com o arquivo
-	 * @throws ClassNotFoundException
-	 *             - caso o downcast nao funcione, pois a classe nao existe
-	 */
-	private void iniciaPessoaController() throws IOException, ClassNotFoundException {
-		// FileInputStream fis = new
-		// FileInputStream("pessoa_controller.objeto");
-		// ObjectInputStream ois = new ObjectInputStream(fis);
-		// this.pessoaController = (PessoaController) ois.readObject();
-		// fis.close();
-	}
-
-	/**
-	 * Metodo para carregar o objeto projetoController
-	 * 
-	 * @throws IOException
-	 *             - caso haja algum problema com o arquivo
-	 * @throws ClassNotFoundException
-	 *             - caso o downcast nao funcione, pois a classe nao existe
-	 */
-	private void iniciaProjetoController() throws IOException, ClassNotFoundException {
-		// FileInputStream fis = new
-		// FileInputStream("projeto_controller.objeto");
-		// ObjectInputStream ois = new ObjectInputStream(fis);
-		// this.projetoController = (ProjetoController) ois.readObject();
-		// fis.close();
-	}
-
-	/**
-	 * Metodo para a escrita em um novo arquivo de um objeto
-	 * 
-	 * @param arquivo
-	 *            - nome do arquivo desejado
-	 * @param objeto
-	 *            - objeto a ser escrito no arquivo
-	 * @throws IOException
-	 *             - caso haja algum problema com o arquivo
-	 */
-	private void criaArquivo(String arquivo, Object objeto) throws IOException {
-		// FileOutputStream fos = new FileOutputStream(arquivo);
-		// ObjectOutputStream oos = new ObjectOutputStream(fos);
-		// oos.writeObject(objeto);
-		// fos.close();
-	}
-
-	/**
-	 * Metodo para a escrita dos objetos pessoaController e projetoController em
-	 * arquivos a fim de salva-los
+	 * Metodo para a escrita dos objetos pessoaController e projetoController em um
+	 * arquivo a fim de salva-los
 	 * 
 	 * @throws IOException
 	 *             - caso haja algum problema com o arquivo
 	 */
 	public void fechaSistema() throws IOException {
-		// FileOutputStream fos = new
-		// FileOutputStream("pessoa_controller.objeto");
-		// ObjectOutputStream oos = new ObjectOutputStream(fos);
-		// oos.writeObject(this.pessoaController);
-		//
-		// fos = new FileOutputStream("projeto_controller.objeto");
-		// oos = new ObjectOutputStream(fos);
-		// oos.writeObject(this.projetoController);
-		//
-		// fos.close();
+		this.persistencia.fechaSistma(projetoController, pessoaController, participacaoController);
 	}
 
 	/**

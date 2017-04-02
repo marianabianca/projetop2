@@ -545,7 +545,11 @@ public abstract class Projeto implements Serializable {
 				+ this.getNomeDoCoordenador() + LS + "Situacao: " + this.isFinalizado();
 	}
 
-	// TODO
+	/**
+	 * Metodo responsavel por formatar a data para o forma yyyy-MM-dd
+	 * 
+	 * @return String - a data formatada
+	 */
 	private String getDataFormatada() {
 		Date dataInicio = this.getDataInicioEmDate();
 		DateFormat formata = new SimpleDateFormat("yyyy-MM-dd");
@@ -614,7 +618,11 @@ public abstract class Projeto implements Serializable {
 				+ calculaColaboracaoUASC();
 	}
 
-	// TODO
+	/**
+	 * Metodo responsavel por dizer se o projeto é ou não do tipo PET
+	 * 
+	 * @return boolean - se o projeto é ou não do tipo PET
+	 */
 	public boolean isPET() {
 		return false;
 	}

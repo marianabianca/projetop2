@@ -4,10 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import exception.CPFInvalidoException;
-import exception.EmailInvalidoException;
 import exception.LogicaException;
-import exception.NomeInvalidoException;
+import exception.ParametroInvalidoException;
 
 public class PessoaControllerTest {
 
@@ -23,56 +21,56 @@ public class PessoaControllerTest {
 		try {
 			pessoaController.cadastraPessoa(null, "nome", "email");
 			Assert.fail("LogicaException nao capturada");
-		} catch (CPFInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF nulo ou vazio", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("   ", "nome", "email");
 			Assert.fail("LogicaException nao capturada");
-		} catch (CPFInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF nulo ou vazio", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("0", "nome", "email");
 			Assert.fail("LogicaException nao capturada");
-		} catch (CPFInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("000.000.000-00", null, "email");
 			Assert.fail("LogicaException nao capturada");
-		} catch (NomeInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("nome nulo ou vazio", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("000.000.000-00", "   ", "email");
 			Assert.fail("LogicaException nao capturada");
-		} catch (NomeInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("nome nulo ou vazio", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("000.000.000-00", "nome", null);
 			Assert.fail("LogicaException nao capturada");
-		} catch (EmailInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("email nulo ou vazio", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("000.000.000-00", "nome", "  ");
 			Assert.fail("LogicaException nao capturada");
-		} catch (EmailInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("email nulo ou vazio", e.getMessage());
 		}
 		
 		try {
 			pessoaController.cadastraPessoa("000.000.000-00", "nome", "email@email@email.com");
 			Assert.fail("LogicaException nao capturada");
-		} catch (EmailInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("email invalido", e.getMessage());
 		}
 		
@@ -137,7 +135,4 @@ public class PessoaControllerTest {
 		}
 	}
 	
-	
-	// TODO
-
 }

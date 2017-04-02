@@ -2,9 +2,7 @@ package validacao;
 
 import java.io.Serializable;
 
-import exception.CPFInvalidoException;
-import exception.EmailInvalidoException;
-import exception.NomeInvalidoException;
+import exception.ParametroInvalidoException;
 import exception.StringInvalidaException;
 
 public class ValidaPessoa implements Serializable {
@@ -27,11 +25,11 @@ public class ValidaPessoa implements Serializable {
 	 * @throws stringinvalidaexception
 	 *             - Excecao a ser lancada.
 	 */
-	public void validaNome(String nome) throws NomeInvalidoException {
+	public void validaNome(String nome) throws ParametroInvalidoException {
 		try {
 			this.moduloDeValidacao.stringInvalida(nome);
 		} catch (StringInvalidaException e) {
-			throw new NomeInvalidoException(e.getMessage());
+			throw new ParametroInvalidoException("Nome " + e.getMessage());
 		}
 	}
 
@@ -44,16 +42,16 @@ public class ValidaPessoa implements Serializable {
 	 * @throws stringinvalidaexception
 	 *             - Excecao a ser lancada.
 	 */
-	public void validaEmail(String email) throws EmailInvalidoException {
+	public void validaEmail(String email) throws ParametroInvalidoException {
 		try {
 			this.moduloDeValidacao.stringInvalida(email);
 		} catch (StringInvalidaException e) {
-			throw new EmailInvalidoException(e.getMessage());
+			throw new ParametroInvalidoException("Email " + e.getMessage());
 		}
 
 		String formaEmail = "[\\._a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-z]+)+";
 		if (!email.matches(formaEmail)) {
-			throw new EmailInvalidoException("invalido");
+			throw new ParametroInvalidoException("Email invalido");
 		}
 	}
 
@@ -66,16 +64,16 @@ public class ValidaPessoa implements Serializable {
 	 * @throws stringinvalidaexception
 	 *             - Excecao a ser lancada.
 	 */
-	public void validaCpf(String cpf) throws CPFInvalidoException {
+	public void validaCpf(String cpf) throws ParametroInvalidoException {
 		try {
 			this.moduloDeValidacao.stringInvalida(cpf);
 		} catch (StringInvalidaException e) {
-			throw new CPFInvalidoException(e.getMessage());
+			throw new ParametroInvalidoException("CPF " + e.getMessage());
 		}
 
 		String formaCpf = "\\d{3}.\\d{3}.\\d{3}-\\d{2}";
 		if (!cpf.matches(formaCpf)) {
-			throw new CPFInvalidoException("invalido");
+			throw new ParametroInvalidoException("CPF invalido");
 		}
 	}
 

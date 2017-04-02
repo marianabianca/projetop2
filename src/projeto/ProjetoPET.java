@@ -117,7 +117,7 @@ public class ProjetoPET extends Projeto {
 		super.atualizaCusteio(montanteCusteio);
 	}
 	
-	// TODO
+	
 	@Override
 	public boolean isPET(){
 		return true;

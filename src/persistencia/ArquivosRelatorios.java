@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Classe para instaciacao de objeto que ira salvar relatorios sobre projetos e sobre colaboracoes
@@ -11,8 +12,12 @@ import java.io.IOException;
  * @author Mariana
  *
  */
-public class ArquivosRelatorios {
+public class ArquivosRelatorios implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private File path = new File("arquivos_sistema" + File.separator + "relatorios");
 	private File arquivoProjetos;
 	private File arquivoColaboracoes;

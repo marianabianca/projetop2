@@ -497,9 +497,9 @@ public class ProjetoController implements Serializable {
 			relatorio += "==> Projeto " + (i + 1) + LS + projetoAtual.toString() + LS + LS;
 		}
 		relatorio += "Total de projetos concluidos: " + this.projetos.size() + LS + "% Participacao da graduacao: "
-				+ calculaPorcentagemGraduandos() + LS + "% Participacao da pos-graduacao: "
-				+ calculaPorcentagemPosGraduandos() + LS + "% Participacao de profissionais: "
-				+ calculaPorcentagemProfissionais();
+				+ calculaPorcentagemGraduandos() + "%" + LS + "% Participacao da pos-graduacao: "
+				+ calculaPorcentagemPosGraduandos() + "%" + LS + "% Participacao de profissionais: "
+				+ calculaPorcentagemProfissionais() + "%";
 		return relatorio;
 	}
 

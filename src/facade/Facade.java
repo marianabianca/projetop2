@@ -49,9 +49,9 @@ public class Facade {
 	public void iniciaSistema() throws IOException, ClassNotFoundException {
 		try {
 			this.persistencia.iniciaSistema();
-			this.pessoaController = persistencia.iniciaPessoa();
-			this.projetoController = persistencia.iniciaProjeto();
-			this.participacaoController = persistencia.iniciaParticipacao();
+			this.pessoaController = persistencia.getPessoaController();
+			this.projetoController = persistencia.getProjetoController();
+			this.participacaoController = persistencia.getParticipacaoController();
 		} catch (FileNotFoundException e) {
 		}
 	}

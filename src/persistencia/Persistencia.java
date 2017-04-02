@@ -54,7 +54,7 @@ public class Persistencia {
 	 * Metodo que pega o atributo pessoaController e o retorna
 	 * @return PessoaController - atributo pessoaController
 	 */
-	public PessoaController iniciaPessoa() {
+	public PessoaController getPessoaController() {
 		return this.controllers.getPessoaController();
 	}
 	
@@ -62,7 +62,7 @@ public class Persistencia {
 	 * Metodo que pega o atributo projetoController e o retorna
 	 * @return ProjetoController - atributo projetoController
 	 */
-	public ProjetoController iniciaProjeto() {
+	public ProjetoController getProjetoController() {
 		return this.controllers.getProjetoController();
 	}
 	
@@ -70,7 +70,7 @@ public class Persistencia {
 	 * Metodo que pega o atributo participacaoController e o retorna
 	 * @return ParticipcaoController - atributo participacaoController
 	 */
-	public ParticipacaoController iniciaParticipacao() {
+	public ParticipacaoController getParticipacaoController() {
 		return this.controllers.getParticipacaoController();
 	}
 	

@@ -42,5 +42,11 @@ public abstract class Profissional extends Participacao {
 	public double getModificadorBolsa() {
 		return 1;
 	}
+	
+	//TODO
+	@Override
+	public boolean isProfissional() {
+		return true;
+	}
 
 }

@@ -1,8 +1,13 @@
 package projeto;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +22,7 @@ public abstract class Projeto implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final String LS = System.lineSeparator();
 	private String nome, objetivo, dataInicio, codigo;
 	private int duracao;
 	private Map<String, Despesa> custos;
@@ -463,5 +469,89 @@ public abstract class Projeto implements Serializable {
 	 */
 	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ParametroInvalidoException;
+
+	// TODO JAVADOCS ABAIXO, ANALISAR EXCEPTION ABAIXO
+	private Date getDataInicioEmDate() {
+		DateFormat formata = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataInicio = null;
+		try {
+			dataInicio = formata.parse(this.dataInicio);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dataInicio;
+	}
+
+	private String getNomeDoCoordenador() {
+		for (Participacao participacao : participacoes) {
+			if (participacao.isCoordenador()) {
+				return participacao.getNomeDaPessoa();
+			}
+		}
+		return "Nao ha coordenador cadastrado neste projeto";
+	}
+
+	private Date getDataFimDoProjeto() {
+		Date dataFim = this.getDataInicioEmDate();
+		Calendar c = Calendar.getInstance();
+		c.setTime(dataFim);
+		c.add(Calendar.DATE, 7 * this.duracao);
+		dataFim.setTime(c.getTime().getTime());
+		return dataFim;
+	}
+
+	private String isFinalizado() {
+		Date dataFim = null;
+		dataFim = this.getDataFimDoProjeto();
+		Date hoje = Calendar.getInstance().getTime();
+		if (dataFim.before(hoje)) {
+			return "Finalizado";
+		} else {
+			return "Em andamento";
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Nome: " + this.nome + LS + "Data de inicio: " + this.getDataFormatada() + LS + "Coordenador: "
+				+ this.getNomeDoCoordenador() + LS + "Situacao: " + this.isFinalizado();
+	}
+
+	private String getDataFormatada() {
+		Date dataInicio = this.getDataInicioEmDate();
+		DateFormat formata = new SimpleDateFormat("yyyy-MM-dd");
+		String dataInicioFormatada = formata.format(dataInicio);
+		return dataInicioFormatada;
+	}
+
+	public int getNumeroDeGraduandos() {
+		int numeroDeGraduandos = 0;
+		for (Participacao participacao : participacoes) {
+			if (participacao.isAlunoGraduando()) {
+				numeroDeGraduandos++;
+			}
+		}
+		return numeroDeGraduandos;
+	}
+
+	public int getNumeroDePosGraduandos() {
+		int numeroDePosGraduandos = 0;
+		for (Participacao participacao : participacoes) {
+			if (participacao.isAlunoPosGraduando()) {
+				numeroDePosGraduandos++;
+			}
+		}
+		return numeroDePosGraduandos;
+	}
+
+	public int getNumeroDeProfissionais() {
+		int numeroDeProfissionais = 0;
+		for (Participacao participacao : participacoes) {
+			if (participacao.isProfissional()) {
+				numeroDeProfissionais++;
+			}
+		}
+		return numeroDeProfissionais;
+	}
 
 }

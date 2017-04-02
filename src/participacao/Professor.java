@@ -21,6 +21,7 @@ public class Professor extends Participacao {
 	 * 
 	 * @return - true, se for coordenador, false, se nao.
 	 */
+	@Override
 	public boolean isCoordenador() {
 		return this.coordenador;
 	}

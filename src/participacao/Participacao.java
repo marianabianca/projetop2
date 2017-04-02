@@ -187,4 +187,13 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	public boolean isProfessor() {
 		return false;
 	}
+	
+	// TODO JAVADOCS
+	public boolean isCoordenador() {
+		return false;
+	}
+
+	public boolean isProfissional() {
+		return false;
+	}
 }

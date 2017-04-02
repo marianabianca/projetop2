@@ -1,6 +1,7 @@
 package projeto;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class ProjetoController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final String LS = System.lineSeparator();
 	private List<Projeto> projetos;
 	private int contadorCodigo;
 	private ValidaProjeto validaProjeto;
@@ -26,7 +28,6 @@ public class ProjetoController implements Serializable {
 	public ProjetoController() {
 		this.projetos = new ArrayList<Projeto>();
 		this.contadorCodigo = 0;
-
 		this.validaProjeto = new ValidaProjeto();
 		this.moduloDeValidacao = new ModuloDeValidacao();
 		this.factoryDePED = new FactoryDePED();
@@ -80,6 +81,7 @@ public class ProjetoController implements Serializable {
 	/**
 	 * Metodo responsavel por criar e adicionar um projeto PET e verificar se
 	 * seus parametros sao validos.
+	 * 
 	 * @param nome
 	 *            - Nome do projeto a ser criado.
 	 * @param objetivo
@@ -280,7 +282,8 @@ public class ProjetoController implements Serializable {
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
-	 * @throws Exception - casoo o projeto nao exista
+	 * @throws Exception
+	 *             - casoo o projeto nao exista
 	 */
 	public void removeProjeto(String codigo) throws Exception {
 		Projeto projeto = this.getProjeto(codigo);
@@ -455,6 +458,66 @@ public class ProjetoController implements Serializable {
 		double total = this.calculaColaboracaoTotalUASC();
 		total -= this.descontoReceita;
 		return total;
+	}
+
+	// TODO Javadoc dos métodos abaixo
+	public String getProjetosCadastrados() {
+		String toString = "Cadastro de Projetos: " + this.projetos.size() + " projeto(s) registrado(s)" + LS;
+		for (int i = 0; i < projetos.size(); i++) {
+			Projeto projetoAtual = this.projetos.get(i);
+			toString += "==> Projeto " + (i + 1) + LS + projetoAtual.toString() + LS + LS;
+		}
+		toString += "Total de projetos concluidos: " + this.projetos.size() + LS + "% Participacao da graduacao: "
+				+ calculaPorcentagemGraduandos() + LS + "% Participacao da pos-graduacao: "
+				+ calculaPorcentagemPosGraduandos() + LS + "% Participacao de profissionais: "
+				+ calculaPorcentagemProfissionais();
+		return toString;
+	}
+
+	private int calculaNumeroDeParticipacoes() {
+		int numeroDeParticipacoes = 0;
+		for (Projeto projeto : projetos) {
+			numeroDeParticipacoes += projeto.getNumeroDeParticipantes();
+		}
+		return numeroDeParticipacoes;
+	}
+
+	private String calculaPorcentagemGraduandos() {
+		int numeroDeGraduandos = 0;
+		for (Projeto projeto : projetos) {
+			numeroDeGraduandos += projeto.getNumeroDeGraduandos();
+		}
+		return calculaPorcentagemDeParticipacoes(numeroDeGraduandos);
+	}
+
+	private String calculaPorcentagemPosGraduandos() {
+		int numeroDePosGraduandos = 0;
+		for (Projeto projeto : projetos) {
+			numeroDePosGraduandos += projeto.getNumeroDePosGraduandos();
+		}
+		return calculaPorcentagemDeParticipacoes(numeroDePosGraduandos);
+	}
+
+	private String calculaPorcentagemProfissionais() {
+		int numeroDeProfissionais = 0;
+		for (Projeto projeto : projetos) {
+			numeroDeProfissionais += projeto.getNumeroDePosGraduandos();
+		}
+		return calculaPorcentagemDeParticipacoes(numeroDeProfissionais);
+	}
+
+	private String calculaPorcentagemDeParticipacoes(int participacoesEspecificas) {
+		double porcentagem = 100.0 * participacoesEspecificas / this.calculaNumeroDeParticipacoes();
+		DecimalFormat formata = new DecimalFormat("#.##");
+		return formata.format(porcentagem);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		ProjetoController pc = new ProjetoController();
+		pc.adicionaMonitoria("Nome", "Calculo", 10, "Objetivo", "2016.2", "05/03/2017", 4);
+		pc.adicionaMonitoria("Nome2", "Calculo", 10, "Objetivo", "2016.2", "10/03/2017", 3);
+		pc.adicionaMonitoria("Nome3", "Calculo", 10, "Objetivo", "2016.2", "15/03/2017", 3);
+		System.out.println(pc.getProjetosCadastrados());
 	}
 
 }

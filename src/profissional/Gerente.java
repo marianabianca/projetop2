@@ -28,22 +28,22 @@ public class Gerente extends Profissional {
 	}
 
 	/**
-	 * o metodo calcula a bolsa da pessoa
+	 * o metodo calcula a bolsa que paticipacao porporciona.
 	 * 
-	 * @return double - bolsa que a pessoa recebe
+	 * @return double - bolsa que a paticipacao porporciona.
 	 */
 	public double getBolsa() {
-        double bolsa = 0.0;
-        int numeroDeParticipantes = super.getNumeroDeParticipantes();
-        if (numeroDeParticipantes <= 5) {
-        	bolsa = super.getBolsa() + 20 * numeroDeParticipantes;
-        }
-        bolsa = super.getBolsa() + 100;
-        if (bolsa < 350) {
-        	return 350;
-        } else {
-        	return bolsa;
-        }
+		double bolsa = 0.0;
+		int numeroDeParticipantes = super.getNumeroDeParticipantes();
+		if (numeroDeParticipantes <= 5) {
+			bolsa = super.getBolsa() + 20 * numeroDeParticipantes;
+		}
+		bolsa = super.getBolsa() + 100;
+		if (bolsa < 350) {
+			return 350;
+		} else {
+			return bolsa;
+		}
 	}
 
 }

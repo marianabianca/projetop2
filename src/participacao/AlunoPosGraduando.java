@@ -9,9 +9,10 @@ public class AlunoPosGraduando extends Participacao {
 	private static final long serialVersionUID = 1L;
 	private String vinculo;
 
-	public AlunoPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, String vinculo) throws Exception {
+	public AlunoPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, String vinculo)
+			throws Exception {
 		super(pessoa, projeto, valorHora, qntHoras);
-		if (projeto.isPED()){
+		if (projeto.isPED()) {
 			if (!projeto.getInfoProjeto("categoria").equalsIgnoreCase("coop")) {
 				throw new ParametroInvalidoException("Tipo de projeto invalido para pos graduando");
 			}
@@ -31,7 +32,8 @@ public class AlunoPosGraduando extends Participacao {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por retornar o adicional da bolsa que, no caso de ser
+	 * doutorando, ganhara 1/3 de adicional.
 	 */
 	@Override
 	public double getModificadorBolsa() {
@@ -40,7 +42,7 @@ public class AlunoPosGraduando extends Participacao {
 		}
 		return 1;
 	}
-	
+
 	/**
 	 * Metodo responsavel por quebrar o default da classe pai.
 	 */

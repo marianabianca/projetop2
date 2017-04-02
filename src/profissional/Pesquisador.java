@@ -28,8 +28,9 @@ public class Pesquisador extends Profissional {
 	}
 
 	/**
-	 * o metodo calcula a bolsa que a pessoa deve receber
-	 *  @return double - valor da bolsa
+	 * o metodo calcula a bolsa que paticipacao porporciona.
+	 * 
+	 * @return double - bolsa que a paticipacao porporciona.
 	 */
 	@Override
 	public double getBolsa() {

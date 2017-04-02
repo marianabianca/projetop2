@@ -96,6 +96,11 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 		return projeto.isPED();
 	}
 
+	/**
+	 * o metodo tem com objetivo dizer se o projeto eh extensao a PED ou nao.
+	 * 
+	 * @return - retorna se eh extensao(true) ou se nao eh(false).
+	 */
 	public boolean isExtensao() {
 		return projeto.isExtensao();
 	}
@@ -129,16 +134,17 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	public abstract double calculaPontuacao();
 
 	/**
-	 * TODO
+	 * Metodo responsavel por auxiliar o metodo "getBolsa" para definir os
+	 * adicionais na bolsa.
 	 * 
-	 * @return
+	 * @return - Adicional da bolsa
 	 */
 	public abstract double getModificadorBolsa();
 
 	/**
-	 * oo metodo calcula a bolsa que a pessoa recebe
+	 * o metodo calcula a bolsa que paticipacao porporciona.
 	 * 
-	 * @return double - o valor da bolsa
+	 * @return double - bolsa que a paticipacao porporciona.
 	 */
 	public double getBolsa() {
 		double bolsa = Math.ceil(this.getModificadorBolsa() * this.qntHoras * this.valorHora);
@@ -187,12 +193,23 @@ public abstract class Participacao implements Comparable<Participacao>, Serializ
 	public boolean isProfessor() {
 		return false;
 	}
-	
-	// TODO JAVADOCS
+
+	/**
+	 * metodo resonsavel por definir se a participacao eh coordenador, tendo como
+	 * default falso e na filha professor ha um override afirmando verdadeiro.
+	 * 
+	 * @return - Por default, falso.
+	 */
 	public boolean isCoordenador() {
 		return false;
 	}
 
+	/**
+	 * metodo resonsavel por definir se a participacao eh profissional, tendo como
+	 * default falso e na filha professor ha um override afirmando verdadeiro.
+	 * 
+	 * @return - Por default, falso.
+	 */
 	public boolean isProfissional() {
 		return false;
 	}

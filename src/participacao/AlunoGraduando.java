@@ -32,7 +32,8 @@ public class AlunoGraduando extends Participacao {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por retornar o adicional da bolsa, como nao ha, o
+	 * retorno sera sempre um.
 	 */
 	@Override
 	public double getModificadorBolsa() {

@@ -29,8 +29,6 @@ public class Facade {
 		EasyAccept.main(args);
 	}
 
-	// TODO tirar piramides do egito
-
 	public Facade() {
 		pessoaController = new PessoaController();
 		projetoController = new ProjetoController();
@@ -539,7 +537,7 @@ public class Facade {
 	public double calculaTotalEmCaixaUASC() {
 		return this.projetoController.calculaTotalEmCaixaUASC();
 	}
-	
+
 	/**
 	 * Método responsavel por salvar os relatorios sobre projetos e colaboracoes
 	 * 

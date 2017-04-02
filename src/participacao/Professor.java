@@ -46,7 +46,8 @@ public class Professor extends Participacao {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por retornar o adicional da bolsa que, no caso de ser
+	 * coordenador, ganhara 40% de adicional.
 	 */
 	@Override
 	public double getModificadorBolsa() {
@@ -57,13 +58,16 @@ public class Professor extends Participacao {
 	}
 
 	/**
-	 * Metodo - responsavel por quebrar o default da classe pai.
+	 * Metodo responsavel por quebrar o default da classe pai.
 	 */
 	@Override
 	public boolean isProfessor() {
 		return true;
 	}
 
+	/**
+	 * Metodo responsavel por retornar a bolsa do professor, caso haja.
+	 */
 	@Override
 	public double getBolsa() {
 		double bolsa = super.getBolsa();

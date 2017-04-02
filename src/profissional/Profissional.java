@@ -36,14 +36,17 @@ public abstract class Profissional extends Participacao {
 	}
 
 	/**
-	 * TODO
+	 * Metodo responsavel por retornar o adicional da bolsa, como nao ha, o
+	 * retorno sera sempre um.
 	 */
 	@Override
 	public double getModificadorBolsa() {
 		return 1;
 	}
 	
-	//TODO
+	/**
+	 * Metodo responsavel por quebrar o default da classe pai.
+	 */
 	@Override
 	public boolean isProfissional() {
 		return true;

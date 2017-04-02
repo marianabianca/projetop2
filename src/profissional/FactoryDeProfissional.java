@@ -14,7 +14,7 @@ public class FactoryDeProfissional implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras)
-			throws Exception {
+			throws LogicaException {
 		if (cargo.equalsIgnoreCase("desenvolvedor")) {
 			return criaDesenvolvedor(pessoa, projeto, valorHora, qntHoras);
 		} else if (cargo.equalsIgnoreCase("gerente")) {
@@ -22,7 +22,7 @@ public class FactoryDeProfissional implements Serializable {
 		} else if (cargo.equalsIgnoreCase("pesquisador")) {
 			return criaPesquisador(pessoa, projeto, valorHora, qntHoras);
 		}
-		throw new Exception("Tipo de profissional nao existe");
+		throw new LogicaException("Tipo de profissional nao existe");
 	}
 
 	/**

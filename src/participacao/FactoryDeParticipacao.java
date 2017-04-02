@@ -2,6 +2,7 @@ package participacao;
 
 import java.io.Serializable;
 
+import exception.LogicaException;
 import pessoa.Pessoa;
 import projeto.Projeto;
 import profissional.FactoryDeProfissional;
@@ -71,12 +72,12 @@ public class FactoryDeParticipacao implements Serializable {
 	 * @param qntHoras
 	 *            - Quantidade de horas.
 	 * @return - Retornara um novo profissional.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public Profissional criaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras)
-			throws Exception {
+			throws LogicaException {
 		return factoryDeProfissional.criaProfissional(pessoa, projeto, cargo, valorHora, qntHoras);
 	}
 
@@ -94,10 +95,10 @@ public class FactoryDeParticipacao implements Serializable {
 	 * @param vinculo
 	 *            - Vinculo do aluno pos-graduando.
 	 * @return - Retornara um novo aluno pos-graduando.
-	 * @throws Exception - caso não seja possível criar a participacao
+	 * @throws LogicaException - caso não seja possível criar a participacao
 	 */
 	public Participacao criaPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras,
-			String vinculo) throws Exception {
+			String vinculo) throws LogicaException {
 		return new AlunoPosGraduando(pessoa, projeto, valorHora, qntHoras, vinculo);
 	}
 

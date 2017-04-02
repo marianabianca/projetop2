@@ -44,11 +44,11 @@ public abstract class Projeto implements Serializable {
 	 * 
 	 * @param atributo
 	 *            - Atributo o qual deseja a informacao.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public abstract String getInfoProjeto(String atributo) throws Exception;
+	public abstract String getInfoProjeto(String atributo) throws LogicaException;
 
 	/**
 	 * Metodo abstrato com funcao de repassar atividade para classes filhas.
@@ -57,11 +57,11 @@ public abstract class Projeto implements Serializable {
 	 *            - Atributo do projeto que deseja a editar.
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public abstract void editaProjeto(String atributo, String valor) throws Exception;
+	public abstract void editaProjeto(String atributo, String valor) throws LogicaException;
 
 	/**
 	 * Metodo responsavel por adicionar participacao.
@@ -172,11 +172,11 @@ public abstract class Projeto implements Serializable {
 	 * 
 	 * @param cpfPessoa
 	 *            - CPF da pessoa que deseja remover a paritcipacao
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void removeParticipacao(String cpfPessoa) throws Exception {
+	public void removeParticipacao(String cpfPessoa) throws LogicaException {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCpfDaPessoa().equals(cpfPessoa)) {
 				participacoes.remove(participacao);

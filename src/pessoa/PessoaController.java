@@ -36,7 +36,7 @@ public class PessoaController implements Serializable {
 	 *            - recebe uma string que corresponde ao email para a nova
 	 *            pessoa.
 	 * @return - retorna o cpf da pessoa criada.
-	 * @throws exception
+	 * @throws LogicaException
 	 *             - caso os parametros nao sejam validos, o sistema lancara o
 	 *             uma mensagem de erro.
 	 */
@@ -64,7 +64,7 @@ public class PessoaController implements Serializable {
 	 *            - recebe uma string que corresponde a informacao buscada sobre o
 	 *            pessoa.
 	 * @return - informacao pedida pelo usuário.
-	 * @throws exception
+	 * @throws LogicaException
 	 *             - caso o atributo nao seja valido, o sistema lancara uma
 	 *             mensagem de erro.
 	 */
@@ -143,7 +143,7 @@ public class PessoaController implements Serializable {
 	 * @param valor
 	 *            - recebe uma string que corresponde para o que o atributo sera
 	 *            mudado pessoa.
-	 * @throws exception
+	 * @throws LogicaException
 	 *             - caso os parametros nao sejam válidos, o sistema devera
 	 *             lancar uma mensagem de erro
 	 * 

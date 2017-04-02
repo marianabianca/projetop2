@@ -1,5 +1,6 @@
 package participacao;
 
+import exception.LogicaException;
 import exception.ParametroInvalidoException;
 import pessoa.Pessoa;
 import projeto.Projeto;
@@ -10,7 +11,7 @@ public class AlunoPosGraduando extends Participacao {
 	private String vinculo;
 
 	public AlunoPosGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, String vinculo)
-			throws Exception {
+			throws LogicaException {
 		super(pessoa, projeto, valorHora, qntHoras);
 		if (projeto.isPED()) {
 			if (!projeto.getInfoProjeto("categoria").equalsIgnoreCase("coop")) {

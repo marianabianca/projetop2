@@ -23,7 +23,9 @@ public class ValidaProjeto implements Serializable {
 	 * 
 	 * @param atributo
 	 *            - Atributo a ser testado.
-	 * @throws exception
+	 * @throws LogicaException
+	 *             - Excecao a ser lancada.
+	 * @throws StringInvalidaException
 	 *             - Excecao a ser lancada.
 	 */
 	public void validaAtributo(String atributo) throws LogicaException, StringInvalidaException {

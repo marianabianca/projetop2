@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import easyaccept.EasyAccept;
 import exception.LogicaException;
+import exception.ObjetoNuloException;
 import exception.ParametroInvalidoException;
 
 public class Facade {
@@ -163,12 +164,12 @@ public class Facade {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController"
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
-			String dataInicio, int duracao) throws Exception {
+			String dataInicio, int duracao) throws LogicaException {
 		return projetoController.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio,
 				duracao);
 	}
@@ -195,12 +196,12 @@ public class Facade {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController".
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
-			int prodAcademica, int patentes, String dataInicio, int duracao) throws Exception {
+			int prodAcademica, int patentes, String dataInicio, int duracao) throws LogicaException {
 		return projetoController.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes,
 				dataInicio, duracao);
 	}
@@ -219,12 +220,12 @@ public class Facade {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController".
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
-			throws Exception {
+			throws LogicaException {
 		return projetoController.adicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 	}
 
@@ -248,12 +249,12 @@ public class Facade {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Chama metodo em "projetoController".
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
-			String objetivo, String dataInicio, int duracao) throws Exception {
+			String objetivo, String dataInicio, int duracao) throws LogicaException {
 		return projetoController.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo,
 				dataInicio, duracao);
 	}
@@ -266,11 +267,11 @@ public class Facade {
 	 * @param atributo
 	 *            - Atributo o qual deseja a informacao.
 	 * @return - Chama metodo em "projetoController".
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public String getInfoProjeto(String codigo, String atributo) throws Exception {
+	public String getInfoProjeto(String codigo, String atributo) throws LogicaException {
 		return projetoController.getInfoProjeto(codigo, atributo);
 	}
 
@@ -280,11 +281,12 @@ public class Facade {
 	 * @param nome
 	 *            - Nome do projeto que deseja o código.
 	 * @return - Chama metodo em "projetoController".
-	 * @throws Exception
+	 * @throws ObjetoNuloException 
+	 * @throws ObjetoNuloException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public String getCodigoProjeto(String nome) throws Exception {
+	public String getCodigoProjeto(String nome) throws ObjetoNuloException {
 		return projetoController.getCodigoProjeto(nome);
 	}
 
@@ -297,11 +299,11 @@ public class Facade {
 	 *            - Atributo do projeto que deseja editar.
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
+	public void editaProjeto(String codigo, String atributo, String valor) throws LogicaException {
 		projetoController.editaProjeto(codigo, atributo, valor);
 	}
 
@@ -310,9 +312,9 @@ public class Facade {
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
-	 * @throws Exception
+	 * @throws LogicaException
 	 */
-	public void removeProjeto(String codigo) throws Exception {
+	public void removeProjeto(String codigo) throws LogicaException {
 		projetoController.removeProjeto(codigo);
 	}
 
@@ -330,12 +332,12 @@ public class Facade {
 	 *            - Valor por hora
 	 * @param quantidadeDeHoras
 	 *            - Quantidade de horas.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaProfessor(String cpfPessoa, String codigoProjeto, boolean coordenador, double valorHora,
-			int qntHoras) throws Exception {
+			int qntHoras) throws LogicaException {
 		participacaoController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
 	}
 
@@ -351,12 +353,12 @@ public class Facade {
 	 *            - Valor hora.
 	 * @param quantidadeDeHoras
 	 *            - Quantidade de horas.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaGraduando(String cpfPessoa, String codigoProjeto, double valorHora, int qntHoras)
-			throws Exception {
+			throws LogicaException {
 		participacaoController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
 	}
 
@@ -374,12 +376,12 @@ public class Facade {
 	 *            - Valor da hora.
 	 * @param qntHoras
 	 *            - Quantidade de horas.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
-			int qntHoras) throws Exception {
+			int qntHoras) throws LogicaException {
 		participacaoController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
 	}
 
@@ -397,16 +399,16 @@ public class Facade {
 	 *            - Valor da hora.
 	 * @param qntHoras
 	 *            - Quantidade de horas.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
-			int qntHoras) throws Exception {
+			int qntHoras) throws LogicaException {
 		try {
 			participacaoController.associaPosGraduando(cpfPessoa, codigoProjeto, vinculo, valorHora, qntHoras);
 		} catch (Exception e) {
-			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+			throw new LogicaException("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 	}
 
@@ -418,11 +420,11 @@ public class Facade {
 	 *            - CPF da pessoa que deseja remover a participacao.
 	 * @param codigoProjeto
 	 *            - Projeto que deseja remover a participacao.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws LogicaException {
 		participacaoController.removeParticipacao(cpfPessoa, codigoProjeto);
 	}
 
@@ -438,7 +440,7 @@ public class Facade {
 	 *             - enviara uma mensagem de erro caso nao ocorra o que e
 	 *             esperado.
 	 */
-	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws Exception {
+	public double calculaPontuacaoPorParticipacao(String cpfPessoa) throws LogicaException {
 		return pessoaController.calculaPontuacaoPorParticipacao(cpfPessoa);
 	}
 
@@ -448,11 +450,11 @@ public class Facade {
 	 * @param cpfPessoa
 	 *            - CPF da pessoa que deseja calcular a bolsa.
 	 * @return - Chamara o metodo de "pessoaController".
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public double getValorBolsa(String cpfPessoa) throws Exception {
+	public double getValorBolsa(String cpfPessoa) throws LogicaException {
 		return pessoaController.getValorBolsa(cpfPessoa);
 	}
 
@@ -468,12 +470,12 @@ public class Facade {
 	 *            - Montante de custeio para qual vai ser atualizada.
 	 * @param montanteCapital
 	 *            - Montante de capital para qual vai ser atualizada.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio,
-			double montanteCapital) throws Exception {
+			double montanteCapital) throws LogicaException {
 		try {
 			projetoController.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
 		} catch (ParametroInvalidoException e) {
@@ -488,11 +490,11 @@ public class Facade {
 	 * @param codProjeto
 	 *            - Código do projeto a ser calculado.
 	 * @return - Valor do calculo.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
+	public double calculaColaboracaoUASC(String codProjeto) throws LogicaException {
 		try {
 			return projetoController.calculaColaboracaoUASC(codProjeto);
 		} catch (ParametroInvalidoException e) {

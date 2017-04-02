@@ -2,6 +2,7 @@ package participacao;
 
 import java.io.Serializable;
 
+import exception.LogicaException;
 import pessoa.Pessoa;
 import pessoa.PessoaController;
 import projeto.Projeto;
@@ -41,12 +42,12 @@ public class ParticipacaoController implements Serializable {
 	 *            - Valor por hora
 	 * @param quantidadeDeHoras
 	 *            - Quantidade de horas.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaProfessor(String cpfProfessor, String codigoProjeto, boolean ehCoordenador, double valorPorHora,
-			int quantidadeDeHoras) throws Exception {
+			int quantidadeDeHoras) throws LogicaException {
 		Pessoa professor;
 		Projeto projeto;
 		try {
@@ -56,12 +57,13 @@ public class ParticipacaoController implements Serializable {
 			boolean temProfAssociado = projeto.temProfessorAssociado();
 			boolean temCoordAssociado = projeto.temCoordenadorAssociado();
 			if (projeto.isPED()) {
-				this.validaParticipacao.validaAssociacaoProfessorPED(temProfAssociado, temCoordAssociado, ehCoordenador, valorPorHora);
+				this.validaParticipacao.validaAssociacaoProfessorPED(temProfAssociado, temCoordAssociado, ehCoordenador,
+						valorPorHora);
 			} else if (projeto.isMonitoria()) {
 				this.validaParticipacao.validaAssociacaoProfessorMonitoria(temProfAssociado, valorPorHora);
 			}
 		} catch (Exception e) {
-			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+			throw new LogicaException("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 		Participacao participacao = factoryDeParticipacao.criaProfessor(professor, projeto, ehCoordenador, valorPorHora,
 				quantidadeDeHoras);
@@ -80,12 +82,12 @@ public class ParticipacaoController implements Serializable {
 	 *            - Valor da hora.
 	 * @param horasSemanais
 	 *            - Horas semanais.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaGraduando(String cpfGraduando, String codigoProjeto, double valorPorHora, int horasSemanais)
-			throws Exception {
+			throws LogicaException {
 		Pessoa graduando;
 		Projeto projeto;
 		try {
@@ -99,7 +101,7 @@ public class ParticipacaoController implements Serializable {
 				this.validaParticipacao.validaAssociacaoGraduandoPED(ehCoop, temAluno, alunoPresenteNoProjeto);
 			}
 		} catch (Exception e) {
-			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+			throw new LogicaException("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 		Participacao participacao = factoryDeParticipacao.criaGraduando(graduando, projeto, valorPorHora,
 				horasSemanais);
@@ -120,12 +122,12 @@ public class ParticipacaoController implements Serializable {
 	 *            - Valor da hora.
 	 * @param qntHoras
 	 *            - Quantidade de horas.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void associaProfissional(String cpfPessoa, String codigoProjeto, String cargo, double valorHora,
-			int qntHoras) throws Exception {
+			int qntHoras) throws LogicaException {
 		Pessoa pessoa = null;
 		Projeto projeto = null;
 		try {
@@ -133,7 +135,7 @@ public class ParticipacaoController implements Serializable {
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
 		} catch (Exception e) {
-			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
+			throw new LogicaException("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
 
 		Participacao participacao = factoryDeParticipacao.criaProfissional(pessoa, projeto, cargo, valorHora, qntHoras);
@@ -156,8 +158,7 @@ public class ParticipacaoController implements Serializable {
 	 * @param qntHoras
 	 *            - Quantidade de horas.
 	 * @throws Exception
-	 *             - Lancara uma Exception, caso os parametros nao sejam os
-	 *             esperados.
+	 *             - Excecao a ser lancada.
 	 */
 	public void associaPosGraduando(String cpfPessoa, String codigoProjeto, String vinculo, double valorHora,
 			int qntHoras) throws Exception {
@@ -182,19 +183,19 @@ public class ParticipacaoController implements Serializable {
 	 *            - CPF da pessoa que deseja remover a participacao.
 	 * @param codigoProjeto
 	 *            - Projeto que deseja remover a participacao.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws LogicaException {
 		try {
 			if (!projetoController.existeProjeto(codigoProjeto)) {
-				throw new Exception("Projeto nao encontrado");
+				throw new LogicaException("Projeto nao encontrado");
 			}
 			pessoaController.removeParticipacao(cpfPessoa, codigoProjeto);
 			projetoController.removeParticipacao(cpfPessoa, codigoProjeto);
 		} catch (Exception e) {
-			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
+			throw new LogicaException("Erro na remocao de participacao: " + e.getMessage());
 		}
 	}
 
@@ -206,11 +207,11 @@ public class ParticipacaoController implements Serializable {
 	 *            - CPF da pessoa que deseja adicionar determinada participacao.
 	 * @param participacao
 	 *            - Participacao que deseja adicionar a determinada pessoa.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	private void adicionaParticipacaoAPessoa(String cpfPessoa, Participacao participacao) throws Exception {
+	private void adicionaParticipacaoAPessoa(String cpfPessoa, Participacao participacao) throws LogicaException {
 		pessoaController.adicionaParticipacao(cpfPessoa, participacao);
 	}
 
@@ -223,11 +224,11 @@ public class ParticipacaoController implements Serializable {
 	 *            participacao.
 	 * @param participacao
 	 *            - Participacao que deseja adicionar a determinado projeto.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao) throws Exception {
+	private void adicionaParticipacaoAoProjeto(String codigoProjeto, Participacao participacao) throws LogicaException {
 		projetoController.adicionaParticipacao(codigoProjeto, participacao);
 	}
 

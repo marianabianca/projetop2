@@ -57,12 +57,12 @@ public class ProjetoController implements Serializable {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Retornara o codigo do projeto.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo,
-			String dataInicio, int duracao) throws Exception {
+			String dataInicio, int duracao) throws LogicaException {
 		try {
 			this.validaProjeto.validaNome(nome);
 			this.validaProjeto.validaDisciplina(disciplina);
@@ -77,7 +77,7 @@ public class ProjetoController implements Serializable {
 			projetos.add(monitoria);
 			return codigo;
 		} catch (Exception e) {
-			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
+			throw new LogicaException("Erro no cadastro de projeto: " + e.getMessage());
 		}
 
 	}
@@ -105,12 +105,12 @@ public class ProjetoController implements Serializable {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Retornara o codigo do projeto.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica,
-			int prodAcademica, int patentes, String dataInicio, int duracao) throws Exception {
+			int prodAcademica, int patentes, String dataInicio, int duracao) throws LogicaException {
 		try {
 			this.validaProjeto.validaNome(nome);
 			this.validaProjeto.validaObjetivo(objetivo);
@@ -127,7 +127,7 @@ public class ProjetoController implements Serializable {
 			projetos.add(pet);
 			return codigo;
 		} catch (Exception e) {
-			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
+			throw new LogicaException("Erro no cadastro de projeto: " + e.getMessage());
 		}
 	}
 
@@ -146,12 +146,12 @@ public class ProjetoController implements Serializable {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Retornara o codigo do projeto.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao)
-			throws Exception {
+			throws LogicaException {
 		try {
 			this.validaProjeto.validaNome(nome);
 			this.validaProjeto.validaObjetivo(objetivo);
@@ -163,7 +163,7 @@ public class ProjetoController implements Serializable {
 			projetos.add(extensao);
 			return codigo;
 		} catch (Exception e) {
-			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
+			throw new LogicaException("Erro no cadastro de projeto: " + e.getMessage());
 		}
 	}
 
@@ -188,12 +188,12 @@ public class ProjetoController implements Serializable {
 	 * @param duracao
 	 *            - Duracao do do projeto a ser criado.
 	 * @return - Retornara o codigo do projeto.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public String adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes,
-			String objetivo, String dataInicio, int duracao) throws Exception {
+			String objetivo, String dataInicio, int duracao) throws LogicaException {
 		try {
 			this.validaProjeto.validaNome(nome);
 			this.validaProjeto.validaCategoria(categoria);
@@ -209,7 +209,7 @@ public class ProjetoController implements Serializable {
 			projetos.add(ped);
 			return codigo;
 		} catch (Exception e) {
-			throw new Exception("Erro no cadastro de projeto: " + e.getMessage());
+			throw new LogicaException("Erro no cadastro de projeto: " + e.getMessage());
 		}
 	}
 
@@ -222,17 +222,17 @@ public class ProjetoController implements Serializable {
 	 * @param atributo
 	 *            - Atributo o qual deseja a informacao.
 	 * @return - Chama metodo em "projeto".
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public String getInfoProjeto(String codigo, String atributo) throws Exception {
+	public String getInfoProjeto(String codigo, String atributo) throws LogicaException {
 		try {
 			this.validaProjeto.validaAtributo(atributo);
 			Projeto projeto = this.getProjeto(codigo);
 			return projeto.getInfoProjeto(atributo);
 		} catch (Exception e) {
-			throw new Exception("Erro na consulta de projeto: " + e.getMessage());
+			throw new LogicaException("Erro na consulta de projeto: " + e.getMessage());
 		}
 	}
 
@@ -266,18 +266,18 @@ public class ProjetoController implements Serializable {
 	 *            - Atributo do projeto que deseja a editar.
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void editaProjeto(String codigo, String atributo, String valor) throws Exception {
+	public void editaProjeto(String codigo, String atributo, String valor) throws LogicaException {
 		try {
 			this.validaProjeto.validaAtributo(atributo);
 			this.validaProjeto.validaValorAtributo(atributo, valor);
 			Projeto projeto = this.getProjeto(codigo);
 			projeto.editaProjeto(atributo, valor);
 		} catch (Exception e) {
-			throw new Exception("Erro na atualizacao de projeto: " + e.getMessage());
+			throw new LogicaException("Erro na atualizacao de projeto: " + e.getMessage());
 		}
 	}
 
@@ -286,10 +286,10 @@ public class ProjetoController implements Serializable {
 	 * 
 	 * @param codigo
 	 *            - Codigo do projeto que deseja remover.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - casoo o projeto nao exista
 	 */
-	public void removeProjeto(String codigo) throws Exception {
+	public void removeProjeto(String codigo) throws LogicaException {
 		Projeto projeto = this.getProjeto(codigo);
 		this.projetos.remove(projeto);
 	}
@@ -302,11 +302,11 @@ public class ProjetoController implements Serializable {
 	 *            - Codigo do projeto a ter a paticipacao adicionada.
 	 * @param participacao
 	 *            - Paticipacao a ser adicionada.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws Exception {
+	public void adicionaParticipacao(String codigoProjeto, Participacao participacao) throws LogicaException {
 		Projeto projeto = getProjeto(codigoProjeto);
 		projeto.adicionaParticipacao(participacao);
 	}
@@ -319,16 +319,16 @@ public class ProjetoController implements Serializable {
 	 *            - Codigo do projeto a ter a paticipacao removida.
 	 * @param participacao
 	 *            - Paticipacao a ser removida.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws Exception {
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto) throws LogicaException {
 		try {
 			Projeto projeto = this.getProjeto(codigoProjeto);
 			projeto.removeParticipacao(cpfPessoa);
 		} catch (Exception e) {
-			throw new Exception("Erro na remocao de participacao: " + e.getMessage());
+			throw new LogicaException("Erro na remocao de participacao: " + e.getMessage());
 		}
 	}
 
@@ -349,18 +349,18 @@ public class ProjetoController implements Serializable {
 	 * @param codigo
 	 *            - Codigo do projeto buscado.
 	 * @return - Retornara o projeto buscado.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public Projeto getProjeto(String codigo) throws Exception {
+	public Projeto getProjeto(String codigo) throws LogicaException {
 		this.validaProjeto.validaCodigo(codigo);
 		for (Projeto projeto : projetos) {
 			if (projeto.getCodigo().equals(codigo)) {
 				return projeto;
 			}
 		}
-		throw new Exception("Projeto nao encontrado");
+		throw new LogicaException("Projeto nao encontrado");
 	}
 
 	/**
@@ -392,12 +392,12 @@ public class ProjetoController implements Serializable {
 	 *            - Montante de custeio para qual vai ser atualizada.
 	 * @param montanteCapital
 	 *            - Montante de capital para qual vai ser atualizada.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception caso os parametros nao sejam os
 	 *             esperados.
 	 */
 	public void atualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital)
-			throws Exception {
+			throws LogicaException {
 		this.validaProjeto.validaCodigo(cod);
 		this.validaProjeto.validaValorAtributo(montanteBolsas);
 		this.validaProjeto.validaValorAtributo(montanteCusteio);
@@ -413,11 +413,11 @@ public class ProjetoController implements Serializable {
 	 * @param codProjeto
 	 *            - Código do projeto a ser calculado.
 	 * @return - Valor do calculo.
-	 * @throws Exception
+	 * @throws LogicaException
 	 *             - Lancara uma Exception caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public double calculaColaboracaoUASC(String codProjeto) throws Exception {
+	public double calculaColaboracaoUASC(String codProjeto) throws LogicaException {
 		Projeto aColaborar = getProjeto(codProjeto);
 		return aColaborar.calculaColaboracaoUASC();
 	}

@@ -94,7 +94,6 @@ public class ParticipacaoController implements Serializable {
 				quantidadeDeHoras);
 		adicionaParticipacaoAPessoa(cpfProfessor, participacao);
 		adicionaParticipacaoAoProjeto(codigoProjeto, participacao);
-
 	}
 
 	/**

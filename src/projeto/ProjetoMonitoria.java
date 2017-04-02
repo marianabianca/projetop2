@@ -1,5 +1,6 @@
 package projeto;
 
+import exception.LogicaException;
 import exception.ParametroInvalidoException;
 
 public class ProjetoMonitoria extends Projeto {
@@ -23,7 +24,7 @@ public class ProjetoMonitoria extends Projeto {
 	 * Metodo responsavel por oferecer determinada informacao do projeto.
 	 */
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {
+	public String getInfoProjeto(String atributo) throws LogicaException {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			return super.getNome();
@@ -42,7 +43,7 @@ public class ProjetoMonitoria extends Projeto {
 		case "participacoes":
 			return super.getParticipacoes();
 		default:
-			throw new Exception("Monitoria nao possui " + atributo);
+			throw new LogicaException("Monitoria nao possui " + atributo);
 		}
 	}
 
@@ -50,7 +51,7 @@ public class ProjetoMonitoria extends Projeto {
 	 * Metodo responsavel por mudar o atributo para o valor especificado.
 	 */
 	@Override
-	public void editaProjeto(String atributo, String valor) throws Exception {
+	public void editaProjeto(String atributo, String valor) throws LogicaException {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			super.setNome(valor);
@@ -74,7 +75,7 @@ public class ProjetoMonitoria extends Projeto {
 			super.setDuracao(Integer.parseInt(valor));
 			break;
 		default:
-			throw new Exception("Monitoria nao possui " + atributo);
+			throw new LogicaException("Monitoria nao possui " + atributo);
 		}
 	}
 

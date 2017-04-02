@@ -1,5 +1,6 @@
 package projeto;
 
+import exception.LogicaException;
 import exception.ParametroInvalidoException;
 
 public class ProjetoPET extends Projeto {
@@ -27,7 +28,7 @@ public class ProjetoPET extends Projeto {
 	 * Metodo responavel por oferecer determinada informacao do projeto.
 	 */
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {
+	public String getInfoProjeto(String atributo) throws LogicaException {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			return super.getNome();
@@ -50,7 +51,7 @@ public class ProjetoPET extends Projeto {
 		case "participacoes":
 			return super.getParticipacoes();
 		default:
-			throw new Exception("PET nao possui " + atributo);
+			throw new LogicaException("PET nao possui " + atributo);
 		}
 	}
 
@@ -58,7 +59,7 @@ public class ProjetoPET extends Projeto {
 	 * Metodo responsavel por mudar o atributo para o valor especificado.
 	 */
 	@Override
-	public void editaProjeto(String atributo, String valor) throws Exception {
+	public void editaProjeto(String atributo, String valor) throws LogicaException {
 		switch (atributo.toLowerCase()) {
 		case "nome":
 			super.setNome(valor);
@@ -88,7 +89,7 @@ public class ProjetoPET extends Projeto {
 			super.setDuracao(Integer.parseInt(valor));
 			break;
 		default:
-			throw new Exception("PET nao possui " + atributo);
+			throw new LogicaException("PET nao possui " + atributo);
 		}
 	}
 	

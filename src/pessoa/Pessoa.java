@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.LogicaException;
-import participacao.AlunoGraduando;
 import participacao.Participacao;
 
 public class Pessoa implements Serializable{
@@ -80,11 +79,9 @@ public class Pessoa implements Serializable{
 		double acumuladorGraduandoMonitoria = 0;
 		for (Participacao participacao : participacoes) {
 			if (participacao.isAlunoGraduando() && !participacao.isMonitoria()) {
-				acumuladorGraduandoPEDExtensaoPET = calculaPontuacaoPorParticipacaoPEDExtensaoPET(
-						acumuladorGraduandoPEDExtensaoPET, participacao);
+				acumuladorGraduandoPEDExtensaoPET = calculaPontuacaoPorParticipacaoPEDExtensaoPET(acumuladorGraduandoPEDExtensaoPET, participacao);
 			} else if (participacao.isAlunoGraduando() && participacao.isMonitoria()) {
-				acumuladorGraduandoMonitoria = calculaPontuacaoPorParticipacaoPEDExtensaoPET(
-						acumuladorGraduandoMonitoria, participacao);
+				acumuladorGraduandoMonitoria = calculaPontuacaoPorParticipacaoPEDExtensaoPET(acumuladorGraduandoMonitoria, participacao);
 			} else {
 				acumulador += participacao.calculaPontuacao();
 			}

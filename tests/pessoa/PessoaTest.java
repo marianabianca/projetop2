@@ -59,11 +59,6 @@ public class PessoaTest {
 	}
 	
 	@Test
-	public void calculaPontuacaoPorParticipacao() {
-		// TODO
-	}
-	
-	@Test
 	public void calculaPontuacaoPorParticipacaoPEDExtensaoPETTest() {
 		pessoa.adicionaParticipacao(participacaoGraduandoExtensao);
 		Assert.assertEquals(4, pessoa.calculaPontuacaoPorParticipacaoPEDExtensaoPET(0, participacaoGraduandoExtensao), 0.01);

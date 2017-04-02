@@ -2,11 +2,12 @@ package profissional;
 
 import java.io.Serializable;
 
+import exception.LogicaException;
 import pessoa.Pessoa;
 import projeto.Projeto;
 
-public class FactoryDeProfissional implements Serializable{
-	
+public class FactoryDeProfissional implements Serializable {
+
 	/**
 	 * 
 	 */

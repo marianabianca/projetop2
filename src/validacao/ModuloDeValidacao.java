@@ -14,13 +14,13 @@ public class ModuloDeValidacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * O método é responsável por verificar se a string recebida é válida, no
-	 * caso se ela é vazia ou nula.
+	 * O metodo eh responsavel por verificar se a string recebida eh valida, no
+	 * caso se ela eh vazia ou nula.
 	 * 
 	 * @param str
 	 *            - String a ser testada.
-	 * @throws stringinvalidaexception
-	 *             - exceção a ser lançada.
+	 * @throws StringInvalidaException
+	 *             - Excecao a ser lancada.
 	 */
 	public void stringInvalida(String str) throws StringInvalidaException {
 		if (str == null) {
@@ -32,29 +32,37 @@ public class ModuloDeValidacao implements Serializable {
 	}
 
 	/**
-	 * O método é responsável por verificar se a string recebida está no padrão
+	 * O metodo eh responsavel por verificar se a string recebida esta no padrao
 	 * de data.
 	 * 
 	 * @param str
 	 *            - String a ser testada.
-	 * @throws exception
-	 *             - Exceção a ser lançada.
+	 * @throws LogicaException
+	 *             - Excecao a ser lancada.
 	 */
-	public void dataInvalida(String str) throws Exception {
+	public void dataInvalida(String str) throws LogicaException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		sdf.setLenient(false);
 		if (!(str.length() == 10)) {
-			throw new Exception("Formato de data invalido");
+			throw new LogicaException("Formato de data invalido");
 		}
 		try {
 			sdf.parse(str);
 		} catch (ParseException e) {
-			throw new Exception("Formato de data invalido");
+			throw new LogicaException("Formato de data invalido");
 		}
 	}
 
+	/**
+	 * O metodo eh responsavel por verificar se o numero enviado eh negativo.
+	 * 
+	 * @param numero
+	 *            - Numero a ser testado.
+	 * @throws ParametroInvalidoException
+	 *             - Excecao a ser lancada.
+	 */
 	public void numeroNegativo(double numero) throws ParametroInvalidoException {
-		if (numero < 0){
+		if (numero < 0) {
 			throw new ParametroInvalidoException("valor negativo");
 		}
 	}

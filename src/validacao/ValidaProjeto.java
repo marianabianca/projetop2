@@ -2,32 +2,33 @@ package validacao;
 
 import java.io.Serializable;
 
+import exception.LogicaException;
 import exception.ParametroInvalidoException;
 import exception.StringInvalidaException;
 
-public class ValidaProjeto implements Serializable{
-	
+public class ValidaProjeto implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private ModuloDeValidacao moduloDeValidacao;
-	
+
 	public ValidaProjeto() {
 		this.moduloDeValidacao = new ModuloDeValidacao();
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O ATRIBUTO RECEBIDO É VÁLIDO.
+	 * O metodo eh responsavel por verificar se o atributo recebido eh valido.
 	 * 
 	 * @param atributo
-	 *            ATRIBUTO A SER TESTADO.
-	 * @throws Exception
-	 *             EXCEÇÃO A SER LANÇADA.
+	 *            - Atributo a ser testado.
+	 * @throws exception
+	 *             - Excecao a ser lancada.
 	 */
-	public void validaAtributo(String atributo) throws Exception {
+	public void validaAtributo(String atributo) throws LogicaException, StringInvalidaException {
 		if ((!atributoValido(atributo))) {
-			throw new Exception("Atributo nulo ou invalido");
+			throw new LogicaException("Atributo nulo ou invalido");
 		}
 
 		try {
@@ -39,13 +40,13 @@ public class ValidaProjeto implements Serializable{
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O ATRIBUTO RECEBIDO REALMENTE
-	 * CONFERE A UM ATRIBUTO DE PROJETO.
+	 * O metodo eh responsavel por verificar se o atributo recebido realmente
+	 * confere a um atributo de projeto.
 	 * 
 	 * @param atributo
-	 *            ATRIBUTO A SER TESTADO.
-	 * @return DETERMINAR SE O ATRIBUTO REALMENTE EXISTE O ATRIBUTO PASSADO COMO
-	 *         PARÂMETRO.
+	 *            - Atributo a ser testado.
+	 * @return - Determinar se o atributo realmente existe o atributo passado
+	 *         como parametro.
 	 */
 	private boolean atributoValido(String atributo) {
 		String[] atributosValidos = { "nome", "disciplina", "rendimento", "objetivo", "periodo", "data de inicio",
@@ -60,7 +61,20 @@ public class ValidaProjeto implements Serializable{
 		return false;
 	}
 
-	private void validaValor(String valor, String atributo) throws Exception {
+	/**
+	 * Metodo responsavel por observar todo tipo de excecao e delegar para os
+	 * metodos menores.
+	 * 
+	 * @param valor
+	 *            - Valor a ser analisado.
+	 * @param atributo
+	 *            - Tipo de valor.
+	 * @throws LogicaException
+	 *             - Excecao a ser lancada.
+	 * @throws StringInvalidaException
+	 *             - Excecao a ser lancada.
+	 */
+	private void validaValor(String valor, String atributo) throws LogicaException, StringInvalidaException {
 		if (atributo.equalsIgnoreCase("nome")) {
 			this.validaNome(valor);
 		} else if (atributo.equalsIgnoreCase("disciplina")) {
@@ -88,6 +102,14 @@ public class ValidaProjeto implements Serializable{
 		}
 	}
 
+	/**
+	 * Metodo responsavel por afirmar se o nome recebido eh valido
+	 * 
+	 * @param nome
+	 *            - Nome recebido
+	 * @throws StringInvalidaException
+	 *             - Exception a ser lancada.
+	 */
 	public void validaNome(String nome) throws StringInvalidaException {
 		try {
 			this.moduloDeValidacao.stringInvalida(nome);
@@ -96,6 +118,14 @@ public class ValidaProjeto implements Serializable{
 		}
 	}
 
+	/**
+	 * /** Metodo responsavel por afirmar se a disciplina recebida eh valida.
+	 * 
+	 * @param disciplina
+	 *            - disciplina recebido
+	 * @throws StringInvalidaException
+	 *             - Exception a ser lancada.
+	 */
 	public void validaDisciplina(String disciplina) throws StringInvalidaException {
 		try {
 			this.moduloDeValidacao.stringInvalida(disciplina);
@@ -104,12 +134,28 @@ public class ValidaProjeto implements Serializable{
 		}
 	}
 
-	public void validaRendimento(int rendimento) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se o rendimento eh valido
+	 * 
+	 * @param rendimento
+	 *            - Rendimento recebido
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaRendimento(int rendimento) throws LogicaException {
 		if (rendimento < 0 || rendimento > 100) {
-			throw new Exception("Rendimento invalido");
+			throw new LogicaException("Rendimento invalido");
 		}
 	}
 
+	/**
+	 * Metodo responsavel por afirmar se o objetivo recebido eh valido.
+	 * 
+	 * @param objetivo
+	 *            - Objetivo recebido
+	 * @throws StringInvalidaException
+	 *             - Exception a ser lancada.
+	 */
 	public void validaObjetivo(String objetivo) throws StringInvalidaException {
 		try {
 			this.moduloDeValidacao.stringInvalida(objetivo);
@@ -118,7 +164,17 @@ public class ValidaProjeto implements Serializable{
 		}
 	}
 
-	public void validaPeriodo(String periodo) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se o periodo recebido eh valido.
+	 * 
+	 * @param periodo
+	 *            - Periodo recebido.
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 * @throws StringInvalidaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaPeriodo(String periodo) throws LogicaException, StringInvalidaException {
 		try {
 			this.moduloDeValidacao.stringInvalida(periodo);
 		} catch (StringInvalidaException e) {
@@ -127,47 +183,107 @@ public class ValidaProjeto implements Serializable{
 
 		String formaPeriodo = "[1-9][0-9]{3}\\.[1-2]";
 		if (!periodo.matches(formaPeriodo)) {
-			throw new Exception("Formato de periodo invalido");
+			throw new LogicaException("Formato de periodo invalido");
 		}
 	}
 
-	public void validaDuracao(int duracao) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se a duracao recebida eh valida.
+	 * 
+	 * @param duracao
+	 *            - Duracao recebida
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaDuracao(int duracao) throws LogicaException {
 		if (duracao <= 0) {
-			throw new Exception("Duracao invalida");
+			throw new LogicaException("Duracao invalida");
 		}
 	}
 
-	public void validaQtdHoras(int qtdHoras) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se a quantidade de horas recebida eh
+	 * valida.
+	 * 
+	 * @param qtdHoras
+	 *            - Quantidade de horas recebida
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaQtdHoras(int qtdHoras) throws LogicaException {
 		if (qtdHoras <= 0) {
-			throw new Exception("Quantidade de horas invalida");
+			throw new LogicaException("Quantidade de horas invalida");
 		}
 	}
 
-	public void validaImpacto(int impacto) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se o impacto recebido eh valido.
+	 * 
+	 * @param impacto
+	 *            - Impacto recebido.
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaImpacto(int impacto) throws LogicaException {
 		if (impacto < 1 || impacto > 6) {
-			throw new Exception("Impacto invalido");
+			throw new LogicaException("Impacto invalido");
 		}
 	}
 
-	public void validaProdAcademica(int prodAcademica) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se a producao academica recebida eh
+	 * valida.
+	 * 
+	 * @param prodAcademica
+	 *            - Producao academica recebida
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaProdAcademica(int prodAcademica) throws LogicaException {
 		if (prodAcademica < 0) {
-			throw new Exception("Numero de producoes academicas invalido");
+			throw new LogicaException("Numero de producoes academicas invalido");
 		}
 	}
 
-	public void validaProdTecnica(int prodTecnica) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se a producao tecnica recebida eh valida.
+	 * 
+	 * @param prodTecnica
+	 *            - Producao tecnica recebida
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaProdTecnica(int prodTecnica) throws LogicaException {
 		if (prodTecnica < 0) {
-			throw new Exception("Numero de producoes tecnicas invalido");
+			throw new LogicaException("Numero de producoes tecnicas invalido");
 		}
 	}
 
-	public void validaPatentes(int patentes) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se as patentes recebidas sao validas.
+	 * 
+	 * @param patentes
+	 *            - Patentes recebidass
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaPatentes(int patentes) throws LogicaException {
 		if (patentes < 0) {
-			throw new Exception("Numero de patentes invalido");
+			throw new LogicaException("Numero de patentes invalido");
 		}
 	}
 
-	public void validaCategoria(String categoria) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se a categoria recebida eh valida.
+	 * 
+	 * @param categoria
+	 *            - Categoria recebida
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 * @throws StringInvalidaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaCategoria(String categoria) throws LogicaException, StringInvalidaException {
 		try {
 			this.moduloDeValidacao.stringInvalida(categoria);
 		} catch (StringInvalidaException e) {
@@ -176,11 +292,23 @@ public class ValidaProjeto implements Serializable{
 
 		if (!(categoria.equalsIgnoreCase("pibic") || categoria.equalsIgnoreCase("pibiti")
 				|| categoria.equalsIgnoreCase("pivic") || categoria.equalsIgnoreCase("coop"))) {
-			throw new Exception("Categoria invalida");
+			throw new LogicaException("Categoria invalida");
 		}
 	}
 
-	public void validaValorAtributo(String atributo, String valor) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se valor e atributo sao validos.
+	 * 
+	 * @param atributo
+	 *            - Atributo recebido.
+	 * @param valor
+	 *            - Valor recebida
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 * @throws StringInvalidaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaValorAtributo(String atributo, String valor) throws LogicaException, StringInvalidaException {
 		this.validaValor(valor, atributo);
 		try {
 			this.moduloDeValidacao.stringInvalida(valor);
@@ -188,32 +316,72 @@ public class ValidaProjeto implements Serializable{
 			throw new StringInvalidaException(atributo + " " + e.getMessage());
 		}
 	}
-	
+
+	/**
+	 * Metodo responsavel por afirmar se o valor recebido eh valido.
+	 * 
+	 * @param valor
+	 *            - Valor recebido.
+	 * @throws ParametroInvalidoException
+	 *             - Exception a ser lancada.
+	 */
 	public void validaValorAtributo(double valor) throws ParametroInvalidoException {
 		if (valor < 0) {
 			throw new ParametroInvalidoException("valor negativo");
 		}
 	}
 
-	public void validaValorHora(double valorHora) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se o valor da hora recebido eh valido.
+	 * 
+	 * @param valorHora
+	 *            - Valor da hora recebido.
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaValorHora(double valorHora) throws LogicaException {
 		if (valorHora <= 0) {
-			throw new Exception("Valor da hora invalido");
+			throw new LogicaException("Valor da hora invalido");
 		}
 	}
 
-	public void validaValorHoraMenorQueZero(double valorHora) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se o valor da hora recebido eh valido.
+	 * 
+	 * @param valorHora
+	 *            - Valor da hora recebido.
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaValorHoraMenorQueZero(double valorHora) throws LogicaException {
 		if (valorHora < 0) {
-			throw new Exception("Valor da hora invalido");
+			throw new LogicaException("Valor da hora invalido");
 		}
 	}
 
-	public void validaValorHoraDeMonitoria(double valorHora) throws Exception {
+	/**
+	 * Metodo responsavel por afirmar se o valor da hora recebido eh valido.
+	 * 
+	 * @param valorHora
+	 *            - Valor da hora recebido.
+	 * @throws LogicaException
+	 *             - Exception a ser lancada.
+	 */
+	public void validaValorHoraDeMonitoria(double valorHora) throws LogicaException {
 		if (valorHora != 0) {
-			throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
+			throw new LogicaException("Valor da hora de um professor da monitoria deve ser zero");
 		}
 
 	}
 
+	/**
+	 * Metodo responsavel por afirmar se o codigo recebido eh valido.
+	 * 
+	 * @param cod
+	 *            - Codigo recebido.
+	 * @throws ParametroInvalidoException
+	 *             - Exception a ser lancada.
+	 */
 	public void validaCodigo(String cod) throws ParametroInvalidoException {
 		try {
 			this.moduloDeValidacao.stringInvalida(cod);

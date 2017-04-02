@@ -44,11 +44,11 @@ public abstract class Projeto implements Serializable {
 	 * 
 	 * @param atributo
 	 *            - Atributo o qual deseja a informacao.
-	 * @throws LogicaException
+	 * @throws Exception
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public abstract String getInfoProjeto(String atributo) throws LogicaException;
+	public abstract String getInfoProjeto(String atributo) throws Exception;
 
 	/**
 	 * Metodo abstrato com funcao de repassar atividade para classes filhas.
@@ -57,11 +57,11 @@ public abstract class Projeto implements Serializable {
 	 *            - Atributo do projeto que deseja a editar.
 	 * @param valor
 	 *            - Valor a ser substituido no atributo.
-	 * @throws LogicaException
+	 * @throws Exception
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public abstract void editaProjeto(String atributo, String valor) throws LogicaException;
+	public abstract void editaProjeto(String atributo, String valor) throws Exception;
 
 	/**
 	 * Metodo responsavel por adicionar participacao.
@@ -172,11 +172,11 @@ public abstract class Projeto implements Serializable {
 	 * 
 	 * @param cpfPessoa
 	 *            - CPF da pessoa que deseja remover a paritcipacao
-	 * @throws LogicaException
+	 * @throws Exception
 	 *             - Lancara uma Exception, caso os parametros nao sejam os
 	 *             esperados.
 	 */
-	public void removeParticipacao(String cpfPessoa) throws LogicaException {
+	public void removeParticipacao(String cpfPessoa) throws Exception {
 		for (Participacao participacao : participacoes) {
 			if (participacao.getCpfDaPessoa().equals(cpfPessoa)) {
 				participacoes.remove(participacao);
@@ -471,7 +471,12 @@ public abstract class Projeto implements Serializable {
 	public abstract void atualizaDespesas(double montanteBolsas, double montanteCusteio, double montanteCapital)
 			throws ParametroInvalidoException;
 
-	// TODO JAVADOCS ABAIXO, ANALISAR EXCEPTION ABAIXO
+	/**
+	 * Metodo responsavel por transformar a data em um objeto do tipo Date e
+	 * para analisar a exception.
+	 * 
+	 * @return - Data em date.
+	 */
 	private Date getDataInicioEmDate() {
 		DateFormat formata = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataInicio = null;
@@ -483,7 +488,14 @@ public abstract class Projeto implements Serializable {
 		return dataInicio;
 	}
 
-	// TODO
+	/**
+	 * Metodo responsavel por retornar o nome do coordenador, caso nao haja,
+	 * retornara a mensagem: "Nao ha coordenador cadastrado neste projeto".
+	 * 
+	 * @return - caso haja coordenador, retornara seu nome, caso nao haja,
+	 *         retornara a mensagem: "Nao ha coordenador cadastrado neste
+	 *         projeto".
+	 */
 	private String getNomeDoCoordenador() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isCoordenador()) {
@@ -493,7 +505,11 @@ public abstract class Projeto implements Serializable {
 		return "Nao ha coordenador cadastrado neste projeto";
 	}
 
-	// TODO
+	/**
+	 * Metodo responsavel por retornar a data fim do projeto.
+	 * 
+	 * @return - retornara a data fim do projeto.
+	 */
 	private Date getDataFimDoProjeto() {
 		Date dataFim = this.getDataInicioEmDate();
 		Calendar c = Calendar.getInstance();
@@ -503,7 +519,12 @@ public abstract class Projeto implements Serializable {
 		return dataFim;
 	}
 
-	// TODO
+	/**
+	 * Metodo responsavel por analisar se o projeto esta finalizado ou nao.
+	 * 
+	 * @return - caso esteja finalizado, retornara a String "Finalizado", caso
+	 *         nao esteja, retornara "Em andamento".
+	 */
 	private String isFinalizado() {
 		Date dataFim = null;
 		dataFim = this.getDataFimDoProjeto();
@@ -515,12 +536,16 @@ public abstract class Projeto implements Serializable {
 		}
 	}
 
+	/**
+	 * Metodo responsavel por enviar as informacoes do projeto em String
+	 */
 	@Override
 	public String toString() {
 		return "Nome: " + this.nome + LS + "Data de inicio: " + this.getDataFormatada() + LS + "Coordenador: "
 				+ this.getNomeDoCoordenador() + LS + "Situacao: " + this.isFinalizado();
 	}
 
+	// TODO
 	private String getDataFormatada() {
 		Date dataInicio = this.getDataInicioEmDate();
 		DateFormat formata = new SimpleDateFormat("yyyy-MM-dd");
@@ -528,6 +553,13 @@ public abstract class Projeto implements Serializable {
 		return dataInicioFormatada;
 	}
 
+	/**
+	 * Metodo resposavel por retornar o numero de alunos graduandos nas
+	 * participacoes de determinado projeto.
+	 * 
+	 * @return - Retornara o numero de alunos graduandos nas participacoes do
+	 *         projeto.
+	 */
 	public int getNumeroDeGraduandos() {
 		int numeroDeGraduandos = 0;
 		for (Participacao participacao : participacoes) {
@@ -538,6 +570,13 @@ public abstract class Projeto implements Serializable {
 		return numeroDeGraduandos;
 	}
 
+	/**
+	 * Metodo resposavel por retornar o numero de alunos pos-graduandos nas
+	 * participacoes de determinado projeto.
+	 * 
+	 * @return - Retornara o numero de alunos pos-graduandos nas participacoes
+	 *         do projeto.
+	 */
 	public int getNumeroDePosGraduandos() {
 		int numeroDePosGraduandos = 0;
 		for (Participacao participacao : participacoes) {
@@ -548,6 +587,13 @@ public abstract class Projeto implements Serializable {
 		return numeroDePosGraduandos;
 	}
 
+	/**
+	 * Metodo resposavel por retornar o numero de profissionais nas
+	 * participacoes de determinado projeto.
+	 * 
+	 * @return - Retornara o numero de profissionais nas participacoes do
+	 *         projeto.
+	 */
 	public int getNumeroDeProfissionais() {
 		int numeroDeProfissionais = 0;
 		for (Participacao participacao : participacoes) {
@@ -558,12 +604,16 @@ public abstract class Projeto implements Serializable {
 		return numeroDeProfissionais;
 	}
 
+	/**
+	 * Metodo responsavel por retornar um relatorio de colaboracoes em String.
+	 * 
+	 * @return - Retornara um relatorio de colaboracoes em String.
+	 */
 	public String getRelatorioDeColaboracoes() {
 		return "Nome: " + this.nome + " Data de inicio: " + getDataFormatada() + " Valor colaborado: R$"
 				+ calculaColaboracaoUASC();
 	}
 
-	
 	// TODO
 	public boolean isPET() {
 		return false;

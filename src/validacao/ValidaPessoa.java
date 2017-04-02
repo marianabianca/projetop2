@@ -8,24 +8,24 @@ import exception.NomeInvalidoException;
 import exception.StringInvalidaException;
 
 public class ValidaPessoa implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private ModuloDeValidacao moduloDeValidacao;
-	
+
 	public ValidaPessoa() {
 		this.moduloDeValidacao = new ModuloDeValidacao();
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O NOME RECEBIDO É VÁLIDO.
+	 * O metodo eh responsavel por verificar se o nome recebido eh valido.
 	 * 
 	 * @param nome
-	 *            NOME A SER TESTADO.
-	 * @throws StringInvalidaException
-	 *             EXCEÇÃO A SER LANÇADA.
+	 *            - Nome a ser testado.
+	 * @throws stringinvalidaexception
+	 *             - Excecao a ser lancada.
 	 */
 	public void validaNome(String nome) throws NomeInvalidoException {
 		try {
@@ -36,13 +36,13 @@ public class ValidaPessoa implements Serializable {
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O EMAIL RECEBIDO ESTÁ NO PADRÃO
-	 * DE EMAIL.
+	 * O metodo eh responsavel por verificar se o email recebido esta no padrao
+	 * de email.
 	 * 
 	 * @param email
-	 *            EMAIL A SER TESTADO.
-	 * @throws StringInvalidaException
-	 *             EXCEÇÃO A SER LANÇADA.
+	 *            - Email a ser testado.
+	 * @throws stringinvalidaexception
+	 *             - Excecao a ser lancada.
 	 */
 	public void validaEmail(String email) throws EmailInvalidoException {
 		try {
@@ -58,13 +58,13 @@ public class ValidaPessoa implements Serializable {
 	}
 
 	/**
-	 * O MÉTODO É RESPONSÁVEL POR VERIFICAR SE O CPF RECEBIDO ESTÁ NO PADRÃO DE
-	 * CPF.
+	 * O metodo eh responsavel por verificar se o cpf recebido esta no padrao de
+	 * cpf.
 	 * 
 	 * @param cpf
-	 *            CPF A SER TESTADO.
-	 * @throws StringInvalidaException
-	 *             EXCEÇÃO A SER LANÇADA.
+	 *            - Cpf a ser testado.
+	 * @throws stringinvalidaexception
+	 *             - Excecao a ser lancada.
 	 */
 	public void validaCpf(String cpf) throws CPFInvalidoException {
 		try {

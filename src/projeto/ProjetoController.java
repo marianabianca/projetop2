@@ -484,7 +484,12 @@ public class ProjetoController implements Serializable {
 		this.arquivos.salvaRelatorioColaboracoes(texto);
 	}
 	
-	// TODO Javadoc dos m�todos abaixo
+	/**
+	 * Metodo responsavel por retornar o relatorio de todos os projetos
+	 * cadastrados em String.
+	 * 
+	 * @return String representante de todos os projetos cadastrados.
+	 */
 	private String getRelatorioDeProjetosCadastrados() {
 		String relatorio = "Cadastro de Projetos: " + this.projetos.size() + " projeto(s) registrado(s)" + LS;
 		for (int i = 0; i < projetos.size(); i++) {
@@ -498,6 +503,13 @@ public class ProjetoController implements Serializable {
 		return relatorio;
 	}
 
+	/**
+	 * Metodo responsavel por retornar o relatorio de colaboracoes de todos os
+	 * projetos cadastrados em String.
+	 * 
+	 * @return - String representante de todas as colaboracoes dos projetos
+	 *         cadastrados.
+	 */
 	private String getRelatorioDasColaboracoes() {
 		String relatorio = "Historico das Colaboracoes:" + LS;
 		for (Projeto projeto : projetos) {
@@ -508,6 +520,12 @@ public class ProjetoController implements Serializable {
 		return relatorio;
 	}
 
+	/**
+	 * Metodo responsavel por retornar o numero de participacoes em cada
+	 * projeto.
+	 * 
+	 * @return - Retornara o numero de paticipacoes total de todos os projetos.
+	 */
 	private int calculaNumeroDeParticipacoes() {
 		int numeroDeParticipacoes = 0;
 		for (Projeto projeto : projetos) {
@@ -516,6 +534,11 @@ public class ProjetoController implements Serializable {
 		return numeroDeParticipacoes;
 	}
 
+	/**
+	 * Metodo responsavel por calcular a percentagem de algunos graduandos.
+	 * 
+	 * @return - Retornara a percentagem de alunos graduandos.
+	 */
 	private String calculaPorcentagemGraduandos() {
 		int numeroDeGraduandos = 0;
 		for (Projeto projeto : projetos) {
@@ -524,6 +547,11 @@ public class ProjetoController implements Serializable {
 		return calculaPorcentagemDeParticipacoes(numeroDeGraduandos);
 	}
 
+	/**
+	 * Metodo responsavel por calcular a percentagem de algunos pos-graduandos.
+	 * 
+	 * @return - Retornara a percentagem de alunos pos-graduandos.
+	 */
 	private String calculaPorcentagemPosGraduandos() {
 		int numeroDePosGraduandos = 0;
 		for (Projeto projeto : projetos) {
@@ -532,6 +560,11 @@ public class ProjetoController implements Serializable {
 		return calculaPorcentagemDeParticipacoes(numeroDePosGraduandos);
 	}
 
+	/**
+	 * Metodo responsavel por calcular a percentagem de profissionais.
+	 * 
+	 * @return - Retornara a percentagem de profissionais.
+	 */
 	private String calculaPorcentagemProfissionais() {
 		int numeroDeProfissionais = 0;
 		for (Projeto projeto : projetos) {
@@ -540,6 +573,13 @@ public class ProjetoController implements Serializable {
 		return calculaPorcentagemDeParticipacoes(numeroDeProfissionais);
 	}
 
+	/**
+	 * Metodo responsavel por calcular a percentagem de algum tipo de
+	 * participacao, auxiliando os metodos: "calculaPorcentagemProfissionais",
+	 * "calculaPorcentagemPosGraduandos" e "calculaPorcentagemGraduandos".
+	 * 
+	 * @return - Retornara a percentagem de de alguma paraticipacao especifica.
+	 */
 	private String calculaPorcentagemDeParticipacoes(int participacoesEspecificas) {
 		double porcentagem = 100.0 * participacoesEspecificas / this.calculaNumeroDeParticipacoes();
 		DecimalFormat formata = new DecimalFormat("#.##");

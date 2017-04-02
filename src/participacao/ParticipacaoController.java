@@ -7,12 +7,7 @@ import pessoa.PessoaController;
 import projeto.Projeto;
 import projeto.ProjetoController;
 import projeto.ProjetoCoop;
-import projeto.ProjetoMonitoria;
-import projeto.ProjetoPET;
-import projeto.ProjetoPIBICPIBITI;
-import validacao.ModuloDeValidacao;
-import validacao.ValidaPessoa;
-import validacao.ValidaProjeto;
+import validacao.ValidaParticipacao;
 
 public class ParticipacaoController implements Serializable {
 
@@ -23,18 +18,14 @@ public class ParticipacaoController implements Serializable {
 	private FactoryDeParticipacao factoryDeParticipacao;
 	private PessoaController pessoaController;
 	private ProjetoController projetoController;
-	private ValidaPessoa validaPessoa;
-	private ValidaProjeto validaProjeto;
-	private ModuloDeValidacao moduloDeValidacao;
+	private ValidaParticipacao validaParticipacao;
 
 	public ParticipacaoController(PessoaController pessoaController, ProjetoController projetoController) {
 		this.pessoaController = pessoaController;
 		this.projetoController = projetoController;
 		this.factoryDeParticipacao = new FactoryDeParticipacao();
 
-		this.validaPessoa = new ValidaPessoa();
-		this.validaProjeto = new ValidaProjeto();
-		this.moduloDeValidacao = new ModuloDeValidacao();
+		this.validaParticipacao = new ValidaParticipacao();
 	}
 
 	/**
@@ -59,33 +50,15 @@ public class ParticipacaoController implements Serializable {
 		Pessoa professor;
 		Projeto projeto;
 		try {
-			this.validaPessoa.validaCpf(cpfProfessor);
-			this.validaProjeto.validaQtdHoras(quantidadeDeHoras);
+			this.validaParticipacao.validaCpfHoras(cpfProfessor, quantidadeDeHoras);
 			professor = pessoaController.getPessoa(cpfProfessor);
 			projeto = projetoController.getProjeto(codigoProjeto);
+			boolean temProfAssociado = projeto.temProfessorAssociado();
+			boolean temCoordAssociado = projeto.temCoordenadorAssociado();
 			if (projeto.isPED()) {
-				if (!ehCoordenador) {
-					this.validaProjeto.validaValorHora(valorPorHora);
-					if (projeto.temProfessorAssociado()) {
-						throw new Exception("Projetos P&D nao podem ter mais de um professor");
-					}
-				} else {
-					this.validaProjeto.validaValorHora(valorPorHora);
-					if (projeto.temProfessorAssociado()) {
-						if (projeto.temCoordenadorAssociado()) {
-							throw new Exception("Projetos P&D nao podem ter mais de um coordenador");
-						} else {
-							throw new Exception("Projetos P&D nao podem ter mais de um professor associado");
-						}
-					}
-				}
-			}
-			if (projeto.isMonitoria()) {
-				this.validaProjeto.validaValorHoraMenorQueZero(valorPorHora);
-				if (projeto.temProfessorAssociado()) {
-					this.validaProjeto.validaValorHoraDeMonitoria(valorPorHora);
-					throw new Exception("Monitoria nao pode ter mais de um professor");
-				}
+				this.validaParticipacao.validaAssociacaoProfessorPED(temProfAssociado, temCoordAssociado, ehCoordenador, valorPorHora);
+			} else if (projeto.isMonitoria()) {
+				this.validaParticipacao.validaAssociacaoProfessorMonitoria(temProfAssociado, valorPorHora);
 			}
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
@@ -116,17 +89,14 @@ public class ParticipacaoController implements Serializable {
 		Pessoa graduando;
 		Projeto projeto;
 		try {
-			this.validaPessoa.validaCpf(cpfGraduando);
-			this.validaProjeto.validaQtdHoras(horasSemanais);
-			this.validaProjeto.validaValorHoraMenorQueZero(valorPorHora);
+			this.validaParticipacao.validaQtdHoras_CPF_ValorHora(cpfGraduando, valorPorHora, horasSemanais, true);
 			graduando = pessoaController.getPessoa(cpfGraduando);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			if (projeto instanceof ProjetoCoop && projeto.temGraduandoAssociado()) {
-				if (graduando.temParticipacaoEmProjeto(codigoProjeto)) {
-					throw new Exception("Aluno ja esta cadastrado nesse projeto");
-				}
-			} else if (projeto instanceof ProjetoPIBICPIBITI && projeto.temGraduandoAssociado()) {
-				throw new Exception("Projetos P&D nao podem ter mais de um graduando");
+			boolean ehCoop = projeto instanceof ProjetoCoop;
+			boolean temAluno = projeto.temGraduandoAssociado();
+			boolean alunoPresenteNoProjeto = graduando.temParticipacaoEmProjeto(codigoProjeto);
+			if (projeto.isPED()) {
+				this.validaParticipacao.validaAssociacaoGraduandoPED(ehCoop, temAluno, alunoPresenteNoProjeto);
 			}
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
@@ -159,11 +129,9 @@ public class ParticipacaoController implements Serializable {
 		Pessoa pessoa = null;
 		Projeto projeto = null;
 		try {
-			this.validaPessoa.validaCpf(cpfPessoa);
+			this.validaParticipacao.validaQtdHoras_CPF_ValorHora(cpfPessoa, valorHora, qntHoras, false);
 			pessoa = pessoaController.getPessoa(cpfPessoa);
 			projeto = projetoController.getProjeto(codigoProjeto);
-			this.validaProjeto.validaValorHora(valorHora);
-			this.validaProjeto.validaQtdHoras(qntHoras);
 		} catch (Exception e) {
 			throw new Exception("Erro na associacao de pessoa a projeto: " + e.getMessage());
 		}
@@ -195,14 +163,10 @@ public class ParticipacaoController implements Serializable {
 			int qntHoras) throws Exception {
 		Pessoa posGraduando;
 		Projeto projeto;
-		this.validaPessoa.validaCpf(cpfPessoa);
-		this.validaProjeto.validaQtdHoras(qntHoras);
-		this.validaProjeto.validaValorHora(valorHora);
 		posGraduando = pessoaController.getPessoa(cpfPessoa);
 		projeto = projetoController.getProjeto(codigoProjeto);
-		if (projeto instanceof ProjetoMonitoria || projeto instanceof ProjetoPET) {
-			throw new Exception("Tipo de projeto invalido para pos graduando");
-		}
+		boolean isMonitoriaOrPet = projeto.isMonitoria() || projeto.isPET();
+		this.validaParticipacao.validaAssociacaoPosGraduando(cpfPessoa, qntHoras, valorHora, isMonitoriaOrPet);
 		Participacao participacao = factoryDeParticipacao.criaPosGraduando(posGraduando, projeto, valorHora, qntHoras,
 				vinculo);
 		adicionaParticipacaoAPessoa(cpfPessoa, participacao);

@@ -116,5 +116,11 @@ public class ProjetoPET extends Projeto {
 		super.atualizaBolsas(montanteBolsas);
 		super.atualizaCusteio(montanteCusteio);
 	}
+	
+	// TODO
+	@Override
+	public boolean isPET(){
+		return true;
+	}
 
 }

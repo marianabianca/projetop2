@@ -483,6 +483,7 @@ public abstract class Projeto implements Serializable {
 		return dataInicio;
 	}
 
+	// TODO
 	private String getNomeDoCoordenador() {
 		for (Participacao participacao : participacoes) {
 			if (participacao.isCoordenador()) {
@@ -492,6 +493,7 @@ public abstract class Projeto implements Serializable {
 		return "Nao ha coordenador cadastrado neste projeto";
 	}
 
+	// TODO
 	private Date getDataFimDoProjeto() {
 		Date dataFim = this.getDataInicioEmDate();
 		Calendar c = Calendar.getInstance();
@@ -501,6 +503,7 @@ public abstract class Projeto implements Serializable {
 		return dataFim;
 	}
 
+	// TODO
 	private String isFinalizado() {
 		Date dataFim = null;
 		dataFim = this.getDataFimDoProjeto();
@@ -558,6 +561,12 @@ public abstract class Projeto implements Serializable {
 	public String getRelatorioDeColaboracoes() {
 		return "Nome: " + this.nome + " Data de inicio: " + getDataFormatada() + " Valor colaborado: R$"
 				+ calculaColaboracaoUASC();
+	}
+
+	
+	// TODO
+	public boolean isPET() {
+		return false;
 	}
 
 }

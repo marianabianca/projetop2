@@ -554,4 +554,9 @@ public abstract class Projeto implements Serializable {
 		return numeroDeProfissionais;
 	}
 
+	public String getRelatorioDeColaboracoes() {
+		return "Nome: " + this.nome + " Data de inicio: " + getDataFormatada() + " Valor colaborado: R$"
+				+ calculaColaboracaoUASC();
+	}
+
 }

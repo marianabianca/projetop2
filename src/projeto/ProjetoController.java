@@ -461,17 +461,27 @@ public class ProjetoController implements Serializable {
 	}
 
 	// TODO Javadoc dos métodos abaixo
-	public String getProjetosCadastrados() {
-		String toString = "Cadastro de Projetos: " + this.projetos.size() + " projeto(s) registrado(s)" + LS;
+	public String getRelatorioDeProjetosCadastrados() {
+		String relatorio = "Cadastro de Projetos: " + this.projetos.size() + " projeto(s) registrado(s)" + LS;
 		for (int i = 0; i < projetos.size(); i++) {
 			Projeto projetoAtual = this.projetos.get(i);
-			toString += "==> Projeto " + (i + 1) + LS + projetoAtual.toString() + LS + LS;
+			relatorio += "==> Projeto " + (i + 1) + LS + projetoAtual.toString() + LS + LS;
 		}
-		toString += "Total de projetos concluidos: " + this.projetos.size() + LS + "% Participacao da graduacao: "
+		relatorio += "Total de projetos concluidos: " + this.projetos.size() + LS + "% Participacao da graduacao: "
 				+ calculaPorcentagemGraduandos() + LS + "% Participacao da pos-graduacao: "
 				+ calculaPorcentagemPosGraduandos() + LS + "% Participacao de profissionais: "
 				+ calculaPorcentagemProfissionais();
-		return toString;
+		return relatorio;
+	}
+
+	public String getRelatorioDasColaboracoes() {
+		String relatorio = "Historico das Colaboracoes:" + LS;
+		for (Projeto projeto : projetos) {
+			relatorio += "==> " + projeto.getRelatorioDeColaboracoes() + LS;
+		}
+		relatorio += "Total acumulado com colaboracoes: R$" + calculaColaboracaoTotalUASC() + LS + "Total gasto: R$"
+				+ LS + "Total em caixa: R$" + calculaTotalEmCaixaUASC();
+		return relatorio;
 	}
 
 	private int calculaNumeroDeParticipacoes() {
@@ -510,14 +520,6 @@ public class ProjetoController implements Serializable {
 		double porcentagem = 100.0 * participacoesEspecificas / this.calculaNumeroDeParticipacoes();
 		DecimalFormat formata = new DecimalFormat("#.##");
 		return formata.format(porcentagem);
-	}
-	
-	public static void main(String[] args) throws Exception {
-		ProjetoController pc = new ProjetoController();
-		pc.adicionaMonitoria("Nome", "Calculo", 10, "Objetivo", "2016.2", "05/03/2017", 4);
-		pc.adicionaMonitoria("Nome2", "Calculo", 10, "Objetivo", "2016.2", "10/03/2017", 3);
-		pc.adicionaMonitoria("Nome3", "Calculo", 10, "Objetivo", "2016.2", "15/03/2017", 3);
-		System.out.println(pc.getProjetosCadastrados());
 	}
 
 }

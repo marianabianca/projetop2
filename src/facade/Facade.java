@@ -539,5 +539,15 @@ public class Facade {
 	public double calculaTotalEmCaixaUASC() {
 		return this.projetoController.calculaTotalEmCaixaUASC();
 	}
+	
+	/**
+	 * Método responsavel por salvar os relatorios sobre projetos e colaboracoes
+	 * 
+	 * @throws IOException
+	 */
+	public void salvaRelatorios() throws IOException {
+		projetoController.geraRelatorioProjetos();
+		projetoController.geraRelatorioColaboracoes();
+	}
 
 }

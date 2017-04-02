@@ -1,5 +1,6 @@
 package projeto;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import exception.LogicaException;
 import exception.ObjetoNuloException;
 import participacao.Participacao;
+import persistencia.ArquivosRelatorios;
 import validacao.ModuloDeValidacao;
 import validacao.ValidaProjeto;
 
@@ -24,6 +26,7 @@ public class ProjetoController implements Serializable {
 	private ModuloDeValidacao moduloDeValidacao;
 	private FactoryDePED factoryDePED;
 	private double descontoReceita;
+	private ArquivosRelatorios arquivos;
 
 	public ProjetoController() {
 		this.projetos = new ArrayList<Projeto>();
@@ -32,6 +35,7 @@ public class ProjetoController implements Serializable {
 		this.moduloDeValidacao = new ModuloDeValidacao();
 		this.factoryDePED = new FactoryDePED();
 		this.descontoReceita = 0;
+		this.arquivos = new ArquivosRelatorios();
 	}
 
 	/**
@@ -460,8 +464,28 @@ public class ProjetoController implements Serializable {
 		return total;
 	}
 
-	// TODO Javadoc dos métodos abaixo
-	public String getRelatorioDeProjetosCadastrados() {
+	/**
+	 * Metodo que gera e salva o relatorio referente a parte dos projetos
+	 * 
+	 * @throws IOException - caso haja algum problema com o arquivo
+	 */
+	public void geraRelatorioProjetos() throws IOException {
+		String texto = this.getRelatorioDeProjetosCadastrados();
+		this.arquivos.salvaRelatorioProjetos(texto);
+	}
+	
+	/**
+	 * Metodo que gera e salva o relatorio referente a parte dos projetos
+	 * 
+	 * @throws IOException - caso haja algum problema com o arquivo
+	 */
+	public void geraRelatorioColaboracoes() throws IOException {
+		String texto = this.getRelatorioDasColaboracoes();
+		this.arquivos.salvaRelatorioColaboracoes(texto);
+	}
+	
+	// TODO Javadoc dos mï¿½todos abaixo
+	private String getRelatorioDeProjetosCadastrados() {
 		String relatorio = "Cadastro de Projetos: " + this.projetos.size() + " projeto(s) registrado(s)" + LS;
 		for (int i = 0; i < projetos.size(); i++) {
 			Projeto projetoAtual = this.projetos.get(i);
@@ -474,7 +498,7 @@ public class ProjetoController implements Serializable {
 		return relatorio;
 	}
 
-	public String getRelatorioDasColaboracoes() {
+	private String getRelatorioDasColaboracoes() {
 		String relatorio = "Historico das Colaboracoes:" + LS;
 		for (Projeto projeto : projetos) {
 			relatorio += "==> " + projeto.getRelatorioDeColaboracoes() + LS;

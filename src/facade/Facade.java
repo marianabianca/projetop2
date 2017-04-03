@@ -60,7 +60,7 @@ public class Facade {
 	 *             - caso haja algum problema com o arquivo
 	 */
 	public void fechaSistema() throws IOException {
-		//this.persistencia.fechaSistma(projetoController, pessoaController, participacaoController);
+		this.persistencia.fechaSistma(projetoController, pessoaController, participacaoController);
 	}
 
 	/**

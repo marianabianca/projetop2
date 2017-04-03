@@ -6,7 +6,6 @@ import projeto.ProjetoController;
 import participacao.ParticipacaoController;
 import persistencia.Persistencia;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import easyaccept.EasyAccept;
@@ -47,24 +46,21 @@ public class Facade {
 	 *             - caso o downcast nao funcione, pois a classe nao existe
 	 */
 	public void iniciaSistema() throws IOException, ClassNotFoundException {
-		try {
 			this.persistencia.iniciaSistema();
 			this.pessoaController = persistencia.getPessoaController();
 			this.projetoController = persistencia.getProjetoController();
 			this.participacaoController = persistencia.getParticipacaoController();
-		} catch (FileNotFoundException e) {
-		}
 	}
 
 	/**
 	 * Metodo para a escrita dos objetos pessoaController e projetoController em
-	 * um arquivo a fim de salva-los
+	 * um arquivo a fim de salva-los.
 	 * 
 	 * @throws IOException
 	 *             - caso haja algum problema com o arquivo
 	 */
 	public void fechaSistema() throws IOException {
-		this.persistencia.fechaSistma(projetoController, pessoaController, participacaoController);
+		//this.persistencia.fechaSistma(projetoController, pessoaController, participacaoController);
 	}
 
 	/**

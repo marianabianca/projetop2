@@ -496,11 +496,25 @@ public class ProjetoController implements Serializable {
 			Projeto projetoAtual = this.projetos.get(i);
 			relatorio += "==> Projeto " + (i + 1) + LS + projetoAtual.toString() + LS + LS;
 		}
-		relatorio += "Total de projetos concluidos: " + this.projetos.size() + LS + "% Participacao da graduacao: "
-				+ calculaPorcentagemGraduandos() + "%" + LS + "% Participacao da pos-graduacao: "
-				+ calculaPorcentagemPosGraduandos() + "%" + LS + "% Participacao de profissionais: "
-				+ calculaPorcentagemProfissionais() + "%";
+		relatorio += "Total de projetos concluidos: " + getNumeroDeProjetosConcluidos() + LS + "% Participacao da graduacao: "
+				+ calculaPorcentagemGraduandos() + LS + "% Participacao da pos-graduacao: "
+				+ calculaPorcentagemPosGraduandos() + LS + "% Participacao de profissionais: "
+				+ calculaPorcentagemProfissionais();
 		return relatorio;
+	}
+
+	/**
+	 * Metodo responsavel por calcular o numero de projetos finalizados.
+	 * @return - Numero de projetos finalizados.
+	 */
+	private int getNumeroDeProjetosConcluidos() {
+		int projetosConcluidos = 0;
+		for (Projeto projeto : projetos) {
+			if (projeto.isFinalizado().equals(("Finalizado"))) {
+				projetosConcluidos++;
+			}
+		}
+		return projetosConcluidos;
 	}
 
 	/**
@@ -516,7 +530,7 @@ public class ProjetoController implements Serializable {
 			relatorio += "==> " + projeto.getRelatorioDeColaboracoes() + LS;
 		}
 		relatorio += "Total acumulado com colaboracoes: R$" + calculaColaboracaoTotalUASC() + LS + "Total gasto: R$"
-				+ LS + "Total em caixa: R$" + calculaTotalEmCaixaUASC();
+				+ this.descontoReceita + LS + "Total em caixa: R$" + calculaTotalEmCaixaUASC();
 		return relatorio;
 	}
 
@@ -583,7 +597,7 @@ public class ProjetoController implements Serializable {
 	private String calculaPorcentagemDeParticipacoes(int participacoesEspecificas) {
 		double porcentagem = 100.0 * participacoesEspecificas / this.calculaNumeroDeParticipacoes();
 		DecimalFormat formata = new DecimalFormat("#.##");
-		return formata.format(porcentagem);
+		return formata.format(porcentagem) + "%";
 	}
 
 }

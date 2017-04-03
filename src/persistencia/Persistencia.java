@@ -32,13 +32,14 @@ public class Persistencia {
 	}
 	
 	/**
-	 * Metodo que inicia o sistema, carregando o arquivo que tem salvo um objeto do tipo Controllers e instanciando o atibuto
+	 * Metodo que inicia o sistema, carregando o arquivo que tem salvo um objeto do tipo Controllers e instanciando o atributo
 	 * controllers (da classe) como esse objeto. Caso o arquivo nao exista e seja lancada uma FileNotFoundException, sera criado
-	 * o diretorio do atributo path e sera lancada uma nova FileNotFoundException que devera ser tratada em outro metodo
+	 * o diretorio do atributo path e sera lancada uma nova FileNotFoundException que devera ser tratada em outro metodo.
+	 * 
 	 * @throws IOException - caso haja problema com o arquivo
 	 * @throws ClassNotFoundException - caso o downcast nao funcione
 	 */
-	public void iniciaSistema() throws IOException, ClassNotFoundException{
+	public void iniciaSistema() throws IOException, ClassNotFoundException {
 		try{			
 			FileInputStream fis = new FileInputStream(arquivo);
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -46,7 +47,6 @@ public class Persistencia {
 			fis.close();				
 		} catch (FileNotFoundException e) {
 			path.mkdir();
-			throw new FileNotFoundException(e.getMessage());
 		}
 	}
 	

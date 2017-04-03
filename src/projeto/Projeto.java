@@ -514,7 +514,7 @@ public abstract class Projeto implements Serializable {
 		Date dataFim = this.getDataInicioEmDate();
 		Calendar c = Calendar.getInstance();
 		c.setTime(dataFim);
-		c.add(Calendar.DATE, 7 * this.duracao);
+		c.add(Calendar.MONTH, this.duracao);
 		dataFim.setTime(c.getTime().getTime());
 		return dataFim;
 	}
@@ -525,7 +525,7 @@ public abstract class Projeto implements Serializable {
 	 * @return - caso esteja finalizado, retornara a String "Finalizado", caso
 	 *         nao esteja, retornara "Em andamento".
 	 */
-	private String isFinalizado() {
+	public String isFinalizado() {
 		Date dataFim = null;
 		dataFim = this.getDataFimDoProjeto();
 		Date hoje = Calendar.getInstance().getTime();
@@ -619,9 +619,9 @@ public abstract class Projeto implements Serializable {
 	}
 
 	/**
-	 * Metodo responsavel por dizer se o projeto é ou não do tipo PET
+	 * Metodo responsavel por dizer se o projeto eh ou nao do tipo PET
 	 * 
-	 * @return boolean - se o projeto é ou não do tipo PET
+	 * @return boolean - se o projeto e ou nao do tipo PET
 	 */
 	public boolean isPET() {
 		return false;
